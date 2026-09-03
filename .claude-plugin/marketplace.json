@@ -1,0 +1,17 @@
+{
+  "name": "entrich-technologies",
+  "owner": {
+    "name": "Entrich Technologies GmbH"
+  },
+  "metadata": {
+    "description": "Claude-Plugins für Knowledge Center (Gutachten, Protokolle, Aktenvermerke, Stellungnahmen)",
+    "version": "1.1.0"
+  },
+  "plugins": [
+    {
+      "name": "knowledgecenter",
+      "source": "./knowledgecenter",
+      "description": "Verbindet Claude mit Knowledge Center: Gutachten suchen, lesen und aus Diktat befüllen (MCP), Adressbuch, PDF — plus eingebautes Wissen über die Gutachten-Arbeitsabläufe. Benötigt einen persönlichen API-Key (Einstellungen → Claude-Zugänge (MCP)) in der Umgebungsvariable KNOWLEDGECENTER_MCP_KEY."
+    }
+  ]
+}

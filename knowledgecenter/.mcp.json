@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "knowledgecenter": {
+      "type": "http",
+      "url": "https://applications.builddesk.at/api/mcp",
+      "headers": {
+        "Authorization": "Bearer ${KNOWLEDGECENTER_MCP_KEY}"
+      }
+    }
+  }
+}
