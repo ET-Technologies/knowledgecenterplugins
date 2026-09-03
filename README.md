@@ -20,26 +20,31 @@ hinterlegt sind.
 
 ```bash
 # 1. Marketplace hinzufügen (dieses Repository)
-claude plugin marketplace add ET-Technologies/knowledgecenter-plugin
+claude plugin marketplace add ET-Technologies/knowledgecenter-plugins
 
-# 2. Plugin installieren
+# 2. Plugin des Bereichs installieren
 claude plugin install knowledgecenter-gutachten@entrich-technologies
 ```
 
-Windows (PowerShell): dieselben Befehle; die Umgebungsvariable unten mit
-`setx KNOWLEDGECENTER_MCP_KEY "kc_…"` setzen und das Terminal neu öffnen.
+Dann einfach eine Frage stellen, z. B. *„Welche Gutachten-Typen gibt es?"*.
+Beim ersten Aufruf öffnet sich der Browser: bei Knowledge Center anmelden,
+„Zulassen" klicken — fertig. Kein Key, keine Umgebungsvariable. Die
+Anmeldung gilt für alle Bereiche und ist in Knowledge Center jederzeit
+widerrufbar (Einstellungen → Claude-Zugänge (MCP)).
 
-## API-Key einrichten
+Falls die Anmeldung nicht von selbst erscheint: in Claude Code `/mcp`
+eingeben und `knowledgecenter-gutachten` authentifizieren.
 
-1. In Knowledge Center: **Einstellungen → Claude-Zugänge (MCP)** (nur Owner)
-2. **Key erzeugen** — „Nur Lesen" für reine Auswertung, sonst „Lesen und Schreiben" — und kopieren
-3. Als Umgebungsvariable setzen, z. B. in `~/.zshrc` / `~/.bashrc`:
+### Ohne Browser (Automatisierung, CI)
+
+Statt der Anmeldung einen API-Key verwenden (Knowledge Center →
+Einstellungen → Claude-Zugänge (MCP), nur Owner):
 
 ```bash
-export KNOWLEDGECENTER_MCP_KEY=kc_…
+claude mcp add --transport http knowledgecenter-gutachten \
+  https://applications.builddesk.at/api/mcp/gutachten \
+  --header "Authorization: Bearer kc_…"
 ```
-
-4. Claude Code neu starten. Test: *„Welche Gutachten-Typen gibt es?"*
 
 ## Alternative: claude.ai (Browser, Handy)
 
@@ -53,10 +58,10 @@ Server trotzdem mit.
 
 ## Was das Plugin enthält
 
-- **MCP-Verbindung** zu `https://applications.builddesk.at/api/mcp/gutachten`.
-  Der Key steckt nicht im Plugin — jeder Benutzer verwendet seinen eigenen.
-- **Skill „gutachten-arbeiten"**: Tool-Reihenfolge, Umgang mit Instanzen,
-  Fotos und Finalisierung, Regeln für Schreibaktionen.
+- **MCP-Verbindung** zu `https://applications.builddesk.at/api/mcp/gutachten`
+  mit Anmeldung im Browser (OAuth). Es stecken keine Zugangsdaten im Plugin.
+- **Skill „gutachten-arbeiten"**: kurzer Anstoß. Die vollständige
+  Arbeitsanleitung liefert der Server beim Verbinden — für alle Clients gleich.
 
 ## Werkzeuge
 
@@ -80,13 +85,16 @@ schreiben; einzelne Abschnitte „nicht über MCP").
 
 ## Sicherheit
 
-- Zugriff nur auf den Account des Key-Besitzers; Keys sind jederzeit in
-  Knowledge Center widerrufbar.
+- Zugriff nur auf den eigenen Account (Owner); Anmeldungen und Keys sind
+  jederzeit in Knowledge Center widerrufbar.
 - Finalisierte Gutachten sind schreibgeschützt. Überschreibende Aktionen
   verlangen eine ausdrückliche Bestätigung.
-- Bei Verlust eines Keys: auf der Claude-Zugänge-Seite widerrufen.
+- Bei Verlust eines Geräts oder Keys: auf der Claude-Zugänge-Seite widerrufen.
 
 ## Versionen
+
+- **0.4.0** — Anmeldung im Browser statt API-Key; Arbeitsanleitung kommt
+  vom Server
 
 - **0.3.0** — Ein Plugin je Bereich (`knowledgecenter-gutachten`), eigener
   Endpunkt `/api/mcp/gutachten`, Abo-Prüfung durch den Server
