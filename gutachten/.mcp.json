@@ -1,8 +1,8 @@
 {
   "mcpServers": {
-    "knowledgecenter": {
+    "knowledgecenter-gutachten": {
       "type": "http",
-      "url": "https://applications.builddesk.at/api/mcp",
+      "url": "https://applications.builddesk.at/api/mcp/gutachten",
       "headers": {
         "Authorization": "Bearer ${KNOWLEDGECENTER_MCP_KEY}"
       }

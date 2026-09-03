@@ -1,8 +1,20 @@
-# Knowledge Center — Claude-Plugin
+# Knowledge Center — Claude-Plugins
 
-Verbindet Claude mit Knowledge Center: Gutachten, Aktenvermerke, Protokolle
-und Stellungnahmen suchen, lesen und aus einem Diktat befüllen — nach den
-Regeln, die im jeweiligen Template hinterlegt sind.
+Je Bereich von Knowledge Center ein Plugin, passend zum Abo. Jedes Plugin
+spricht den Endpunkt seines Bereichs an (`/api/mcp/<bereich>`) und bringt das
+Arbeitsablauf-Wissen des Bereichs als Skill mit. Ein Key gilt für alle Bereiche.
+
+| Plugin | Bereich | Voraussetzung |
+|---|---|---|
+| `knowledgecenter-gutachten` | Gutachten, Aktenvermerke, Protokolle, Stellungnahmen | Gutachten-Modul im Abo |
+
+Weitere Bereiche (z. B. Angebote, Baustellen) folgen als eigene Plugins.
+
+## Plugin „knowledgecenter-gutachten"
+
+Gutachten, Aktenvermerke, Protokolle und Stellungnahmen suchen, lesen und
+aus einem Diktat befüllen — nach den Regeln, die im jeweiligen Template
+hinterlegt sind.
 
 ## Installation in Claude Code
 
@@ -11,7 +23,7 @@ Regeln, die im jeweiligen Template hinterlegt sind.
 claude plugin marketplace add ET-Technologies/knowledgecenter-plugin
 
 # 2. Plugin installieren
-claude plugin install knowledgecenter@entrich-technologies
+claude plugin install knowledgecenter-gutachten@entrich-technologies
 ```
 
 Windows (PowerShell): dieselben Befehle; die Umgebungsvariable unten mit
@@ -33,14 +45,15 @@ export KNOWLEDGECENTER_MCP_KEY=kc_…
 
 Ohne Plugin, über einen Konnektor: In claude.ai unter **Einstellungen →
 Konnektoren → Benutzerdefinierten Konnektor hinzufügen** die URL
-`https://applications.builddesk.at/api/mcp` eintragen. Die Anmeldung läuft
+`https://applications.builddesk.at/api/mcp` eintragen — dieser Endpunkt
+liefert alle Bereiche, die der Account im Abo hat. Die Anmeldung läuft
 über Knowledge Center (OAuth), ein Key ist nicht nötig. Der Skill aus diesem
 Plugin steht dort nicht zur Verfügung; die Regeln des Templates liefert der
 Server trotzdem mit.
 
 ## Was das Plugin enthält
 
-- **MCP-Verbindung** zu `https://applications.builddesk.at/api/mcp`.
+- **MCP-Verbindung** zu `https://applications.builddesk.at/api/mcp/gutachten`.
   Der Key steckt nicht im Plugin — jeder Benutzer verwendet seinen eigenen.
 - **Skill „gutachten-arbeiten"**: Tool-Reihenfolge, Umgang mit Instanzen,
   Fotos und Finalisierung, Regeln für Schreibaktionen.
@@ -74,6 +87,9 @@ schreiben; einzelne Abschnitte „nicht über MCP").
 - Bei Verlust eines Keys: auf der Claude-Zugänge-Seite widerrufen.
 
 ## Versionen
+
+- **0.3.0** — Ein Plugin je Bereich (`knowledgecenter-gutachten`), eigener
+  Endpunkt `/api/mcp/gutachten`, Abo-Prüfung durch den Server
 
 - **0.2.0** — Befüllen durch Claude (`gutachten_befuellen`), Adressbuch,
   Fotos ansehen und beschriften, Regeln des Templates in den

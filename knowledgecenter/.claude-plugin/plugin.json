@@ -1,9 +1,0 @@
-{
-  "name": "knowledgecenter",
-  "description": "Knowledge Center für Claude: Gutachten-Typen, Gutachten suchen, lesen und aus Diktat befüllen, Adressbuch und PDF über den MCP-Server des Produkts — plus Arbeitsablauf-Wissen (Baubesprechungsprotokolle, Aktenvermerke, Stellungnahmen). Key-Einrichtung: Einstellungen → Claude-Zugänge (MCP) → Key erzeugen → als Umgebungsvariable KNOWLEDGECENTER_MCP_KEY setzen.",
-  "version": "0.2.0",
-  "author": {
-    "name": "Entrich Technologies GmbH",
-    "email": "erwin@entrich-technologies.com"
-  }
-}
