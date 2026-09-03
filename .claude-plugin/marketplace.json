@@ -11,7 +11,7 @@
     {
       "name": "knowledgecenter",
       "source": "./knowledgecenter",
-      "description": "Verbindet Claude mit Knowledge Center: Gutachten suchen, lesen und aus Diktat befüllen (MCP), Adressbuch, PDF — plus eingebautes Wissen über die Gutachten-Arbeitsabläufe. Benötigt einen persönlichen API-Key (Einstellungen → Claude-Zugänge (MCP)) in der Umgebungsvariable KNOWLEDGECENTER_MCP_KEY."
+      "description": "Verbindet Claude mit Knowledge Center: Gutachten suchen, lesen und aus Diktat befüllen (MCP), Adressbuch, Fotos ansehen und beschriften, PDF — plus eingebautes Wissen über die Gutachten-Arbeitsabläufe. Benötigt einen persönlichen API-Key (Einstellungen → Claude-Zugänge (MCP)) in der Umgebungsvariable KNOWLEDGECENTER_MCP_KEY."
     }
   ]
 }

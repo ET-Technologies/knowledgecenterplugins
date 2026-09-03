@@ -53,9 +53,11 @@ Server trotzdem mit.
 | `gutachten_suchen` | Gutachten finden (Titel, Nummer, Typ, Status) |
 | `gutachten_lesen` | Vollständiger Inhalt mit Feldadressen und Regeln |
 | `adressbuch_suchen` | Kunden, Lieferanten, Ansprechpartner, Mitarbeiter |
+| `foto_ansehen` | Foto als Bild (verkleinert) — zum Ansehen und Beschriften |
 | `gutachten_anlegen` | Neues Gutachten zu einem Template |
 | `gutachten_befuellen` | Mehrere Felder in einem Aufruf — der Standardweg aus dem Diktat |
 | `feld_setzen` | Einzelne Korrektur |
+| `foto_beschriften` | Bildunterschrift setzen, Foto einem Abschnitt/Eintrag zuordnen |
 | `gutachten_auswerten` | Server-KI wie der Knopf „Transkript auswerten" (nur auf Wunsch) |
 | `pdf_erzeugen` | Fertiges PDF, Link 24 h gültig |
 
@@ -74,7 +76,8 @@ schreiben; einzelne Abschnitte „nicht über MCP").
 ## Versionen
 
 - **0.2.0** — Befüllen durch Claude (`gutachten_befuellen`), Adressbuch,
-  Regeln des Templates in den Werkzeug-Antworten, MCP-Zugriff pro Template
+  Fotos ansehen und beschriften, Regeln des Templates in den
+  Werkzeug-Antworten, MCP-Zugriff pro Template
 - **0.1.0** — Lesen, Diktat über Server-KI, Felder setzen, PDF
 
 © Entrich Technologies GmbH. Nutzung für Kunden von Knowledge Center.
