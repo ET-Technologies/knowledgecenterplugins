@@ -2,7 +2,7 @@
   "mcpServers": {
     "knowledgecenter-gutachten": {
       "type": "http",
-      "url": "https://applications.builddesk.at/api/mcp/gutachten"
+      "url": "https://www.knowledgecenter.at/api/mcp/gutachten"
     }
   }
 }

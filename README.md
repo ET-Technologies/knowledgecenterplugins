@@ -42,7 +42,7 @@ Einstellungen → Claude-Zugänge (MCP), nur Owner):
 
 ```bash
 claude mcp add --transport http knowledgecenter-gutachten \
-  https://applications.builddesk.at/api/mcp/gutachten \
+  https://www.knowledgecenter.at/api/mcp/gutachten \
   --header "Authorization: Bearer kc_…"
 ```
 
@@ -50,7 +50,7 @@ claude mcp add --transport http knowledgecenter-gutachten \
 
 Ohne Plugin, über einen Konnektor: In claude.ai unter **Einstellungen →
 Konnektoren → Benutzerdefinierten Konnektor hinzufügen** die URL
-`https://applications.builddesk.at/api/mcp` eintragen — dieser Endpunkt
+`https://www.knowledgecenter.at/api/mcp` eintragen — dieser Endpunkt
 liefert alle Bereiche, die der Account im Abo hat. Die Anmeldung läuft
 über Knowledge Center (OAuth), ein Key ist nicht nötig. Der Skill aus diesem
 Plugin steht dort nicht zur Verfügung; die Regeln des Templates liefert der
@@ -58,7 +58,7 @@ Server trotzdem mit.
 
 ## Was das Plugin enthält
 
-- **MCP-Verbindung** zu `https://applications.builddesk.at/api/mcp/gutachten`
+- **MCP-Verbindung** zu `https://www.knowledgecenter.at/api/mcp/gutachten`
   mit Anmeldung im Browser (OAuth). Es stecken keine Zugangsdaten im Plugin.
 - **Skill „gutachten-arbeiten"**: kurzer Anstoß. Die vollständige
   Arbeitsanleitung liefert der Server beim Verbinden — für alle Clients gleich.

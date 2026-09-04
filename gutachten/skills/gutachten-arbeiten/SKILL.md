@@ -33,6 +33,6 @@ Header eintragen:
 
 ```bash
 claude mcp add --transport http knowledgecenter-gutachten \
-  https://applications.builddesk.at/api/mcp/gutachten \
+  https://www.knowledgecenter.at/api/mcp/gutachten \
   --header "Authorization: Bearer kc_…"
 ```
