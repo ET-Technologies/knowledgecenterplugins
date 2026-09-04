@@ -100,7 +100,7 @@ schreiben; einzelne Abschnitte „nicht über MCP").
   Sammelaufruf (`fotos_zuordnen`), einheitliche Fotonamen bei Link-Uploads
 
 - **0.5.0** — Neue Fotos über `foto_upload_link` (Upload-Seite ohne
-  App-Login, Link 30 Minuten gültig)
+  App-Login, Link 2 Stunden gültig)
 
 - **0.4.0** — Anmeldung im Browser statt API-Key; Arbeitsanleitung kommt
   vom Server
