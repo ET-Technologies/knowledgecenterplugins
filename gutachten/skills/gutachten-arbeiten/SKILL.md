@@ -1,6 +1,6 @@
 ---
 name: gutachten-arbeiten
-description: Gutachten, Aktenvermerke, Protokolle und Stellungnahmen in Knowledge Center — suchen, lesen, aus Diktat befüllen, Fotos beschriften, PDF. Nutzen, sobald der Benutzer nach solchen Dokumenten oder deren Inhalten fragt oder eines anlegen, nachtragen, korrigieren oder als PDF haben will.
+description: Gutachten, Aktenvermerke, Protokolle und Stellungnahmen in Knowledge Center — suchen, lesen, aus Diktat befüllen, Fotos hochladen lassen und beschriften, PDF. Nutzen, sobald der Benutzer nach solchen Dokumenten oder deren Inhalten fragt oder eines anlegen, nachtragen, korrigieren oder als PDF haben will.
 ---
 
 # Gutachten in Knowledge Center
@@ -16,7 +16,9 @@ Kurzfassung:
 2. Diktat selbst verstehen und mit `gutachten_befuellen` schreiben —
    Namen und Adressen vorher mit `adressbuch_suchen` klären, bei
    Unklarheit den Benutzer fragen statt raten.
-3. Vor jeder Schreibaktion: der Benutzer muss sie gewollt haben.
+3. Neue Fotos: `foto_upload_link` erzeugen und dem Benutzer zeigen — Bilder
+   lassen sich nicht über MCP übertragen. Danach `gutachten_lesen`.
+4. Vor jeder Schreibaktion: der Benutzer muss sie gewollt haben.
 
 ## Einrichtung (falls der Server nicht verbunden ist)
 
