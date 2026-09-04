@@ -20,7 +20,7 @@ hinterlegt sind.
 
 ```bash
 # 1. Marketplace hinzufügen (dieses Repository)
-claude plugin marketplace add ET-Technologies/knowledgecenter-plugins
+claude plugin marketplace add ET-Technologies/knowledgecenterplugins
 
 # 2. Plugin des Bereichs installieren
 claude plugin install knowledgecenter-gutachten@entrich-technologies
