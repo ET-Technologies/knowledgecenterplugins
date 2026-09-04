@@ -76,6 +76,8 @@ Server trotzdem mit.
 | `gutachten_befuellen` | Mehrere Felder in einem Aufruf — der Standardweg aus dem Diktat |
 | `feld_setzen` | Einzelne Korrektur |
 | `foto_beschriften` | Bildunterschrift setzen, Foto einem Abschnitt/Eintrag zuordnen |
+| `fotos_uebersicht` | Kontaktabzug: bis zu 20 Fotos als nummeriertes Raster in einem Bild |
+| `fotos_zuordnen` | Viele Fotos in einem Aufruf zuordnen und beschriften |
 | `foto_upload_link` | Kurzlebiger Link, über den der Benutzer neue Fotos hochlädt (Handy/Browser) |
 | `gutachten_auswerten` | Server-KI wie der Knopf „Transkript auswerten" (nur auf Wunsch) |
 | `pdf_erzeugen` | Fertiges PDF, Link 24 h gültig |
@@ -93,6 +95,9 @@ schreiben; einzelne Abschnitte „nicht über MCP").
 - Bei Verlust eines Geräts oder Keys: auf der Claude-Zugänge-Seite widerrufen.
 
 ## Versionen
+
+- **0.6.0** — Viele Fotos auf einmal: Kontaktabzug (`fotos_uebersicht`),
+  Sammelaufruf (`fotos_zuordnen`), einheitliche Fotonamen bei Link-Uploads
 
 - **0.5.0** — Neue Fotos über `foto_upload_link` (Upload-Seite ohne
   App-Login, Link 30 Minuten gültig)

@@ -17,7 +17,9 @@ Kurzfassung:
    Namen und Adressen vorher mit `adressbuch_suchen` klären, bei
    Unklarheit den Benutzer fragen statt raten.
 3. Neue Fotos: `foto_upload_link` erzeugen und dem Benutzer zeigen — Bilder
-   lassen sich nicht über MCP übertragen. Danach `gutachten_lesen`.
+   lassen sich nicht über MCP übertragen. Bei vielen Fotos danach
+   `fotos_uebersicht` (Kontaktabzug) und `fotos_zuordnen` (alles in einem
+   Aufruf) statt Foto für Foto.
 4. Vor jeder Schreibaktion: der Benutzer muss sie gewollt haben.
 
 ## Einrichtung (falls der Server nicht verbunden ist)
