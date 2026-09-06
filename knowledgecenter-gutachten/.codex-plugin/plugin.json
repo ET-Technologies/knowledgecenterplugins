@@ -29,6 +29,7 @@
     "category": "Productivity",
     "capabilities": ["Read", "Write"],
     "websiteURL": "https://www.knowledgecenter.at",
+    "privacyPolicyURL": "https://www.knowledgecenter.at/datenschutz",
     "defaultPrompt": [
       "Welche Gutachten-Typen gibt es?",
       "Lies mein zuletzt geändertes Gutachten und nenne die offenen Felder",
