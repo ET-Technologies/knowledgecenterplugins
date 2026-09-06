@@ -132,6 +132,7 @@ Marketplace-Dateien: `.claude-plugin/marketplace.json` (Claude Code) und
 | `fotos_uebersicht` | Kontaktabzug: bis zu 20 Fotos als nummeriertes Raster in einem Bild |
 | `fotos_zuordnen` | Viele Fotos in einem Aufruf zuordnen und beschriften |
 | `foto_upload_link` | Kurzlebiger Link, über den der Benutzer neue Fotos hochlädt (Handy/Browser) |
+| `gutachten_fotos_hochladen` | Nur ChatGPT: im Chat angehängte Fotos direkt ins Gutachten übernehmen (Datei-Parameter) |
 | `gutachten_auswerten` | Server-KI wie der Knopf „Transkript auswerten" (nur auf Wunsch) |
 | `pdf_erzeugen` | Fertiges PDF, Link 24 h gültig |
 
