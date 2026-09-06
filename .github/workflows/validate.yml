@@ -1,0 +1,21 @@
+name: Validate plugins
+
+on:
+  pull_request:
+  push:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Validate manifests and references
+        run: python scripts/validate_repository.py
+      - name: Check formatting
+        run: npx --yes prettier@3.6.2 --check .

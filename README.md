@@ -5,12 +5,14 @@ spricht den Endpunkt seines Bereichs an (`/api/mcp/<bereich>`) und bringt das
 Arbeitsablauf-Wissen des Bereichs als Skill mit. Eine Anmeldung gilt für alle
 Bereiche.
 
-Dasselbe Plugin liegt in zwei Verpackungen im selben Ordner: Claude Code liest
-`.claude-plugin/`, ChatGPT und Codex lesen `.codex-plugin/`. MCP-Verbindung
-(`.mcp.json`) und Skill (`skills/`) sind gemeinsam — der Server ist derselbe.
+Dieselbe Knowledge-Center-Funktion liegt in zwei getrennten Verpackungen im
+selben Plugin-Ordner: Claude Code liest `.claude-plugin/`, ChatGPT und Codex
+lesen `.codex-plugin/`. Die registrierte ChatGPT-App steht in `.app.json`.
+Lediglich die MCP-Verbindung (`.mcp.json`), der Skill (`skills/`) und die Assets
+sind gemeinsam — der Server und der fachliche Arbeitsablauf sind dieselben.
 
-| Plugin | Bereich | Voraussetzung |
-|---|---|---|
+| Plugin                      | Bereich                                              | Voraussetzung          |
+| --------------------------- | ---------------------------------------------------- | ---------------------- |
 | `knowledgecenter-gutachten` | Gutachten, Aktenvermerke, Protokolle, Stellungnahmen | Gutachten-Modul im Abo |
 
 Weitere Bereiche (z. B. Angebote, Baustellen) folgen als eigene Plugins.
@@ -20,6 +22,18 @@ Weitere Bereiche (z. B. Angebote, Baustellen) folgen als eigene Plugins.
 Gutachten, Aktenvermerke, Protokolle und Stellungnahmen suchen, lesen und
 aus einem Diktat befüllen — nach den Regeln, die im jeweiligen Template
 hinterlegt sind.
+
+### Plattform-Verpackungen
+
+- **Claude Code:** `.claude-plugin/plugin.json` beschreibt ausschließlich das
+  Claude-Code-Plugin. Claude Code entdeckt die gemeinsame MCP-Konfiguration und
+  den Skill im Plugin-Ordner.
+- **ChatGPT und Codex:** `.codex-plugin/plugin.json` enthält die Oberfläche und
+  verweist ausdrücklich auf Skill, MCP-Konfiguration und `.app.json`.
+  `.app.json` ordnet das Plugin der registrierten ChatGPT-App zu.
+
+Beide Verpackungen bleiben bewusst im selben Ordner, damit es nur eine
+MCP-Konfiguration und eine fachliche Arbeitsanleitung zu pflegen gibt.
 
 ## Installation in Claude Code
 
@@ -31,7 +45,7 @@ claude plugin marketplace add ET-Technologies/knowledgecenterplugins
 claude plugin install knowledgecenter-gutachten@entrich-technologies
 ```
 
-Dann einfach eine Frage stellen, z. B. *„Welche Gutachten-Typen gibt es?"*.
+Dann einfach eine Frage stellen, z. B. _„Welche Gutachten-Typen gibt es?"_.
 Beim ersten Aufruf öffnet sich der Browser: bei Knowledge Center anmelden,
 „Zulassen" klicken — fertig. Kein Key, keine Umgebungsvariable. Die
 Anmeldung gilt für alle Bereiche und ist in Knowledge Center jederzeit
@@ -67,13 +81,13 @@ Browser) — dieselbe Anmeldung wie bei Claude, jederzeit widerrufbar.
 ## Installation in ChatGPT
 
 **Business / Enterprise (Workspace):** Der Workspace-Admin importiert dieses
-Repository unter *Workspace-Einstellungen → Plugins → Add → Import marketplace*.
-Der Workspace übernimmt Änderungen täglich (oder sofort mit *Sync now*).
+Repository unter _Workspace-Einstellungen → Plugins → Add → Import marketplace_.
+Der Workspace übernimmt Änderungen täglich (oder sofort mit _Sync now_).
 Mitglieder aktivieren das Plugin und melden sich beim ersten Aufruf bei
 Knowledge Center an.
 
-**Einzelkonto:** In ChatGPT unter *Einstellungen → Security and login* den
-*Developer mode* einschalten, dann unter *Plugins* mit dem Plus die
+**Einzelkonto:** In ChatGPT unter _Einstellungen → Security and login_ den
+_Developer mode_ einschalten, dann unter _Plugins_ mit dem Plus die
 Server-Adresse `https://www.knowledgecenter.at/api/mcp/gutachten` eintragen.
 ChatGPT öffnet die Anmeldung bei Knowledge Center.
 
@@ -109,7 +123,7 @@ Marketplace-Dateien: `.claude-plugin/marketplace.json` (Claude Code) und
 
 - **MCP-Verbindung** zu `https://www.knowledgecenter.at/api/mcp/gutachten`
   mit Anmeldung im Browser (OAuth). Es stecken keine Zugangsdaten im Plugin.
-- **Skill „gutachten-arbeiten"**: kurzer Anstoß. Die vollständige
+- **Skill „gutachten-arbeiten"**: clientneutrale Kurzfassung. Die vollständige
   Arbeitsanleitung liefert der Server beim Verbinden — für alle Clients gleich.
   Die wichtigsten Regeln stehen zusätzlich in den Werkzeugbeschreibungen,
   damit auch Clients ohne Server-Anleitung sie kennen.
@@ -118,23 +132,23 @@ Marketplace-Dateien: `.claude-plugin/marketplace.json` (Claude Code) und
 
 ## Werkzeuge
 
-| Werkzeug | Zweck |
-|---|---|
-| `gutachten_typen_auflisten` | Templates mit Abschnitten, Feldern und Regeln |
-| `gutachten_suchen` | Gutachten finden (Titel, Nummer, Typ, Status) |
-| `gutachten_lesen` | Vollständiger Inhalt mit Feldadressen und Regeln |
-| `adressbuch_suchen` | Kunden, Lieferanten, Ansprechpartner, Mitarbeiter |
-| `foto_ansehen` | Foto als Bild (verkleinert) — zum Ansehen und Beschriften |
-| `gutachten_anlegen` | Neues Gutachten zu einem Template |
-| `gutachten_befuellen` | Mehrere Felder in einem Aufruf — der Standardweg aus dem Diktat |
-| `feld_setzen` | Einzelne Korrektur |
-| `foto_beschriften` | Bildunterschrift setzen, Foto einem Abschnitt/Eintrag zuordnen |
-| `fotos_uebersicht` | Kontaktabzug: bis zu 20 Fotos als nummeriertes Raster in einem Bild |
-| `fotos_zuordnen` | Viele Fotos in einem Aufruf zuordnen und beschriften |
-| `foto_upload_link` | Kurzlebiger Link, über den der Benutzer neue Fotos hochlädt (Handy/Browser) |
+| Werkzeug                    | Zweck                                                                                   |
+| --------------------------- | --------------------------------------------------------------------------------------- |
+| `gutachten_typen_auflisten` | Templates mit Abschnitten, Feldern und Regeln                                           |
+| `gutachten_suchen`          | Gutachten finden (Titel, Nummer, Typ, Status)                                           |
+| `gutachten_lesen`           | Vollständiger Inhalt mit Feldadressen und Regeln                                        |
+| `adressbuch_suchen`         | Kunden, Lieferanten, Ansprechpartner, Mitarbeiter                                       |
+| `foto_ansehen`              | Foto als Bild (verkleinert) — zum Ansehen und Beschriften                               |
+| `gutachten_anlegen`         | Neues Gutachten zu einem Template                                                       |
+| `gutachten_befuellen`       | Mehrere Felder in einem Aufruf — der Standardweg aus dem Diktat                         |
+| `feld_setzen`               | Einzelne Korrektur                                                                      |
+| `foto_beschriften`          | Bildunterschrift setzen, Foto einem Abschnitt/Eintrag zuordnen                          |
+| `fotos_uebersicht`          | Kontaktabzug: bis zu 20 Fotos als nummeriertes Raster in einem Bild                     |
+| `fotos_zuordnen`            | Viele Fotos in einem Aufruf zuordnen und beschriften                                    |
+| `foto_upload_link`          | Kurzlebiger Link, über den der Benutzer neue Fotos hochlädt (Handy/Browser)             |
 | `gutachten_fotos_hochladen` | Nur ChatGPT: im Chat angehängte Fotos direkt ins Gutachten übernehmen (Datei-Parameter) |
-| `gutachten_auswerten` | Server-KI wie der Knopf „Transkript auswerten" (nur auf Wunsch) |
-| `pdf_erzeugen` | Fertiges PDF, Link 24 h gültig |
+| `gutachten_auswerten`       | Server-KI wie der Knopf „Transkript auswerten" (nur auf Wunsch)                         |
+| `pdf_erzeugen`              | Fertiges PDF, Link 24 h gültig                                                          |
 
 Welche Templates und Abschnitte über MCP erreichbar sind, legt der
 Administrator im Template fest (MCP-Zugriff: kein / nur lesen / lesen und
@@ -149,6 +163,9 @@ schreiben; einzelne Abschnitte „nicht über MCP").
 - Bei Verlust eines Geräts oder Keys: auf der Claude-Zugänge-Seite widerrufen.
 
 ## Versionen
+
+- **0.7.1** — Plattform-Verpackungen klarer getrennt; Foto-Upload im gemeinsamen
+  Skill clientneutral beschrieben; automatische Repository-Validierung
 
 - **0.7.0** — Verpackung für ChatGPT und Codex (`.codex-plugin`,
   `.agents/plugins/marketplace.json`, Assets); Server liefert Titel und

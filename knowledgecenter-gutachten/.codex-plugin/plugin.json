@@ -1,6 +1,6 @@
 {
   "name": "knowledgecenter-gutachten",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "description": "Gutachten-Modul von Knowledge Center für ChatGPT und Codex: Gutachten-Typen, Gutachten suchen, lesen und aus Diktat befüllen, Adressbuch, Fotos hochladen lassen und beschriften, PDF — plus Arbeitsablauf-Wissen (Baubesprechungsprotokolle, Aktenvermerke, Stellungnahmen). Anmeldung beim ersten Aufruf im Browser (OAuth), kein Key nötig.",
   "author": {
     "name": "Entrich Technologies GmbH",
