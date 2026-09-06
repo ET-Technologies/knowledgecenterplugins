@@ -1,0 +1,83 @@
+#!/usr/bin/env python3
+"""Validate the repository's plugin manifests and shared component references."""
+
+from __future__ import annotations
+
+import json
+import re
+import sys
+from pathlib import Path
+
+
+ROOT = Path(__file__).resolve().parents[1]
+PLUGIN = ROOT / "knowledgecenter-gutachten"
+SEMVER = re.compile(r"^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$")
+
+
+def load_json(path: Path) -> dict[str, object]:
+    with path.open(encoding="utf-8") as file:
+        value = json.load(file)
+    if not isinstance(value, dict):
+        raise ValueError(f"{path.relative_to(ROOT)} must contain a JSON object")
+    return value
+
+
+def require_file(relative_path: str) -> None:
+    path = PLUGIN / relative_path.removeprefix("./")
+    if not path.is_file() and not path.is_dir():
+        raise ValueError(f"referenced path does not exist: {relative_path}")
+
+
+def main() -> int:
+    json_paths = sorted(path for path in ROOT.rglob("*.json") if ".git" not in path.parts)
+    documents = {path: load_json(path) for path in json_paths}
+
+    claude = documents[PLUGIN / ".claude-plugin" / "plugin.json"]
+    codex = documents[PLUGIN / ".codex-plugin" / "plugin.json"]
+    expected_name = PLUGIN.name
+
+    for label, manifest in (("Claude", claude), ("Codex", codex)):
+        if manifest.get("name") != expected_name:
+            raise ValueError(f"{label} manifest name must be {expected_name!r}")
+        version = manifest.get("version")
+        if not isinstance(version, str) or not SEMVER.fullmatch(version):
+            raise ValueError(f"{label} manifest version must be strict semver")
+
+    if claude["version"] != codex["version"]:
+        raise ValueError("Claude and Codex manifest versions must match")
+
+    for field in ("skills", "mcpServers", "apps"):
+        reference = codex.get(field)
+        if not isinstance(reference, str):
+            raise ValueError(f"Codex manifest field {field!r} must be a path")
+        require_file(reference)
+
+    interface = codex.get("interface")
+    if not isinstance(interface, dict):
+        raise ValueError("Codex manifest interface must be an object")
+    for field in ("composerIcon", "logo"):
+        reference = interface.get(field)
+        if not isinstance(reference, str):
+            raise ValueError(f"Codex interface field {field!r} must be a path")
+        require_file(reference)
+
+    marketplace = documents[ROOT / ".agents" / "plugins" / "marketplace.json"]
+    plugins = marketplace.get("plugins")
+    if not isinstance(plugins, list) or len(plugins) != 1:
+        raise ValueError("Codex marketplace must contain exactly one plugin")
+    entry = plugins[0]
+    if not isinstance(entry, dict) or entry.get("name") != expected_name:
+        raise ValueError("Codex marketplace plugin name does not match the folder")
+    if "interface" in entry:
+        raise ValueError("plugin display metadata belongs to the marketplace interface")
+
+    print(f"Validated {len(json_paths)} JSON files and both plugin packages.")
+    return 0
+
+
+if __name__ == "__main__":
+    try:
+        raise SystemExit(main())
+    except (KeyError, OSError, ValueError, json.JSONDecodeError) as error:
+        print(f"Validation failed: {error}", file=sys.stderr)
+        raise SystemExit(1) from error
