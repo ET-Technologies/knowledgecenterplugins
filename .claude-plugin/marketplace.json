@@ -5,12 +5,12 @@
   },
   "metadata": {
     "description": "Claude-Plugins für Knowledge Center — je Bereich ein Plugin, passend zum Abo (Gutachten; weitere Bereiche folgen)",
-    "version": "1.3.0"
+    "version": "1.4.0"
   },
   "plugins": [
     {
       "name": "knowledgecenter-gutachten",
-      "source": "./gutachten",
+      "source": "./knowledgecenter-gutachten",
       "description": "Gutachten-Modul von Knowledge Center für Claude: Gutachten, Aktenvermerke, Protokolle und Stellungnahmen suchen, lesen und aus Diktat befüllen, Adressbuch, Fotos ansehen und beschriften, PDF. Anmeldung beim ersten Aufruf im Browser; benötigt ein Owner-Konto mit Gutachten-Modul im Abo."
     }
   ]

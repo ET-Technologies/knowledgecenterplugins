@@ -1,0 +1,23 @@
+{
+  "name": "entrich-technologies",
+  "interface": {
+    "displayName": "Knowledge Center"
+  },
+  "plugins": [
+    {
+      "name": "knowledgecenter-gutachten",
+      "source": {
+        "source": "local",
+        "path": "./knowledgecenter-gutachten"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity",
+      "interface": {
+        "displayName": "Knowledge Center Gutachten"
+      }
+    }
+  ]
+}

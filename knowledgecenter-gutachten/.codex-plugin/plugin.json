@@ -1,0 +1,41 @@
+{
+  "name": "knowledgecenter-gutachten",
+  "version": "0.7.0",
+  "description": "Gutachten-Modul von Knowledge Center für ChatGPT und Codex: Gutachten-Typen, Gutachten suchen, lesen und aus Diktat befüllen, Adressbuch, Fotos hochladen lassen und beschriften, PDF — plus Arbeitsablauf-Wissen (Baubesprechungsprotokolle, Aktenvermerke, Stellungnahmen). Anmeldung beim ersten Aufruf im Browser (OAuth), kein Key nötig.",
+  "author": {
+    "name": "Entrich Technologies GmbH",
+    "email": "erwin@entrich-technologies.com",
+    "url": "https://www.knowledgecenter.at"
+  },
+  "homepage": "https://www.knowledgecenter.at",
+  "repository": "https://github.com/ET-Technologies/knowledgecenterplugins",
+  "keywords": [
+    "gutachten",
+    "aktenvermerk",
+    "protokoll",
+    "stellungnahme",
+    "baubesprechung",
+    "sachverstaendiger",
+    "knowledge-center"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Knowledge Center Gutachten",
+    "shortDescription": "Gutachten, Aktenvermerke, Protokolle und Stellungnahmen aus dem Diktat befüllen",
+    "longDescription": "Verbindet ChatGPT und Codex mit dem Gutachten-Modul von Knowledge Center. Gutachten-Typen und deren Regeln abfragen, Gutachten suchen und vollständig lesen, aus einem Diktat oder Gespräch befüllen, einzelne Felder korrigieren, Empfänger über das Adressbuch klären, Fotos per Upload-Link vom Handy einspielen und zuordnen, fertiges PDF erzeugen. Zugriff nur auf den eigenen Account; welche Templates erreichbar sind, legt der Administrator fest. Benötigt ein Owner-Konto mit Gutachten-Modul im Abo.",
+    "developerName": "Entrich Technologies GmbH",
+    "category": "Productivity",
+    "capabilities": ["Read", "Write"],
+    "websiteURL": "https://www.knowledgecenter.at",
+    "defaultPrompt": [
+      "Welche Gutachten-Typen gibt es?",
+      "Lies mein zuletzt geändertes Gutachten und nenne die offenen Felder",
+      "Lege einen Aktenvermerk an und befülle ihn aus meinem Diktat"
+    ],
+    "brandColor": "#FF6B4A",
+    "composerIcon": "./assets/icon.png",
+    "logo": "./assets/logo.png",
+    "screenshots": []
+  }
+}

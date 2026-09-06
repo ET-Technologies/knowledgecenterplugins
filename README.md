@@ -1,8 +1,13 @@
-# Knowledge Center — Claude-Plugins
+# Knowledge Center — Plugins für Claude, ChatGPT und Codex
 
 Je Bereich von Knowledge Center ein Plugin, passend zum Abo. Jedes Plugin
 spricht den Endpunkt seines Bereichs an (`/api/mcp/<bereich>`) und bringt das
-Arbeitsablauf-Wissen des Bereichs als Skill mit. Ein Key gilt für alle Bereiche.
+Arbeitsablauf-Wissen des Bereichs als Skill mit. Eine Anmeldung gilt für alle
+Bereiche.
+
+Dasselbe Plugin liegt in zwei Verpackungen im selben Ordner: Claude Code liest
+`.claude-plugin/`, ChatGPT und Codex lesen `.codex-plugin/`. MCP-Verbindung
+(`.mcp.json`) und Skill (`skills/`) sind gemeinsam — der Server ist derselbe.
 
 | Plugin | Bereich | Voraussetzung |
 |---|---|---|
@@ -46,6 +51,37 @@ claude mcp add --transport http knowledgecenter-gutachten \
   --header "Authorization: Bearer kc_…"
 ```
 
+## Installation in Codex
+
+```bash
+# 1. Marketplace hinzufügen (dieses Repository)
+codex plugin marketplace add https://github.com/ET-Technologies/knowledgecenterplugins.git
+
+# 2. Plugin des Bereichs installieren
+codex plugin add knowledgecenter-gutachten@entrich-technologies
+```
+
+Beim ersten Aufruf meldet sich Codex bei Knowledge Center an (OAuth im
+Browser) — dieselbe Anmeldung wie bei Claude, jederzeit widerrufbar.
+
+## Installation in ChatGPT
+
+**Business / Enterprise (Workspace):** Der Workspace-Admin importiert dieses
+Repository unter *Workspace-Einstellungen → Plugins → Add → Import marketplace*.
+Der Workspace übernimmt Änderungen täglich (oder sofort mit *Sync now*).
+Mitglieder aktivieren das Plugin und melden sich beim ersten Aufruf bei
+Knowledge Center an.
+
+**Einzelkonto:** In ChatGPT unter *Einstellungen → Security and login* den
+*Developer mode* einschalten, dann unter *Plugins* mit dem Plus die
+Server-Adresse `https://www.knowledgecenter.at/api/mcp/gutachten` eintragen.
+ChatGPT öffnet die Anmeldung bei Knowledge Center.
+
+Hinweis: ChatGPT zeigt Bilder aus Werkzeug-Antworten nicht an; `foto_ansehen`
+und `fotos_uebersicht` sind dort ohne Bild. Fotos kommen über den
+Upload-Link (`foto_upload_link`) ins Gutachten, Bildunterschriften setzt der
+Benutzer dort per Antippen.
+
 ## Alternative: claude.ai (Browser, Handy)
 
 Ohne Plugin, über einen Konnektor: In claude.ai unter **Einstellungen →
@@ -58,10 +94,26 @@ Server trotzdem mit.
 
 ## Was das Plugin enthält
 
+```
+knowledgecenter-gutachten/
+  .claude-plugin/plugin.json   Manifest für Claude Code
+  .codex-plugin/plugin.json    Manifest für ChatGPT und Codex
+  .mcp.json                    MCP-Verbindung (gemeinsam)
+  skills/gutachten-arbeiten/   Skill (gemeinsam, Agent-Skills-Standard)
+  assets/                      Logo und Icon für das Plugin-Verzeichnis
+```
+
+Marketplace-Dateien: `.claude-plugin/marketplace.json` (Claude Code) und
+`.agents/plugins/marketplace.json` (ChatGPT und Codex).
+
 - **MCP-Verbindung** zu `https://www.knowledgecenter.at/api/mcp/gutachten`
   mit Anmeldung im Browser (OAuth). Es stecken keine Zugangsdaten im Plugin.
 - **Skill „gutachten-arbeiten"**: kurzer Anstoß. Die vollständige
   Arbeitsanleitung liefert der Server beim Verbinden — für alle Clients gleich.
+  Die wichtigsten Regeln stehen zusätzlich in den Werkzeugbeschreibungen,
+  damit auch Clients ohne Server-Anleitung sie kennen.
+- **Werkzeug-Annotations** (`readOnlyHint` u. a.) liefert der Server mit —
+  ChatGPT fragt damit nur bei schreibenden Werkzeugen nach.
 
 ## Werkzeuge
 
@@ -95,6 +147,10 @@ schreiben; einzelne Abschnitte „nicht über MCP").
 - Bei Verlust eines Geräts oder Keys: auf der Claude-Zugänge-Seite widerrufen.
 
 ## Versionen
+
+- **0.7.0** — Verpackung für ChatGPT und Codex (`.codex-plugin`,
+  `.agents/plugins/marketplace.json`, Assets); Server liefert Titel und
+  Annotations je Werkzeug
 
 - **0.6.0** — Viele Fotos auf einmal: Kontaktabzug (`fotos_uebersicht`),
   Sammelaufruf (`fotos_zuordnen`), einheitliche Fotonamen bei Link-Uploads
