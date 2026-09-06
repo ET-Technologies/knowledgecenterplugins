@@ -20,6 +20,7 @@
   ],
   "skills": "./skills/",
   "mcpServers": "./.mcp.json",
+  "apps": "./.app.json",
   "interface": {
     "displayName": "Knowledge Center Gutachten",
     "shortDescription": "Gutachten, Aktenvermerke, Protokolle und Stellungnahmen aus dem Diktat befüllen",

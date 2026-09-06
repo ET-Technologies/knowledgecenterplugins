@@ -98,6 +98,7 @@ Server trotzdem mit.
 knowledgecenter-gutachten/
   .claude-plugin/plugin.json   Manifest für Claude Code
   .codex-plugin/plugin.json    Manifest für ChatGPT und Codex
+  .app.json                    ChatGPT: Verweis auf die registrierte App (asdk_app_…)
   .mcp.json                    MCP-Verbindung (gemeinsam)
   skills/gutachten-arbeiten/   Skill (gemeinsam, Agent-Skills-Standard)
   assets/                      Logo und Icon für das Plugin-Verzeichnis
