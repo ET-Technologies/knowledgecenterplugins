@@ -1,6 +1,6 @@
 {
   "name": "knowledgecenter-energieausweis",
-  "version": "0.1.0",
+  "version": "0.1.3",
   "description": "Energieausweis-Modul von Knowledge Center für ChatGPT und Codex: Projekte suchen und lesen, Stammdaten, Konstruktionen, Bauteilflächen, Fenster und Zuordnungen aktualisieren, Prüfsummen gegen den Ausweis, Ecotech-XML erzeugen — plus Lesehilfen für Ausweise von ETU, GEQ, ArchiPHYSIK und Ecotech. Anmeldung beim ersten Aufruf im Browser (OAuth), kein Key nötig.",
   "author": {
     "name": "Entrich Technologies GmbH",
