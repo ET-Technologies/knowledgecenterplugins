@@ -17,8 +17,6 @@ sind gemeinsam — der Server und der fachliche Arbeitsablauf sind dieselben.
 | `knowledgecenter-energieausweis` | Energieausweis-Projekte: Bauteile, Fenster, Konstruktionen, Ecotech-XML | Energieausweis-Modul im Abo |
 
 Weitere Bereiche (z. B. Angebote, Baustellen) folgen als eigene Plugins.
-Das Energieausweis-Plugin gibt es vorerst nur für Claude Code; die
-Verpackung für ChatGPT und Codex folgt.
 
 ## Plugin „knowledgecenter-gutachten"
 
@@ -77,6 +75,7 @@ codex plugin marketplace add https://github.com/ET-Technologies/knowledgecenterp
 
 # 2. Plugin des Bereichs installieren
 codex plugin add knowledgecenter-gutachten@entrich-technologies
+codex plugin add knowledgecenter-energieausweis@entrich-technologies
 ```
 
 Beim ersten Aufruf meldet sich Codex bei Knowledge Center an (OAuth im
@@ -92,8 +91,12 @@ Knowledge Center an.
 
 **Einzelkonto:** In ChatGPT unter _Einstellungen → Security and login_ den
 _Developer mode_ einschalten, dann unter _Plugins_ mit dem Plus die
-Server-Adresse `https://www.knowledgecenter.at/api/mcp/gutachten` eintragen.
-ChatGPT öffnet die Anmeldung bei Knowledge Center.
+Server-Adresse des gewünschten Bereichs eintragen:
+
+- Gutachten: `https://www.knowledgecenter.at/api/mcp/gutachten`
+- Energieausweis: `https://www.knowledgecenter.at/api/mcp/energieausweis`
+
+ChatGPT öffnet anschließend die Anmeldung bei Knowledge Center.
 
 Hinweis: ChatGPT zeigt Bilder aus Werkzeug-Antworten nicht an; `foto_ansehen`
 und `fotos_uebersicht` sind dort ohne Bild. Fotos kommen über den
@@ -193,8 +196,9 @@ MCP-Verbindung zu `https://www.knowledgecenter.at/api/mcp/energieausweis`
 
 ## Versionen
 
-- **Energieausweis 0.1.0** — neues Plugin für Claude Code: lesen, aktualisieren,
-  Prüfsummen, Konstruktionen ableiten, Ecotech-XML; Skill mit Hersteller-Lesehilfen
+- **Energieausweis 0.1.0** — lesen, aktualisieren, Prüfsummen, Konstruktionen
+  ableiten und Ecotech-XML; jetzt auch mit ChatGPT- und Codex-Verpackung;
+  Skill mit Hersteller-Lesehilfen
 
 - **0.7.1** — Plattform-Verpackungen klarer getrennt; Foto-Upload im gemeinsamen
   Skill clientneutral beschrieben; automatische Repository-Validierung

@@ -1,0 +1,41 @@
+{
+  "name": "knowledgecenter-energieausweis",
+  "version": "0.1.0",
+  "description": "Energieausweis-Modul von Knowledge Center für ChatGPT und Codex: Projekte suchen und lesen, Stammdaten, Konstruktionen, Bauteilflächen, Fenster und Zuordnungen aktualisieren, Prüfsummen gegen den Ausweis, Ecotech-XML erzeugen — plus Lesehilfen für Ausweise von ETU, GEQ, ArchiPHYSIK und Ecotech. Anmeldung beim ersten Aufruf im Browser (OAuth), kein Key nötig.",
+  "author": {
+    "name": "Entrich Technologies GmbH",
+    "email": "erwin@entrich-technologies.com",
+    "url": "https://www.knowledgecenter.at"
+  },
+  "homepage": "https://www.knowledgecenter.at",
+  "repository": "https://github.com/ET-Technologies/knowledgecenterplugins",
+  "keywords": [
+    "energieausweis",
+    "ecotech",
+    "oib",
+    "gebaeudehuelle",
+    "u-wert",
+    "knowledge-center"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Knowledge Center Energieausweis",
+    "shortDescription": "Energieausweis-Projekte prüfen, ergänzen und als Ecotech-XML exportieren",
+    "longDescription": "Verbindet ChatGPT und Codex mit dem Energieausweis-Modul von Knowledge Center. Projekte suchen und lesen, Daten aus bestehenden Ausweisen übernehmen, Stammdaten, Konstruktionen, Bauteilflächen, Fenster und Zuordnungen aktualisieren, Vollständigkeit mit Prüfsummen kontrollieren und Ecotech-XML erzeugen. Zugriff nur auf den eigenen Account. Benötigt ein Owner-Konto mit Energieausweis-Modul im Abo.",
+    "developerName": "Entrich Technologies GmbH",
+    "category": "Productivity",
+    "capabilities": ["Read", "Write"],
+    "websiteURL": "https://www.knowledgecenter.at",
+    "privacyPolicyURL": "https://www.knowledgecenter.at/datenschutz",
+    "defaultPrompt": [
+      "Suche mein zuletzt geändertes Energieausweis-Projekt und nenne die offenen Angaben",
+      "Übernimm die Daten aus diesem Energieausweis-PDF in ein neues Projekt",
+      "Prüfe Gebäudehülle, Fensterflächen und Zuordnungen meines Projekts"
+    ],
+    "brandColor": "#FF6B4A",
+    "composerIcon": "./assets/icon.png",
+    "logo": "./assets/logo.png",
+    "screenshots": []
+  }
+}
