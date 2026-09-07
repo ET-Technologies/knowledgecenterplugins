@@ -49,3 +49,11 @@ claude mcp add --transport http knowledgecenter-energieausweis \
   https://www.knowledgecenter.at/api/mcp/energieausweis \
   --header "Authorization: Bearer kc_…"
 ```
+
+## Einrichtung in ChatGPT und Codex
+
+Die jeweilige Plattform-Verpackung stellt dieselbe MCP-Verbindung bereit. Beim
+ersten Aufruf die Anmeldung bei Knowledge Center durchführen. Ist das Plugin in
+ChatGPT nicht verfügbar, den MCP-Endpunkt
+`https://www.knowledgecenter.at/api/mcp/energieausweis` im Developer Mode als
+benutzerdefinierte App hinzufügen.
