@@ -4,14 +4,19 @@
     "name": "Entrich Technologies GmbH"
   },
   "metadata": {
-    "description": "Claude-Plugins für Knowledge Center — je Bereich ein Plugin, passend zum Abo (Gutachten; weitere Bereiche folgen)",
-    "version": "1.4.1"
+    "description": "Claude-Plugins für Knowledge Center — je Bereich ein Plugin, passend zum Abo (Gutachten, Energieausweis; weitere Bereiche folgen)",
+    "version": "1.5.0"
   },
   "plugins": [
     {
       "name": "knowledgecenter-gutachten",
       "source": "./knowledgecenter-gutachten",
       "description": "Gutachten-Modul von Knowledge Center für Claude: Gutachten, Aktenvermerke, Protokolle und Stellungnahmen suchen, lesen und aus Diktat befüllen, Adressbuch, Fotos ansehen und beschriften, PDF. Anmeldung beim ersten Aufruf im Browser; benötigt ein Owner-Konto mit Gutachten-Modul im Abo."
+    },
+    {
+      "name": "knowledgecenter-energieausweis",
+      "source": "./knowledgecenter-energieausweis",
+      "description": "Energieausweis-Modul von Knowledge Center für Claude: Projekte lesen und aktualisieren (Stammdaten, Konstruktionen, Bauteile, Fenster, Zuordnungen), Prüfsummen, Ecotech-XML, alte Ausweise übernehmen. Anmeldung beim ersten Aufruf im Browser; benötigt ein Owner-Konto mit Energieausweis-Modul im Abo."
     }
   ]
 }
