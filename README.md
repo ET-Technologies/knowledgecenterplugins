@@ -11,11 +11,14 @@ lesen `.codex-plugin/`. Die registrierte ChatGPT-App steht in `.app.json`.
 Lediglich die MCP-Verbindung (`.mcp.json`), der Skill (`skills/`) und die Assets
 sind gemeinsam — der Server und der fachliche Arbeitsablauf sind dieselben.
 
-| Plugin                      | Bereich                                              | Voraussetzung          |
-| --------------------------- | ---------------------------------------------------- | ---------------------- |
-| `knowledgecenter-gutachten` | Gutachten, Aktenvermerke, Protokolle, Stellungnahmen | Gutachten-Modul im Abo |
+| Plugin                           | Bereich                                                                 | Voraussetzung               |
+| -------------------------------- | ----------------------------------------------------------------------- | --------------------------- |
+| `knowledgecenter-gutachten`      | Gutachten, Aktenvermerke, Protokolle, Stellungnahmen                    | Gutachten-Modul im Abo      |
+| `knowledgecenter-energieausweis` | Energieausweis-Projekte: Bauteile, Fenster, Konstruktionen, Ecotech-XML | Energieausweis-Modul im Abo |
 
 Weitere Bereiche (z. B. Angebote, Baustellen) folgen als eigene Plugins.
+Das Energieausweis-Plugin gibt es vorerst nur für Claude Code; die
+Verpackung für ChatGPT und Codex folgt.
 
 ## Plugin „knowledgecenter-gutachten"
 
@@ -43,6 +46,7 @@ claude plugin marketplace add ET-Technologies/knowledgecenterplugins
 
 # 2. Plugin des Bereichs installieren
 claude plugin install knowledgecenter-gutachten@entrich-technologies
+claude plugin install knowledgecenter-energieausweis@entrich-technologies
 ```
 
 Dann einfach eine Frage stellen, z. B. _„Welche Gutachten-Typen gibt es?"_.
@@ -154,6 +158,31 @@ Welche Templates und Abschnitte über MCP erreichbar sind, legt der
 Administrator im Template fest (MCP-Zugriff: kein / nur lesen / lesen und
 schreiben; einzelne Abschnitte „nicht über MCP").
 
+## Plugin „knowledgecenter-energieausweis"
+
+Energieausweis-Projekte lesen und aktualisieren: Stammdaten, Konstruktionen
+(Bauteilkatalog), Bauteilflächen, Fenster/Türen und ihre Zuordnung zu Wänden,
+Prüfsummen gegen den Ausweis, Ecotech-XML. Der Skill bringt Lesehilfen für
+Ausweise von ETU, GEQ, ArchiPHYSIK und Ecotech mit, damit Claude einen alten
+Ausweis (PDF) direkt in ein Projekt übernehmen kann.
+
+MCP-Verbindung zu `https://www.knowledgecenter.at/api/mcp/energieausweis`
+(OAuth wie beim Gutachten-Plugin, eine Anmeldung gilt für alle Bereiche).
+
+| Werkzeug                     | Zweck                                                                                                       |
+| ---------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| `ea_projekte_suchen`         | Projekte finden (Name, Straße, Ort, Status)                                                                 |
+| `ea_projekt_lesen`           | Kompletter Stand mit Adressen `[bauteil:id]`, `[fenster:id]`, `[konstruktion:id]`, Prüfsummen und Warnungen |
+| `ea_pruefsummen`             | Hülle, Fensterfläche, Stückzahl, BGF, Richtungspaare, Lücken                                                |
+| `ea_projekt_anlegen`         | Neues Projekt                                                                                               |
+| `ea_projekt_aktualisieren`   | Stammdaten, Anlage-Grunddaten, Status, Notizen — nur übergebene Felder                                      |
+| `ea_konstruktionen_setzen`   | Konstruktionen anlegen/ändern, löschen nur ausdrücklich                                                     |
+| `ea_bauteile_setzen`         | Bauteilflächen anlegen/ändern (Typ, Fläche, Richtung, Neigung, Nachbar, U-Wert, Konstruktion)               |
+| `ea_fenster_setzen`          | Fenster/Türen anlegen/ändern (Breite × Höhe, U, g, Glasanteil, Richtung)                                    |
+| `ea_zuordnungen_setzen`      | Fenster an Wände mit Stückzahl; „ersetzen" nur nach Rückfrage                                               |
+| `ea_konstruktionen_ableiten` | Zauberstab: Konstruktionen aus Flächen gruppieren, Vorschau oder anwenden                                   |
+| `ea_export_xml`              | Ecotech-XML, Link 24 h gültig, mit Mengen-Meldungen                                                         |
+
 ## Sicherheit
 
 - Zugriff nur auf den eigenen Account (Owner); Anmeldungen und Keys sind
@@ -163,6 +192,9 @@ schreiben; einzelne Abschnitte „nicht über MCP").
 - Bei Verlust eines Geräts oder Keys: auf der Claude-Zugänge-Seite widerrufen.
 
 ## Versionen
+
+- **Energieausweis 0.1.0** — neues Plugin für Claude Code: lesen, aktualisieren,
+  Prüfsummen, Konstruktionen ableiten, Ecotech-XML; Skill mit Hersteller-Lesehilfen
 
 - **0.7.1** — Plattform-Verpackungen klarer getrennt; Foto-Upload im gemeinsamen
   Skill clientneutral beschrieben; automatische Repository-Validierung

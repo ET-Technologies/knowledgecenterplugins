@@ -1,0 +1,20 @@
+{
+  "name": "knowledgecenter-energieausweis",
+  "description": "Energieausweis-Modul von Knowledge Center für Claude: Projekte suchen und lesen, Stammdaten, Konstruktionen, Bauteilflächen, Fenster und Zuordnungen aktualisieren, Prüfsummen gegen den Ausweis, Ecotech-XML erzeugen — plus Lesehilfen für Ausweise von ETU, GEQ, ArchiPHYSIK und Ecotech. Anmeldung beim ersten Aufruf im Browser (OAuth), kein Key nötig.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Entrich Technologies GmbH",
+    "email": "erwin@entrich-technologies.com",
+    "url": "https://www.knowledgecenter.at"
+  },
+  "homepage": "https://www.knowledgecenter.at",
+  "repository": "https://github.com/ET-Technologies/knowledgecenterplugins",
+  "keywords": [
+    "energieausweis",
+    "ecotech",
+    "oib",
+    "gebaeudehuelle",
+    "u-wert",
+    "knowledge-center"
+  ]
+}
