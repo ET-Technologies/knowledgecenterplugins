@@ -26,6 +26,16 @@ Kurzfassung:
 
 ## Alten Ausweis (PDF) übernehmen
 
+Gebäudedaten und Kennzahlen mit `ea_projekt_aktualisieren` unter `felder`
+speichern: `brutto_grundflaeche`, `bezugs_grundflaeche_bf` (m²),
+`brutto_volumen` (m³), `bauweise` (leicht/mittelschwer/schwer),
+`heizwaermebedarf_hwb`, `hwb_ref_rk`, `primaerenergiebedarf_peb` und
+`endenergiebedarf_eebrk` (kWh/m²a). Zahlen unverändert aus der Quelle
+übernehmen, HWB und HWBRef,RK nicht gleichsetzen. Nicht genannte Felder
+bleiben erhalten; null oder leerer String löscht gezielt eine Kennzahl.
+Den gelesenen Stand als `erwartet_geaendert_am` mitgeben. Anschließend
+`ea_projekt_lesen` und `ea_pruefsummen` zum Abgleich verwenden.
+
 Wenn der Benutzer ein EA-PDF schickt, liest du es selbst und schreibst die
 Daten mit den Werkzeugen (Reihenfolge: Projekt → Konstruktionen → Bauteile →
 Fenster → Zuordnungen → Prüfsummen). Wo im Ausweis welche Werte stehen und
