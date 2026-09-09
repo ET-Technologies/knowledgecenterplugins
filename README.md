@@ -228,12 +228,11 @@ und andere Account-Einstellungen bleiben erhalten. Zwischenzeitliche Änderungen
 werden beim Speichern erkannt. Eine Datenbankmigration ist nicht erforderlich.
 
 **Bereitstellung:** Zuerst den zugehörigen Webserver-Code veröffentlichen.
-Dann in ChatGPT eine eigene MCP-Verbindung zum obigen Endpunkt registrieren
-und mit dem richtigen Kundenaccount anmelden. Für den Import dieses Pakets die
-echte App-ID in `knowledgecenter-buero-branding/.app.json` hinterlegen und im
-Codex-Manifest `"apps": "./.app.json"` ergänzen. Ohne diese Registrierung ist
-das Paket für den ChatGPT-Import noch nicht vollständig mit Aktionen verbunden.
-Keine Energieausweis- oder Gutachten-App-ID übernehmen.
+Die eigene ChatGPT-App `asdk_app_6aa19df282948191a5e5269bf20a5745` ist in
+`knowledgecenter-buero-branding/.app.json` hinterlegt und über
+`"apps": "./.app.json"` im Codex-Manifest verknüpft. Nach Veröffentlichung des
+Plugin-Pakets in ChatGPT importieren beziehungsweise aktualisieren und mit dem
+richtigen Kundenaccount anmelden. Die App muss den obigen MCP-Endpunkt verwenden.
 
 Diese erste Version übernimmt Logo-URLs, keine Bilddateien. Die Vorschau ist
 ein Vergleich der Angaben; die visuelle Briefkopf-Vorschau bleibt auf der
