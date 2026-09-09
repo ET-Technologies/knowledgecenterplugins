@@ -19,6 +19,7 @@
   ],
   "skills": "./skills/",
   "mcpServers": "./.mcp.json",
+  "apps": "./.app.json",
   "interface": {
     "displayName": "Knowledge Center Energieausweis",
     "shortDescription": "Energieausweis-Projekte prüfen, ergänzen und als Ecotech-XML exportieren",
