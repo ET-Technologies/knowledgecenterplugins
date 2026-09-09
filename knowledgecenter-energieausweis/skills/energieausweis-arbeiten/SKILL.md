@@ -43,12 +43,37 @@ Kurzfassung:
 6. `ea_plan_lesen` zur Kontrolle. Web-Projekt neu laden: Kontur im Plan-Reiter
    und Körper in Plan-3D prüfen. Manuelle Korrekturen bleiben möglich.
 
-Zunächst ein einfacher Außenumriss je Geschoss, ohne Innenhöfe, Öffnungen und
-geneigtes Dach. Ein PDF wird durch diese Werkzeuge nicht hochgeladen; die
+Zunächst ein einfacher Außenumriss je Geschoss, ohne Innenhöfe und geneigtes
+Dach. Fenster und Außentüren anschließend wie unten ergänzen. Ein PDF wird durch diese Werkzeuge nicht hochgeladen; die
 Kontur erscheint auf einer neutralen Zeichenfläche. Die Quelle wird als Text
 gespeichert. Energie-Bauteile entstehen erst durch „In den Baukörper
 übernehmen“ und anschließendes Projekt-Speichern im Web. Keine automatische
 Synchronisierung zwischen Plan und bereits übernommenen Bauteilen behaupten.
+
+## Fenster und Außentüren in die Zeichnung setzen
+
+`ea_fenster_setzen` pflegt den Energie-Katalog. Für sichtbare Öffnungen in
+Plan und Plan-3D die folgenden Werkzeuge verwenden:
+
+1. `ea_plan_lesen`: `geschoss_id` ist die `id` der gespeicherten Geschosszeile.
+   Die Liste `kanten` liefert `kante_index` ab 0, Anfang, Ende und Länge.
+   Keine Wand aus einer vermuteten Himmelsrichtung ableiten.
+2. Je tatsächlicher Position eine Öffnung erfassen: stabile `kennung` (z. B.
+   `F01`, `T01`), `name`, `art` (`fenster` oder `aussentuer`), `kante_index`,
+   `abstand_m`, `breite_m`, `hoehe_m`, `bruestung_m` und `quelle`.
+   `abstand_m` geht vom Anfang der gerichteten Kante bis zum Anfang der
+   Öffnung, nicht zur Mitte. Brüstung ist die Unterkante über Geschossfußboden,
+   auch bei Türen ausdrücklich angeben. Fehlende Maße nachfragen.
+   `u_wert` und `g_wert` nur bei belegten Werten angeben, sonst weglassen.
+3. `ea_plan_oeffnungen_vorschau` mit `projekt_id`, `geschoss_id` und
+   `oeffnungen` aufrufen. Lage, Maße, Flächen und betroffenen Plan zeigen.
+4. Auf Nutzerauftrag `ea_plan_oeffnungen_speichern` mit denselben Angaben und
+   `pruefcode`. Bei geändertem Stand erneut lesen und prüfen. Bestehende
+   Öffnungen bleiben erhalten; identische Kennungen erzeugen keine Duplikate.
+   Änderungen bestehender Öffnungen erfolgen im Web.
+5. `ea_plan_lesen` zur Kontrolle und das Web-Projekt neu laden. Fenster und
+   Türen erscheinen in Plan und Plan-3D. Die Übernahme in den Baukörper bleibt
+   ein separater Schritt. Innentüren und Dachfenster sind hier nicht enthalten.
 
 ## Alten Ausweis (PDF) übernehmen
 
