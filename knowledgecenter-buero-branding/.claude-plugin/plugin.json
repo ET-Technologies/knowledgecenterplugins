@@ -1,0 +1,19 @@
+{
+  "name": "knowledgecenter-buero-branding",
+  "version": "0.1.0",
+  "description": "Zentrales Büro-Branding in Knowledge Center lesen, Änderungen prüfen und auf Auftrag speichern: Logo-URL, Firmen- und Kontaktdaten, Fußzeile, Pflichtangaben, Unterzeichner und Akzentfarbe. OAuth-Anmeldung mit Owner-Konto.",
+  "author": {
+    "name": "Entrich Technologies GmbH",
+    "email": "erwin@entrich-technologies.com",
+    "url": "https://www.knowledgecenter.at"
+  },
+  "homepage": "https://www.knowledgecenter.at",
+  "repository": "https://github.com/ET-Technologies/knowledgecenterplugins",
+  "keywords": [
+    "buero",
+    "branding",
+    "briefpapier",
+    "firmenprofil",
+    "knowledge-center"
+  ]
+}

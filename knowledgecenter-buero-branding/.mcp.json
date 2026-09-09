@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "knowledgecenter-buero-branding": {
+      "type": "http",
+      "url": "https://www.knowledgecenter.at/api/mcp/buero-branding"
+    }
+  }
+}

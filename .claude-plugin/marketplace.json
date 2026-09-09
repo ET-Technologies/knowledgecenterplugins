@@ -17,6 +17,11 @@
       "name": "knowledgecenter-energieausweis",
       "source": "./knowledgecenter-energieausweis",
       "description": "Energieausweis-Modul von Knowledge Center für Claude: Projekte lesen und aktualisieren (Stammdaten, Konstruktionen, Bauteile, Fenster, Zuordnungen), Prüfsummen, Ecotech-XML, alte Ausweise übernehmen. Anmeldung beim ersten Aufruf im Browser; benötigt ein Owner-Konto mit Energieausweis-Modul im Abo."
+    },
+    {
+      "name": "knowledgecenter-buero-branding",
+      "source": "./knowledgecenter-buero-branding",
+      "description": "Zentrales Büro-Branding in Knowledge Center lesen, Änderungen prüfen und auf Auftrag speichern: Logo-URL, Firmen- und Kontaktdaten, Fußzeile, Pflichtangaben, Unterzeichner und Akzentfarbe. OAuth-Anmeldung mit Owner-Konto."
     }
   ]
 }

@@ -10,7 +10,11 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-PLUGIN_NAMES = ("knowledgecenter-gutachten", "knowledgecenter-energieausweis")
+PLUGIN_NAMES = (
+    "knowledgecenter-gutachten",
+    "knowledgecenter-energieausweis",
+    "knowledgecenter-buero-branding",
+)
 SEMVER = re.compile(r"^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$")
 
 

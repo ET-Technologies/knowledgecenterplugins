@@ -27,6 +27,18 @@
         "authentication": "ON_INSTALL"
       },
       "category": "Productivity"
+    },
+    {
+      "name": "knowledgecenter-buero-branding",
+      "source": {
+        "source": "local",
+        "path": "./knowledgecenter-buero-branding"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
     }
   ]
 }

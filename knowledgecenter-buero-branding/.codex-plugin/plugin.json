@@ -1,0 +1,40 @@
+{
+  "name": "knowledgecenter-buero-branding",
+  "version": "0.1.0",
+  "description": "Zentrales Büro-Branding in Knowledge Center lesen, Änderungen prüfen und auf Auftrag speichern: Logo-URL, Firmen- und Kontaktdaten, Fußzeile, Pflichtangaben, Unterzeichner und Akzentfarbe. OAuth-Anmeldung mit Owner-Konto.",
+  "author": {
+    "name": "Entrich Technologies GmbH",
+    "email": "erwin@entrich-technologies.com",
+    "url": "https://www.knowledgecenter.at"
+  },
+  "homepage": "https://www.knowledgecenter.at",
+  "repository": "https://github.com/ET-Technologies/knowledgecenterplugins",
+  "keywords": [
+    "buero",
+    "branding",
+    "briefpapier",
+    "firmenprofil",
+    "knowledge-center"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Knowledge Center Büro-Branding",
+    "shortDescription": "Büroprofil und Briefpapier prüfen und einrichten",
+    "longDescription": "Zentrales Büro-Branding in Knowledge Center lesen, Änderungen prüfen und auf Auftrag speichern: Logo-URL, Firmen- und Kontaktdaten, Fußzeile, Pflichtangaben, Unterzeichner und Akzentfarbe. OAuth-Anmeldung mit Owner-Konto.",
+    "developerName": "Entrich Technologies GmbH",
+    "category": "Productivity",
+    "capabilities": ["Read", "Write"],
+    "websiteURL": "https://www.knowledgecenter.at",
+    "privacyPolicyURL": "https://www.knowledgecenter.at/datenschutz",
+    "defaultPrompt": [
+      "Lies mein Büro-Branding und zeige die fehlenden Angaben",
+      "Bereite die Übernahme der Bürodaten aus diesem Briefpapier vor",
+      "Prüfe diese Änderungen an meinem Büroprofil, bevor du sie speicherst"
+    ],
+    "brandColor": "#FF6B4A",
+    "composerIcon": "./assets/icon.png",
+    "logo": "./assets/logo.png",
+    "screenshots": []
+  }
+}

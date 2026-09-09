@@ -15,6 +15,7 @@ sind gemeinsam — der Server und der fachliche Arbeitsablauf sind dieselben.
 | -------------------------------- | ----------------------------------------------------------------------- | --------------------------- |
 | `knowledgecenter-gutachten`      | Gutachten, Aktenvermerke, Protokolle, Stellungnahmen                    | Gutachten-Modul im Abo      |
 | `knowledgecenter-energieausweis` | Energieausweis-Projekte: Bauteile, Fenster, Konstruktionen, Ecotech-XML | Energieausweis-Modul im Abo |
+| `knowledgecenter-buero-branding` | Büroprofil, Briefpapier und Kontaktdaten                                | Owner-Konto                 |
 
 Weitere Bereiche (z. B. Angebote, Baustellen) folgen als eigene Plugins.
 
@@ -206,6 +207,38 @@ und geneigte Dächer sind noch nicht Teil dieses Imports.
 Voraussetzung: Web-Migration `sql/20260909_energy_plan_mcp.sql` anwenden und
 den zugehörigen Webserver bereitstellen. Ein Plugin-Update allein aktiviert
 die Server-Werkzeuge nicht.
+
+## Plugin „knowledgecenter-buero-branding"
+
+Version 0.1.0 ergänzt die vorhandene Seite **Büro-Branding** um einen MCP-Zugang.
+Das Plugin liest und ändert dieselben zentralen Einstellungen: Firmenname,
+Untertitel, Adresse, Telefon, E-Mail, Website, Logo-URL und Alternativtext,
+Fußzeile, geschäftliche Pflichtangaben, Standard-Unterzeichner und Akzentfarbe.
+
+| Werkzeug                   | Zweck                                                  |
+| -------------------------- | ------------------------------------------------------ |
+| `buero_branding_lesen`     | Büroprofil und fehlende Angaben lesen                  |
+| `buero_branding_vorschau`  | Änderungen ohne Speichern prüfen und Prüfcode erhalten |
+| `buero_branding_speichern` | Geprüfte Änderungen auf Nutzerauftrag speichern        |
+
+MCP-Endpunkt: `https://www.knowledgecenter.at/api/mcp/buero-branding`.
+Benötigt ein Owner-Konto; kein zusätzliches Fachmodul-Abo. Die Verbindung
+arbeitet ausschließlich im angemeldeten Account. Nicht genannte Branding-Felder
+und andere Account-Einstellungen bleiben erhalten. Zwischenzeitliche Änderungen
+werden beim Speichern erkannt. Eine Datenbankmigration ist nicht erforderlich.
+
+**Bereitstellung:** Zuerst den zugehörigen Webserver-Code veröffentlichen.
+Dann in ChatGPT eine eigene MCP-Verbindung zum obigen Endpunkt registrieren
+und mit dem richtigen Kundenaccount anmelden. Für den Import dieses Pakets die
+echte App-ID in `knowledgecenter-buero-branding/.app.json` hinterlegen und im
+Codex-Manifest `"apps": "./.app.json"` ergänzen. Ohne diese Registrierung ist
+das Paket für den ChatGPT-Import noch nicht vollständig mit Aktionen verbunden.
+Keine Energieausweis- oder Gutachten-App-ID übernehmen.
+
+Diese erste Version übernimmt Logo-URLs, keine Bilddateien. Die Vorschau ist
+ein Vergleich der Angaben; die visuelle Briefkopf-Vorschau bleibt auf der
+Büro-Branding-Seite. Ein Vorschau-PDF, Vorlagenänderungen und ein automatischer
+Transfer zwischen Kundenaccounts sind nicht enthalten.
 
 ## Versionen
 
