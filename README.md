@@ -194,7 +194,23 @@ MCP-Verbindung zu `https://www.knowledgecenter.at/api/mcp/energieausweis`
   verlangen eine ausdrückliche Bestätigung.
 - Bei Verlust eines Geräts oder Keys: auf der Claude-Zugänge-Seite widerrufen.
 
+## Plan aus Grundrissen (Energieausweis)
+
+Mit `ea_plan_lesen`, `ea_plan_vorschau` und `ea_plan_speichern` lässt sich
+der erste Geschossplan aus im Chat gelesenen Grundrissen anlegen. Geschosse,
+Außenkonturen, Höhen, Nordrichtung und Quellen werden gespeichert. Die
+Webplattform zeigt daraus die bearbeitbare Planzeichnung und Plan-3D.
+Vorhandene Planstände werden nicht überschrieben. Original-PDF, Öffnungen
+und geneigte Dächer sind noch nicht Teil dieses Imports.
+
+Voraussetzung: Web-Migration `sql/20260909_energy_plan_mcp.sql` anwenden und
+den zugehörigen Webserver bereitstellen. Ein Plugin-Update allein aktiviert
+die Server-Werkzeuge nicht.
+
 ## Versionen
+
+- **Energieausweis 0.1.4** — erster Geschossplan über MCP: lesen, Vorschau,
+  initial speichern; Quellenbelege und gleiche Geometrie für Plan/3D.
 
 - **Energieausweis 0.1.0** — lesen, aktualisieren, Prüfsummen, Konstruktionen
   ableiten und Ecotech-XML; jetzt auch mit ChatGPT- und Codex-Verpackung;

@@ -1,6 +1,6 @@
 ---
 name: energieausweis-arbeiten
-description: Energieausweis-Projekte in Knowledge Center — suchen, lesen, Stammdaten, Bauteile, Fenster, Konstruktionen und Zuordnungen aktualisieren, Prüfsummen gegen den Ausweis rechnen, Ecotech-XML erzeugen, einen alten Ausweis (PDF) in ein Projekt übernehmen. Nutzen, sobald der Benutzer nach Energieausweisen, Gebäudehülle, Bauteilen, Fenstern, U-Werten oder Ecotech fragt oder einen Ausweis anlegen, nachtragen oder korrigieren will.
+description: Energieausweis-Projekte in Knowledge Center — suchen, lesen, Stammdaten, Bauteile, Fenster, Konstruktionen und Zuordnungen aktualisieren, Prüfsummen gegen den Ausweis rechnen, Ecotech-XML erzeugen, einen alten Ausweis (PDF) in ein Projekt übernehmen. Nutzen, sobald der Benutzer nach Energieausweisen, Gebäudehülle, Bauteilen, Fenstern, U-Werten oder Ecotech fragt oder einen Ausweis anlegen, nachtragen oder korrigieren will. Auch für Grundrisse, Geschosskonturen und den ersten Plan-3D-Entwurf.
 ---
 
 # Energieausweis in Knowledge Center
@@ -23,6 +23,32 @@ Kurzfassung:
    Decken, fehlende Zuordnung, fehlende Konstruktion, Richtungspaar), nicht
    selbst füllen. Nichts erfinden, Richtungen nie raten.
 5. `ea_export_xml` nur auf Wunsch; die Meldungen des Exports wiedergeben.
+
+## Grundriss als ersten Geschossplan übernehmen
+
+1. Projekt suchen/anlegen und `ea_plan_lesen`. Diese erste Version legt nur
+   einen neuen Planstand an; bestehende Zeichnungen im Web korrigieren.
+2. Grundrisse und Schnitte lesen. Je Geschoss Name, Außenkontur in Metern,
+   Höhe und Quellenbeleg (Datei/Seite, Bemaßung, Höhenbezug und Norden)
+   erfassen. Fehlende Maße, Höhen oder Ausrichtung nachfragen, niemals raten.
+3. Alle Geschosse von unten nach oben mit gemeinsamem Ursprung und gleichen
+   Achsen liefern: x nach rechts, y nach oben. Startpunkt nicht wiederholen.
+   `nordwinkel_grad` dreht den Planbezug gegen den Uhrzeigersinn nach
+   Ost/Nord. Norden oben = 0. Geschossversatz über die Koordinaten angeben.
+4. `ea_plan_vorschau` aufrufen, Flächen, Höhen und Grenzen des Entwurfs
+   zeigen. Die geometrische Grundfläche ist noch keine bestätigte Energie-BGF.
+   Höhen werden direkt gestapelt; keine Deckenstärken zusätzlich angenommen.
+5. Bei Auftrag zum Speichern `ea_plan_speichern` mit identischen Plandaten
+   und `pruefcode` aus der Vorschau. Bei geänderten Daten erneut prüfen.
+6. `ea_plan_lesen` zur Kontrolle. Web-Projekt neu laden: Kontur im Plan-Reiter
+   und Körper in Plan-3D prüfen. Manuelle Korrekturen bleiben möglich.
+
+Zunächst ein einfacher Außenumriss je Geschoss, ohne Innenhöfe, Öffnungen und
+geneigtes Dach. Ein PDF wird durch diese Werkzeuge nicht hochgeladen; die
+Kontur erscheint auf einer neutralen Zeichenfläche. Die Quelle wird als Text
+gespeichert. Energie-Bauteile entstehen erst durch „In den Baukörper
+übernehmen“ und anschließendes Projekt-Speichern im Web. Keine automatische
+Synchronisierung zwischen Plan und bereits übernommenen Bauteilen behaupten.
 
 ## Alten Ausweis (PDF) übernehmen
 
