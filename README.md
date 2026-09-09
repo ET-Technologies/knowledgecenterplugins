@@ -201,12 +201,40 @@ Mit `ea_plan_lesen`, `ea_plan_vorschau` und `ea_plan_speichern` lässt sich
 der erste Geschossplan aus im Chat gelesenen Grundrissen anlegen. Geschosse,
 Außenkonturen, Höhen, Nordrichtung und Quellen werden gespeichert. Die
 Webplattform zeigt daraus die bearbeitbare Planzeichnung und Plan-3D.
-Vorhandene Planstände werden nicht überschrieben. Original-PDF, Öffnungen
-und geneigte Dächer sind noch nicht Teil dieses Imports.
+Der Erstimport überschreibt keine vorhandenen Planstände. Fenster und Außentüren
+werden anschließend mit `ea_plan_oeffnungen_vorschau/speichern` ergänzt.
 
-Voraussetzung: Web-Migration `sql/20260909_energy_plan_mcp.sql` anwenden und
-den zugehörigen Webserver bereitstellen. Ein Plugin-Update allein aktiviert
-die Server-Werkzeuge nicht.
+Ab Version 0.1.6 öffnet `ea_plan_3d_anzeigen` das gespeicherte Gebäude direkt
+im Chat als interaktive Ansicht: drehen, zoomen, Ansichten wechseln und Ebenen
+ausblenden. Fenster und Außentüren stammen aus denselben Plandaten wie im Web.
+Die Ansicht ist lesend; nach Planänderungen erneut aufrufen. Benötigt einen
+Client mit MCP-UI-Unterstützung. Für die 3D-Anzeige ist keine neue SQL-Migration
+nötig; der aktualisierte Webserver muss einschließlich UI-Datei veröffentlicht sein.
+
+Version 0.1.5 ergänzt folgende Aktionen:
+
+| Werkzeug                                                       | Zweck                                                                                                                                      |
+| -------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| `ea_plan_bearbeiten_vorschau` / `ea_plan_bearbeiten_speichern` | Fenster/Türen verschieben, ändern, löschen; Wandpunkte, Höhe, Maßstab, Norden und Nachbarn ändern; Dokument mit geprüfter Passung zuordnen |
+| `ea_plan_bild`                                                 | Beschriftetes 2D-Planbild mit Wand-, Punkt- und Öffnungsreferenzen; auch für einen ungespeicherten Entwurf                                 |
+| `ea_plan_datei_hochladen`                                      | PDF/PNG/JPEG/WebP aus ChatGPT als Projektdokument hochladen, maximal 20 MB                                                                 |
+| `ea_plan_dokumente_lesen`                                      | Dokumente und Ebenenzuordnungen lesen; Originaldatei, Seite und Rendermaße abrufen                                                         |
+| `ea_plan_baukoerper_vorschau` / `ea_plan_baukoerper_speichern` | Geometrie ohne Duplikate in einen leeren Baukörper übernehmen oder einen reinen Plugin-Planbestand ausdrücklich ersetzen                   |
+
+Je Ebene können eine Datei und eine PDF-Seite hinterlegt werden. Nach dem Upload
+die Passung aus Maßstab und Bezugspunkt prüfen und separat zuordnen; bestehende
+Gebäudeabmessungen und Geschosslage bleiben dabei erhalten. Dateiübergabe nutzt
+[OpenAI-Dateiparameter](https://developers.openai.com/plugins/reference#define-file-inputs).
+Alternativ im Web unter Dokumente hochladen und die Dokument-ID verwenden.
+Geneigte Dächer, Innenhöfe, Innentüren und Dachfenster sind nicht enthalten.
+
+Voraussetzung im Web-Repository: zuerst `sql/20260909_energy_plan_mcp.sql`
+(sofern noch nicht vorhanden), dann `sql/20260909_energy_plan_edit.sql` und
+`sql/20260909_energy_plan_transfer.sql` anwenden und den zugehörigen Webserver
+bereitstellen. Beide neuen RPCs sind nur für den Service-Account ausführbar.
+Ein Plugin-Update allein aktiviert die Server-Werkzeuge nicht. Danach Aktionen
+in ChatGPT aktualisieren und in einem neuen Chat testen. Der MCP-Endpunkt bleibt
+`https://www.knowledgecenter.at/api/mcp/energieausweis`.
 
 ## Plugin „knowledgecenter-buero-branding"
 
@@ -240,6 +268,12 @@ Büro-Branding-Seite. Ein Vorschau-PDF, Vorlagenänderungen und ein automatische
 Transfer zwischen Kundenaccounts sind nicht enthalten.
 
 ## Versionen
+
+- **Energieausweis 0.1.6** — interaktive 3D-Ansicht im Chat mit Drehen,
+  Maus-/Touch-Zoom, Ansichtswechsel und ein-/ausblendbaren Ebenen.
+
+- **Energieausweis 0.1.5** — bestehende Zeichnungen bearbeiten, beschriftete
+  Planbilder, Originalpläne je Ebene und kontrollierte Baukörper-Übernahme.
 
 - **Energieausweis 0.1.4** — erster Geschossplan über MCP: lesen, Vorschau,
   initial speichern; Quellenbelege und gleiche Geometrie für Plan/3D.

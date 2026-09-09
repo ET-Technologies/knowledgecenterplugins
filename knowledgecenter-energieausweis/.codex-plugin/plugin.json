@@ -1,6 +1,6 @@
 {
   "name": "knowledgecenter-energieausweis",
-  "version": "0.1.4",
+  "version": "0.1.6",
   "description": "Energieausweis-Modul von Knowledge Center für ChatGPT und Codex: Projekte suchen und lesen, Stammdaten, Konstruktionen, Bauteilflächen, Fenster und Zuordnungen aktualisieren, Prüfsummen gegen den Ausweis, Ecotech-XML erzeugen — plus Lesehilfen für Ausweise von ETU, GEQ, ArchiPHYSIK und Ecotech. Anmeldung beim ersten Aufruf im Browser (OAuth), kein Key nötig.",
   "author": {
     "name": "Entrich Technologies GmbH",
@@ -23,7 +23,7 @@
   "interface": {
     "displayName": "Knowledge Center Energieausweis",
     "shortDescription": "Energieausweis-Projekte prüfen, ergänzen und als Ecotech-XML exportieren",
-    "longDescription": "Verbindet ChatGPT und Codex mit dem Energieausweis-Modul von Knowledge Center. Projekte suchen und lesen, Daten aus bestehenden Ausweisen übernehmen, Stammdaten, Konstruktionen, Bauteilflächen, Fenster und Zuordnungen aktualisieren, Vollständigkeit mit Prüfsummen kontrollieren und Ecotech-XML erzeugen. Zugriff nur auf den eigenen Account. Benötigt ein Owner-Konto mit Energieausweis-Modul im Abo.",
+    "longDescription": "Verbindet ChatGPT und Codex mit dem Energieausweis-Modul von Knowledge Center. Projekte, Bauteile und Fenster bearbeiten, Geschosspläne korrigieren, Originalpläne je Ebene zuordnen und das Gebäude interaktiv in 3D ansehen: drehen, zoomen und Ebenen ausblenden. Geometrie kontrolliert in den Baukörper übernehmen, Prüfsummen und Ecotech-XML erzeugen. Zugriff nur auf den eigenen Account. Benötigt ein Owner-Konto mit Energieausweis-Modul im Abo; interaktive Darstellung in Clients mit MCP-UI-Unterstützung.",
     "developerName": "Entrich Technologies GmbH",
     "category": "Productivity",
     "capabilities": ["Read", "Write"],
@@ -32,7 +32,7 @@
     "defaultPrompt": [
       "Suche mein zuletzt geändertes Energieausweis-Projekt und nenne die offenen Angaben",
       "Übernimm die Daten aus diesem Energieausweis-PDF in ein neues Projekt",
-      "Prüfe Gebäudehülle, Fensterflächen und Zuordnungen meines Projekts"
+      "Zeige das Gebäude meines Energieausweis-Projekts interaktiv in 3D"
     ],
     "brandColor": "#FF6B4A",
     "composerIcon": "./assets/icon.png",
