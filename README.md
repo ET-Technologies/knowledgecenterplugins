@@ -269,6 +269,10 @@ Transfer zwischen Kundenaccounts sind nicht enthalten.
 
 ## Versionen
 
+- **Energieausweis 0.1.7** — vermeidet doppelte Prüfsummenaufrufe: nach einer
+  Änderung entweder den vollständigen Projektstand inklusive Prüfsummen oder
+  nur die Prüfsummen lesen. Web bündelt Katalogänderungen und Zugangsprüfung;
+  geprüfte Plandateimetadaten werden je Storage-Version wiederverwendet.
 - **Energieausweis 0.1.6** — interaktive 3D-Ansicht im Chat mit Drehen,
   Maus-/Touch-Zoom, Ansichtswechsel und ein-/ausblendbaren Ebenen.
 
