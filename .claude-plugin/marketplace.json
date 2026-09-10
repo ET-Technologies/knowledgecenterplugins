@@ -5,7 +5,7 @@
   },
   "metadata": {
     "description": "Claude-Plugins für Knowledge Center — je Bereich ein Plugin, passend zum Abo (Gutachten, Energieausweis; weitere Bereiche folgen)",
-    "version": "1.5.0"
+    "version": "1.6.0"
   },
   "plugins": [
     {
@@ -22,6 +22,11 @@
       "name": "knowledgecenter-buero-branding",
       "source": "./knowledgecenter-buero-branding",
       "description": "Zentrales Büro-Branding in Knowledge Center lesen, Änderungen prüfen und auf Auftrag speichern: Logo-URL, Firmen- und Kontaktdaten, Fußzeile, Pflichtangaben, Unterzeichner und Akzentfarbe. OAuth-Anmeldung mit Owner-Konto."
+    },
+    {
+      "name": "knowledgecenter-zeiterfassung",
+      "source": "./knowledgecenter-zeiterfassung",
+      "description": "Eigene Arbeitszeiten in Knowledge Center starten, beenden, lesen, nachtragen und korrigieren. Ausschließlich eigene Zeiten, auch als Owner. Verwendet die vorhandene Web-Zeiterfassung; persönlicher Owner-OAuth-Zugang in Version 1."
     }
   ]
 }

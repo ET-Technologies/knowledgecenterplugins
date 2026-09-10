@@ -1,0 +1,18 @@
+{
+  "name": "knowledgecenter-zeiterfassung",
+  "version": "0.1.0",
+  "description": "Eigene Arbeitszeiten in Knowledge Center starten, beenden, lesen, nachtragen und korrigieren. Ausschließlich eigene Zeiten, auch als Owner. Verwendet die vorhandene Web-Zeiterfassung; persönlicher Owner-OAuth-Zugang in Version 1.",
+  "author": {
+    "name": "Entrich Technologies GmbH",
+    "email": "erwin@entrich-technologies.com",
+    "url": "https://www.knowledgecenter.at"
+  },
+  "homepage": "https://www.knowledgecenter.at",
+  "repository": "https://github.com/ET-Technologies/knowledgecenterplugins",
+  "keywords": [
+    "zeiterfassung",
+    "arbeitszeit",
+    "time-sessions",
+    "knowledge-center"
+  ]
+}

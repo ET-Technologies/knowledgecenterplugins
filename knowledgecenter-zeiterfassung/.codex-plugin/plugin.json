@@ -1,0 +1,39 @@
+{
+  "name": "knowledgecenter-zeiterfassung",
+  "version": "0.1.0",
+  "description": "Eigene Arbeitszeiten in Knowledge Center starten, beenden, lesen, nachtragen und korrigieren. Ausschließlich eigene Zeiten, auch als Owner. Verwendet die vorhandene Web-Zeiterfassung; persönlicher Owner-OAuth-Zugang in Version 1.",
+  "author": {
+    "name": "Entrich Technologies GmbH",
+    "email": "erwin@entrich-technologies.com",
+    "url": "https://www.knowledgecenter.at"
+  },
+  "homepage": "https://www.knowledgecenter.at",
+  "repository": "https://github.com/ET-Technologies/knowledgecenterplugins",
+  "keywords": [
+    "zeiterfassung",
+    "arbeitszeit",
+    "time-sessions",
+    "knowledge-center"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Knowledge Center Zeiterfassung",
+    "shortDescription": "Eigene Arbeitszeiten erfassen und kontrollieren",
+    "longDescription": "Eigene Arbeitszeiten in Knowledge Center starten, beenden, lesen, nachtragen und korrigieren. Ausschließlich eigene Zeiten, auch als Owner. Verwendet die vorhandene Web-Zeiterfassung; persönlicher Owner-OAuth-Zugang in Version 1.",
+    "developerName": "Entrich Technologies GmbH",
+    "category": "Productivity",
+    "capabilities": ["Read", "Write"],
+    "websiteURL": "https://www.knowledgecenter.at",
+    "privacyPolicyURL": "https://www.knowledgecenter.at/datenschutz",
+    "defaultPrompt": [
+      "Starte meine Arbeitszeit im Büro",
+      "Beende meine Arbeitszeit",
+      "Zeige meine heutigen Arbeitszeiten"
+    ],
+    "brandColor": "#FF6B4A",
+    "composerIcon": "./assets/icon.png",
+    "logo": "./assets/icon.png",
+    "screenshots": []
+  }
+}

@@ -11,11 +11,12 @@ lesen `.codex-plugin/`. Die registrierte ChatGPT-App steht in `.app.json`.
 Lediglich die MCP-Verbindung (`.mcp.json`), der Skill (`skills/`) und die Assets
 sind gemeinsam — der Server und der fachliche Arbeitsablauf sind dieselben.
 
-| Plugin                           | Bereich                                                                 | Voraussetzung               |
-| -------------------------------- | ----------------------------------------------------------------------- | --------------------------- |
-| `knowledgecenter-gutachten`      | Gutachten, Aktenvermerke, Protokolle, Stellungnahmen                    | Gutachten-Modul im Abo      |
-| `knowledgecenter-energieausweis` | Energieausweis-Projekte: Bauteile, Fenster, Konstruktionen, Ecotech-XML | Energieausweis-Modul im Abo |
-| `knowledgecenter-buero-branding` | Büroprofil, Briefpapier und Kontaktdaten                                | Owner-Konto                 |
+| Plugin                           | Bereich                                                                 | Voraussetzung                         |
+| -------------------------------- | ----------------------------------------------------------------------- | ------------------------------------- |
+| `knowledgecenter-gutachten`      | Gutachten, Aktenvermerke, Protokolle, Stellungnahmen                    | Gutachten-Modul im Abo                |
+| `knowledgecenter-energieausweis` | Energieausweis-Projekte: Bauteile, Fenster, Konstruktionen, Ecotech-XML | Energieausweis-Modul im Abo           |
+| `knowledgecenter-buero-branding` | Büroprofil, Briefpapier und Kontaktdaten                                | Owner-Konto                           |
+| `knowledgecenter-zeiterfassung`  | Ausschließlich eigene Arbeitszeiten starten, beenden und korrigieren    | Persönliches Owner-Konto in Version 1 |
 
 Weitere Bereiche (z. B. Angebote, Baustellen) folgen als eigene Plugins.
 
@@ -46,6 +47,7 @@ claude plugin marketplace add ET-Technologies/knowledgecenterplugins
 # 2. Plugin des Bereichs installieren
 claude plugin install knowledgecenter-gutachten@entrich-technologies
 claude plugin install knowledgecenter-energieausweis@entrich-technologies
+claude plugin install knowledgecenter-zeiterfassung@entrich-technologies
 ```
 
 Dann einfach eine Frage stellen, z. B. _„Welche Gutachten-Typen gibt es?"_.
@@ -77,6 +79,7 @@ codex plugin marketplace add https://github.com/ET-Technologies/knowledgecenterp
 # 2. Plugin des Bereichs installieren
 codex plugin add knowledgecenter-gutachten@entrich-technologies
 codex plugin add knowledgecenter-energieausweis@entrich-technologies
+codex plugin add knowledgecenter-zeiterfassung@entrich-technologies
 ```
 
 Beim ersten Aufruf meldet sich Codex bei Knowledge Center an (OAuth im
@@ -96,6 +99,7 @@ Server-Adresse des gewünschten Bereichs eintragen:
 
 - Gutachten: `https://www.knowledgecenter.at/api/mcp/gutachten`
 - Energieausweis: `https://www.knowledgecenter.at/api/mcp/energieausweis`
+- Zeiterfassung: `https://www.knowledgecenter.at/api/mcp/zeiterfassung`
 
 ChatGPT öffnet anschließend die Anmeldung bei Knowledge Center.
 
@@ -268,6 +272,15 @@ Büro-Branding-Seite. Ein Vorschau-PDF, Vorlagenänderungen und ein automatische
 Transfer zwischen Kundenaccounts sind nicht enthalten.
 
 ## Versionen
+
+- **Zeiterfassung 0.1.0** — sechs Werkzeuge für eigene `time_sessions`:
+  `zeit_status`, `zeit_lesen`, `zeit_starten`, `zeit_beenden`, `zeit_nachtragen`,
+  `zeit_korrigieren`. Auch Owner können keine fremden Zeiten bearbeiten.
+  Vor Bereitstellung die Web-Migration `20260910_mcp_time_sessions.sql` ausführen.
+  Die eigene ChatGPT-App muss danach mit dem Zeiterfassungs-MCP-Endpunkt
+  registriert werden; eine App-ID ist noch nicht hinterlegt. Das Icon hat
+  256 × 256 Pixel und ist kleiner als 10 KB. Keine Änderungen an `time_entries`
+  oder den Verwaltungsrechten der Web-Oberfläche.
 
 - **Energieausweis 0.1.7** — vermeidet doppelte Prüfsummenaufrufe: nach einer
   Änderung entweder den vollständigen Projektstand inklusive Prüfsummen oder
