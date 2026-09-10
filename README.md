@@ -277,8 +277,8 @@ Transfer zwischen Kundenaccounts sind nicht enthalten.
   `zeit_status`, `zeit_lesen`, `zeit_starten`, `zeit_beenden`, `zeit_nachtragen`,
   `zeit_korrigieren`. Auch Owner können keine fremden Zeiten bearbeiten.
   Vor Bereitstellung die Web-Migration `20260910_mcp_time_sessions.sql` ausführen.
-  Die eigene ChatGPT-App muss danach mit dem Zeiterfassungs-MCP-Endpunkt
-  registriert werden; eine App-ID ist noch nicht hinterlegt. Das Icon hat
+  Die eigene ChatGPT-App `asdk_app_6aa33b8b80588191841b79ce9e327d14` ist über
+  `.app.json` im Codex-Manifest verknüpft. Das Icon hat
   256 × 256 Pixel und ist kleiner als 10 KB. Keine Änderungen an `time_entries`
   oder den Verwaltungsrechten der Web-Oberfläche.
 
