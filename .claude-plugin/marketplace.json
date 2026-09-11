@@ -5,7 +5,7 @@
   },
   "metadata": {
     "description": "Claude-Plugins für Knowledge Center — je Bereich ein Plugin, passend zum Abo (Gutachten, Energieausweis; weitere Bereiche folgen)",
-    "version": "1.6.0"
+    "version": "1.7.0"
   },
   "plugins": [
     {
@@ -27,6 +27,11 @@
       "name": "knowledgecenter-zeiterfassung",
       "source": "./knowledgecenter-zeiterfassung",
       "description": "Eigene Arbeitszeiten in Knowledge Center starten, beenden, lesen, nachtragen und korrigieren. Ausschließlich eigene Zeiten, auch als Owner. Verwendet die vorhandene Web-Zeiterfassung; persönlicher Owner-OAuth-Zugang in Version 1."
+    },
+    {
+      "name": "knowledgecenter-eingangsrechnungen",
+      "source": "./knowledgecenter-eingangsrechnungen",
+      "description": "Eingangsrechnungen suchen, lesen, prüfen und auswerten; Fälligkeiten und Skontovorschläge, Korrekturen nach Vorschau und erfolgte Zahlungen am Beleg. Owner-Zugang mit Rechnungsmodul."
     }
   ]
 }

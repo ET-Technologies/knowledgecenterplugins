@@ -1,0 +1,13 @@
+{
+  "name": "knowledgecenter-eingangsrechnungen",
+  "version": "0.1.0",
+  "description": "Eingangsrechnungen in Knowledge Center suchen, lesen, prüfen und auswerten. Fälligkeiten und Skonto anzeigen, Daten nach Vorschau korrigieren und erfolgte Zahlungen am Beleg erfassen. Owner-Zugang mit Rechnungsmodul; keine Banküberweisungen.",
+  "author": {
+    "name": "Entrich Technologies GmbH",
+    "email": "erwin@entrich-technologies.com",
+    "url": "https://www.knowledgecenter.at"
+  },
+  "homepage": "https://www.knowledgecenter.at",
+  "repository": "https://github.com/ET-Technologies/knowledgecenterplugins",
+  "keywords": ["eingangsrechnungen", "lieferanten", "faelligkeiten", "skonto", "knowledge-center"]
+}

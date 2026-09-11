@@ -1,0 +1,34 @@
+{
+  "name": "knowledgecenter-eingangsrechnungen",
+  "version": "0.1.0",
+  "description": "Eingangsrechnungen in Knowledge Center suchen, lesen, auf Auffälligkeiten prüfen und auswerten. Fälligkeiten und Skonto anzeigen, Daten nach Vorschau korrigieren und erfolgte Zahlungen am Beleg erfassen. Persönlicher Owner-Zugang mit freigeschaltetem Rechnungsmodul.",
+  "author": {
+    "name": "Entrich Technologies GmbH",
+    "email": "erwin@entrich-technologies.com",
+    "url": "https://www.knowledgecenter.at"
+  },
+  "homepage": "https://www.knowledgecenter.at",
+  "repository": "https://github.com/ET-Technologies/knowledgecenterplugins",
+  "keywords": ["eingangsrechnungen", "lieferanten", "faelligkeiten", "skonto", "knowledge-center"],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Knowledge Center Eingangsrechnungen",
+    "shortDescription": "Rechnungen prüfen, Fälligkeiten und Zahlungen verwalten",
+    "longDescription": "Eingangsrechnungen des eigenen Accounts finden, lesen und auf fehlende Angaben, Summenabweichungen und mögliche Dubletten prüfen. Fälligkeiten, Skontovorschläge und Auswertungen nach Lieferant oder Monat abrufen. Rechnungskorrekturen und erfolgte Zahlungen nach Vorschau am Beleg speichern. Keine Banküberweisungen, Zahlungsaufträge oder Buchhaltungsexporte in Version 1.",
+    "developerName": "Entrich Technologies GmbH",
+    "category": "Productivity",
+    "capabilities": ["Read", "Write"],
+    "websiteURL": "https://www.knowledgecenter.at",
+    "privacyPolicyURL": "https://www.knowledgecenter.at/datenschutz",
+    "defaultPrompt": [
+      "Zeige meine offenen Eingangsrechnungen",
+      "Welche Rechnungen werden diese Woche fällig?",
+      "Wie hoch waren unsere Eingangsrechnungen im letzten Monat?"
+    ],
+    "brandColor": "#FF6B4A",
+    "composerIcon": "./assets/icon.png",
+    "logo": "./assets/icon.png",
+    "screenshots": []
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "knowledgecenter-eingangsrechnungen": {
+      "type": "http",
+      "url": "https://www.knowledgecenter.at/api/mcp/eingangsrechnungen"
+    }
+  }
+}

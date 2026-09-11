@@ -15,6 +15,7 @@ PLUGIN_NAMES = (
     "knowledgecenter-energieausweis",
     "knowledgecenter-buero-branding",
     "knowledgecenter-zeiterfassung",
+    "knowledgecenter-eingangsrechnungen",
 )
 SEMVER = re.compile(r"^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$")
 
@@ -87,6 +88,22 @@ def main() -> int:
             raise ValueError(
                 "plugin display metadata belongs to the marketplace interface"
             )
+        source = entry.get("source")
+        if source != {"source": "local", "path": f"./{entry['name']}"}:
+            raise ValueError("Codex marketplace source must point to its plugin folder")
+        if entry.get("policy") != {
+            "installation": "AVAILABLE",
+            "authentication": "ON_INSTALL",
+        } or entry.get("category") != "Productivity":
+            raise ValueError("Marketplace policy or category is incomplete")
+
+    claude_entries = documents[ROOT / ".claude-plugin" / "marketplace.json"].get(
+        "plugins", []
+    )
+    if len(claude_entries) != len(PLUGIN_NAMES) or {
+        entry.get("name") for entry in claude_entries
+    } != set(PLUGIN_NAMES):
+        raise ValueError("Claude marketplace must contain every plugin exactly once")
 
     print(
         f"Validated {len(json_paths)} JSON files and {len(PLUGIN_NAMES)} plugin packages."

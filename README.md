@@ -17,6 +17,7 @@ sind gemeinsam — der Server und der fachliche Arbeitsablauf sind dieselben.
 | `knowledgecenter-energieausweis` | Energieausweis-Projekte: Bauteile, Fenster, Konstruktionen, Ecotech-XML | Energieausweis-Modul im Abo           |
 | `knowledgecenter-buero-branding` | Büroprofil, Briefpapier und Kontaktdaten                                | Owner-Konto                           |
 | `knowledgecenter-zeiterfassung`  | Ausschließlich eigene Arbeitszeiten starten, beenden und korrigieren    | Persönliches Owner-Konto in Version 1 |
+| `knowledgecenter-eingangsrechnungen` | Eingangsrechnungen prüfen, Fälligkeiten, Auswertungen und Zahlungsvermerke | Owner-Konto mit Eingangsrechnungs-Modul |
 
 Weitere Bereiche (z. B. Angebote, Baustellen) folgen als eigene Plugins.
 
@@ -48,6 +49,7 @@ claude plugin marketplace add ET-Technologies/knowledgecenterplugins
 claude plugin install knowledgecenter-gutachten@entrich-technologies
 claude plugin install knowledgecenter-energieausweis@entrich-technologies
 claude plugin install knowledgecenter-zeiterfassung@entrich-technologies
+claude plugin install knowledgecenter-eingangsrechnungen@entrich-technologies
 ```
 
 Dann einfach eine Frage stellen, z. B. _„Welche Gutachten-Typen gibt es?"_.
@@ -80,6 +82,7 @@ codex plugin marketplace add https://github.com/ET-Technologies/knowledgecenterp
 codex plugin add knowledgecenter-gutachten@entrich-technologies
 codex plugin add knowledgecenter-energieausweis@entrich-technologies
 codex plugin add knowledgecenter-zeiterfassung@entrich-technologies
+codex plugin add knowledgecenter-eingangsrechnungen@entrich-technologies
 ```
 
 Beim ersten Aufruf meldet sich Codex bei Knowledge Center an (OAuth im
@@ -100,6 +103,7 @@ Server-Adresse des gewünschten Bereichs eintragen:
 - Gutachten: `https://www.knowledgecenter.at/api/mcp/gutachten`
 - Energieausweis: `https://www.knowledgecenter.at/api/mcp/energieausweis`
 - Zeiterfassung: `https://www.knowledgecenter.at/api/mcp/zeiterfassung`
+- Eingangsrechnungen (nach Web-Bereitstellung): `https://www.knowledgecenter.at/api/mcp/eingangsrechnungen`
 
 ChatGPT öffnet anschließend die Anmeldung bei Knowledge Center.
 
@@ -272,6 +276,13 @@ Büro-Branding-Seite. Ein Vorschau-PDF, Vorlagenänderungen und ein automatische
 Transfer zwischen Kundenaccounts sind nicht enthalten.
 
 ## Versionen
+
+- **Eingangsrechnungen 0.1.0** — neun Werkzeuge für Suche, Lesen, Prüfung,
+  Fälligkeiten/Skonto und vollständige Auswertungen; Rechnungskorrekturen und
+  Zahlungsvermerke jeweils mit Vorschau und Konfliktschutz. Owner-Zugang,
+  Feature-Flag `invoice_incoming`, nur der eigene Rechnungsbestand.
+  Keine neue SQL-Migration. Zuerst Webserver bereitstellen, dann Plugin-Paket.
+  Eine registrierte ChatGPT-App-ID ist noch nicht hinterlegt.
 
 - **Zeiterfassung 0.1.0** — sechs Werkzeuge für eigene `time_sessions`:
   `zeit_status`, `zeit_lesen`, `zeit_starten`, `zeit_beenden`, `zeit_nachtragen`,
