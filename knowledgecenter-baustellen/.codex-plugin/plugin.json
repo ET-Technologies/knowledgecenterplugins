@@ -12,6 +12,7 @@
   "keywords": ["baustellen", "fotos", "aufgaben", "baustellenchat", "knowledge-center"],
   "skills": "./skills/",
   "mcpServers": "./.mcp.json",
+  "apps": "./.app.json",
   "interface": {
     "displayName": "Knowledge Center Baustellen",
     "shortDescription": "Baustellen, Fotos, Chat und Aufgaben bearbeiten",

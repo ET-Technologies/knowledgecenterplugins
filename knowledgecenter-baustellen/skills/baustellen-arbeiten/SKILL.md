@@ -83,6 +83,6 @@ Kostenberechnungen und Löschungen gehören nicht zu diesem Plugin.
 MCP-Endpunkt nach Bereitstellung des Webservers:
 `https://www.knowledgecenter.at/api/mcp/baustellen`.
 Anmeldung über Knowledge Center (OAuth). Das Paket enthält keine Zugangsdaten.
-In Codex/Claude wird die gemeinsame `.mcp.json` verwendet. Für die Verknüpfung
-einer registrierten ChatGPT-App muss deren echte Baustellen-App-ID separat
-eingetragen werden; eine App-ID eines anderen Moduls nicht wiederverwenden.
+In Codex/Claude wird die gemeinsame `.mcp.json` verwendet. Die registrierte
+ChatGPT-App `asdk_app_6aa409ed837081918f0bff4fe668b0df` ist über `.app.json`
+im Codex-Manifest verknüpft und muss den oben genannten MCP-Endpunkt verwenden.

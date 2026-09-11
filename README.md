@@ -291,8 +291,9 @@ Transfer zwischen Kundenaccounts sind nicht enthalten.
   Baustellentabs gelten zusätzlich. Die vorhandene Galerie, der Baustellenchat und
   die Web-Aufgabenliste werden verwendet. Chat-Fotos: JPEG/PNG/WebP bis 10 MB und
   30 Megapixel, abhängig von der Dateiübergabe des Clients; alternativ Web-Upload.
-  Keine neue SQL-Migration; Webserver zuerst bereitstellen. Eigene ChatGPT-App-ID
-  noch nicht eingetragen, daher keine `.app.json`. Icon: 256 × 256 Pixel, 6.063 Bytes.
+  Keine neue SQL-Migration; Webserver zuerst bereitstellen. Die eigene ChatGPT-App
+  `asdk_app_6aa409ed837081918f0bff4fe668b0df` ist über `.app.json` im Codex-Manifest
+  verknüpft. Icon: 256 × 256 Pixel, 6.430 Bytes.
 
 - **Eingangsrechnungen 0.2.0** — zwölf Werkzeuge: Belegupload mit automatischer
   Erfassung und Statusabfrage, Originalbeleg ansehen sowie Suche, Lesen, Prüfung,
