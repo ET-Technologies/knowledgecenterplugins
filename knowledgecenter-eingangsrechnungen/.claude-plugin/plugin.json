@@ -1,7 +1,7 @@
 {
   "name": "knowledgecenter-eingangsrechnungen",
-  "version": "0.1.0",
-  "description": "Eingangsrechnungen in Knowledge Center suchen, lesen, prüfen und auswerten. Fälligkeiten und Skonto anzeigen, Daten nach Vorschau korrigieren und erfolgte Zahlungen am Beleg erfassen. Owner-Zugang mit Rechnungsmodul; keine Banküberweisungen.",
+  "version": "0.2.0",
+  "description": "Eingangsrechnungen in Knowledge Center suchen, Originalbelege ansehen, prüfen und auswerten. Belege bei unterstütztem Chat-Dateitransfer hochladen und automatisch erfassen lassen. Fälligkeiten, Skonto, Korrekturen und bezahlt samt Datum. Owner-Zugang mit Rechnungsmodul; keine Banküberweisungen.",
   "author": {
     "name": "Entrich Technologies GmbH",
     "email": "erwin@entrich-technologies.com",

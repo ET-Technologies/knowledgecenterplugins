@@ -277,12 +277,17 @@ Transfer zwischen Kundenaccounts sind nicht enthalten.
 
 ## Versionen
 
-- **Eingangsrechnungen 0.1.0** — neun Werkzeuge für Suche, Lesen, Prüfung,
+- **Eingangsrechnungen 0.2.0** — zwölf Werkzeuge: Belegupload mit automatischer
+  Erfassung und Statusabfrage, Originalbeleg ansehen sowie Suche, Lesen, Prüfung,
   Fälligkeiten/Skonto und vollständige Auswertungen; Rechnungskorrekturen und
   Zahlungsvermerke jeweils mit Vorschau und Konfliktschutz. Owner-Zugang,
   Feature-Flag `invoice_incoming`, nur der eigene Rechnungsbestand.
+  Uploads nutzen den vorhandenen Eingangskorb mit `document_processing` und
+  Monatskontingent. PDF-/Bildanhänge bis 10 MB; Wiederholungen mit derselben
+  Auftrags-ID legen keinen zweiten Beleg an. Bezahlt-Status mit Zahlungsdatum,
+  Zahlungsart optional. Icon: 256 × 256 Pixel, unter 10 KB.
   Keine neue SQL-Migration. Zuerst Webserver bereitstellen, dann Plugin-Paket.
-  Eine registrierte ChatGPT-App-ID ist noch nicht hinterlegt.
+  Die registrierte ChatGPT-App ist über `.app.json` im Codex-Manifest verknüpft.
 
 - **Zeiterfassung 0.1.0** — sechs Werkzeuge für eigene `time_sessions`:
   `zeit_status`, `zeit_lesen`, `zeit_starten`, `zeit_beenden`, `zeit_nachtragen`,

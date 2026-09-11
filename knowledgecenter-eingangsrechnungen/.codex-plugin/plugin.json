@@ -1,7 +1,7 @@
 {
   "name": "knowledgecenter-eingangsrechnungen",
-  "version": "0.1.0",
-  "description": "Eingangsrechnungen in Knowledge Center suchen, lesen, auf Auffälligkeiten prüfen und auswerten. Fälligkeiten und Skonto anzeigen, Daten nach Vorschau korrigieren und erfolgte Zahlungen am Beleg erfassen. Persönlicher Owner-Zugang mit freigeschaltetem Rechnungsmodul.",
+  "version": "0.2.0",
+  "description": "Eingangsbelege in Knowledge Center hochladen und automatisch erfassen lassen, Originalbelege ansehen und Rechnungen suchen, prüfen und auswerten. Fälligkeiten und Skonto anzeigen, Daten korrigieren und bezahlt samt Datum erfassen. Owner-Zugang mit Rechnungsmodul; Upload zusätzlich mit Dokumentenverarbeitung.",
   "author": {
     "name": "Entrich Technologies GmbH",
     "email": "erwin@entrich-technologies.com",
@@ -12,19 +12,20 @@
   "keywords": ["eingangsrechnungen", "lieferanten", "faelligkeiten", "skonto", "knowledge-center"],
   "skills": "./skills/",
   "mcpServers": "./.mcp.json",
+  "apps": "./.app.json",
   "interface": {
     "displayName": "Knowledge Center Eingangsrechnungen",
-    "shortDescription": "Rechnungen prüfen, Fälligkeiten und Zahlungen verwalten",
-    "longDescription": "Eingangsrechnungen des eigenen Accounts finden, lesen und auf fehlende Angaben, Summenabweichungen und mögliche Dubletten prüfen. Fälligkeiten, Skontovorschläge und Auswertungen nach Lieferant oder Monat abrufen. Rechnungskorrekturen und erfolgte Zahlungen nach Vorschau am Beleg speichern. Keine Banküberweisungen, Zahlungsaufträge oder Buchhaltungsexporte in Version 1.",
+    "shortDescription": "Belege erfassen, ansehen und bezahlt mit Datum vermerken",
+    "longDescription": "PDF- und Bildbelege aus dem Chat in den Eingangskorb hochladen und mit der vorhandenen Dokumentenverarbeitung erfassen lassen. Verarbeitungsstatus abrufen, erkannte Rechnungsdaten prüfen und Originalbelege öffnen. Rechnungen suchen, Fälligkeiten, Skonto und Auswertungen abrufen; Korrekturen und erfolgte Zahlungen mit Datum nach Vorschau speichern. Upload benötigt freigeschaltete Dokumentenverarbeitung und Kontingent. Keine Banküberweisungen oder Zahlungsaufträge.",
     "developerName": "Entrich Technologies GmbH",
     "category": "Productivity",
     "capabilities": ["Read", "Write"],
     "websiteURL": "https://www.knowledgecenter.at",
     "privacyPolicyURL": "https://www.knowledgecenter.at/datenschutz",
     "defaultPrompt": [
-      "Zeige meine offenen Eingangsrechnungen",
-      "Welche Rechnungen werden diese Woche fällig?",
-      "Wie hoch waren unsere Eingangsrechnungen im letzten Monat?"
+      "Lade diesen Beleg hoch und erfasse die Eingangsrechnung",
+      "Zeige mir den Originalbeleg dieser Rechnung",
+      "Diese Rechnung wurde gestern bezahlt – trage das Datum ein"
     ],
     "brandColor": "#FF6B4A",
     "composerIcon": "./assets/icon.png",
