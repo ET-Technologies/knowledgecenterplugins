@@ -18,8 +18,9 @@ sind gemeinsam — der Server und der fachliche Arbeitsablauf sind dieselben.
 | `knowledgecenter-buero-branding` | Büroprofil, Briefpapier und Kontaktdaten                                | Owner-Konto                           |
 | `knowledgecenter-zeiterfassung`  | Ausschließlich eigene Arbeitszeiten starten, beenden und korrigieren    | Persönliches Owner-Konto in Version 1 |
 | `knowledgecenter-eingangsrechnungen` | Eingangsrechnungen prüfen, Fälligkeiten, Auswertungen und Zahlungsvermerke | Owner-Konto mit Eingangsrechnungs-Modul |
+| `knowledgecenter-baustellen` | Baustellen zusammenfassen, Fotos, Chatnachrichten und neue Aufgaben | Persönliches Owner-Konto mit Baustellenmodul |
 
-Weitere Bereiche (z. B. Angebote, Baustellen) folgen als eigene Plugins.
+Weitere Bereiche (z. B. Angebote) folgen als eigene Plugins.
 
 ## Plugin „knowledgecenter-gutachten"
 
@@ -50,6 +51,7 @@ claude plugin install knowledgecenter-gutachten@entrich-technologies
 claude plugin install knowledgecenter-energieausweis@entrich-technologies
 claude plugin install knowledgecenter-zeiterfassung@entrich-technologies
 claude plugin install knowledgecenter-eingangsrechnungen@entrich-technologies
+claude plugin install knowledgecenter-baustellen@entrich-technologies
 ```
 
 Dann einfach eine Frage stellen, z. B. _„Welche Gutachten-Typen gibt es?"_.
@@ -83,6 +85,7 @@ codex plugin add knowledgecenter-gutachten@entrich-technologies
 codex plugin add knowledgecenter-energieausweis@entrich-technologies
 codex plugin add knowledgecenter-zeiterfassung@entrich-technologies
 codex plugin add knowledgecenter-eingangsrechnungen@entrich-technologies
+codex plugin add knowledgecenter-baustellen@entrich-technologies
 ```
 
 Beim ersten Aufruf meldet sich Codex bei Knowledge Center an (OAuth im
@@ -104,6 +107,7 @@ Server-Adresse des gewünschten Bereichs eintragen:
 - Energieausweis: `https://www.knowledgecenter.at/api/mcp/energieausweis`
 - Zeiterfassung: `https://www.knowledgecenter.at/api/mcp/zeiterfassung`
 - Eingangsrechnungen (nach Web-Bereitstellung): `https://www.knowledgecenter.at/api/mcp/eingangsrechnungen`
+- Baustellen (nach Web-Bereitstellung): `https://www.knowledgecenter.at/api/mcp/baustellen`
 
 ChatGPT öffnet anschließend die Anmeldung bei Knowledge Center.
 
@@ -276,6 +280,19 @@ Büro-Branding-Seite. Ein Vorschau-PDF, Vorlagenänderungen und ein automatische
 Transfer zwischen Kundenaccounts sind nicht enthalten.
 
 ## Versionen
+
+- **Baustellen 0.1.0** — elf Werkzeuge für Baustellensuche und Zusammenfassung,
+  Fotos hochladen/lesen/beschriften, Chatnachrichten senden und Aufgaben erstellen.
+  Aufgaben unterstützen Beschreibung, aktiven Verantwortlichen, Priorität,
+  Beginn, Fälligkeit und Aufwand. Nachrichten, Aufgaben und Änderungen bestehender
+  Beschriftungen verwenden eine Vorschau. Wiederholungen mit derselben Anfrage-ID
+  erzeugen keine zweite Nachricht, Aufgabe oder Fotodatei-Zuordnung.
+  Persönlicher Owner-Zugang mit Baustellenmodul; Web-Berechtigungen und freigegebene
+  Baustellentabs gelten zusätzlich. Die vorhandene Galerie, der Baustellenchat und
+  die Web-Aufgabenliste werden verwendet. Chat-Fotos: JPEG/PNG/WebP bis 10 MB und
+  30 Megapixel, abhängig von der Dateiübergabe des Clients; alternativ Web-Upload.
+  Keine neue SQL-Migration; Webserver zuerst bereitstellen. Eigene ChatGPT-App-ID
+  noch nicht eingetragen, daher keine `.app.json`. Icon: 256 × 256 Pixel, 6.063 Bytes.
 
 - **Eingangsrechnungen 0.2.0** — zwölf Werkzeuge: Belegupload mit automatischer
   Erfassung und Statusabfrage, Originalbeleg ansehen sowie Suche, Lesen, Prüfung,

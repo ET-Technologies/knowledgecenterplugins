@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "knowledgecenter-baustellen": {
+      "type": "http",
+      "url": "https://www.knowledgecenter.at/api/mcp/baustellen"
+    }
+  }
+}

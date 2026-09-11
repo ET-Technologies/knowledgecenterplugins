@@ -5,7 +5,7 @@
   },
   "metadata": {
     "description": "Claude-Plugins für Knowledge Center — je Bereich ein Plugin, passend zum Abo (Gutachten, Energieausweis; weitere Bereiche folgen)",
-    "version": "1.7.0"
+    "version": "1.8.0"
   },
   "plugins": [
     {
@@ -32,6 +32,11 @@
       "name": "knowledgecenter-eingangsrechnungen",
       "source": "./knowledgecenter-eingangsrechnungen",
       "description": "Eingangsrechnungen suchen, lesen, prüfen und auswerten; Fälligkeiten und Skontovorschläge, Korrekturen nach Vorschau und erfolgte Zahlungen am Beleg. Owner-Zugang mit Rechnungsmodul."
+    },
+    {
+      "name": "knowledgecenter-baustellen",
+      "source": "./knowledgecenter-baustellen",
+      "description": "Baustellen in Knowledge Center finden und zusammenfassen, Fotos hochladen und beschriften, Chatnachrichten senden und Aufgaben erstellen. Verwendet die vorhandene Web-Galerie, den Baustellenchat und die Aufgabenliste. Persönlicher Owner-Zugang mit Baustellenmodul."
     }
   ]
 }

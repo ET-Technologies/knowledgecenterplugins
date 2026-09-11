@@ -1,0 +1,34 @@
+{
+  "name": "knowledgecenter-baustellen",
+  "version": "0.1.0",
+  "description": "Baustellen in Knowledge Center finden und zusammenfassen, Fotos hochladen und beschriften, Chatnachrichten senden und Aufgaben erstellen. Verwendet die vorhandene Web-Galerie, den Baustellenchat und die Aufgabenliste. Persönlicher Owner-Zugang mit Baustellenmodul.",
+  "author": {
+    "name": "Entrich Technologies GmbH",
+    "email": "erwin@entrich-technologies.com",
+    "url": "https://www.knowledgecenter.at"
+  },
+  "homepage": "https://www.knowledgecenter.at",
+  "repository": "https://github.com/ET-Technologies/knowledgecenterplugins",
+  "keywords": ["baustellen", "fotos", "aufgaben", "baustellenchat", "knowledge-center"],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Knowledge Center Baustellen",
+    "shortDescription": "Baustellen, Fotos, Chat und Aufgaben bearbeiten",
+    "longDescription": "Baustellen nach Name, Projektnummer oder Adresse finden und gespeicherte Stammdaten, Team, offene Aufgaben und letzte Chatnachrichten zusammenfassen. Fotos aus dem Chat hochladen und beschriften. Nachrichten nach Vorschau senden und Aufgaben mit Verantwortlichem, Priorität und Fälligkeit erstellen. Zugriff auf den eigenen Account und die im Web freigegebenen Baustellenbereiche. Direkter Upload benötigt einen Client mit Chat-Dateitransfer.",
+    "developerName": "Entrich Technologies GmbH",
+    "category": "Productivity",
+    "capabilities": ["Read", "Write"],
+    "websiteURL": "https://www.knowledgecenter.at",
+    "privacyPolicyURL": "https://www.knowledgecenter.at/datenschutz",
+    "defaultPrompt": [
+      "Finde die Baustelle Musterstraße und fasse den gespeicherten Stand zusammen",
+      "Lade diese Fotos auf die Baustelle hoch und beschrifte sie",
+      "Erstelle eine Aufgabe für diese Baustelle"
+    ],
+    "brandColor": "#FF6B4A",
+    "composerIcon": "./assets/icon.png",
+    "logo": "./assets/icon.png",
+    "screenshots": []
+  }
+}

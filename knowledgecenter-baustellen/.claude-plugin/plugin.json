@@ -1,0 +1,13 @@
+{
+  "name": "knowledgecenter-baustellen",
+  "version": "0.1.0",
+  "description": "Baustellen in Knowledge Center finden und zusammenfassen, Fotos bei unterstütztem Chat-Dateitransfer hochladen und beschriften, Chatnachrichten nach Vorschau senden und Aufgaben erstellen. Persönlicher Owner-Zugang mit Baustellenmodul und den im Web freigegebenen Bereichen.",
+  "author": {
+    "name": "Entrich Technologies GmbH",
+    "email": "erwin@entrich-technologies.com",
+    "url": "https://www.knowledgecenter.at"
+  },
+  "homepage": "https://www.knowledgecenter.at",
+  "repository": "https://github.com/ET-Technologies/knowledgecenterplugins",
+  "keywords": ["baustellen", "fotos", "aufgaben", "baustellenchat", "knowledge-center"]
+}
