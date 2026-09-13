@@ -17,6 +17,7 @@ PLUGIN_NAMES = (
     "knowledgecenter-zeiterfassung",
     "knowledgecenter-eingangsrechnungen",
     "knowledgecenter-baustellen",
+    "knowledgecenter-angebote",
 )
 SEMVER = re.compile(r"^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$")
 

@@ -33,7 +33,7 @@ das freigeschaltete Modul `invoice_incoming` des verbundenen Accounts.
   fehlen. Kandidaten vergleichen, keine automatische Löschung.
 - **Fälligkeiten:** `er_faelligkeiten_lesen` mit `von`/`bis`, Standard heute bis
   heute + 7 Tage. Für überfällige Belege `er_rechnungen_suchen` mit `zahlstatus:
-  offen` und `faellig_bis: gestern`. Relative Zeiträume anhand des Serverdatums
+offen` und `faellig_bis: gestern`. Relative Zeiträume anhand des Serverdatums
   in Europe/Vienna auflösen. Fehlende Fälligkeiten und unklare Zahlungen benennen.
 - **Skonto:** Rechenvorschlag aus Rechnungsdatum plus gespeicherten Kalendertagen
   und Bruttobetrag, auf zwei Dezimalstellen gerundet. Bedingungen und Währung am

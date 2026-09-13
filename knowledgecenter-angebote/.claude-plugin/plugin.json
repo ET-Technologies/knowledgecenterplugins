@@ -1,0 +1,13 @@
+{
+  "name": "knowledgecenter-angebote",
+  "version": "0.1.0",
+  "description": "Angebote in Knowledge Center vorbereiten: bestehende Kunden, Produkte und Vorlagen finden, Positionen mit der Web-Logik berechnen und auf Auftrag als Entwurf speichern. Persönlicher Owner-Zugang mit Angebotsmodul; Fertigstellung in der Web-App.",
+  "author": {
+    "name": "Entrich Technologies GmbH",
+    "email": "erwin@entrich-technologies.com",
+    "url": "https://www.knowledgecenter.at"
+  },
+  "homepage": "https://www.knowledgecenter.at",
+  "repository": "https://github.com/ET-Technologies/knowledgecenterplugins",
+  "keywords": ["angebote", "kunden", "produkte", "vorlagen", "knowledge-center"]
+}

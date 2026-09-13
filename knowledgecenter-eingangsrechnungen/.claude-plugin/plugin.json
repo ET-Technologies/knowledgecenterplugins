@@ -9,5 +9,11 @@
   },
   "homepage": "https://www.knowledgecenter.at",
   "repository": "https://github.com/ET-Technologies/knowledgecenterplugins",
-  "keywords": ["eingangsrechnungen", "lieferanten", "faelligkeiten", "skonto", "knowledge-center"]
+  "keywords": [
+    "eingangsrechnungen",
+    "lieferanten",
+    "faelligkeiten",
+    "skonto",
+    "knowledge-center"
+  ]
 }

@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "knowledgecenter-angebote": {
+      "type": "http",
+      "url": "https://www.knowledgecenter.at/api/mcp/angebote"
+    }
+  }
+}

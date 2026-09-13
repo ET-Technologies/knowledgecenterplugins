@@ -5,7 +5,7 @@
   },
   "metadata": {
     "description": "Claude-Plugins für Knowledge Center — je Bereich ein Plugin, passend zum Abo (Gutachten, Energieausweis; weitere Bereiche folgen)",
-    "version": "1.8.0"
+    "version": "1.9.0"
   },
   "plugins": [
     {
@@ -37,6 +37,11 @@
       "name": "knowledgecenter-baustellen",
       "source": "./knowledgecenter-baustellen",
       "description": "Baustellen in Knowledge Center finden und zusammenfassen, Fotos hochladen und beschriften, Chatnachrichten senden und Aufgaben erstellen. Verwendet die vorhandene Web-Galerie, den Baustellenchat und die Aufgabenliste. Persönlicher Owner-Zugang mit Baustellenmodul."
+    },
+    {
+      "name": "knowledgecenter-angebote",
+      "source": "./knowledgecenter-angebote",
+      "description": "Bestehende Kunden, Produkte und Vorlagen finden, Angebote mit der Web-Logik berechnen und auf Auftrag als Entwurf ohne Belegnummer speichern. Persönlicher Owner-Zugang mit Angebotsmodul; Fertigstellung in der Web-App."
     }
   ]
 }
