@@ -7,20 +7,22 @@ Bereiche.
 
 Dieselbe Knowledge-Center-Funktion liegt in zwei getrennten Verpackungen im
 selben Plugin-Ordner: Claude Code liest `.claude-plugin/`, ChatGPT und Codex
-lesen `.codex-plugin/`. Die registrierte ChatGPT-App steht in `.app.json`.
+lesen `.codex-plugin/`. Eine registrierte ChatGPT-App wird, soweit vorhanden,
+über `.app.json` verknüpft.
 Lediglich die MCP-Verbindung (`.mcp.json`), der Skill (`skills/`) und die Assets
 sind gemeinsam — der Server und der fachliche Arbeitsablauf sind dieselben.
 
-| Plugin                           | Bereich                                                                 | Voraussetzung                         |
-| -------------------------------- | ----------------------------------------------------------------------- | ------------------------------------- |
-| `knowledgecenter-gutachten`      | Gutachten, Aktenvermerke, Protokolle, Stellungnahmen                    | Gutachten-Modul im Abo                |
-| `knowledgecenter-energieausweis` | Energieausweis-Projekte: Bauteile, Fenster, Konstruktionen, Ecotech-XML | Energieausweis-Modul im Abo           |
-| `knowledgecenter-buero-branding` | Büroprofil, Briefpapier und Kontaktdaten                                | Owner-Konto                           |
-| `knowledgecenter-zeiterfassung`  | Ausschließlich eigene Arbeitszeiten starten, beenden und korrigieren    | Persönliches Owner-Konto in Version 1 |
-| `knowledgecenter-eingangsrechnungen` | Eingangsrechnungen prüfen, Fälligkeiten, Auswertungen und Zahlungsvermerke | Owner-Konto mit Eingangsrechnungs-Modul |
-| `knowledgecenter-baustellen` | Baustellen zusammenfassen, Fotos, Chatnachrichten und neue Aufgaben | Persönliches Owner-Konto mit Baustellenmodul |
+| Plugin                               | Bereich                                                                         | Voraussetzung                                |
+| ------------------------------------ | ------------------------------------------------------------------------------- | -------------------------------------------- |
+| `knowledgecenter-gutachten`          | Gutachten, Aktenvermerke, Protokolle, Stellungnahmen                            | Gutachten-Modul im Abo                       |
+| `knowledgecenter-energieausweis`     | Energieausweis-Projekte: Bauteile, Fenster, Konstruktionen, Ecotech-XML         | Energieausweis-Modul im Abo                  |
+| `knowledgecenter-buero-branding`     | Büroprofil, Briefpapier und Kontaktdaten                                        | Owner-Konto                                  |
+| `knowledgecenter-zeiterfassung`      | Ausschließlich eigene Arbeitszeiten starten, beenden und korrigieren            | Persönliches Owner-Konto in Version 1        |
+| `knowledgecenter-eingangsrechnungen` | Eingangsrechnungen prüfen, Fälligkeiten, Auswertungen und Zahlungsvermerke      | Owner-Konto mit Eingangsrechnungs-Modul      |
+| `knowledgecenter-baustellen`         | Baustellen zusammenfassen, Fotos, Chatnachrichten und neue Aufgaben             | Persönliches Owner-Konto mit Baustellenmodul |
+| `knowledgecenter-angebote`           | Kunden, Produkte und Vorlagen finden; Angebote prüfen und als Entwurf speichern | Persönliches Owner-Konto mit Angebotsmodul   |
 
-Weitere Bereiche (z. B. Angebote) folgen als eigene Plugins.
+Weitere Bereiche folgen als eigene Plugins.
 
 ## Plugin „knowledgecenter-gutachten"
 
@@ -52,6 +54,7 @@ claude plugin install knowledgecenter-energieausweis@entrich-technologies
 claude plugin install knowledgecenter-zeiterfassung@entrich-technologies
 claude plugin install knowledgecenter-eingangsrechnungen@entrich-technologies
 claude plugin install knowledgecenter-baustellen@entrich-technologies
+claude plugin install knowledgecenter-angebote@entrich-technologies
 ```
 
 Dann einfach eine Frage stellen, z. B. _„Welche Gutachten-Typen gibt es?"_.
@@ -86,6 +89,7 @@ codex plugin add knowledgecenter-energieausweis@entrich-technologies
 codex plugin add knowledgecenter-zeiterfassung@entrich-technologies
 codex plugin add knowledgecenter-eingangsrechnungen@entrich-technologies
 codex plugin add knowledgecenter-baustellen@entrich-technologies
+codex plugin add knowledgecenter-angebote@entrich-technologies
 ```
 
 Beim ersten Aufruf meldet sich Codex bei Knowledge Center an (OAuth im
@@ -108,6 +112,7 @@ Server-Adresse des gewünschten Bereichs eintragen:
 - Zeiterfassung: `https://www.knowledgecenter.at/api/mcp/zeiterfassung`
 - Eingangsrechnungen (nach Web-Bereitstellung): `https://www.knowledgecenter.at/api/mcp/eingangsrechnungen`
 - Baustellen (nach Web-Bereitstellung): `https://www.knowledgecenter.at/api/mcp/baustellen`
+- Angebote (nach Web-Bereitstellung): `https://www.knowledgecenter.at/api/mcp/angebote`
 
 ChatGPT öffnet anschließend die Anmeldung bei Knowledge Center.
 
@@ -279,7 +284,69 @@ ein Vergleich der Angaben; die visuelle Briefkopf-Vorschau bleibt auf der
 Büro-Branding-Seite. Ein Vorschau-PDF, Vorlagenänderungen und ein automatischer
 Transfer zwischen Kundenaccounts sind nicht enthalten.
 
+## Plugin „knowledgecenter-angebote"
+
+Das Paket enthält die Manifeste für Claude Code sowie ChatGPT/Codex, die
+gemeinsame MCP-Verbindung, den Skill `angebote-erstellen` und das Angebotsicon
+(256 × 256 Pixel, 6.942 Bytes), das als Icon und Logo eingebunden ist.
+
+| Werkzeug                     | Zweck                                                          |
+| ---------------------------- | -------------------------------------------------------------- |
+| `kunden_suchen`              | Bestehende Kunden finden und eindeutig auswählen               |
+| `kunden_lesen`               | Kundenadresse, Ansprechpartner und Vertragsrabatt lesen        |
+| `produkte_suchen`            | Für die gewählte Vorlage freigegebene Produkte finden          |
+| `produkt_lesen`              | Katalogpreis, Einheit, Steuer und Preismodus lesen             |
+| `angebotsvorlagen_auflisten` | Aktive Smart Templates und Standardvorlage anzeigen            |
+| `angebotsvorlage_lesen`      | Struktur, Textbausteine und Positionsspalten lesen             |
+| `angebot_vorschau`           | Angaben prüfen und mit der Web-Logik berechnen, ohne Speichern |
+| `angebot_anlegen`            | Geprüftes Angebot auf Auftrag als Entwurf speichern            |
+
+Benötigt einen persönlichen Owner-Zugang, das Angebotsmodul (`proposal`) und
+Leserecht; zum Anlegen zusätzlich Schreibrecht. Kunden und Produkte werden aus
+dem bestehenden Stammdatenbestand gelesen. Das Plugin enthält keine eigene
+Datenbank- oder Preislogik. Neue Angebote unterstützen Katalog- und freie
+Positionen in EUR, maximal 100 Positionen. Ein positiver Kundenvertragsrabatt
+ersetzt Positionsrabatte. Wiederholungen desselben Speicherauftrags verwenden
+dieselbe Anfrage-ID und erzeugen keinen zweiten Entwurf.
+
+Bestehende Angebote bearbeiten, zusätzliche Vorlagenfelder und Anhänge ergänzen,
+Baustellen zuordnen, Nummern vergeben, PDF erstellen und versenden erfolgen
+weiterhin in der Web-App. Das Plugin verlinkt den gespeicherten Entwurf.
+
+**Stand und Bereitstellung:** Das Paket ist im Arbeitsbranch vorbereitet; eine
+Installation ist noch kein Nachweis für einen bereitgestellten Webserver oder
+einen erfolgreichen Praxistest. Vor der Veröffentlichung zuerst den Ablauf
+Kundensuche → Vorschau → Entwurf → Web-Anzeige → Wiederholung in Preview prüfen.
+Die obigen Repository-Installationsbefehle setzen voraus, dass die Paketversion
+im verwendeten Marketplace veröffentlicht wurde.
+
+Für Preview die URL in `knowledgecenter-angebote/.mcp.json` auf den tatsächlichen
+Preview-Server mit Pfad `/api/mcp/angebote` setzen. Die mitgelieferte URL
+`https://www.knowledgecenter.at/api/mcp/angebote` ist die vorgesehene
+Produktionsadresse. Preview benötigt eine getrennte Supabase-Testumgebung mit
+passenden Umgebungsvariablen und OAuth-Konfiguration. Auch der vom Backend
+zurückgegebene Web-Link muss zur Testumgebung gehören; im aktuellen Backend
+verwendet er noch die feste Produktionsadresse.
+
+Vor dem passenden Web-Deployment in der gewählten Datenbank zuerst
+`20260912_smart_document_atomic_save.sql`, danach
+`20260912_smart_document_mcp_create.sql` aus `web/sql/` ausführen. Die SQL-Dateien
+unter `web/sql/tests/` sind ausschließlich für eine wegwerfbare Testdatenbank.
+Die Prüfung und Ausführung dieser Migrationen ist nicht Teil der
+Plugin-Installation.
+
+Für Angebote liegt noch keine registrierte ChatGPT-App-ID vor. Daher gibt es
+keine `.app.json` und keinen `apps`-Verweis im Manifest. Die MCP-Anbindung ist
+vorhanden; die zusätzliche App-Verknüpfung kann nach Registrierung mit der
+tatsächlichen ID ergänzt werden.
+
 ## Versionen
+
+- **Angebote 0.1.0** — acht Werkzeuge für Kunden, Produktkatalog, Vorlagen,
+  Angebotsvorschau und das Anlegen eines Entwurfs. Gemeinsamer Skill, MCP-Anbindung,
+  Claude-/Codex-Manifeste und Marketplace-Einträge. Icon und Logo: 256 × 256 Pixel,
+  unter 10 KB. Vorschau mit Prüfcode; Speichern mit wiederverwendbarer Anfrage-ID.
+  Preview-Praxistest und Web-Bereitstellung stehen noch aus.
 
 - **Baustellen 0.1.0** — elf Werkzeuge für Baustellensuche und Zusammenfassung,
   Fotos hochladen/lesen/beschriften, Chatnachrichten senden und Aufgaben erstellen.

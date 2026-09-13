@@ -1,0 +1,40 @@
+{
+  "name": "knowledgecenter-angebote",
+  "version": "0.1.0",
+  "description": "Angebote in Knowledge Center vorbereiten: bestehende Kunden, Produkte und Vorlagen finden, Positionen mit der Web-Logik berechnen und auf Auftrag als Entwurf speichern. Persönlicher Owner-Zugang mit Angebotsmodul.",
+  "author": {
+    "name": "Entrich Technologies GmbH",
+    "email": "erwin@entrich-technologies.com",
+    "url": "https://www.knowledgecenter.at"
+  },
+  "homepage": "https://www.knowledgecenter.at",
+  "repository": "https://github.com/ET-Technologies/knowledgecenterplugins",
+  "keywords": [
+    "angebote",
+    "kunden",
+    "produkte",
+    "vorlagen",
+    "knowledge-center"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Knowledge Center Angebote",
+    "shortDescription": "Angebote vorbereiten, berechnen und als Entwurf speichern",
+    "longDescription": "Bestehende Kunden mit ihren Konditionen finden, passende Vorlagen und freigegebene Produkte auswählen. Katalogpositionen oder freie Leistungen zu einer Angebotsvorschau mit Mengen, Nettopreisen, Rabatt, Steuer und Gesamtsumme zusammenstellen. Auf Auftrag als Entwurf ohne Belegnummer speichern und in der Web-App öffnen. Nummernvergabe, PDF, Versand und Änderungen bestehender Angebote erfolgen in der Web-App.",
+    "developerName": "Entrich Technologies GmbH",
+    "category": "Productivity",
+    "capabilities": ["Read", "Write"],
+    "websiteURL": "https://www.knowledgecenter.at",
+    "privacyPolicyURL": "https://www.knowledgecenter.at/datenschutz",
+    "defaultPrompt": [
+      "Bereite ein Angebot aus diesen Angaben vor",
+      "Welche Angebotsvorlagen stehen mir zur Verfügung?",
+      "Suche einen Kunden und zeige mir seine Konditionen"
+    ],
+    "brandColor": "#FF6B4A",
+    "composerIcon": "./assets/icon.png",
+    "logo": "./assets/icon.png",
+    "screenshots": []
+  }
+}
