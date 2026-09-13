@@ -9,5 +9,11 @@
   },
   "homepage": "https://www.knowledgecenter.at",
   "repository": "https://github.com/ET-Technologies/knowledgecenterplugins",
-  "keywords": ["baustellen", "fotos", "aufgaben", "baustellenchat", "knowledge-center"]
+  "keywords": [
+    "baustellen",
+    "fotos",
+    "aufgaben",
+    "baustellenchat",
+    "knowledge-center"
+  ]
 }
