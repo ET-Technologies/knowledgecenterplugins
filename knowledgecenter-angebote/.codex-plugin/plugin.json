@@ -19,7 +19,7 @@
   "skills": "./skills/",
   "mcpServers": "./.mcp.json",
   "interface": {
-    "displayName": "Knowledge Center Angebote",
+    "displayName": "Angebote",
     "shortDescription": "Angebote vorbereiten, berechnen und als Entwurf speichern",
     "longDescription": "Bestehende Kunden mit ihren Konditionen finden, passende Vorlagen und freigegebene Produkte auswählen. Katalogpositionen oder freie Leistungen zu einer Angebotsvorschau mit Mengen, Nettopreisen, Rabatt, Steuer und Gesamtsumme zusammenstellen. Auf Auftrag als Entwurf ohne Belegnummer speichern und in der Web-App öffnen. Nummernvergabe, PDF, Versand und Änderungen bestehender Angebote erfolgen in der Web-App.",
     "developerName": "Entrich Technologies GmbH",
