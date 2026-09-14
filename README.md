@@ -335,10 +335,23 @@ unter `web/sql/tests/` sind ausschließlich für eine wegwerfbare Testdatenbank.
 Die Prüfung und Ausführung dieser Migrationen ist nicht Teil der
 Plugin-Installation.
 
-Für Angebote liegt noch keine registrierte ChatGPT-App-ID vor. Daher gibt es
-keine `.app.json` und keinen `apps`-Verweis im Manifest. Die MCP-Anbindung ist
-vorhanden; die zusätzliche App-Verknüpfung kann nach Registrierung mit der
-tatsächlichen ID ergänzt werden.
+Die registrierte ChatGPT-App `asdk_app_6aa6e09cd21081918b858eab450d83c9` ist über
+`knowledgecenter-angebote/.app.json` und den `apps`-Verweis im Codex-Manifest
+verknüpft. Diese Verknüpfung stellt den MCP-Server nicht bereit und ersetzt
+nicht die Anmeldung am verbundenen Knowledge-Center-Account.
+
+Bei der Prüfung am 13.09.2026 antworteten der Produktionsendpunkt
+`/api/mcp/angebote` und seine OAuth-Ressourcenmetadaten noch mit HTTP 404
+(unbekannter Bereich beziehungsweise unbekannte Ressource). Vor einem Test in
+ChatGPT muss der passende Webstand auf dem verwendeten Server bereitstehen.
+Nach der Anmeldung sollte `tools/list` bei freigeschaltetem Angebotsmodul und
+Lese-/Schreibrecht die acht oben genannten Werkzeuge liefern; mit reinem
+Leserecht entfällt `angebot_anlegen`.
+
+Das Plugin arbeitet über Werkzeugaufrufe im Chat. Eine eigene Angebotsübersicht
+in ChatGPT sowie das Suchen und Auflisten bereits gespeicherter Angebote sind
+derzeit nicht enthalten. Als erster Lesetest eignet sich:
+„Welche Angebotsvorlagen stehen mir zur Verfügung?“
 
 ## Versionen
 
