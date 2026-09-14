@@ -39,17 +39,52 @@ Richtungen nie raten — nur dokumentierte Ketten übernehmen.
 
 ## GEQ (Zehentmayer)
 
-- Wände NUR als Einzelsegmente aus dem Geometrieausdruck (W1..W4 je
-  Geschossblock, brutto) plus Fassadenstreifen-Zeilen. Die Heizlast-Zeilen
-  AW/IW sind NETTO-Summen derselben Wände — nie zusätzlich.
-- Fenstertabelle „Fenster und Türen": Ag ist die GLASfläche, Uw der U-Wert;
-  Anz.-Spalte = Stückzahl; Gruppenüberschriften tragen die Richtung;
-  Prüfnormmaß-Zeilen sind keine Fenster.
-- Wand-Richtungen nur über die dokumentierte Kette (Öffnung eines
-  Wand-Bauteils in einer Richtungsgruppe + Teilung im Geometrieausdruck;
-  Gegenwand der Grundform = Gegenrichtung). Offene bleiben leer. Dieselbe
-  Segmentnummer ist dieselbe Fassade — EG W3 und OG1 W3 zeigen nie in
-  verschiedene Richtungen.
+- GEQ-ÜBERNAHME ALS BERECHNUNGSMODELL: Netto-Wandflächen und Fensterträger.
+  Voraussetzung: Die AW/IW-Flächen aus Heizlast-/Leitwert-Tabelle sind nachweislich
+  NETTO, also bereits ohne Fenster/Türen. Mit der Gebäudehüllfläche gegenprüfen.
+  Ist die Flächenbasis unklar, die Unklarheit melden und keine Träger erzeugen.
+- Diese Netto-Wandflächen je ursprünglichem Bauteil und Nachbar erhalten; U-Wert
+  und Konstruktion übernehmen. Keine Fenster zuordnen. Im Zielfeld für die
+  Bruttofläche steht hier die Nettofläche, weil von dieser Wand nichts mehr
+  abgezogen wird. Unbekannte Wandorientierungen bleiben null; nicht raten.
+  GEOMETRIEAUSDRUCK und Fassadenstreifen dienen dabei nur zur Gegenkontrolle:
+  dieselben Wandsegmente/Fassadenstreifen NICHT zusätzlich als Bauteile anlegen.
+- Fenster/Türen nach belegter Orientierung UND ursprünglichem Trägerbauteil
+  (z.B. AW01/AW02) gruppieren; unterschiedliche Nachbarn/Zonen und Neigungen
+  getrennt halten. Geschoßzuordnung erhalten, soweit belegt. Nicht aus einem
+  Bauteilkürzel eine Richtung für sämtliche realen Wände ableiten.
+- Je belegter Gruppe mit Öffnungen einen Fensterträger anlegen, z.B.
+  "Fensterträger S AW01"; bei Aufteilung je Geschoß dieses im Namen ergänzen.
+  Typ, Nachbar und Konstruktion vom ursprünglichen Träger übernehmen.
+  Bruttofläche = Summe Breite × Höhe × Anzahl der zugeordneten Öffnungen,
+  einschließlich Rahmen. Mit UNGERUNDETEN Produkten rechnen, nicht mit der
+  Summe gerundeter PDF-Zeilen. Ag ist nur die Glasfläche.
+  Ausschließlich diese Öffnungen zuordnen, jede genau einmal und mit ihrer
+  Stückzahl. Verbleibende massive Trägerfläche = 0 m². Die Fensterfläche
+  NICHT nochmals von den erhaltenen Netto-Wänden abziehen.
+  Dachfenster nicht künstlich einer senkrechten Wand zuordnen: ursprünglichen
+  Dachtyp und belegte Neigung verwenden; fehlende Angaben melden.
+- Nur benötigte Richtungen erzeugen. Keine leeren Träger für alle acht
+  Himmelsrichtungen anlegen. Fehlende Richtungen nicht durch Ausschluss raten.
+- Fensterträger sind rechnerische Hilfsflächen, KEINE realen Fassadenabmessungen.
+  Nicht daraus Plan-/3D-Wände, Geschoßkonturen, BGF oder Volumen ableiten.
+- Fensterwerte getrennt erhalten: Uw, g, Glasanteil, Neigung und Verschattung fs.
+  fs ist NICHT g: g nicht um fs vermindern. Falls das Zielfeld für fs fehlt,
+  den Originalwert im vorhandenen Fenster-Infofeld dokumentieren und die
+  fehlende berechnungswirksame Übertragung ausdrücklich melden. Ein Textvermerk
+  ersetzt keine Verschattungsberechnung; gleiche solare Gewinne nicht behaupten.
+- Kontrolle: erhaltene Netto-Wände + Fensterträger + übrige äußere Bauteile
+  = Gebäudehüllfläche. Fensterflächen NICHT nochmals dazuaddieren, sie stecken
+  bereits in den Trägern. Innere Bauteile zählen nicht zur Hülle.
+  Stückzahlen, Fensterflächen und Richtungspaare separat gegen den Ausweis prüfen.
+- Referenz 2189: AW01 171,09 m² + AW02 1.137,06 m² bleiben ohne Öffnungen.
+  111 Öffnungen ergeben aus Maßen 340,075 m² (gerundet 340,08 m²), die Summe
+  gedruckter gerundeter Zeilen dagegen 340,13 m². Das sind Rundungen, keine
+  zusätzliche Wandfläche. Diese Werte sind nur ein Beispiel, keine Standardwerte.
+- Fenstertabelle: Ag ist die GLASfläche, Uw der U-Wert. Anz. ist die Stückzahl;
+  Gruppenüberschriften tragen die Richtung. Prüfnormmaß-Zeilen nicht übernehmen.
+  Beim MCP-Werkzeug gilt netto_flaeche = Breite × Höhe EINES Fensters;
+  die Stückzahl steht in der Zuordnung, nicht nochmals in den Abmessungen.
 - Warme Zwischendecke ZD.. = inneres Bauteil (DECKE mit Nachbar BEHEIZT).
 
 ## ArchiPHYSIK (A-NULL)
@@ -92,8 +127,9 @@ Richtungen nie raten — nur dokumentierte Ketten übernehmen.
 1. **Hülle:** Summe der Bauteil-Bruttoflächen = Hüllfläche des Ausweises
    (brutto inkl. Fenster) bzw. netto + Fensterflächen. Toleranz < 0,5 %.
    Innere Bauteile (Nachbar beheizt) zählen NICHT zur Hülle.
-2. **Fenster:** je Typ netto = anzahl × B × H; Gesamtsumme = Fensterfläche
-   des Ausweises (steht meist explizit).
+2. **Fenster:** Fläche aller zugeordneten Exemplare = anzahl × B × H;
+   Gesamtsumme = Fensterfläche des Ausweises. Im MCP-Feld netto_flaeche
+   steht dagegen die Fläche EINES Fensters (B × H).
 3. **Richtungspaare:** jede Fensterrichtung hat eine Wand gleicher Richtung.
 4. **BGF:** Summe der Geschossböden (BODEN immer; DECKE gegen beheizt/
    Durchfahrt) muss zur BGF passen. Listet der Ausweis keine
