@@ -50,6 +50,12 @@ Fachlogik wie in der Web-App.
    Netto-/Steuer-/Bruttosumme und Hinweise der Vorschau zeigen. Die Serverwerte
    verwenden. Ein positiver Vertragsrabatt ersetzt Positionsrabatte; bei 0 oder
    fehlendem Vertragsrabatt gelten die angegebenen Positionsrabatte.
+   Kann der Client Karten anzeigen, zusätzlich `render_angebot_vorschau` mit
+   denselben Eingaben aufrufen: Die Karte zeigt den Entwurf mit Positionen,
+   Summen, fehlenden Angaben und Hinweisen. Bei Schreibrecht und vollständigen
+   Angaben kann der Nutzer dort mit „Als Entwurf anlegen“ direkt speichern.
+   Meldet die Karte per Nachricht ein angelegtes Angebot, dieses Ergebnis kurz
+   bestätigen und `angebot_anlegen` nicht erneut aufrufen.
 3. Auf Auftrag `angebot_anlegen` mit exakt denselben Vorschau-Eingaben und dem
    gelieferten `pruefcode` ausführen; zusätzlich eine neue UUID `anfrage_id` für
    diesen Speicherauftrag verwenden. Eine bloße Vorschau oder Berechnung nicht
