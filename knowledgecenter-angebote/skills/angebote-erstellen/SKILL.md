@@ -78,8 +78,35 @@ Fachlogik wie in der Web-App.
    geklärt, ist keine erneute allgemeine Bestätigung erforderlich.
 4. Nach Erfolg den gespeicherten Titel, Status und Betrag nennen und `web_url`
    anklickbar ausgeben. Das Ergebnis ist ein **Entwurf ohne Belegnummer**.
-   Zusätzliche Vorlagenfelder, Anhänge, Baustellenzuordnung, Nummernvergabe, PDF,
-   Versand und Änderungen bestehender Angebote werden im Web erledigt.
+   Zusätzliche Vorlagenfelder, Anhänge, Baustellenzuordnung, E-Mail-Versand und
+   Löschen werden im Web erledigt.
+
+## Gespeicherte Angebote bearbeiten, freigeben, PDF
+
+Alle Bearbeitungen brauchen Schreibrecht und den Status Entwurf oder In Prüfung.
+Vor jeder Änderung den aktuellen Stand mit `angebot_lesen` zeigen und den
+Auftrag bestätigen lassen. Je Auftrag eine neue UUID `anfrage_id`; bei Timeout
+denselben Auftrag mit derselben `anfrage_id` wiederholen, nie mit neuer UUID.
+Jede Antwort enthält den gespeicherten Stand mit **neuen Positionsnummern**;
+danach nicht mit alten Nummern weiterarbeiten.
+
+- `angebot_position_anlegen`: Position anhängen, optional `an_stelle`. Katalog
+  per `produkt_id` (Preis, Einheit, Steuer aus dem Katalog) oder frei mit
+  Bezeichnung, Menge, Einheit, Nettopreis und Steuersatz. Fehlende Angaben
+  werden gemeldet; nichts erraten.
+- `angebot_position_aendern` / `angebot_position_loeschen`: Position über
+  `position_nr` aus `angebot_lesen`; nur genannte Felder ändern. Löschen nur auf
+  ausdrücklichen Auftrag.
+- `angebot_aendern`: Titel, Datum, Gültigkeit (`null` entfernt), Notiz (`null`
+  entfernt) oder Kunde (`kunden_id` aus `kunden_suchen`; Positionen werden mit
+  dem Vertragsrabatt des neuen Kunden neu berechnet).
+- `angebot_status_setzen`: `draft`, `review`, `finalized`, `sent`, `cancelled`.
+  Beim Freigeben oder Versenden wird eine fehlende Belegnummer aus dem
+  Nummernkreis vergeben. Nur auf ausdrücklichen Auftrag; aus `sent` nur
+  `cancelled`, aus `cancelled` nichts. Der Status `sent` dokumentiert den
+  Versand, er verschickt nichts.
+- `angebot_pdf`: PDF des gespeicherten Stands mit Account-Branding, Download-
+  Link 24 Stunden gültig, anklickbar ausgeben. Kein E-Mail-Versand.
 
 Bei Timeout oder unklarer Speicherantwort einmal gezielt mit derselben
 `anfrage_id`, denselben Eingaben und demselben `pruefcode` wiederholen. Nie eine

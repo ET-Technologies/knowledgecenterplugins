@@ -1,7 +1,7 @@
 {
   "name": "knowledgecenter-angebote",
-  "version": "0.2.0",
-  "description": "Angebote in Knowledge Center vorbereiten: bestehende Kunden, Produkte und Vorlagen finden, Positionen mit der Web-Logik berechnen, als Karte im Chat prüfen und direkt aus der Karte oder auf Auftrag als Entwurf speichern. Gespeicherte Angebote suchen und als Karte anzeigen. Persönlicher Owner-Zugang mit Angebotsmodul; Fertigstellung in der Web-App.",
+  "version": "0.3.0",
+  "description": "Angebote in Knowledge Center vorbereiten: bestehende Kunden, Produkte und Vorlagen finden oder neu anlegen, Positionen mit der Web-Logik berechnen, als Karte im Chat prüfen und direkt aus der Karte oder auf Auftrag als Entwurf speichern. Gespeicherte Angebote suchen, als Karte anzeigen, Positionen und Kopfdaten ändern, freigeben mit Belegnummer und als PDF erzeugen. Persönlicher Owner-Zugang mit Angebotsmodul; E-Mail-Versand in der Web-App.",
   "author": {
     "name": "Entrich Technologies GmbH",
     "email": "erwin@entrich-technologies.com",
