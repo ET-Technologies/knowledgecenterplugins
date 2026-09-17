@@ -1,7 +1,7 @@
 {
   "name": "knowledgecenter-angebote",
-  "version": "0.1.0",
-  "description": "Angebote in Knowledge Center vorbereiten: bestehende Kunden, Produkte und Vorlagen finden, Positionen mit der Web-Logik berechnen und auf Auftrag als Entwurf speichern. Persönlicher Owner-Zugang mit Angebotsmodul.",
+  "version": "0.3.0",
+  "description": "Angebote in Knowledge Center vorbereiten: bestehende Kunden, Produkte und Vorlagen finden oder neu anlegen, Positionen mit der Web-Logik berechnen, als Karte im Chat prüfen und direkt aus der Karte oder auf Auftrag als Entwurf speichern. Gespeicherte Angebote suchen, als Karte anzeigen, Positionen und Kopfdaten ändern, freigeben mit Belegnummer und als PDF erzeugen. Persönlicher Owner-Zugang mit Angebotsmodul.",
   "author": {
     "name": "Entrich Technologies GmbH",
     "email": "erwin@entrich-technologies.com",
@@ -22,14 +22,16 @@
   "interface": {
     "displayName": "Angebote",
     "shortDescription": "Angebote vorbereiten, berechnen und als Entwurf speichern",
-    "longDescription": "Bestehende Kunden mit ihren Konditionen finden, passende Vorlagen und freigegebene Produkte auswählen. Katalogpositionen oder freie Leistungen zu einer Angebotsvorschau mit Mengen, Nettopreisen, Rabatt, Steuer und Gesamtsumme zusammenstellen. Auf Auftrag als Entwurf ohne Belegnummer speichern und in der Web-App öffnen. Nummernvergabe, PDF, Versand und Änderungen bestehender Angebote erfolgen in der Web-App.",
+    "longDescription": "Bestehende Kunden mit ihren Konditionen finden oder neue Kunden anlegen, passende Vorlagen und Produkte auswählen oder neue Artikel anlegen. Katalogpositionen oder freie Leistungen zu einer Angebotsvorschau mit Mengen, Nettopreisen, Rabatt, Steuer und Gesamtsumme zusammenstellen und als Karte im Chat prüfen. Mit einem Klick in der Karte oder auf Auftrag als Entwurf speichern. Gespeicherte Angebote suchen, als Karte anzeigen, Positionen hinzufügen, ändern oder entfernen, Kopfdaten und Kunde anpassen, freigeben mit automatischer Belegnummer und als PDF mit Download-Link erzeugen. E-Mail-Versand und Löschen erfolgen in der Web-App.",
     "developerName": "Entrich Technologies GmbH",
     "category": "Productivity",
     "capabilities": ["Read", "Write"],
     "websiteURL": "https://www.knowledgecenter.at",
     "privacyPolicyURL": "https://www.knowledgecenter.at/datenschutz",
     "defaultPrompt": [
-      "Bereite ein Angebot aus diesen Angaben vor",
+      "Bereite ein Angebot aus diesen Angaben vor und zeige es mir als Karte",
+      "Zeige mir das Angebot AN-2026-0042 als Karte",
+      "Füge dem Angebot Fenstertausch eine Anfahrtspauschale hinzu und erzeuge das PDF",
       "Welche Angebotsvorlagen stehen mir zur Verfügung?",
       "Suche einen Kunden und zeige mir seine Konditionen"
     ],
