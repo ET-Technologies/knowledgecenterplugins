@@ -18,20 +18,35 @@ Fachlogik wie in der Web-App.
   klären. `kunden_lesen` liefert Adresse, Ansprechpartner und Vertragsrabatt zur
   eindeutigen `kunden_id` (entspricht `partner_id` im Web). `weitere_seite` und
   bei Kontakten `weitere_ansprechpartner_seite` beachten. Ein Ladefehler bedeutet
-  weder „Kunde fehlt“ noch „kein Rabatt“. Kundenanlage und Stammdatenänderungen
-  erfolgen im Web.
+  weder „Kunde fehlt“ noch „kein Rabatt“.
+- **Neuer Kunde:** Findet die Suche den Kunden nicht, auf Auftrag `kunde_anlegen`
+  verwenden (Schreibrecht). Name ist Pflicht; Adresse, PLZ, Ort, Land (ISO-2,
+  Standard AT), E-Mail, Telefon, Kundennummer, Vertragsrabatt und Notiz nur aus
+  Nutzerangaben, nichts erfinden. Je Auftrag eine neue UUID `anfrage_id`, bei
+  Timeout dieselbe wiederholen. Ein gleichnamiger Kunde wird gemeldet; nur nach
+  Rückfrage `gleichnamigen_kunden_anlegen: true` setzen. Die gelieferte
+  `kunden_id` direkt für die Vorschau verwenden. Ansprechpartner und weitere
+  Stammdaten werden im Web gepflegt.
 - **Vorlage:** `angebotsvorlagen_auflisten` und `angebotsvorlage_lesen` verwenden.
   Die Auswahl enthält auch andere Belegarten: Eignung anhand Name und Struktur
   prüfen. Der konfigurierte Standard gilt, ohne Konfiguration `offer`.
   Einen ungültigen Standard nicht still ersetzen. Den ausgewählten `vorlage_slug`
   für Produktsuche, Vorschau und Speichern beibehalten. Vorlagenvorgaben sind
   keine bereits bestätigten Angebotsdaten.
-- **Produkte:** `produkte_suchen` und bei Bedarf `produkt_lesen` liefern aktive,
-  für die Vorlage freigegebene Produkte. Mehrdeutige Treffer anhand Artikelnummer
-  und ID klären; Suchseiten beachten. Bei Vorlagenwechsel Produktauswahl neu
-  prüfen. `produkt_id` und Katalogeinheit übernehmen. Preise sind Nettopreise in
+- **Produkte:** `produkte_suchen` und bei Bedarf `produkt_lesen` liefern alle
+  aktiven, nicht gelöschten Artikel des Accounts, unabhängig von der Vorlage. Das
+  Web-Feld „Verfügbar in Belegen“ betrifft nur den KI-Agenten-Prompt, nicht diese
+  Suche. Mehrdeutige Treffer anhand Artikelnummer und ID klären; Suchseiten
+  beachten. `produkt_id` und Katalogeinheit übernehmen. Preise sind Nettopreise in
   EUR vor Kundenrabatt. Bei `preismodus: manual` den Preis klären. Preise und
   Steuersätze nur auf Nutzerauftrag vom Katalog abweichend angeben.
+- **Neuer Artikel:** Findet die Suche nichts Passendes und soll der Artikel im
+  Katalog bleiben, auf Auftrag `produkt_anlegen` verwenden (Schreibrecht):
+  Artikelnummer, Name, Einheit (Name oder Kürzel einer vorhandenen Einheit) und
+  Verkaufspreis netto sind Pflicht; bei `preismodus: manual` entfällt der Preis.
+  Steuersatz Standard 20. Fehlende Angaben klären, nichts erfinden. Je Auftrag
+  eine neue UUID `anfrage_id`. Die gelieferte `produkt_id` direkt als Position
+  verwenden. Für eine einmalige Leistung genügt eine freie Position.
 - **Freie Positionen:** Ohne `produkt_id` sind `bezeichnung`, `menge`, `einheit`,
   `einzelpreis` und `steuersatz_prozent` erforderlich. Fehlende Mengen, Preise,
   Einheiten und Steuersätze klären. `null` ist unbekannt; `0` ist ein vorhandener
