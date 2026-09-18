@@ -82,7 +82,11 @@ Anleitung beschreibt die Abläufe.
    Treffern anhand Nummer, Titel, Kunde und Datum nachfragen; nie einfach den
    ersten nehmen. Den Nutzer nicht nach einer UUID fragen.
 2. **Stand zeigen.** `angebot_lesen`, mit Kartenunterstützung danach
-   `render_angebot`. Die Antwort liefert Positionsnummern für Schritt 4.
+   `render_angebot`. Die Antwort liefert Positionsnummern für Schritt 4. Bei
+   Schreibrecht und Status Entwurf oder In Prüfung kann der Nutzer direkt in
+   der Karte Positionen ändern, entfernen und hinzufügen sowie freigeben; nach
+   der Freigabe das PDF erzeugen. Jede Aktion aus der Karte meldet sich per
+   Nachricht; dann kurz bestätigen und mit dem gemeldeten Stand weiterarbeiten.
 3. **Status prüfen.** Ändern geht nur bei Entwurf oder In Prüfung. Bei
    Freigegeben den Nutzer fragen, ob das Angebot zurück auf Entwurf soll
    (`angebot_status_setzen` mit `draft`, die Nummer bleibt). Versendet und
@@ -128,6 +132,12 @@ Anleitung beschreibt die Abläufe.
   zeigen und fragen, ob der bestehende gemeint ist; nur nach ausdrücklicher
   Freigabe `gleichnamigen_kunden_anlegen: true`. Ansprechpartner und weitere
   Stammdaten pflegt der Nutzer im Web.
+- **Kunde ändern.** Falsche Adresse, fehlende E-Mail oder ein anderer
+  Vertragsrabatt: auf Auftrag `kunde_aendern` mit `kunden_id` und nur den
+  genannten Feldern (`null` entfernt ein optionales Feld). Gespeicherte Angebote
+  behalten ihre Adresse; ein geänderter Rabatt wirkt bei der nächsten
+  Neuberechnung, etwa einer Positionsänderung. Ein neuer Name, den ein anderer
+  Kunde trägt, wird gemeldet; nur nach Rückfrage `gleichnamigen_kunden_erlauben`.
 - **Artikel.** Erst `produkte_suchen`. Dann auf Auftrag `produkt_anlegen`:
   Artikelnummer (im Account eindeutig), Name, Einheit (Name oder Kürzel einer
   vorhandenen Einheit) und Verkaufspreis netto sind Pflicht; bei
