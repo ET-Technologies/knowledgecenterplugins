@@ -12,15 +12,15 @@ lesen `.codex-plugin/`. Eine registrierte ChatGPT-App wird, soweit vorhanden,
 Lediglich die MCP-Verbindung (`.mcp.json`), der Skill (`skills/`) und die Assets
 sind gemeinsam — der Server und der fachliche Arbeitsablauf sind dieselben.
 
-| Plugin                               | Bereich                                                                         | Voraussetzung                                |
-| ------------------------------------ | ------------------------------------------------------------------------------- | -------------------------------------------- |
-| `knowledgecenter-gutachten`          | Gutachten, Aktenvermerke, Protokolle, Stellungnahmen                            | Gutachten-Modul im Abo                       |
-| `knowledgecenter-energieausweis`     | Energieausweis-Projekte: Bauteile, Fenster, Konstruktionen, Ecotech-XML         | Energieausweis-Modul im Abo                  |
-| `knowledgecenter-buero-branding`     | Büroprofil, Briefpapier und Kontaktdaten                                        | Owner-Konto                                  |
-| `knowledgecenter-zeiterfassung`      | Ausschließlich eigene Arbeitszeiten starten, beenden und korrigieren            | Persönliches Owner-Konto in Version 1        |
-| `knowledgecenter-eingangsrechnungen` | Eingangsrechnungen prüfen, Fälligkeiten, Auswertungen und Zahlungsvermerke      | Owner-Konto mit Eingangsrechnungs-Modul      |
-| `knowledgecenter-baustellen`         | Baustellen zusammenfassen, Fotos, Chatnachrichten und neue Aufgaben             | Persönliches Owner-Konto mit Baustellenmodul |
-| `knowledgecenter-angebote`           | Kunden, Produkte und Vorlagen finden; Angebote prüfen und als Entwurf speichern | Persönliches Owner-Konto mit Angebotsmodul   |
+| Plugin                               | Bereich                                                                          | Voraussetzung                                |
+| ------------------------------------ | -------------------------------------------------------------------------------- | -------------------------------------------- |
+| `knowledgecenter-gutachten`          | Gutachten, Aktenvermerke, Protokolle, Stellungnahmen                             | Gutachten-Modul im Abo                       |
+| `knowledgecenter-energieausweis`     | Energieausweis-Projekte: Bauteile, Fenster, Konstruktionen, Ecotech-XML          | Energieausweis-Modul im Abo                  |
+| `knowledgecenter-buero-branding`     | Büroprofil, Briefpapier und Kontaktdaten                                         | Owner-Konto                                  |
+| `knowledgecenter-zeiterfassung`      | Ausschließlich eigene Arbeitszeiten starten, beenden und korrigieren             | Persönliches Owner-Konto in Version 1        |
+| `knowledgecenter-eingangsrechnungen` | Eingangsrechnungen prüfen, Fälligkeiten, Auswertungen und Zahlungsvermerke       | Owner-Konto mit Eingangsrechnungs-Modul      |
+| `knowledgecenter-baustellen`         | Baustellen zusammenfassen, Fotos, Chatnachrichten und neue Aufgaben              | Persönliches Owner-Konto mit Baustellenmodul |
+| `knowledgecenter-angebote`           | Angebote berechnen, als Karte prüfen, bearbeiten, freigeben und als PDF erzeugen | Persönliches Owner-Konto mit Angebotsmodul   |
 
 Weitere Bereiche folgen als eigene Plugins.
 
@@ -290,16 +290,33 @@ Das Paket enthält die Manifeste für Claude Code sowie ChatGPT/Codex, die
 gemeinsame MCP-Verbindung, den Skill `angebote-erstellen` und das Angebotsicon
 (256 × 256 Pixel, 6.942 Bytes), das als Icon und Logo eingebunden ist.
 
-| Werkzeug                     | Zweck                                                          |
-| ---------------------------- | -------------------------------------------------------------- |
-| `kunden_suchen`              | Bestehende Kunden finden und eindeutig auswählen               |
-| `kunden_lesen`               | Kundenadresse, Ansprechpartner und Vertragsrabatt lesen        |
-| `produkte_suchen`            | Für die gewählte Vorlage freigegebene Produkte finden          |
-| `produkt_lesen`              | Katalogpreis, Einheit, Steuer und Preismodus lesen             |
-| `angebotsvorlagen_auflisten` | Aktive Smart Templates und Standardvorlage anzeigen            |
-| `angebotsvorlage_lesen`      | Struktur, Textbausteine und Positionsspalten lesen             |
-| `angebot_vorschau`           | Angaben prüfen und mit der Web-Logik berechnen, ohne Speichern |
-| `angebot_anlegen`            | Geprüftes Angebot auf Auftrag als Entwurf speichern            |
+| Werkzeug                       | Zweck                                                          |
+| ------------------------------ | -------------------------------------------------------------- |
+| `kunden_suchen`                | Bestehende Kunden finden und eindeutig auswählen               |
+| `kunden_lesen`                 | Kundenadresse, Ansprechpartner und Vertragsrabatt lesen        |
+| `kunde_anlegen`                | Neuen Kunden auf Auftrag anlegen                               |
+| `kunde_aendern`                | Adresse, Kontakt oder Vertragsrabatt eines Kunden ändern       |
+| `produkte_suchen`              | Für die gewählte Vorlage freigegebene Produkte finden          |
+| `produkt_lesen`                | Katalogpreis, Einheit, Steuer und Preismodus lesen             |
+| `produkt_anlegen`              | Neuen Artikel auf Auftrag in den Katalog aufnehmen             |
+| `angebotsvorlagen_auflisten`   | Aktive Smart Templates und Standardvorlage anzeigen            |
+| `angebotsvorlage_lesen`        | Struktur, Textbausteine und Positionsspalten lesen             |
+| `angebot_vorschau`             | Angaben prüfen und mit der Web-Logik berechnen, ohne Speichern |
+| `angebot_anlegen`              | Geprüftes Angebot auf Auftrag als Entwurf speichern            |
+| `angebote_suchen`              | Gespeicherte Angebote über Nummer oder Titel finden            |
+| `angebot_lesen`                | Gespeichertes Angebot mit laufenden Positionsnummern lesen     |
+| `angebot_aendern`              | Titel, Datum, Gültigkeit, Notiz oder Kunde ändern              |
+| `angebot_position_anlegen`     | Position hinzufügen, optional an einer bestimmten Stelle       |
+| `angebot_position_aendern`     | Menge, Preis, Text, Einheit oder Steuer einer Position ändern  |
+| `angebot_position_loeschen`    | Position auf ausdrücklichen Auftrag entfernen                  |
+| `angebot_position_verschieben` | Reihenfolge ändern, ohne Mengen, Preise oder Summen            |
+| `angebot_status_setzen`        | Freigeben, Belegnummer vergeben, Versand dokumentieren         |
+| `angebot_pdf`                  | PDF des gespeicherten Stands als Download-Link erzeugen        |
+| `render_angebot_vorschau`      | Vorschau als Karte im Chat, Anlegen direkt aus der Karte       |
+| `render_angebot`               | Gespeichertes Angebot als Karte, mit Bearbeiten und Freigeben  |
+| `render_angebote_treffer`      | Angebotstreffer als antippbare Liste im Chat                   |
+| `render_kunden_treffer`        | Kundentreffer als antippbare Liste im Chat                     |
+| `render_kunde`                 | Kundenkarte mit Konditionen und den jüngsten Angeboten         |
 
 Benötigt einen persönlichen Owner-Zugang, das Angebotsmodul (`proposal`) und
 Leserecht; zum Anlegen zusätzlich Schreibrecht. Kunden und Produkte werden aus
@@ -309,16 +326,24 @@ Positionen in EUR, maximal 100 Positionen. Ein positiver Kundenvertragsrabatt
 ersetzt Positionsrabatte. Wiederholungen desselben Speicherauftrags verwenden
 dieselbe Anfrage-ID und erzeugen keinen zweiten Entwurf.
 
-Bestehende Angebote bearbeiten, zusätzliche Vorlagenfelder und Anhänge ergänzen,
-Baustellen zuordnen, Nummern vergeben, PDF erstellen und versenden erfolgen
-weiterhin in der Web-App. Das Plugin verlinkt den gespeicherten Entwurf.
+Gespeicherte Angebote lassen sich im Chat suchen, anzeigen, ändern, freigeben und
+als PDF erzeugen. Die Karte kennt vier Ansichten — Vorschau, gespeichertes
+Angebot, Trefferliste und Kundenkarte — und tauscht beim Antippen eines Treffers
+ihren Inhalt selbst aus, ohne weiteren Werkzeugaufruf. `render_angebote_treffer`
+und `render_kunden_treffer` suchen dafür selbst auf dem Server, damit keine vom
+Modell erfundenen Treffer in einer Karte landen.
 
-**Stand und Bereitstellung:** Das Paket ist im Arbeitsbranch vorbereitet; eine
-Installation ist noch kein Nachweis für einen bereitgestellten Webserver oder
-einen erfolgreichen Praxistest. Vor der Veröffentlichung zuerst den Ablauf
-Kundensuche → Vorschau → Entwurf → Web-Anzeige → Wiederholung in Preview prüfen.
-Die obigen Repository-Installationsbefehle setzen voraus, dass die Paketversion
-im verwendeten Marketplace veröffentlicht wurde.
+E-Mail-Versand, Löschen, Vorlagenwechsel, zusätzliche Vorlagenfelder, Anhänge und
+die Baustellenzuordnung erfolgen weiterhin in der Web-App. Das Plugin verlinkt
+den gespeicherten Beleg.
+
+**Stand und Bereitstellung:** Der Webstand mit dem Angebotsbereich ist in
+Produktion. Eine Installation ist weiterhin kein Nachweis für einen
+erfolgreichen Praxistest: Der Ablauf Kundensuche → Vorschau → Entwurf →
+Bearbeiten → Freigabe → PDF und das Antippen in den Trefferlisten gehören vor
+der Veröffentlichung einmal durchgespielt. Die obigen
+Repository-Installationsbefehle setzen voraus, dass die Paketversion im
+verwendeten Marketplace veröffentlicht wurde.
 
 Für Preview die URL in `knowledgecenter-angebote/.mcp.json` auf den tatsächlichen
 Preview-Server mit Pfad `/api/mcp/angebote` setzen. Die mitgelieferte URL
@@ -340,20 +365,29 @@ Die registrierte ChatGPT-App `asdk_app_6aa6e09cd21081918b858eab450d83c9` ist üb
 verknüpft. Diese Verknüpfung stellt den MCP-Server nicht bereit und ersetzt
 nicht die Anmeldung am verbundenen Knowledge-Center-Account.
 
-Bei der Prüfung am 13.09.2026 antworteten der Produktionsendpunkt
-`/api/mcp/angebote` und seine OAuth-Ressourcenmetadaten noch mit HTTP 404
-(unbekannter Bereich beziehungsweise unbekannte Ressource). Vor einem Test in
-ChatGPT muss der passende Webstand auf dem verwendeten Server bereitstehen.
-Nach der Anmeldung sollte `tools/list` bei freigeschaltetem Angebotsmodul und
-Lese-/Schreibrecht die acht oben genannten Werkzeuge liefern; mit reinem
-Leserecht entfällt `angebot_anlegen`.
+Bei der Prüfung am 19.09.2026 antwortete der Produktionsendpunkt
+`/api/mcp/angebote` ohne Anmeldung mit HTTP 401 und seine
+OAuth-Ressourcenmetadaten mit HTTP 200; der Endpunkt ist also erreichbar und
+verlangt die Anmeldung. Danach sollte `tools/list` bei freigeschaltetem
+Angebotsmodul und Lese-/Schreibrecht die 25 oben genannten Werkzeuge liefern;
+mit reinem Leserecht entfallen die schreibenden, darunter `angebot_anlegen`.
 
-Das Plugin arbeitet über Werkzeugaufrufe im Chat. Eine eigene Angebotsübersicht
-in ChatGPT sowie das Suchen und Auflisten bereits gespeicherter Angebote sind
-derzeit nicht enthalten. Als erster Lesetest eignet sich:
-„Welche Angebotsvorlagen stehen mir zur Verfügung?“
+Das Plugin arbeitet über Werkzeugaufrufe im Chat; die Karte ersetzt keine
+Angebotsübersicht in der Web-App. Als erster Lesetest eignet sich:
+„Welche Angebotsvorlagen stehen mir zur Verfügung?“ Für die Karte:
+„Zeig mir meine Angebote mit Fenster“ und einen Treffer antippen.
 
 ## Versionen
+
+- **Angebote 0.4.0** — Trefferlisten, Kundenkarte und Umsortieren in derselben
+  Karte: `render_angebote_treffer` und `render_kunden_treffer` zeigen Treffer als
+  antippbare Liste und suchen dafür selbst auf dem Server; `render_kunde` zeigt
+  Anschrift, Kontakt, Vertragsrabatt, Ansprechpartner und die fünf jüngsten
+  Angebote des Kunden; `angebot_position_verschieben` ändert ausschließlich die
+  Reihenfolge. Ein angetippter Treffer ersetzt den Inhalt der Karte an Ort und
+  Stelle, ohne weiteren Werkzeugaufruf. Der Skill `angebote-erstellen` nennt die
+  neuen Werkzeuge in den Grundregeln sowie in Ablauf 1 und 2. Keine neue
+  SQL-Migration, keine Änderung an Endpunkt oder Anmeldung.
 
 - **Angebote 0.1.0** — acht Werkzeuge für Kunden, Produktkatalog, Vorlagen,
   Angebotsvorschau und das Anlegen eines Entwurfs. Gemeinsamer Skill, MCP-Anbindung,

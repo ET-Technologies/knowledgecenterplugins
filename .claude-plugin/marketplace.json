@@ -5,7 +5,7 @@
   },
   "metadata": {
     "description": "Claude-Plugins für Knowledge Center — je Bereich ein Plugin, passend zum Abo (Gutachten, Energieausweis; weitere Bereiche folgen)",
-    "version": "1.9.0"
+    "version": "1.10.0"
   },
   "plugins": [
     {
@@ -41,7 +41,7 @@
     {
       "name": "knowledgecenter-angebote",
       "source": "./knowledgecenter-angebote",
-      "description": "Bestehende Kunden, Produkte und Vorlagen finden, Angebote mit der Web-Logik berechnen und auf Auftrag als Entwurf ohne Belegnummer speichern. Persönlicher Owner-Zugang mit Angebotsmodul; Fertigstellung in der Web-App."
+      "description": "Kunden, Produkte und Vorlagen finden, Angebote mit der Web-Logik berechnen und als Karte im Chat prüfen; gespeicherte Angebote und Kunden als antippbare Trefferliste suchen, Positionen ändern und umsortieren, freigeben mit Belegnummer und als PDF erzeugen. Persönlicher Owner-Zugang mit Angebotsmodul; E-Mail-Versand in der Web-App."
     }
   ]
 }

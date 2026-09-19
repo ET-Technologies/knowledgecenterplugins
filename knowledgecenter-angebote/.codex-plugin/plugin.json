@@ -1,7 +1,7 @@
 {
   "name": "knowledgecenter-angebote",
-  "version": "0.3.0",
-  "description": "Angebote in Knowledge Center vorbereiten: bestehende Kunden, Produkte und Vorlagen finden oder neu anlegen, Positionen mit der Web-Logik berechnen, als Karte im Chat prüfen und direkt aus der Karte oder auf Auftrag als Entwurf speichern. Gespeicherte Angebote suchen, als Karte anzeigen, Positionen und Kopfdaten ändern, freigeben mit Belegnummer und als PDF erzeugen. Persönlicher Owner-Zugang mit Angebotsmodul.",
+  "version": "0.4.0",
+  "description": "Angebote in Knowledge Center vorbereiten: bestehende Kunden, Produkte und Vorlagen finden oder neu anlegen, Positionen mit der Web-Logik berechnen, als Karte im Chat prüfen und direkt aus der Karte oder auf Auftrag als Entwurf speichern. Gespeicherte Angebote und Kunden als antippbare Trefferliste suchen, Angebot oder Kundenkarte anzeigen, Positionen und Kopfdaten ändern, Positionen umsortieren, freigeben mit Belegnummer und als PDF erzeugen. Persönlicher Owner-Zugang mit Angebotsmodul.",
   "author": {
     "name": "Entrich Technologies GmbH",
     "email": "erwin@entrich-technologies.com",
@@ -22,7 +22,7 @@
   "interface": {
     "displayName": "Angebote",
     "shortDescription": "Angebote vorbereiten, berechnen und als Entwurf speichern",
-    "longDescription": "Bestehende Kunden mit ihren Konditionen finden oder neue Kunden anlegen, passende Vorlagen und Produkte auswählen oder neue Artikel anlegen. Katalogpositionen oder freie Leistungen zu einer Angebotsvorschau mit Mengen, Nettopreisen, Rabatt, Steuer und Gesamtsumme zusammenstellen und als Karte im Chat prüfen. Mit einem Klick in der Karte oder auf Auftrag als Entwurf speichern. Gespeicherte Angebote suchen, als Karte anzeigen, Positionen hinzufügen, ändern oder entfernen, Kopfdaten und Kunde anpassen, freigeben mit automatischer Belegnummer und als PDF mit Download-Link erzeugen. E-Mail-Versand und Löschen erfolgen in der Web-App.",
+    "longDescription": "Bestehende Kunden mit ihren Konditionen finden oder neue Kunden anlegen, passende Vorlagen und Produkte auswählen oder neue Artikel anlegen. Katalogpositionen oder freie Leistungen zu einer Angebotsvorschau mit Mengen, Nettopreisen, Rabatt, Steuer und Gesamtsumme zusammenstellen und als Karte im Chat prüfen. Mit einem Klick in der Karte oder auf Auftrag als Entwurf speichern. Angebote und Kunden als antippbare Trefferliste suchen; ein Tippen öffnet das Angebot oder die Kundenkarte mit Anschrift, Vertragsrabatt, Ansprechpartnern und den jüngsten Angeboten in derselben Karte. Positionen hinzufügen, ändern, entfernen oder umsortieren, Kopfdaten und Kunde anpassen, freigeben mit automatischer Belegnummer und als PDF mit Download-Link erzeugen. E-Mail-Versand und Löschen erfolgen in der Web-App.",
     "developerName": "Entrich Technologies GmbH",
     "category": "Productivity",
     "capabilities": ["Read", "Write"],
@@ -33,7 +33,8 @@
       "Zeige mir das Angebot AN-2026-0042 als Karte",
       "Füge dem Angebot Fenstertausch eine Anfahrtspauschale hinzu und erzeuge das PDF",
       "Welche Angebotsvorlagen stehen mir zur Verfügung?",
-      "Suche einen Kunden und zeige mir seine Konditionen"
+      "Suche einen Kunden und zeige mir seine Konditionen",
+      "Zeig mir meine Angebote mit Fenster als Liste"
     ],
     "brandColor": "#FF6B4A",
     "composerIcon": "./assets/icon.png",
