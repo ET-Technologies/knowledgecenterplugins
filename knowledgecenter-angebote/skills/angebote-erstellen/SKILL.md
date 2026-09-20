@@ -53,10 +53,11 @@ Anleitung beschreibt die Abläufe.
    Kundenkarte schickt nur eine Nachricht ins Gespräch; angelegt wird nichts,
    weiter mit Schritt 2. Kein Treffer: auf Auftrag `kunde_anlegen`
    (Ablauf 4), die gelieferte `kunden_id` weiterverwenden.
-2. **Vorlage wählen.** Ohne Nutzerwunsch gilt die Standardvorlage aus
-   `angebotsvorlagen_auflisten` (`standard_vorlage_slug`). Die Liste enthält auch
-   andere Belegarten; Eignung anhand Name und Struktur prüfen, einen ungültigen
-   Standard melden statt still ersetzen. `angebotsvorlage_lesen` nur, wenn
+2. **Belegart wählen.** Ohne Nutzerwunsch gilt die Standardvorlage aus
+   `belegarten_auflisten` (`standard_vorlage_slug`). Die Liste enthält alle
+   Belegarten des Accounts — Angebot, Auftragsbestätigung, Lieferschein,
+   Rechnung, Aufmaß; Eignung anhand Name und Struktur prüfen, einen ungültigen
+   Standard melden statt still ersetzen. `belegart_lesen` nur, wenn
    Abschnitte oder Spalten relevant sind. Vorlagenvorgaben sind keine bestätigten
    Angebotsdaten.
 3. **Positionen sammeln.** Für jede Leistung zuerst `produkte_suchen`; bei

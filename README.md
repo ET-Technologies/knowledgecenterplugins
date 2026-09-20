@@ -299,8 +299,8 @@ gemeinsame MCP-Verbindung, den Skill `angebote-erstellen` und das Angebotsicon
 | `produkte_suchen`              | Für die gewählte Vorlage freigegebene Produkte finden          |
 | `produkt_lesen`                | Katalogpreis, Einheit, Steuer und Preismodus lesen             |
 | `produkt_anlegen`              | Neuen Artikel auf Auftrag in den Katalog aufnehmen             |
-| `angebotsvorlagen_auflisten`   | Aktive Smart Templates und Standardvorlage anzeigen            |
-| `angebotsvorlage_lesen`        | Struktur, Textbausteine und Positionsspalten lesen             |
+| `belegarten_auflisten`         | Aktive Belegarten und Standardvorlage anzeigen                 |
+| `belegart_lesen`               | Struktur, Textbausteine, Spalten und Darstellung lesen         |
 | `angebot_vorschau`             | Angaben prüfen und mit der Web-Logik berechnen, ohne Speichern |
 | `angebot_anlegen`              | Geprüftes Angebot auf Auftrag als Entwurf speichern            |
 | `angebote_suchen`              | Gespeicherte Angebote über Nummer oder Titel finden            |
@@ -378,6 +378,14 @@ Angebotsübersicht in der Web-App. Als erster Lesetest eignet sich:
 „Zeig mir meine Angebote mit Fenster“ und einen Treffer antippen.
 
 ## Versionen
+
+- **Angebote 0.5.0** — Werkzeugnamen folgen dem Web: `belegarten_auflisten`
+  und `belegart_lesen` statt `angebotsvorlagen_auflisten` und
+  `angebotsvorlage_lesen`. Die Liste heißt jetzt überall Belegarten, weil sie
+  Angebot, Auftragsbestätigung, Lieferschein, Rechnung und Aufmaß enthält.
+  `belegart_lesen` liefert zusätzlich die Darstellung (Briefkopf-Schalter,
+  Schrift, Folgeseiten), die im Web vom Angebotsdesign in die Belegart gezogen
+  ist; Logo, Firma, Adresse und Akzentfarbe kommen aus dem Büro-Branding.
 
 - **Angebote 0.4.0** — Trefferlisten, Kundenkarte und Umsortieren in derselben
   Karte: `render_angebote_treffer` und `render_kunden_treffer` zeigen Treffer als

@@ -1,6 +1,6 @@
 {
   "name": "knowledgecenter-angebote",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "Angebote in Knowledge Center vorbereiten: bestehende Kunden, Produkte und Vorlagen finden oder neu anlegen, Positionen mit der Web-Logik berechnen, als Karte im Chat prüfen und direkt aus der Karte oder auf Auftrag als Entwurf speichern. Gespeicherte Angebote und Kunden als antippbare Trefferliste suchen, Angebot oder Kundenkarte anzeigen, Positionen und Kopfdaten ändern, Positionen umsortieren, freigeben mit Belegnummer und als PDF erzeugen. Persönlicher Owner-Zugang mit Angebotsmodul.",
   "author": {
     "name": "Entrich Technologies GmbH",
