@@ -81,8 +81,10 @@ Anleitung beschreibt die Abläufe.
    `anfrage_id`. Ist das Anlegen bereits eindeutig beauftragt und alles geklärt,
    keine weitere allgemeine Rückfrage. Ändern sich Kunde, Katalog, Vorlage oder
    Eingaben, neue Vorschau; Konflikte nie mit einem erfundenen Prüfcode umgehen.
-7. **Ergebnis.** Titel, Status und Betrag nennen, `web_url` ausgeben. Das
-   Ergebnis ist ein Entwurf ohne Belegnummer; Freigabe und PDF in Ablauf 3.
+7. **Ergebnis.** Titel, Status, Betrag und Belegnummer nennen, `web_url`
+   ausgeben. Das Ergebnis ist ein Entwurf; die Belegnummer vergibt der Server
+   beim Speichern, sofern die Belegart das so vorsieht — sie ist nichts, was
+   sich erfragen oder setzen liesse. Freigabe und PDF in Ablauf 3.
 
 ## Ablauf 2: Bestehendes Angebot ändern
 
@@ -128,8 +130,9 @@ Anleitung beschreibt die Abläufe.
 1. **Stand zeigen** wie in Ablauf 2 Schritt 2 und den Auftrag bestätigen lassen.
 2. **Status setzen.** `angebot_status_setzen` mit `review` (In Prüfung),
    `finalized` (Freigegeben), `sent` (Versendet) oder `cancelled` (Storniert).
-   Beim Wechsel auf `finalized` oder `sent` vergibt der Server eine fehlende
-   Belegnummer aus dem Nummernkreis; die Nummer aus der Antwort nennen. Erlaubt:
+   Hat der Beleg noch keine Nummer, vergibt der Server sie spätestens beim
+   Wechsel auf `finalized` oder `sent`; die Nummer aus der Antwort nennen.
+   Erlaubt:
    zwischen `draft`, `review`, `finalized` beliebig; `finalized` → `sent`; aus
    `sent` nur `cancelled`; aus `cancelled` nichts. `sent` dokumentiert den
    Versand, es wird nichts verschickt.

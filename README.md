@@ -310,7 +310,7 @@ gemeinsame MCP-Verbindung, den Skill `angebote-erstellen` und das Angebotsicon
 | `angebot_position_aendern`     | Menge, Preis, Text, Einheit oder Steuer einer Position ändern  |
 | `angebot_position_loeschen`    | Position auf ausdrücklichen Auftrag entfernen                  |
 | `angebot_position_verschieben` | Reihenfolge ändern, ohne Mengen, Preise oder Summen            |
-| `angebot_status_setzen`        | Freigeben, Belegnummer vergeben, Versand dokumentieren         |
+| `angebot_status_setzen`        | Freigeben und Versand dokumentieren; Nummer kommt vom Server   |
 | `angebot_pdf`                  | PDF des gespeicherten Stands als Download-Link erzeugen        |
 | `render_angebot_vorschau`      | Vorschau als Karte im Chat, Anlegen direkt aus der Karte       |
 | `render_angebot`               | Gespeichertes Angebot als Karte, mit Bearbeiten und Freigeben  |
@@ -378,6 +378,12 @@ Angebotsübersicht in der Web-App. Als erster Lesetest eignet sich:
 „Zeig mir meine Angebote mit Fenster“ und einen Treffer antippen.
 
 ## Versionen
+
+- **Angebote 0.6.0** — Die Belegnummer vergibt der Server. Sie entsteht beim
+  Speichern in der Datenbank, je Belegart schon beim Anlegen (Angebot, Aufmaß)
+  oder erst bei der Freigabe (Rechnung, Lieferschein, Auftragsbestätigung).
+  `angebot_status_setzen` setzt nur noch den Status und meldet die Nummer;
+  setzen lässt sie sich über MCP nicht mehr, auch nicht aus einem Diktat.
 
 - **Angebote 0.5.0** — Werkzeugnamen folgen dem Web: `belegarten_auflisten`
   und `belegart_lesen` statt `angebotsvorlagen_auflisten` und
