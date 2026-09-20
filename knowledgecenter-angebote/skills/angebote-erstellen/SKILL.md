@@ -53,10 +53,11 @@ Anleitung beschreibt die Abläufe.
    Kundenkarte schickt nur eine Nachricht ins Gespräch; angelegt wird nichts,
    weiter mit Schritt 2. Kein Treffer: auf Auftrag `kunde_anlegen`
    (Ablauf 4), die gelieferte `kunden_id` weiterverwenden.
-2. **Vorlage wählen.** Ohne Nutzerwunsch gilt die Standardvorlage aus
-   `angebotsvorlagen_auflisten` (`standard_vorlage_slug`). Die Liste enthält auch
-   andere Belegarten; Eignung anhand Name und Struktur prüfen, einen ungültigen
-   Standard melden statt still ersetzen. `angebotsvorlage_lesen` nur, wenn
+2. **Belegart wählen.** Ohne Nutzerwunsch gilt die Standardvorlage aus
+   `belegarten_auflisten` (`standard_vorlage_slug`). Die Liste enthält alle
+   Belegarten des Accounts — Angebot, Auftragsbestätigung, Lieferschein,
+   Rechnung, Aufmaß; Eignung anhand Name und Struktur prüfen, einen ungültigen
+   Standard melden statt still ersetzen. `belegart_lesen` nur, wenn
    Abschnitte oder Spalten relevant sind. Vorlagenvorgaben sind keine bestätigten
    Angebotsdaten.
 3. **Positionen sammeln.** Für jede Leistung zuerst `produkte_suchen`; bei
@@ -80,8 +81,10 @@ Anleitung beschreibt die Abläufe.
    `anfrage_id`. Ist das Anlegen bereits eindeutig beauftragt und alles geklärt,
    keine weitere allgemeine Rückfrage. Ändern sich Kunde, Katalog, Vorlage oder
    Eingaben, neue Vorschau; Konflikte nie mit einem erfundenen Prüfcode umgehen.
-7. **Ergebnis.** Titel, Status und Betrag nennen, `web_url` ausgeben. Das
-   Ergebnis ist ein Entwurf ohne Belegnummer; Freigabe und PDF in Ablauf 3.
+7. **Ergebnis.** Titel, Status, Betrag und Belegnummer nennen, `web_url`
+   ausgeben. Das Ergebnis ist ein Entwurf; die Belegnummer vergibt der Server
+   beim Speichern, sofern die Belegart das so vorsieht — sie ist nichts, was
+   sich erfragen oder setzen liesse. Freigabe und PDF in Ablauf 3.
 
 ## Ablauf 2: Bestehendes Angebot ändern
 
@@ -127,8 +130,9 @@ Anleitung beschreibt die Abläufe.
 1. **Stand zeigen** wie in Ablauf 2 Schritt 2 und den Auftrag bestätigen lassen.
 2. **Status setzen.** `angebot_status_setzen` mit `review` (In Prüfung),
    `finalized` (Freigegeben), `sent` (Versendet) oder `cancelled` (Storniert).
-   Beim Wechsel auf `finalized` oder `sent` vergibt der Server eine fehlende
-   Belegnummer aus dem Nummernkreis; die Nummer aus der Antwort nennen. Erlaubt:
+   Hat der Beleg noch keine Nummer, vergibt der Server sie spätestens beim
+   Wechsel auf `finalized` oder `sent`; die Nummer aus der Antwort nennen.
+   Erlaubt:
    zwischen `draft`, `review`, `finalized` beliebig; `finalized` → `sent`; aus
    `sent` nur `cancelled`; aus `cancelled` nichts. `sent` dokumentiert den
    Versand, es wird nichts verschickt.
