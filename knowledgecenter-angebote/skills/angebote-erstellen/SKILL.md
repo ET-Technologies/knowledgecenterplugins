@@ -1,6 +1,6 @@
 ---
 name: angebote-erstellen
-description: Angebote in Knowledge Center erstellen, bearbeiten, freigeben und als PDF erzeugen. Kunden und Artikel finden oder anlegen, Positionen mit der Web-Logik berechnen, als Karte im Chat prüfen und speichern. Treffer als antippbare Liste, Kunden als Karte mit Konditionen, Positionen umsortieren. Für den verbundenen Account mit Angebotsmodul; E-Mail-Versand und Löschen erfolgen in der Web-App.
+description: Angebote in Knowledge Center erstellen, bearbeiten, freigeben und als PDF erzeugen. Verwenden, wenn der Nutzer ein Angebot oder einen Kostenvoranschlag schreiben, für einen Kunden kalkulieren, ein bestehendes Angebot suchen, ändern, als Vorlage kopieren, freigeben oder als PDF haben möchte, oder nach Kunden, Artikeln, Preisen und Belegarten für ein Angebot fragt – etwa „Mach ein Angebot für Huber über 3 Fenster“, „Zeig mir das Angebot AN-2026-0044“ oder „Welche Angebote habe ich für Müller?“. E-Mail-Versand und Löschen erfolgen in der Web-App.
 ---
 
 # Angebote in Knowledge Center
@@ -19,8 +19,8 @@ Anleitung beschreibt die Abläufe.
   ist unbekannt; `0` ist ein echter Nullwert und bleibt `0`.
 - **Serverwerte zeigen.** Summen, Rabatte und Nummern immer aus der Antwort
   übernehmen, nie selbst rechnen.
-- **Schreiben nur auf Auftrag.** Anlegen, Ändern, Löschen, Status und Nummer
-  nur, wenn der Nutzer es eindeutig beauftragt hat. Vorher den betroffenen Stand
+- **Schreiben nur auf Auftrag.** Anlegen, Ändern, Löschen und Status nur, wenn
+  der Nutzer es eindeutig beauftragt hat. Vorher den betroffenen Stand
   zeigen.
 - **Anfrage-ID.** Jeder Schreibauftrag bekommt eine neue UUID `anfrage_id`. Bei
   Timeout oder unklarer Antwort denselben Auftrag mit derselben `anfrage_id` und
@@ -34,9 +34,11 @@ Anleitung beschreibt die Abläufe.
   Kundenkarten; beim Antippen eines Eintrags tauscht sie ihren Inhalt selbst
   aus, ohne weiteren Werkzeugaufruf. In der Vorschau-Karte kann der Nutzer selbst
   Positionen aus dem Katalog oder frei hinzufügen und den Entwurf anlegen.
-  Meldet eine Karte per Nachricht ein angelegtes Angebot, kurz bestätigen und
-  nicht erneut anlegen; meldet sie eine erweiterte Vorschau mit neuem
-  `pruefcode`, mit dieser weiterarbeiten, nicht mit der vorherigen. Ohne
+  Einzelne Bearbeitungen in der Karte erscheinen nicht als Nachricht, sondern
+  still als Kartenstand im Kontext: beim nächsten Auftrag diesen Stand verwenden
+  (neue Positionsnummern; bei der Vorschau den neuen `pruefcode` und die
+  gemeldeten Eingaben), nicht den vorherigen. Anlegen, Freigabe und PDF meldet
+  die Karte per Nachricht: kurz bestätigen und nicht wiederholen. Ohne
   Kartenunterstützung die Daten als Text zusammenfassen.
 - Standardmäßig auf Deutsch antworten. `web_url` aus Antworten anklickbar
   ausgeben.
@@ -86,6 +88,27 @@ Anleitung beschreibt die Abläufe.
    beim Speichern, sofern die Belegart das so vorsieht — sie ist nichts, was
    sich erfragen oder setzen liesse. Freigabe und PDF in Ablauf 3.
 
+## Ablauf 1a: Neues Angebot nach Vorlage
+
+Wünscht der Nutzer ein Angebot „wie das letzte für Huber“ oder „dasselbe für
+Müller“:
+
+1. **Vorlage finden** wie in Ablauf 2 Schritt 1 (`angebote_suchen`, bei
+   mehreren Treffern nachfragen). Der Status der Vorlage spielt keine Rolle.
+2. **Kopie vorbereiten.** `angebot_kopie_vorschau` mit `angebot_id` der
+   Vorlage und `datum` (relative Angaben in Europe/Vienna auflösen). Nur auf
+   Wunsch `kunden_id` (anderer Kunde, vorher `kunden_suchen`), `titel`,
+   `gueltig_bis` oder `notiz` (`null` ohne Notiz). `preise` bleibt `katalog`
+   (aktuelle Katalogpreise); `wie_vorlage` nur, wenn der Nutzer die alten
+   Preise ausdrücklich will. Das Werkzeug schreibt nichts und zeigt die Kopie
+   als Vorschau-Karte; die Hinweise nennen, was sich gegenüber der Vorlage
+   geändert hat (z. B. Artikel nicht mehr im Katalog).
+3. **Anpassen und anlegen** wie in Ablauf 1 ab Schritt 5: Änderungen an
+   Positionen mit `render_angebot_vorschau` und den gelieferten Eingaben,
+   Anlegen über die Karte oder auf Auftrag mit `angebot_anlegen`, genau diesen
+   Eingaben und dem `pruefcode`. In der gespeicherten Karte startet „Als
+   Vorlage kopieren“ denselben Ablauf mit dem heutigen Datum.
+
 ## Ablauf 2: Bestehendes Angebot ändern
 
 1. **Angebot finden.** `angebote_suchen` mit Nummer oder Titel. Bei mehreren
@@ -98,15 +121,19 @@ Anleitung beschreibt die Abläufe.
    stehen nur dort. Bei genau einem Treffer gleich zu Schritt 2. Den Nutzer
    nicht nach einer UUID fragen.
 2. **Stand zeigen.** `angebot_lesen`, mit Kartenunterstützung danach
-   `render_angebot`. Die Antwort liefert Positionsnummern für Schritt 4. Bei
-   Schreibrecht und Status Entwurf oder In Prüfung kann der Nutzer direkt in
-   der Karte Positionen ändern, entfernen und hinzufügen sowie freigeben; nach
-   der Freigabe das PDF erzeugen. Jede Aktion aus der Karte meldet sich per
-   Nachricht; dann kurz bestätigen und mit dem gemeldeten Stand weiterarbeiten.
-3. **Status prüfen.** Ändern geht nur bei Entwurf oder In Prüfung. Bei
-   Freigegeben den Nutzer fragen, ob das Angebot zurück auf Entwurf soll
-   (`angebot_status_setzen` mit `draft`, die Nummer bleibt). Versendet und
-   Storniert sind im Chat nicht änderbar; auf die Web-App verweisen.
+   `render_angebot`. Die Antwort liefert Positionsnummern und Steuersätze für
+   Schritt 4, dazu Gültigkeit und Notiz. Bei Schreibrecht und Status Entwurf
+   oder In Prüfung kann der Nutzer direkt in der Karte Positionen ändern,
+   entfernen, hinzufügen und verschieben, Kopfdaten (Titel, Datum, Gültigkeit,
+   Notiz) ändern und freigeben; nach der Freigabe das PDF erzeugen. Mit
+   Schreibrecht bietet die Karte in jedem Status „Als Vorlage kopieren“
+   (Ablauf 1a).
+3. **Status prüfen.** Positionen und Kopfdaten lassen sich nur bei Entwurf
+   oder In Prüfung ändern. Bei Freigegeben den Nutzer fragen, ob das Angebot
+   zurück auf Entwurf soll (`angebot_status_setzen` mit `draft`, die Nummer
+   bleibt). Ein versendetes Angebot lässt sich nur noch stornieren, ein
+   storniertes gar nicht mehr ändern; inhaltliche Änderungen dann in der
+   Web-App.
 4. **Ändern.** Auf Auftrag genau ein Werkzeug je Änderung:
    - `angebot_position_anlegen`: neue Position wie in Ablauf 1 Schritt 3,
      optional `an_stelle`.
@@ -134,12 +161,14 @@ Anleitung beschreibt die Abläufe.
    Wechsel auf `finalized` oder `sent`; die Nummer aus der Antwort nennen.
    Erlaubt:
    zwischen `draft`, `review`, `finalized` beliebig; `finalized` → `sent`; aus
-   `sent` nur `cancelled`; aus `cancelled` nichts. `sent` dokumentiert den
+   `draft`, `review`, `finalized` und `sent` jeweils → `cancelled`; aus
+   `cancelled` nichts. `sent` dokumentiert den
    Versand, es wird nichts verschickt.
 3. **PDF.** `angebot_pdf` liefert einen 24 Stunden gültigen Download-Link zum
-   PDF des gespeicherten Stands. Den Link anklickbar ausgeben. Trägt der Beleg
-   noch keine Nummer, vergibt die Belegart sie erst bei der Freigabe — dann
-   zuerst freigeben.
+   PDF des gespeicherten Stands, auch für einen Entwurf. Den Link anklickbar
+   ausgeben. Trägt der Beleg noch keine Nummer, hat auch das PDF keine; wünscht
+   der Nutzer ein versandfertiges PDF mit Belegnummer, auf Auftrag zuerst
+   freigeben.
 4. **Aussehen des PDFs.** Briefkopf, Logo, Akzentfarbe und Pflichtangaben
    stammen aus dem Büro-Branding des Accounts; welche davon erscheinen und in
    welcher Schrift, steht in der Darstellung der Belegart. Beides ist im Chat
@@ -172,11 +201,3 @@ Anleitung beschreibt die Abläufe.
   Server eine vergebene Artikelnummer, den bestehenden Artikel anbieten. Der
   Artikel ist im Chat sofort suchbar; das Web-Feld „Verfügbar in Belegen“
   betrifft nur den KI-Agenten und bleibt optional.
-
-## Verbindung
-
-Nach Bereitstellung des Webservers:
-`https://www.knowledgecenter.at/api/mcp/angebote`, mit OAuth wie bei den anderen
-KnowledgeCenter-Plugins. Eine Preview-Verbindung muss auf den ausdrücklich
-konfigurierten Preview-Server zeigen. Aus der Installation des Pakets allein
-keine erfolgreiche Verbindung oder Bereitstellung ableiten.

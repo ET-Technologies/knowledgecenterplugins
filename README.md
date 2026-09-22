@@ -112,7 +112,7 @@ Server-Adresse des gewünschten Bereichs eintragen:
 - Zeiterfassung: `https://www.knowledgecenter.at/api/mcp/zeiterfassung`
 - Eingangsrechnungen (nach Web-Bereitstellung): `https://www.knowledgecenter.at/api/mcp/eingangsrechnungen`
 - Baustellen (nach Web-Bereitstellung): `https://www.knowledgecenter.at/api/mcp/baustellen`
-- Angebote (nach Web-Bereitstellung): `https://www.knowledgecenter.at/api/mcp/angebote`
+- Angebote: `https://www.knowledgecenter.at/api/mcp/angebote`
 
 ChatGPT öffnet anschließend die Anmeldung bei Knowledge Center.
 
@@ -296,7 +296,7 @@ gemeinsame MCP-Verbindung, den Skill `angebote-erstellen` und das Angebotsicon
 | `kunden_lesen`                 | Kundenadresse, Ansprechpartner und Vertragsrabatt lesen        |
 | `kunde_anlegen`                | Neuen Kunden auf Auftrag anlegen                               |
 | `kunde_aendern`                | Adresse, Kontakt oder Vertragsrabatt eines Kunden ändern       |
-| `produkte_suchen`              | Für die gewählte Vorlage freigegebene Produkte finden          |
+| `produkte_suchen`              | Katalogartikel nach Name oder Artikelnummer finden             |
 | `produkt_lesen`                | Katalogpreis, Einheit, Steuer und Preismodus lesen             |
 | `produkt_anlegen`              | Neuen Artikel auf Auftrag in den Katalog aufnehmen             |
 | `belegarten_auflisten`         | Aktive Belegarten und Standardvorlage anzeigen                 |
@@ -305,6 +305,7 @@ gemeinsame MCP-Verbindung, den Skill `angebote-erstellen` und das Angebotsicon
 | `angebot_anlegen`              | Geprüftes Angebot auf Auftrag als Entwurf speichern            |
 | `angebote_suchen`              | Gespeicherte Angebote über Nummer oder Titel finden            |
 | `angebot_lesen`                | Gespeichertes Angebot mit laufenden Positionsnummern lesen     |
+| `angebot_kopie_vorschau`       | Gespeichertes Angebot als Vorlage für ein neues vorbereiten    |
 | `angebot_aendern`              | Titel, Datum, Gültigkeit, Notiz oder Kunde ändern              |
 | `angebot_position_anlegen`     | Position hinzufügen, optional an einer bestimmten Stelle       |
 | `angebot_position_aendern`     | Menge, Preis, Text, Einheit oder Steuer einer Position ändern  |
@@ -378,6 +379,17 @@ Angebotsübersicht in der Web-App. Als erster Lesetest eignet sich:
 „Zeig mir meine Angebote mit Fenster“ und einen Treffer antippen.
 
 ## Versionen
+
+- **Angebote 0.7.0** — Die Angebotskarte zeigt je Position den Steuersatz, dazu
+  Gültigkeit und Notiz, und ändert Kopfdaten (Titel, Datum, Gültigkeit, Notiz)
+  selbst. Neu: `angebot_kopie_vorschau` und der Knopf „Als Vorlage kopieren“
+  machen aus einem gespeicherten Angebot eine neue Vorschau (schreibt nichts,
+  aktuelle Katalogpreise, kein Vertragsrabatt des alten Kunden); angelegt wird
+  wie bei jeder Vorschau. Einzelne Bearbeitungen in der Karte gehen still als Kartenstand in den
+  Kontext statt als Chatnachricht; Anlegen, Freigabe und PDF meldet sie weiter
+  per Nachricht. Der Skill löst bei Formulierungen wie „Angebot schreiben“ oder
+  „Kostenvoranschlag“ aus und beschreibt Statuswechsel und PDF ohne
+  Widersprüche.
 
 - **Angebote 0.6.0** — Die Belegnummer vergibt der Server. Sie entsteht beim
   Speichern in der Datenbank, je Belegart schon beim Anlegen (Angebot, Aufmaß)
