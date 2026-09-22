@@ -380,6 +380,12 @@ Angebotsübersicht in der Web-App. Als erster Lesetest eignet sich:
 
 ## Versionen
 
+- **Angebote 0.8.0** — Bearbeitungen tragen den gezeigten Stand
+  (`erwartet_stand` aus `stand` von `angebot_lesen` oder der letzten Antwort).
+  Wurde das Angebot inzwischen geändert, etwa in der Web-App umsortiert,
+  speichert der Server nichts, statt eine Positionsnummer auf eine andere
+  Position anzuwenden; der Skill beschreibt, wie dann neu gelesen wird.
+
 - **Angebote 0.7.0** — Die Angebotskarte zeigt je Position den Steuersatz, dazu
   Gültigkeit und Notiz, und ändert Kopfdaten (Titel, Datum, Gültigkeit, Notiz)
   selbst. Neu: `angebot_kopie_vorschau` und der Knopf „Als Vorlage kopieren“
