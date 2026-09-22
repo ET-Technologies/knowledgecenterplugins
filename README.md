@@ -303,7 +303,7 @@ gemeinsame MCP-Verbindung, den Skill `angebote-erstellen` und das Angebotsicon
 | `belegart_lesen`               | Struktur, Textbausteine, Spalten und Darstellung lesen         |
 | `angebot_vorschau`             | Angaben prüfen und mit der Web-Logik berechnen, ohne Speichern |
 | `angebot_anlegen`              | Geprüftes Angebot auf Auftrag als Entwurf speichern            |
-| `angebote_suchen`              | Gespeicherte Angebote über Nummer oder Titel finden            |
+| `angebote_suchen`              | Angebote suchen, nach Status, Kunde, Datum filtern             |
 | `angebot_lesen`                | Gespeichertes Angebot mit laufenden Positionsnummern lesen     |
 | `angebot_kopie_vorschau`       | Gespeichertes Angebot als Vorlage für ein neues vorbereiten    |
 | `angebot_aendern`              | Titel, Datum, Gültigkeit, Notiz oder Kunde ändern              |
@@ -379,6 +379,13 @@ Angebotsübersicht in der Web-App. Als erster Lesetest eignet sich:
 „Zeig mir meine Angebote mit Fenster“ und einen Treffer antippen.
 
 ## Versionen
+
+- **Angebote 0.9.0** — Angebotssuche mit Filtern: `angebote_suchen` und
+  `render_angebote_treffer` filtern nach Status, Kunde, Angebotsdatum und
+  Gültigkeit und sortieren nach Datum oder Betrag; Anzahl (`gesamt`) und
+  Bruttosumme (`summe_brutto`) aller Treffer rechnet der Server. Neuer
+  Skill-Ablauf „Überblick und Nachfassen“; die Kundenkarte zeigt alle Angebote
+  des Kunden.
 
 - **Angebote 0.8.0** — Bearbeitungen tragen den gezeigten Stand
   (`erwartet_stand` aus `stand` von `angebot_lesen` oder der letzten Antwort).
