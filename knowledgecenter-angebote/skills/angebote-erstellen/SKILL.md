@@ -1,6 +1,6 @@
 ---
 name: angebote-erstellen
-description: Angebote in Knowledge Center erstellen, bearbeiten, freigeben und als PDF erzeugen. Verwenden, wenn der Nutzer ein Angebot oder einen Kostenvoranschlag schreiben, für einen Kunden kalkulieren, ein bestehendes Angebot suchen, ändern, als Vorlage kopieren, freigeben oder als PDF haben möchte, oder nach Kunden, Artikeln, Preisen und Belegarten für ein Angebot fragt – etwa „Mach ein Angebot für Huber über 3 Fenster“, „Zeig mir das Angebot AN-2026-0044“ oder „Welche Angebote habe ich für Müller?“. E-Mail-Versand und Löschen erfolgen in der Web-App.
+description: Angebote in Knowledge Center erstellen, bearbeiten, freigeben und als PDF erzeugen. Verwenden, wenn der Nutzer ein Angebot oder einen Kostenvoranschlag schreiben, für einen Kunden kalkulieren, ein bestehendes Angebot suchen, ändern, als Vorlage kopieren, offene oder versendete Angebote nachfassen, freigeben oder als PDF haben möchte, oder nach Kunden, Artikeln, Preisen und Belegarten für ein Angebot fragt – etwa „Mach ein Angebot für Huber über 3 Fenster“, „Zeig mir das Angebot AN-2026-0044“ oder „Welche Angebote habe ich für Müller?“. E-Mail-Versand und Löschen erfolgen in der Web-App.
 ---
 
 # Angebote in Knowledge Center
@@ -120,8 +120,8 @@ Müller“:
 1. **Angebot finden.** `angebote_suchen` mit Nummer oder Titel. Bei mehreren
    Treffern anhand Nummer, Titel, Kunde und Datum nachfragen; nie einfach den
    ersten nehmen. Mit Kartenunterstützung stattdessen
-   `render_angebote_treffer` mit demselben Suchtext: Die Liste zeigt Nummer,
-   Kunde, Datum und Status, ist antippbar und lädt das gewählte Angebot selbst
+   `render_angebote_treffer` mit denselben Angaben: Die Liste zeigt Nummer,
+   Kunde, Datum, Status und Betrag, ist antippbar und lädt das gewählte Angebot selbst
    in dieselbe Karte. Soll danach etwas geändert werden, trotzdem
    `angebot_lesen` aufrufen — die laufenden Positionsnummern für Schritt 4
    stehen nur dort. Bei genau einem Treffer gleich zu Schritt 2. Den Nutzer
@@ -160,6 +160,30 @@ Müller“:
    aus der letzten Antwort verwenden. Stößt die Karte auf einen geänderten
    Stand, lädt sie den aktuellen selbst nach und meldet ihn still als
    Kartenstand.
+
+## Ablauf 2a: Überblick und Nachfassen
+
+Für Fragen wie „Welche versendeten Angebote sind älter als 14 Tage?“,
+„Welche Angebote sind abgelaufen?“ oder „Alle Angebote von Huber“:
+
+1. **Filtern.** `angebote_suchen` (mit Kartenunterstützung
+   `render_angebote_treffer` mit denselben Angaben), Suchtext optional:
+   - `status`: z. B. `["sent"]` für versendete, `["draft","review"]` für offene
+     Entwürfe.
+   - `kunden_id` aus `kunden_suchen` für die Angebote eines Kunden; in der
+     Kundenkarte zeigt „Alle Angebote dieses Kunden“ dasselbe.
+   - `datum_von` / `datum_bis` für das Angebotsdatum; „älter als 14 Tage“
+     heißt `datum_bis` = heute minus 14 Tage (Europe/Vienna).
+   - `gueltig_bis_bis` = heute für abgelaufene Angebote.
+   - `sortierung`: `neueste` (Standard), `aelteste` oder `betrag`.
+     Ohne Suchtext und Filter kommen die neuesten Angebote.
+2. **Zahlen nur vom Server.** Anzahl und Gesamtbetrag ausschließlich aus
+   `gesamt` und `summe_brutto` nennen, nie aus den Treffern einer Seite
+   addieren. Ist `summe_brutto` `null`, keine Summe nennen und das so sagen.
+   `weitere_seite` beachten, bevor von „allen“ Angeboten gesprochen wird.
+3. **Weiter.** Ein Treffer lässt sich wie in Ablauf 2 öffnen und bearbeiten.
+   Nachfassen per E-Mail geschieht in der Web-App; `sent` dokumentiert nur den
+   Versand.
 
 ## Ablauf 3: Freigeben, Nummer, PDF
 
