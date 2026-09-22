@@ -1,6 +1,6 @@
 ---
 name: angebote-erstellen
-description: Angebote in Knowledge Center erstellen, bearbeiten, freigeben und als PDF erzeugen. Verwenden, wenn der Nutzer ein Angebot oder einen Kostenvoranschlag schreiben, für einen Kunden kalkulieren, ein bestehendes Angebot suchen, ändern, freigeben oder als PDF haben möchte, oder nach Kunden, Artikeln, Preisen und Belegarten für ein Angebot fragt – etwa „Mach ein Angebot für Huber über 3 Fenster“, „Zeig mir das Angebot AN-2026-0044“ oder „Welche Angebote habe ich für Müller?“. E-Mail-Versand und Löschen erfolgen in der Web-App.
+description: Angebote in Knowledge Center erstellen, bearbeiten, freigeben und als PDF erzeugen. Verwenden, wenn der Nutzer ein Angebot oder einen Kostenvoranschlag schreiben, für einen Kunden kalkulieren, ein bestehendes Angebot suchen, ändern, als Vorlage kopieren, freigeben oder als PDF haben möchte, oder nach Kunden, Artikeln, Preisen und Belegarten für ein Angebot fragt – etwa „Mach ein Angebot für Huber über 3 Fenster“, „Zeig mir das Angebot AN-2026-0044“ oder „Welche Angebote habe ich für Müller?“. E-Mail-Versand und Löschen erfolgen in der Web-App.
 ---
 
 # Angebote in Knowledge Center
@@ -88,6 +88,27 @@ Anleitung beschreibt die Abläufe.
    beim Speichern, sofern die Belegart das so vorsieht — sie ist nichts, was
    sich erfragen oder setzen liesse. Freigabe und PDF in Ablauf 3.
 
+## Ablauf 1a: Neues Angebot nach Vorlage
+
+Wünscht der Nutzer ein Angebot „wie das letzte für Huber“ oder „dasselbe für
+Müller“:
+
+1. **Vorlage finden** wie in Ablauf 2 Schritt 1 (`angebote_suchen`, bei
+   mehreren Treffern nachfragen). Der Status der Vorlage spielt keine Rolle.
+2. **Kopie vorbereiten.** `angebot_kopie_vorschau` mit `angebot_id` der
+   Vorlage und `datum` (relative Angaben in Europe/Vienna auflösen). Nur auf
+   Wunsch `kunden_id` (anderer Kunde, vorher `kunden_suchen`), `titel`,
+   `gueltig_bis` oder `notiz` (`null` ohne Notiz). `preise` bleibt `katalog`
+   (aktuelle Katalogpreise); `wie_vorlage` nur, wenn der Nutzer die alten
+   Preise ausdrücklich will. Das Werkzeug schreibt nichts und zeigt die Kopie
+   als Vorschau-Karte; die Hinweise nennen, was sich gegenüber der Vorlage
+   geändert hat (z. B. Artikel nicht mehr im Katalog).
+3. **Anpassen und anlegen** wie in Ablauf 1 ab Schritt 5: Änderungen an
+   Positionen mit `render_angebot_vorschau` und den gelieferten Eingaben,
+   Anlegen über die Karte oder auf Auftrag mit `angebot_anlegen`, genau diesen
+   Eingaben und dem `pruefcode`. In der gespeicherten Karte startet „Als
+   Vorlage kopieren“ denselben Ablauf mit dem heutigen Datum.
+
 ## Ablauf 2: Bestehendes Angebot ändern
 
 1. **Angebot finden.** `angebote_suchen` mit Nummer oder Titel. Bei mehreren
@@ -104,7 +125,9 @@ Anleitung beschreibt die Abläufe.
    Schritt 4, dazu Gültigkeit und Notiz. Bei Schreibrecht und Status Entwurf
    oder In Prüfung kann der Nutzer direkt in der Karte Positionen ändern,
    entfernen, hinzufügen und verschieben, Kopfdaten (Titel, Datum, Gültigkeit,
-   Notiz) ändern und freigeben; nach der Freigabe das PDF erzeugen.
+   Notiz) ändern und freigeben; nach der Freigabe das PDF erzeugen. Mit
+   Schreibrecht bietet die Karte in jedem Status „Als Vorlage kopieren“
+   (Ablauf 1a).
 3. **Status prüfen.** Positionen und Kopfdaten lassen sich nur bei Entwurf
    oder In Prüfung ändern. Bei Freigegeben den Nutzer fragen, ob das Angebot
    zurück auf Entwurf soll (`angebot_status_setzen` mit `draft`, die Nummer
