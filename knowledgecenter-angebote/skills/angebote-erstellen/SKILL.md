@@ -147,8 +147,11 @@ Müller“:
    - `angebot_position_anlegen`: neue Position wie in Ablauf 1 Schritt 3,
      optional `an_stelle`.
    - `angebot_position_aendern`: `position_nr` aus Schritt 2, nur die genannten
-     Felder.
-   - `angebot_position_loeschen`: `position_nr`, nur auf ausdrücklichen Auftrag.
+     Felder. Die Bezeichnung ist nur bei freien Positionen änderbar; bei
+     Katalogartikeln (`katalog: true`) gilt der Katalogname — stattdessen die
+     Beschreibung ändern oder die Position durch eine freie ersetzen.
+   - `angebot_position_loeschen`: `position_nr`, nur auf ausdrücklichen Auftrag
+     (der Client fragt vorher nach, wie auch beim Stornieren).
    - `angebot_position_verschieben`: `position_nr` und `an_stelle`
      (1 = ganz oben, größere Werte als die Positionsanzahl landen am Ende).
      Ändert nur die Reihenfolge, keine Mengen, Preise oder Summen; in der Karte
