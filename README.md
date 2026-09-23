@@ -380,6 +380,9 @@ Angebotsübersicht in der Web-App. Als erster Lesetest eignet sich:
 
 ## Versionen
 
+- **Angebote 0.9.2** — Bezeichnung nur bei freien Positionen änderbar
+  (`katalog: true` bei Katalogartikeln); Löschen und Stornieren fragen vorher nach.
+
 - **Angebote 0.9.1** — Schnellerer Kartenaufbau: `render_angebot` und
   `render_angebot_vorschau` liefern die Daten selbst; der Skill ruft sie direkt
   auf statt vorher `angebot_lesen` bzw. `angebot_vorschau`.
