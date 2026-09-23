@@ -77,11 +77,12 @@ Anleitung beschreibt die Abläufe.
 4. **Datum und Kopfdaten.** `titel` und `datum` (`YYYY-MM-DD`, relative Angaben
    wie „heute“ in Europe/Vienna auflösen; fehlt das Datum, nachfragen).
    `gueltig_bis` und `notiz` nur aus dem Nutzerauftrag. EUR, 1 bis 100 Positionen.
-5. **Vorschau.** `angebot_vorschau` mit `kunden_id`, `vorlage_slug`, `titel`,
-   `datum`, `positionen`. Liefert die Antwort `fehlende_angaben`, diese klären und
-   die Vorschau erneut abrufen. Mit Kartenunterstützung zusätzlich
-   `render_angebot_vorschau` mit denselben Eingaben; sonst Kunde, Belegart,
-   Datum, Positionen, Rabatt, Steuer, Summen und Hinweise als Text zeigen. Ein
+5. **Vorschau.** Mit Kartenunterstützung direkt `render_angebot_vorschau`, sonst
+   `angebot_vorschau`, jeweils mit `kunden_id`, `vorlage_slug`, `titel`,
+   `datum`, `positionen`. Beide liefern dieselben Daten samt `pruefcode`; nicht
+   beide nacheinander aufrufen. Liefert die Antwort `fehlende_angaben`, diese
+   klären und die Vorschau erneut abrufen. Ohne Karte Kunde, Belegart, Datum,
+   Positionen, Rabatt, Steuer, Summen und Hinweise als Text zeigen. Ein
    positiver Vertragsrabatt ersetzt Positionsrabatte.
 6. **Anlegen.** Nur bei `speicherbereit: true` und vorhandenem `pruefcode`.
    Entweder legt der Nutzer über die Karte an, oder auf Auftrag
@@ -126,8 +127,9 @@ Müller“:
    `angebot_lesen` aufrufen — die laufenden Positionsnummern für Schritt 4
    stehen nur dort. Bei genau einem Treffer gleich zu Schritt 2. Den Nutzer
    nicht nach einer UUID fragen.
-2. **Stand zeigen.** `angebot_lesen`, mit Kartenunterstützung danach
-   `render_angebot`. Die Antwort liefert Positionsnummern, Steuersätze und den
+2. **Stand zeigen.** Mit Kartenunterstützung direkt `render_angebot`, sonst
+   `angebot_lesen`; beide liefern dieselben Daten, nicht beide nacheinander
+   aufrufen. Die Antwort liefert Positionsnummern, Steuersätze und den
    `stand` für Schritt 4, dazu Gültigkeit und Notiz. Bei Schreibrecht und Status Entwurf
    oder In Prüfung kann der Nutzer direkt in der Karte Positionen ändern,
    entfernen, hinzufügen und verschieben, Kopfdaten (Titel, Datum, Gültigkeit,

@@ -380,6 +380,10 @@ Angebotsübersicht in der Web-App. Als erster Lesetest eignet sich:
 
 ## Versionen
 
+- **Angebote 0.9.1** — Schnellerer Kartenaufbau: `render_angebot` und
+  `render_angebot_vorschau` liefern die Daten selbst; der Skill ruft sie direkt
+  auf statt vorher `angebot_lesen` bzw. `angebot_vorschau`.
+
 - **Angebote 0.9.0** — Angebotssuche mit Filtern: `angebote_suchen` und
   `render_angebote_treffer` filtern nach Status, Kunde, Angebotsdatum und
   Gültigkeit und sortieren nach Datum oder Betrag; Anzahl (`gesamt`) und
