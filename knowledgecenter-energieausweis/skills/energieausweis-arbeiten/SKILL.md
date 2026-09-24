@@ -166,6 +166,28 @@ Geschosse bleiben unverändert.
    Baukörper-Übernahme vorschlagen (`ea_plan_baukoerper_vorschau`, speichern
    nur auf Auftrag). Thermische Bauteile nie ungefragt überschreiben.
 
+## Boden- und Deckenbereiche mit eigenem Nachbarn
+
+Für Teile eines Geschosses, deren Boden oder Decke an etwas anderes grenzt als
+`boden_nachbar`/`decken_nachbar`: unterkellerter Teil, Boden über Garage oder
+Durchfahrt, Terrasse. Dieselben Bereiche wie das Werkzeug „Boden/Decke“ im Web.
+
+1. `ea_plan_lesen`: `umriss_m` des Geschosses und vorhandene `bereiche`
+   (id, art, nachbar, Fläche, `umriss_m`).
+2. `ea_plan_bearbeiten_vorschau` mit `aenderungen`:
+   - `bereiche`: je Bereich `art` (`boden`/`decke`), `nachbar` und `umriss`
+     in Metern im Format von `umriss_m`, ganz im Geschossumriss (an der Wand
+     anliegen ist erlaubt).
+   - `bereiche_aendern`: `id` und neuer `nachbar`.
+   - `bereiche_loeschen`: nur beauftragte IDs, Speichern mit
+     `loeschen_bestaetigt=true`.
+     Maße nur aus Plan oder Nutzerangabe, nie raten.
+3. Vorschau zeigt `bereiche_nachher` mit Flächen; `ea_plan_bild` mit denselben
+   `aenderungen` zeigt die Bereiche als B1, B2 … Auf Auftrag speichern.
+4. Jeder Bereich wird bei der Baukörper-Übernahme ein eigenes Bauteil; der Rest
+   der Fläche behält den gebäudeweiten Nachbarn. Übernahme nur mit
+   `ea_plan_baukoerper_vorschau` und Auftrag.
+
 ## Originalplan zur jeweiligen Ebene laden
 
 1. Zielprojekt und vorhandene `geschoss_id` aus `ea_plan_lesen` bestimmen.
