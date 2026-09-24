@@ -196,13 +196,19 @@ MCP-Verbindung zu `https://www.knowledgecenter.at/api/mcp/energieausweis`
 | `ea_projekt_lesen`           | Kompletter Stand mit Adressen `[bauteil:id]`, `[fenster:id]`, `[konstruktion:id]`, Prüfsummen und Warnungen |
 | `ea_pruefsummen`             | Hülle, Fensterfläche, Stückzahl, BGF, Richtungspaare, Lücken                                                |
 | `ea_projekt_anlegen`         | Neues Projekt                                                                                               |
-| `ea_projekt_aktualisieren`   | Stammdaten, Anlage-Grunddaten, Status, Notizen — nur übergebene Felder                                      |
+| `ea_projekt_aktualisieren`   | Stammdaten, Auftraggeber/Aussteller, Anlage-Grunddaten, Status, Notizen — nur übergebene Felder             |
 | `ea_konstruktionen_setzen`   | Konstruktionen anlegen/ändern, löschen nur ausdrücklich                                                     |
 | `ea_bauteile_setzen`         | Bauteilflächen anlegen/ändern (Typ, Fläche, Richtung, Neigung, Nachbar, U-Wert, Konstruktion)               |
 | `ea_fenster_setzen`          | Fenster/Türen anlegen/ändern (Breite × Höhe, U, g, Glasanteil, Richtung)                                    |
 | `ea_zuordnungen_setzen`      | Fenster an Wände mit Stückzahl; „ersetzen" nur nach Rückfrage                                               |
 | `ea_konstruktionen_ableiten` | Zauberstab: Konstruktionen aus Flächen gruppieren, Vorschau oder anwenden                                   |
 | `ea_export_xml`              | Ecotech-XML, Link 24 h gültig, mit Mengen-Meldungen                                                         |
+| `ea_fotos_uebersicht`        | Fotos nach Kategorie mit `[foto:id]`, auch von der Begehung am Handy                                        |
+| `ea_foto_ansehen`            | Foto als Bild ansehen (verkleinert) — z. B. Typenschild ablesen, Rahmen/Verglasung erkennen                 |
+| `ea_foto_beschriften`        | Beschreibung oder Kategorie eines Fotos ändern                                                              |
+| `ea_fotos_hochladen`         | Im Chat angehängte Fotos (ChatGPT) mit Kategorie übernehmen, wiederholbar über `anfrage_id`                 |
+| `ea_foto_link`               | Link zur Kamera-Seite der Handy-App (für Claude oder zum Fotografieren vor Ort)                             |
+| `ea_anlage_setzen`           | Typenschild, Wärmeabgabe, Kesselart, Aufstellort, Warmwasser, Lüftung, PV/Solar — nur übergebene Felder     |
 
 ## Sicherheit
 
@@ -237,6 +243,13 @@ Version 0.1.5 ergänzt folgende Aktionen:
 | `ea_plan_datei_hochladen`                                      | PDF/PNG/JPEG/WebP aus ChatGPT als Projektdokument hochladen, maximal 20 MB                                                                 |
 | `ea_plan_dokumente_lesen`                                      | Dokumente und Ebenenzuordnungen lesen; Originaldatei, Seite und Rendermaße abrufen                                                         |
 | `ea_plan_baukoerper_vorschau` / `ea_plan_baukoerper_speichern` | Geometrie ohne Duplikate in einen leeren Baukörper übernehmen oder einen reinen Plugin-Planbestand ausdrücklich ersetzen                   |
+
+Version 0.1.8 ergänzt weitere Geschosse:
+
+| Werkzeug                                                                     | Zweck                                                                                           |
+| ---------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| `ea_plan_geschoss_kopieren_vorschau` / `ea_plan_geschoss_kopieren_speichern` | Vorhandenes Geschoss mit Lage, Nachbarn und wahlweise Fenstern/Türen oben anhängen (z. B. EG → OG) |
+| `ea_plan_geschoss_anlegen_vorschau` / `ea_plan_geschoss_anlegen_speichern`   | Geschoss mit eigenem Umriss in Metern oben anhängen (z. B. kleineres Dachgeschoss)                |
 
 Je Ebene können eine Datei und eine PDF-Seite hinterlegt werden. Nach dem Upload
 die Passung aus Maßstab und Bezugspunkt prüfen und separat zuordnen; bestehende
@@ -476,6 +489,19 @@ Angebotsübersicht in der Web-App. Als erster Lesetest eignet sich:
   256 × 256 Pixel und ist kleiner als 10 KB. Keine Änderungen an `time_entries`
   oder den Verwaltungsrechten der Web-Oberfläche.
 
+- **Energieausweis 0.1.8** — Fotos und Begehung vom Handy: `ea_fotos_uebersicht`,
+  `ea_foto_ansehen` (Foto als Bild, z. B. Typenschild ablesen),
+  `ea_foto_beschriften`, `ea_fotos_hochladen` (Fotos aus dem Chat),
+  `ea_foto_link` (Kamera-Seite der Handy-App) und `ea_anlage_setzen`
+  (Typenschild, Wärmeabgabe, Kesselart, Warmwasser, Lüftung, PV/Solar
+  eintragen); `ea_projekt_aktualisieren` schreibt auch Auftraggeber und
+  Aussteller; `ea_projekt_lesen` zeigt zusätzlich Warmwasser,
+  Aufstellort, PV/Solar, Bereiche und den Abschluss der Begehung sowie die
+  Anzahl der Fotos. Der Skill beschreibt den Ablauf „mit der Begehung
+  weitermachen". Neu sind auch weitere Geschosse:
+  `ea_plan_geschoss_kopieren_*` und `ea_plan_geschoss_anlegen_*`;
+  `ea_plan_lesen` liefert dafür `umriss_m`. Benötigt den Web-Stand mit den
+  neuen Werkzeugen.
 - **Energieausweis 0.1.7** — vermeidet doppelte Prüfsummenaufrufe: nach einer
   Änderung entweder den vollständigen Projektstand inklusive Prüfsummen oder
   nur die Prüfsummen lesen. Web bündelt Katalogänderungen und Zugangsprüfung;

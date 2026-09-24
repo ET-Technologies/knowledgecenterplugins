@@ -1,6 +1,6 @@
 ---
 name: energieausweis-arbeiten
-description: Energieausweis-Projekte in Knowledge Center suchen, lesen und bearbeiten, Prüfsummen und Ecotech-XML erzeugen. Für Ausweise, Gebäudehülle, Fenster, U-Werte, Grundrisse und Plan-3D; Geschosspläne mit Fenstern und Außentüren bearbeiten, Originalpläne je Ebene zuordnen und Geometrie kontrolliert in den Baukörper übernehmen.
+description: Energieausweis-Projekte in Knowledge Center suchen, lesen und bearbeiten, Prüfsummen und Ecotech-XML erzeugen. Für Ausweise, Gebäudehülle, Fenster, U-Werte, Grundrisse und Plan-3D, die Begehung vom Handy samt Fotos (Typenschild ablesen); Geschosspläne mit Fenstern und Außentüren bearbeiten, Originalpläne je Ebene zuordnen und Geometrie kontrolliert in den Baukörper übernehmen.
 ---
 
 # Energieausweis in Knowledge Center
@@ -11,8 +11,8 @@ der Server beim Verbinden — für alle Clients gleich. Halte dich daran.
 
 Kurzfassung:
 
-1. `ea_projekte_suchen` → `ea_projekt_lesen`. Stand und Warnungen kurz
-   zusammenfassen; die Adressen `[bauteil:id]`, `[fenster:id]`,
+1. `ea_projekte_suchen` (auch nach Projektnummer wie `EA-2026-0001`) →
+   `ea_projekt_lesen`. Stand und Warnungen kurz zusammenfassen; die Adressen `[bauteil:id]`, `[fenster:id]`,
    `[konstruktion:id]` sind die Referenzen für alle Änderungen.
 2. Änderungen vor dem Schreiben kurz zeigen, dann die `*_setzen`-Werkzeuge:
    mit id ändern (nur übergebene Felder), ohne id neu anlegen. Gelöscht wird
@@ -25,6 +25,37 @@ Kurzfassung:
    Decken, fehlende Zuordnung, fehlende Konstruktion, Richtungspaar), nicht
    selbst füllen. Nichts erfinden, Richtungen nie raten.
 5. `ea_export_xml` nur auf Wunsch; die Meldungen des Exports wiedergeben.
+
+## Begehung vom Handy und Fotos
+
+Die Handy-App „Energieausweis" erfasst die Begehung vor Ort direkt in die
+Projektfelder, die Anlagentechnik und die Fenster (Stückzahl und Bereich im
+Info-Text, z. B. „4 Stück · EG · Begehung"); PV, Solar, Bereiche und der
+Abschluss stehen in `ea_projekt_lesen` unter „Begehung ·". Kommt der Auftrag
+von dort („mach damit weiter"):
+
+1. `ea_projekt_lesen`, dann `ea_fotos_uebersicht` (Fotos nach Kategorie mit
+   `[foto:id]`).
+2. Aussagekräftige Fotos mit `ea_foto_ansehen` ansehen — Typenschild
+   (Hersteller, Modell, Leistung, Baujahr; für kleine Schrift
+   `max_breite` bis 2048), Fensterrahmen und Verglasung, Fassade, Dach.
+3. Sagen, was fehlt oder den Fotos widerspricht. Abgelesenes erst nach
+   Rückfrage eintragen; Unleserliches nicht raten:
+   - Brennstoff, Heizungs-Baujahr, Regelung, Auftraggeber und Aussteller
+     (`auftraggeber_name`, `auftraggeber_adresse`, `aussteller_name`,
+     `aussteller_adresse`, `aussteller_software`): `ea_projekt_aktualisieren`
+   - Hersteller, Modell, Leistung (Typenschild), Wärmeabgabe, Kesselart,
+     Aufstellort, Warmwasser, Lüftung, PV/Solar: `ea_anlage_setzen`
+   - Fenster: `ea_fenster_setzen`
+4. Falsch abgelegte Fotos auf Auftrag mit `ea_foto_beschriften`
+   umbenennen oder umordnen.
+5. Neue Fotos: in ChatGPT angehängte Bilder mit `ea_fotos_hochladen`
+   (neue UUID `anfrage_id` je Auftrag) übernehmen. Ohne Datei-Übergabe
+   (Claude) oder zum Fotografieren vor Ort liefert `ea_foto_link` den Link
+   zur Kamera-Seite der Handy-App.
+
+Das Plugin und der Knopf „Mit Claude oder ChatGPT weitermachen" in der
+Handy-App stehen nur dem Konto-Inhaber zur Verfügung.
 
 ## Grundriss als ersten Geschossplan übernehmen
 
@@ -109,6 +140,31 @@ verwenden; die bloße erfolgreiche Tool-Antwort beweist keine sichtbare UI.
    `loeschen_bestaetigt=true`. Bei Konflikt erneut lesen und prüfen.
 4. Gespeicherten Stand mit `ea_plan_lesen`/`ea_plan_bild` kontrollieren.
    Web neu laden. Bereits übernommene Energie-Bauteile ändern sich nicht mit.
+
+## Weitere Geschosse anlegen (Obergeschoss, Dachgeschoss)
+
+Neue Geschosse kommen immer oben auf den gespeicherten Plan; bestehende
+Geschosse bleiben unverändert.
+
+1. `ea_plan_lesen`: Geschoss-IDs, Höhen und `umriss_m` (Umriss in Metern,
+   x nach rechts, y nach oben) ansehen.
+2. Gleicher Grundriss (z. B. EG → OG): `ea_plan_geschoss_kopieren_vorschau`
+   mit `quell_geschoss_id` und `geschoss` (`name`, `quelle`, optional `hoehe_m`,
+   `oeffnungen_uebernehmen`). Kopiert Umriss, Maßstab, Norden, Lage,
+   Wand-Nachbarn und wahlweise Fenster/Türen. Für mehrere gleiche
+   Obergeschosse nacheinander kopieren, jeweils mit eigenem Namen.
+3. Anderer Grundriss (z. B. kleineres Dachgeschoss, Rücksprung):
+   `ea_plan_geschoss_anlegen_vorschau` mit `geschoss` (`name`, `hoehe_m`,
+   `umriss` in Metern, `quelle`), optional `bezug_geschoss_id`. Koordinaten
+   im selben Format wie `umriss_m` des Bezugsgeschosses (ohne Angabe das
+   bisher oberste). Höhen und Maße nie raten.
+4. Vorschau dem Nutzer zeigen. Auf Auftrag `..._speichern` mit identischen
+   Angaben und `pruefcode`. Danach `ea_plan_bild` oder `ea_plan_3d_anzeigen`
+   zur Kontrolle; fehlende Fenster/Türen mit `ea_plan_oeffnungen_*`, Abweichungen
+   mit `ea_plan_bearbeiten_*` ergänzen.
+5. Die Energie-Bauteile ändern sich nicht automatisch. Dem Nutzer die
+   Baukörper-Übernahme vorschlagen (`ea_plan_baukoerper_vorschau`, speichern
+   nur auf Auftrag). Thermische Bauteile nie ungefragt überschreiben.
 
 ## Originalplan zur jeweiligen Ebene laden
 
