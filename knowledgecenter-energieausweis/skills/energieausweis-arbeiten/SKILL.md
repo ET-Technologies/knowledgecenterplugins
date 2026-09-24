@@ -141,6 +141,31 @@ verwenden; die bloße erfolgreiche Tool-Antwort beweist keine sichtbare UI.
 4. Gespeicherten Stand mit `ea_plan_lesen`/`ea_plan_bild` kontrollieren.
    Web neu laden. Bereits übernommene Energie-Bauteile ändern sich nicht mit.
 
+## Weitere Geschosse anlegen (Obergeschoss, Dachgeschoss)
+
+Neue Geschosse kommen immer oben auf den gespeicherten Plan; bestehende
+Geschosse bleiben unverändert.
+
+1. `ea_plan_lesen`: Geschoss-IDs, Höhen und `umriss_m` (Umriss in Metern,
+   x nach rechts, y nach oben) ansehen.
+2. Gleicher Grundriss (z. B. EG → OG): `ea_plan_geschoss_kopieren_vorschau`
+   mit `quell_geschoss_id` und `geschoss` (`name`, `quelle`, optional `hoehe_m`,
+   `oeffnungen_uebernehmen`). Kopiert Umriss, Maßstab, Norden, Lage,
+   Wand-Nachbarn und wahlweise Fenster/Türen. Für mehrere gleiche
+   Obergeschosse nacheinander kopieren, jeweils mit eigenem Namen.
+3. Anderer Grundriss (z. B. kleineres Dachgeschoss, Rücksprung):
+   `ea_plan_geschoss_anlegen_vorschau` mit `geschoss` (`name`, `hoehe_m`,
+   `umriss` in Metern, `quelle`), optional `bezug_geschoss_id`. Koordinaten
+   im selben Format wie `umriss_m` des Bezugsgeschosses (ohne Angabe das
+   bisher oberste). Höhen und Maße nie raten.
+4. Vorschau dem Nutzer zeigen. Auf Auftrag `..._speichern` mit identischen
+   Angaben und `pruefcode`. Danach `ea_plan_bild` oder `ea_plan_3d_anzeigen`
+   zur Kontrolle; fehlende Fenster/Türen mit `ea_plan_oeffnungen_*`, Abweichungen
+   mit `ea_plan_bearbeiten_*` ergänzen.
+5. Die Energie-Bauteile ändern sich nicht automatisch. Dem Nutzer die
+   Baukörper-Übernahme vorschlagen (`ea_plan_baukoerper_vorschau`, speichern
+   nur auf Auftrag). Thermische Bauteile nie ungefragt überschreiben.
+
 ## Originalplan zur jeweiligen Ebene laden
 
 1. Zielprojekt und vorhandene `geschoss_id` aus `ea_plan_lesen` bestimmen.

@@ -244,6 +244,13 @@ Version 0.1.5 ergänzt folgende Aktionen:
 | `ea_plan_dokumente_lesen`                                      | Dokumente und Ebenenzuordnungen lesen; Originaldatei, Seite und Rendermaße abrufen                                                         |
 | `ea_plan_baukoerper_vorschau` / `ea_plan_baukoerper_speichern` | Geometrie ohne Duplikate in einen leeren Baukörper übernehmen oder einen reinen Plugin-Planbestand ausdrücklich ersetzen                   |
 
+Version 0.1.8 ergänzt weitere Geschosse:
+
+| Werkzeug                                                                     | Zweck                                                                                           |
+| ---------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| `ea_plan_geschoss_kopieren_vorschau` / `ea_plan_geschoss_kopieren_speichern` | Vorhandenes Geschoss mit Lage, Nachbarn und wahlweise Fenstern/Türen oben anhängen (z. B. EG → OG) |
+| `ea_plan_geschoss_anlegen_vorschau` / `ea_plan_geschoss_anlegen_speichern`   | Geschoss mit eigenem Umriss in Metern oben anhängen (z. B. kleineres Dachgeschoss)                |
+
 Je Ebene können eine Datei und eine PDF-Seite hinterlegt werden. Nach dem Upload
 die Passung aus Maßstab und Bezugspunkt prüfen und separat zuordnen; bestehende
 Gebäudeabmessungen und Geschosslage bleiben dabei erhalten. Dateiübergabe nutzt
@@ -491,7 +498,10 @@ Angebotsübersicht in der Web-App. Als erster Lesetest eignet sich:
   Aussteller; `ea_projekt_lesen` zeigt zusätzlich Warmwasser,
   Aufstellort, PV/Solar, Bereiche und den Abschluss der Begehung sowie die
   Anzahl der Fotos. Der Skill beschreibt den Ablauf „mit der Begehung
-  weitermachen". Benötigt den Web-Stand mit den neuen Werkzeugen.
+  weitermachen". Neu sind auch weitere Geschosse:
+  `ea_plan_geschoss_kopieren_*` und `ea_plan_geschoss_anlegen_*`;
+  `ea_plan_lesen` liefert dafür `umriss_m`. Benötigt den Web-Stand mit den
+  neuen Werkzeugen.
 - **Energieausweis 0.1.7** — vermeidet doppelte Prüfsummenaufrufe: nach einer
   Änderung entweder den vollständigen Projektstand inklusive Prüfsummen oder
   nur die Prüfsummen lesen. Web bündelt Katalogänderungen und Zugangsprüfung;
