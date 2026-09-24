@@ -246,10 +246,10 @@ Version 0.1.5 ergänzt folgende Aktionen:
 
 Version 0.1.8 ergänzt weitere Geschosse:
 
-| Werkzeug                                                                     | Zweck                                                                                           |
-| ---------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| Werkzeug                                                                     | Zweck                                                                                              |
+| ---------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
 | `ea_plan_geschoss_kopieren_vorschau` / `ea_plan_geschoss_kopieren_speichern` | Vorhandenes Geschoss mit Lage, Nachbarn und wahlweise Fenstern/Türen oben anhängen (z. B. EG → OG) |
-| `ea_plan_geschoss_anlegen_vorschau` / `ea_plan_geschoss_anlegen_speichern`   | Geschoss mit eigenem Umriss in Metern oben anhängen (z. B. kleineres Dachgeschoss)                |
+| `ea_plan_geschoss_anlegen_vorschau` / `ea_plan_geschoss_anlegen_speichern`   | Geschoss mit eigenem Umriss in Metern oben anhängen (z. B. kleineres Dachgeschoss)                 |
 
 Je Ebene können eine Datei und eine PDF-Seite hinterlegt werden. Nach dem Upload
 die Passung aus Maßstab und Bezugspunkt prüfen und separat zuordnen; bestehende
