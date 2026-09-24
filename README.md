@@ -206,6 +206,9 @@ MCP-Verbindung zu `https://www.knowledgecenter.at/api/mcp/energieausweis`
 | `ea_fotos_uebersicht`        | Fotos nach Kategorie mit `[foto:id]`, auch von der Begehung am Handy                                        |
 | `ea_foto_ansehen`            | Foto als Bild ansehen (verkleinert) — z. B. Typenschild ablesen, Rahmen/Verglasung erkennen                 |
 | `ea_foto_beschriften`        | Beschreibung oder Kategorie eines Fotos ändern                                                              |
+| `ea_fotos_hochladen`         | Im Chat angehängte Fotos (ChatGPT) mit Kategorie übernehmen, wiederholbar über `anfrage_id`                 |
+| `ea_foto_link`               | Link zur Kamera-Seite der Handy-App (für Claude oder zum Fotografieren vor Ort)                             |
+| `ea_anlage_setzen`           | Typenschild, Wärmeabgabe, Aufstellort, Warmwasser, Lüftung, PV/Solar eintragen — nur übergebene Felder      |
 
 ## Sicherheit
 
@@ -480,8 +483,10 @@ Angebotsübersicht in der Web-App. Als erster Lesetest eignet sich:
   oder den Verwaltungsrechten der Web-Oberfläche.
 
 - **Energieausweis 0.1.8** — Fotos und Begehung vom Handy: `ea_fotos_uebersicht`,
-  `ea_foto_ansehen` (Foto als Bild, z. B. Typenschild ablesen) und
-  `ea_foto_beschriften`; `ea_projekt_lesen` zeigt zusätzlich Warmwasser,
+  `ea_foto_ansehen` (Foto als Bild, z. B. Typenschild ablesen),
+  `ea_foto_beschriften`, `ea_fotos_hochladen` (Fotos aus dem Chat),
+  `ea_foto_link` (Kamera-Seite der Handy-App) und `ea_anlage_setzen`
+  (Typenschild, Wärmeabgabe, Warmwasser, Lüftung, PV/Solar eintragen); `ea_projekt_lesen` zeigt zusätzlich Warmwasser,
   Aufstellort, PV/Solar, Bereiche und den Abschluss der Begehung sowie die
   Anzahl der Fotos. Der Skill beschreibt den Ablauf „mit der Begehung
   weitermachen". Benötigt den Web-Stand mit den neuen Werkzeugen.

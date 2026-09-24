@@ -40,10 +40,20 @@ von dort („mach damit weiter"):
    (Hersteller, Modell, Leistung, Baujahr; für kleine Schrift
    `max_breite` bis 2048), Fensterrahmen und Verglasung, Fassade, Dach.
 3. Sagen, was fehlt oder den Fotos widerspricht. Abgelesenes erst nach
-   Rückfrage mit `ea_projekt_aktualisieren` bzw. `ea_fenster_setzen`
-   eintragen; Unleserliches nicht raten.
+   Rückfrage eintragen; Unleserliches nicht raten:
+   - Brennstoff, Heizungs-Baujahr, Regelung: `ea_projekt_aktualisieren`
+   - Hersteller, Modell, Leistung (Typenschild), Wärmeabgabe, Aufstellort,
+     Warmwasser, Lüftung, PV/Solar: `ea_anlage_setzen`
+   - Fenster: `ea_fenster_setzen`
 4. Falsch abgelegte Fotos auf Auftrag mit `ea_foto_beschriften`
    umbenennen oder umordnen.
+5. Neue Fotos: in ChatGPT angehängte Bilder mit `ea_fotos_hochladen`
+   (neue UUID `anfrage_id` je Auftrag) übernehmen. Ohne Datei-Übergabe
+   (Claude) oder zum Fotografieren vor Ort liefert `ea_foto_link` den Link
+   zur Kamera-Seite der Handy-App.
+
+Das Plugin und der Knopf „Mit Claude oder ChatGPT weitermachen" in der
+Handy-App stehen nur dem Konto-Inhaber zur Verfügung.
 
 ## Grundriss als ersten Geschossplan übernehmen
 
