@@ -41,9 +41,11 @@ von dort („mach damit weiter"):
    `max_breite` bis 2048), Fensterrahmen und Verglasung, Fassade, Dach.
 3. Sagen, was fehlt oder den Fotos widerspricht. Abgelesenes erst nach
    Rückfrage eintragen; Unleserliches nicht raten:
-   - Brennstoff, Heizungs-Baujahr, Regelung: `ea_projekt_aktualisieren`
-   - Hersteller, Modell, Leistung (Typenschild), Wärmeabgabe, Aufstellort,
-     Warmwasser, Lüftung, PV/Solar: `ea_anlage_setzen`
+   - Brennstoff, Heizungs-Baujahr, Regelung, Auftraggeber und Aussteller
+     (`auftraggeber_name`, `auftraggeber_adresse`, `aussteller_name`,
+     `aussteller_adresse`, `aussteller_software`): `ea_projekt_aktualisieren`
+   - Hersteller, Modell, Leistung (Typenschild), Wärmeabgabe, Kesselart,
+     Aufstellort, Warmwasser, Lüftung, PV/Solar: `ea_anlage_setzen`
    - Fenster: `ea_fenster_setzen`
 4. Falsch abgelegte Fotos auf Auftrag mit `ea_foto_beschriften`
    umbenennen oder umordnen.
