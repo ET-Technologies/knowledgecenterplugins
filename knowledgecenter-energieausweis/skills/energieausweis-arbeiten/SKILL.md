@@ -11,8 +11,8 @@ der Server beim Verbinden — für alle Clients gleich. Halte dich daran.
 
 Kurzfassung:
 
-1. `ea_projekte_suchen` → `ea_projekt_lesen`. Stand und Warnungen kurz
-   zusammenfassen; die Adressen `[bauteil:id]`, `[fenster:id]`,
+1. `ea_projekte_suchen` (auch nach Projektnummer wie `EA-2026-0001`) →
+   `ea_projekt_lesen`. Stand und Warnungen kurz zusammenfassen; die Adressen `[bauteil:id]`, `[fenster:id]`,
    `[konstruktion:id]` sind die Referenzen für alle Änderungen.
 2. Änderungen vor dem Schreiben kurz zeigen, dann die `*_setzen`-Werkzeuge:
    mit id ändern (nur übergebene Felder), ohne id neu anlegen. Gelöscht wird
