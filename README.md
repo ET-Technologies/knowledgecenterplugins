@@ -203,6 +203,9 @@ MCP-Verbindung zu `https://www.knowledgecenter.at/api/mcp/energieausweis`
 | `ea_zuordnungen_setzen`      | Fenster an Wände mit Stückzahl; „ersetzen" nur nach Rückfrage                                               |
 | `ea_konstruktionen_ableiten` | Zauberstab: Konstruktionen aus Flächen gruppieren, Vorschau oder anwenden                                   |
 | `ea_export_xml`              | Ecotech-XML, Link 24 h gültig, mit Mengen-Meldungen                                                         |
+| `ea_fotos_uebersicht`        | Fotos nach Kategorie mit `[foto:id]`, auch von der Begehung am Handy                                        |
+| `ea_foto_ansehen`            | Foto als Bild ansehen (verkleinert) — z. B. Typenschild ablesen, Rahmen/Verglasung erkennen                 |
+| `ea_foto_beschriften`        | Beschreibung oder Kategorie eines Fotos ändern                                                              |
 
 ## Sicherheit
 
@@ -476,6 +479,12 @@ Angebotsübersicht in der Web-App. Als erster Lesetest eignet sich:
   256 × 256 Pixel und ist kleiner als 10 KB. Keine Änderungen an `time_entries`
   oder den Verwaltungsrechten der Web-Oberfläche.
 
+- **Energieausweis 0.1.8** — Fotos und Begehung vom Handy: `ea_fotos_uebersicht`,
+  `ea_foto_ansehen` (Foto als Bild, z. B. Typenschild ablesen) und
+  `ea_foto_beschriften`; `ea_projekt_lesen` zeigt zusätzlich Warmwasser,
+  Aufstellort, PV/Solar, Bereiche und den Abschluss der Begehung sowie die
+  Anzahl der Fotos. Der Skill beschreibt den Ablauf „mit der Begehung
+  weitermachen". Benötigt den Web-Stand mit den neuen Werkzeugen.
 - **Energieausweis 0.1.7** — vermeidet doppelte Prüfsummenaufrufe: nach einer
   Änderung entweder den vollständigen Projektstand inklusive Prüfsummen oder
   nur die Prüfsummen lesen. Web bündelt Katalogänderungen und Zugangsprüfung;

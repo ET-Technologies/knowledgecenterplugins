@@ -1,6 +1,6 @@
 ---
 name: energieausweis-arbeiten
-description: Energieausweis-Projekte in Knowledge Center suchen, lesen und bearbeiten, Prüfsummen und Ecotech-XML erzeugen. Für Ausweise, Gebäudehülle, Fenster, U-Werte, Grundrisse und Plan-3D; Geschosspläne mit Fenstern und Außentüren bearbeiten, Originalpläne je Ebene zuordnen und Geometrie kontrolliert in den Baukörper übernehmen.
+description: Energieausweis-Projekte in Knowledge Center suchen, lesen und bearbeiten, Prüfsummen und Ecotech-XML erzeugen. Für Ausweise, Gebäudehülle, Fenster, U-Werte, Grundrisse und Plan-3D, die Begehung vom Handy samt Fotos (Typenschild ablesen); Geschosspläne mit Fenstern und Außentüren bearbeiten, Originalpläne je Ebene zuordnen und Geometrie kontrolliert in den Baukörper übernehmen.
 ---
 
 # Energieausweis in Knowledge Center
@@ -25,6 +25,25 @@ Kurzfassung:
    Decken, fehlende Zuordnung, fehlende Konstruktion, Richtungspaar), nicht
    selbst füllen. Nichts erfinden, Richtungen nie raten.
 5. `ea_export_xml` nur auf Wunsch; die Meldungen des Exports wiedergeben.
+
+## Begehung vom Handy und Fotos
+
+Die Handy-App „Energieausweis" erfasst die Begehung vor Ort direkt in die
+Projektfelder, die Anlagentechnik und die Fenster (Stückzahl und Bereich im
+Info-Text, z. B. „4 Stück · EG · Begehung"); PV, Solar, Bereiche und der
+Abschluss stehen in `ea_projekt_lesen` unter „Begehung ·". Kommt der Auftrag
+von dort („mach damit weiter"):
+
+1. `ea_projekt_lesen`, dann `ea_fotos_uebersicht` (Fotos nach Kategorie mit
+   `[foto:id]`).
+2. Aussagekräftige Fotos mit `ea_foto_ansehen` ansehen — Typenschild
+   (Hersteller, Modell, Leistung, Baujahr; für kleine Schrift
+   `max_breite` bis 2048), Fensterrahmen und Verglasung, Fassade, Dach.
+3. Sagen, was fehlt oder den Fotos widerspricht. Abgelesenes erst nach
+   Rückfrage mit `ea_projekt_aktualisieren` bzw. `ea_fenster_setzen`
+   eintragen; Unleserliches nicht raten.
+4. Falsch abgelegte Fotos auf Auftrag mit `ea_foto_beschriften`
+   umbenennen oder umordnen.
 
 ## Grundriss als ersten Geschossplan übernehmen
 
