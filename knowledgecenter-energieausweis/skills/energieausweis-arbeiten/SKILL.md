@@ -169,26 +169,37 @@ Geschosse bleiben unverändert.
 ## Satteldach einstellen
 
 Das Dach gilt fürs ganze Haus und sitzt auf dem obersten Geschoss. Ohne
-Angabe endet das Gebäude mit einer Decke bzw. einem Flachdach.
+Angabe endet das Gebäude mit einer Decke bzw. einem Flachdach. Ein Plan ist
+nicht nötig: Es reicht, was man im Dachgeschoss messen kann.
 
-1. `ea_plan_lesen`: `dach` zeigt den aktuellen Stand, `kanten` des obersten
+1. Zuerst fragen: **Was ist oben?** Flachdach, Dachboden kalt (nicht
+   ausgebaut) oder Dachgeschoss ausgebaut (beheizt). Unklar → nachfragen.
+2. `ea_plan_lesen`: `dach` zeigt den aktuellen Stand, `kanten` des obersten
    Geschosses die Wände mit `kante_index` und Länge.
-2. `ea_plan_dach_vorschau` mit `projekt_id` und `dach`:
+3. `ea_plan_dach_vorschau` mit `projekt_id` und `dach`:
    - `form`: `satteldach` oder `flachdach` (Satteldach entfernen).
-   - `neigung_grad` (5–70) aus Schnitt, Ansicht oder Nutzerangabe – nie raten.
-   - `beheizt`: `true`, wenn das Dachgeschoss ausgebaut und beheizt ist;
-     `false` bei kaltem Dachraum. Unklar → nachfragen.
-   - `first_kante_index`: Wand, zu der der First parallel läuft
-     (Traufseite); weglassen = längste Wand.
-   - `kniestock_m` (0–3): Wandhöhe über der obersten Decke bis zur Traufe.
+   - `neigung_grad` (5–70): z. B. mit einer Wasserwaagen-App innen an der
+     Schräge gemessen, aus einem Schnitt oder Nutzerangabe – nie raten.
+   - `beheizt`: `true` bei ausgebautem Dachgeschoss, `false` bei kaltem
+     Dachboden.
+   - Nur ausgebaut: `kniestock_m` = Kniestock **innen**, Fußboden bis Beginn
+     der Schräge (Meterstab), und `dicke_m` = Dicke des Dachaufbaus. Dicke
+     unbekannt → weglassen; gerechnet wird mit 0,30 m, die Vorschau meldet
+     das unter `annahmen`.
+   - `first_kante_index`: Wand, zu der der First parallel läuft; weglassen =
+     längste Wand.
    - `quelle`.
-3. Vorschau zeigen: Dachflächen mit Richtung und Fläche, Firsthöhe, Volumen,
-   Wandflächen über der Decke. Auf Auftrag `ea_plan_dach_speichern` mit
-   identischen Angaben und `pruefcode`. Danach `ea_plan_3d_anzeigen`.
-4. Bauteile ändern sich erst bei der Baukörper-Übernahme
-   (`ea_plan_baukoerper_vorschau`, speichern nur auf Auftrag). Beheizt: zwei
-   Dachflächen ersetzen die oberste Decke, Kniestock und Giebel kommen zu den
-   Außenwänden. Kalt: die oberste Decke bleibt die Hüllfläche. L- und
+4. Vorschau zeigen: Dachflächen mit Richtung und Fläche, Firsthöhe, Volumen
+   und bei ausgebautem Dachgeschoss `bgf_dachgeschoss_m2` (ÖNORM B 8110-6:
+   ab 1,50 m lichter Höhe + 0,40 m). Annahmen ausdrücklich nennen. Auf
+   Auftrag `ea_plan_dach_speichern` mit identischen Angaben und `pruefcode`.
+   Danach `ea_plan_3d_anzeigen`.
+5. Bauteile ändern sich erst bei der Baukörper-Übernahme
+   (`ea_plan_baukoerper_vorschau`, speichern nur auf Auftrag). Ausgebaut:
+   zwei Dachflächen ersetzen die oberste Decke, Kniestock und Giebel kommen
+   zu den Außenwänden, die Decke darunter wird Zwischendecke ohne
+   Wärmestrom mit der BGF des Dachgeschosses. Kalt: die oberste Decke
+   bleibt die Hüllfläche (Nachbar unbeheizter Dachraum). L- und
    T-Grundrisse werden vereinfacht als ein Satteldach ohne Kehlen gerechnet.
 
 ## Boden- und Deckenbereiche mit eigenem Nachbarn
