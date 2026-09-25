@@ -114,7 +114,7 @@ In unterstützten Chat-Clients erscheint das ganze Gebäude mit Fenstern und
 Außentüren. Drehen, Zoomen, Ansicht wechseln und Ebenen ausblenden verändern
 nur die Darstellung. Nach gespeicherten Planänderungen das Werkzeug erneut
 aufrufen; die Ansicht ist ein Planstand, keine laufende Synchronisierung.
-Oberer Abschluss als Decke/Flachdach, keine geneigten Dächer oder Innenräume.
+Ein gespeichertes Satteldach erscheint ziegelrot; Innenräume werden nicht gezeigt.
 Falls keine eingebettete Ansicht erscheint: `ea_plan_bild` oder Plan-3D im Web
 verwenden; die bloße erfolgreiche Tool-Antwort beweist keine sichtbare UI.
 
@@ -165,6 +165,31 @@ Geschosse bleiben unverändert.
 5. Die Energie-Bauteile ändern sich nicht automatisch. Dem Nutzer die
    Baukörper-Übernahme vorschlagen (`ea_plan_baukoerper_vorschau`, speichern
    nur auf Auftrag). Thermische Bauteile nie ungefragt überschreiben.
+
+## Satteldach einstellen
+
+Das Dach gilt fürs ganze Haus und sitzt auf dem obersten Geschoss. Ohne
+Angabe endet das Gebäude mit einer Decke bzw. einem Flachdach.
+
+1. `ea_plan_lesen`: `dach` zeigt den aktuellen Stand, `kanten` des obersten
+   Geschosses die Wände mit `kante_index` und Länge.
+2. `ea_plan_dach_vorschau` mit `projekt_id` und `dach`:
+   - `form`: `satteldach` oder `flachdach` (Satteldach entfernen).
+   - `neigung_grad` (5–70) aus Schnitt, Ansicht oder Nutzerangabe – nie raten.
+   - `beheizt`: `true`, wenn das Dachgeschoss ausgebaut und beheizt ist;
+     `false` bei kaltem Dachraum. Unklar → nachfragen.
+   - `first_kante_index`: Wand, zu der der First parallel läuft
+     (Traufseite); weglassen = längste Wand.
+   - `kniestock_m` (0–3): Wandhöhe über der obersten Decke bis zur Traufe.
+   - `quelle`.
+3. Vorschau zeigen: Dachflächen mit Richtung und Fläche, Firsthöhe, Volumen,
+   Wandflächen über der Decke. Auf Auftrag `ea_plan_dach_speichern` mit
+   identischen Angaben und `pruefcode`. Danach `ea_plan_3d_anzeigen`.
+4. Bauteile ändern sich erst bei der Baukörper-Übernahme
+   (`ea_plan_baukoerper_vorschau`, speichern nur auf Auftrag). Beheizt: zwei
+   Dachflächen ersetzen die oberste Decke, Kniestock und Giebel kommen zu den
+   Außenwänden. Kalt: die oberste Decke bleibt die Hüllfläche. L- und
+   T-Grundrisse werden vereinfacht als ein Satteldach ohne Kehlen gerechnet.
 
 ## Boden- und Deckenbereiche mit eigenem Nachbarn
 
