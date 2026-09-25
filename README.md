@@ -495,6 +495,11 @@ Angebotsübersicht in der Web-App. Als erster Lesetest eignet sich:
   256 × 256 Pixel und ist kleiner als 10 KB. Keine Änderungen an `time_entries`
   oder den Verwaltungsrechten der Web-Oberfläche.
 
+- **Energieausweis 0.1.11** — Dach ohne Plan: Der Skill fragt zuerst „Was
+  ist oben?“ und dann nur, was man vor Ort messen kann (Neigung, Kniestock
+  innen, Dicke des Dachaufbaus). `ea_plan_dach_vorschau` zeigt die BGF des
+  ausgebauten Dachgeschosses nach der 1,50-m-Regel und nennt Annahmen. Benötigt
+  den Web-Stand „Dach ohne Plan“.
 - **Energieausweis 0.1.10** — Satteldach über Claude: `ea_plan_dach_vorschau`
   und `ea_plan_dach_speichern` stellen Neigung, First, Kniestock und Dachraum
   beheizt/kalt ein oder setzen auf Flachdach zurück; `ea_plan_lesen` zeigt
