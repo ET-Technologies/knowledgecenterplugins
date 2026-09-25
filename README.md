@@ -256,7 +256,13 @@ die Passung aus Maßstab und Bezugspunkt prüfen und separat zuordnen; bestehend
 Gebäudeabmessungen und Geschosslage bleiben dabei erhalten. Dateiübergabe nutzt
 [OpenAI-Dateiparameter](https://developers.openai.com/plugins/reference#define-file-inputs).
 Alternativ im Web unter Dokumente hochladen und die Dokument-ID verwenden.
-Geneigte Dächer, Innenhöfe, Innentüren und Dachfenster sind nicht enthalten.
+Version 0.1.10 ergänzt das Satteldach:
+
+| Werkzeug                                           | Zweck                                                                                                     |
+| -------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| `ea_plan_dach_vorschau` / `ea_plan_dach_speichern` | Satteldach über dem obersten Geschoss (Neigung, First, Kniestock, beheizt/kalt) oder zurück auf Flachdach |
+
+Walm-, Pult- und Mansarddächer, Innenhöfe, Innentüren und Dachfenster sind nicht enthalten.
 
 Voraussetzung im Web-Repository: zuerst `sql/20260909_energy_plan_mcp.sql`
 (sofern noch nicht vorhanden), dann `sql/20260909_energy_plan_edit.sql` und
@@ -489,6 +495,12 @@ Angebotsübersicht in der Web-App. Als erster Lesetest eignet sich:
   256 × 256 Pixel und ist kleiner als 10 KB. Keine Änderungen an `time_entries`
   oder den Verwaltungsrechten der Web-Oberfläche.
 
+- **Energieausweis 0.1.10** — Satteldach über Claude: `ea_plan_dach_vorschau`
+  und `ea_plan_dach_speichern` stellen Neigung, First, Kniestock und Dachraum
+  beheizt/kalt ein oder setzen auf Flachdach zurück; `ea_plan_lesen` zeigt
+  `dach`, die 3D-Ansicht das Dach. Benötigt im Web-Repository
+  `sql/20260925_energy_floorplan_roof.sql` und
+  `sql/20260926_energy_plan_edit_roof.sql`.
 - **Energieausweis 0.1.9** — Boden- und Deckenbereiche mit eigenem Nachbarn
   (unterkellerter Teil, Boden über Garage oder Durchfahrt, Terrasse) über
   `ea_plan_bearbeiten_*` (`bereiche`, `bereiche_aendern`, `bereiche_loeschen`);
