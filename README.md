@@ -489,6 +489,11 @@ Angebotsübersicht in der Web-App. Als erster Lesetest eignet sich:
   256 × 256 Pixel und ist kleiner als 10 KB. Keine Änderungen an `time_entries`
   oder den Verwaltungsrechten der Web-Oberfläche.
 
+- **Energieausweis 0.1.9** — Boden- und Deckenbereiche mit eigenem Nachbarn
+  (unterkellerter Teil, Boden über Garage oder Durchfahrt, Terrasse) über
+  `ea_plan_bearbeiten_*` (`bereiche`, `bereiche_aendern`, `bereiche_loeschen`);
+  `ea_plan_lesen` zeigt `bereiche`, `ea_plan_bild` zeichnet sie ein. Benötigt
+  den Web-Stand mit dem Werkzeug „Boden/Decke“.
 - **Energieausweis 0.1.8** — Fotos und Begehung vom Handy: `ea_fotos_uebersicht`,
   `ea_foto_ansehen` (Foto als Bild, z. B. Typenschild ablesen),
   `ea_foto_beschriften`, `ea_fotos_hochladen` (Fotos aus dem Chat),
