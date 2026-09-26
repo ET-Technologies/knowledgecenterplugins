@@ -169,38 +169,51 @@ Geschosse bleiben unverändert.
 ## Satteldach einstellen
 
 Das Dach gilt fürs ganze Haus und sitzt auf dem obersten Geschoss. Ohne
-Angabe endet das Gebäude mit einer Decke bzw. einem Flachdach. Ein Plan ist
-nicht nötig: Es reicht, was man im Dachgeschoss messen kann.
+Angabe endet das Gebäude mit einer Decke bzw. einem Flachdach. Abgefragt wird
+wie im Ecotech-Schnellverfahren, mit denselben Begriffen, und nur das Nötigste.
+Alle Höhen gelten **relativ ab oberster Geschoßdecke**, außen gemessen.
 
-1. Zuerst fragen: **Was ist oben?** Flachdach, Dachboden kalt (nicht
-   ausgebaut) oder Dachgeschoss ausgebaut (beheizt). Unklar → nachfragen.
+1. Zuerst fragen: **Dachraum?** beheizter Dachraum, unbeheizter Dachraum
+   oder Flachdach. Unklar → nachfragen.
 2. `ea_plan_lesen`: `dach` zeigt den aktuellen Stand, `kanten` des obersten
-   Geschosses die Wände mit `kante_index` und Länge.
+   Geschosses die Wände mit `kante_index` und Länge; `dach_aus_begehung`
+   zeigt am Handy erfasste Werte.
 3. `ea_plan_dach_vorschau` mit `projekt_id` und `dach`:
    - `form`: `satteldach` oder `flachdach` (Satteldach entfernen).
-   - `neigung_grad` (5–70): z. B. mit einer Wasserwaagen-App innen an der
-     Schräge gemessen, aus einem Schnitt oder Nutzerangabe – nie raten.
-   - `beheizt`: `true` bei ausgebautem Dachgeschoss, `false` bei kaltem
-     Dachboden.
-   - Nur ausgebaut: `kniestock_m` = Kniestock **innen**, Fußboden bis Beginn
-     der Schräge (Meterstab), und `dicke_m` = Dicke des Dachaufbaus. Dicke
-     unbekannt → weglassen; gerechnet wird mit 0,30 m, die Vorschau meldet
-     das unter `annahmen`.
+   - `beheizt`: `true` = beheizter, `false` = unbeheizter Dachraum.
+   - `first_hoehe_m` = **First Höhe**. Beim beheizten Dachraum Pflicht, beim
+     unbeheizten freiwillig (nur fürs 3D). Aus Schnitt oder Nutzerangabe – nie
+     raten.
+   - `uebermauerung_m` = **Übermauerungs Höhe** (Außenwand über der Decke bis
+     zum Dachansatz); 0, wenn das Dach direkt aufliegt.
+   - Nur beheizt und nur wenn vorhanden: `drempel_hoehe_m` = **Drempel Höhe**
+     (innere Wand, dahinter kalte Abseiten) und `zangendecke_hoehe_m` =
+     **Zangendecke Höhe** (darüber kalter Spitzboden). Nicht von sich aus
+     danach bohren – einmal fragen, ob es Drempel oder Zangendecke gibt.
+   - Die **Neigung** rechnet das Werkzeug aus First, Übermauerung und
+     Hausbreite. `neigung_grad` nur, wenn die First-Höhe unbekannt ist.
    - `first_kante_index`: Wand, zu der der First parallel läuft; weglassen =
      längste Wand.
+   - Nur beheizt: `dachfenster` mit `seite` (a oder b, aus
+     `dachflaechen[].seite` der Vorschau), `breite_m`, `hoehe_m`, `anzahl`,
+     optional `u_wert` und `g_wert`. Wie ein Fenster, nur statt der Wand die
+     Dachfläche. Maße vom Typenschild, nie raten.
    - `quelle`.
-4. Vorschau zeigen: Dachflächen mit Richtung und Fläche, Firsthöhe, Volumen
-   und bei ausgebautem Dachgeschoss `bgf_dachgeschoss_m2` (ÖNORM B 8110-6:
-   ab 1,50 m lichter Höhe + 0,40 m). Annahmen ausdrücklich nennen. Auf
-   Auftrag `ea_plan_dach_speichern` mit identischen Angaben und `pruefcode`.
-   Danach `ea_plan_3d_anzeigen`.
+4. Vorschau zeigen: `ecotech_hoehen_rel` (so in Ecotech eintragen), gerechnete
+   `neigung_grad`, Dachflächen mit Richtung und Fläche, Drempel/Abseiten,
+   Zangendecke, Volumen und beim beheizten Dachraum `bgf_dachgeschoss_m2`
+   (ÖNORM B 8110-6: ab 1,50 m lichter Höhe + 0,40 m, ohne Abseiten).
+   Annahmen ausdrücklich nennen. Auf Auftrag `ea_plan_dach_speichern` mit
+   identischen Angaben und `pruefcode`. Danach `ea_plan_3d_anzeigen`.
 5. Bauteile ändern sich erst bei der Baukörper-Übernahme
-   (`ea_plan_baukoerper_vorschau`, speichern nur auf Auftrag). Ausgebaut:
-   zwei Dachflächen ersetzen die oberste Decke, Kniestock und Giebel kommen
-   zu den Außenwänden, die Decke darunter wird Zwischendecke ohne
-   Wärmestrom mit der BGF des Dachgeschosses. Kalt: die oberste Decke
-   bleibt die Hüllfläche (Nachbar unbeheizter Dachraum). L- und
-   T-Grundrisse werden vereinfacht als ein Satteldach ohne Kehlen gerechnet.
+   (`ea_plan_baukoerper_vorschau`, speichern nur auf Auftrag). Beheizt: die
+   Dachflächen ersetzen die oberste Decke, Übermauerung und Giebel kommen zu
+   den Außenwänden; mit Drempel zusätzlich Drempelwände und Abseitenböden
+   gegen den unbeheizten Dachraum, mit Zangendecke die Zangendecke; die
+   Decke darunter wird Zwischendecke ohne Wärmestrom mit der BGF des
+   Dachgeschosses. Unbeheizt: die oberste Decke bleibt die Hüllfläche
+   (Nachbar unbeheizter Dachraum). L- und T-Grundrisse werden vereinfacht als
+   ein Satteldach ohne Kehlen gerechnet.
 
 ## Boden- und Deckenbereiche mit eigenem Nachbarn
 
