@@ -188,6 +188,13 @@ nicht nötig: Es reicht, was man im Dachgeschoss messen kann.
      das unter `annahmen`.
    - `first_kante_index`: Wand, zu der der First parallel läuft; weglassen =
      längste Wand.
+   - Nur ausgebaut, wenn darüber ein **kalter Spitzboden** liegt:
+     `kehlbalken_m` = Höhe der Kehlbalkendecke innen ab Fußboden. Dann zählen
+     die Dachflächen nur bis dort, die Kehlbalkendecke grenzt an den
+     unbeheizten Dachraum. Unklar → nachfragen, wo die Dämmung liegt.
+   - Nur ausgebaut: `dachfenster` mit `seite` (a oder b, aus
+     `dachflaechen[].seite` der Vorschau), `breite_m`, `hoehe_m`, `anzahl`,
+     optional `u_wert` und `g_wert`. Maße vom Typenschild, nie raten.
    - `quelle`.
 4. Vorschau zeigen: Dachflächen mit Richtung und Fläche, Firsthöhe, Volumen
    und bei ausgebautem Dachgeschoss `bgf_dachgeschoss_m2` (ÖNORM B 8110-6:

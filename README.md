@@ -495,6 +495,10 @@ Angebotsübersicht in der Web-App. Als erster Lesetest eignet sich:
   256 × 256 Pixel und ist kleiner als 10 KB. Keine Änderungen an `time_entries`
   oder den Verwaltungsrechten der Web-Oberfläche.
 
+- **Energieausweis 0.1.12** — Kalter Spitzboden (`kehlbalken_m`) und
+  Dachflächenfenster (`dachfenster`) in `ea_plan_dach_vorschau`/-speichern;
+  Dachfenster gehen als ROOFWINDOW an ihrer Dachfläche in den Baukörper.
+  Benötigt im Web-Repository `sql/20260927_energy_plan_transfer_roofwindow.sql`.
 - **Energieausweis 0.1.11** — Dach ohne Plan: Der Skill fragt zuerst „Was
   ist oben?“ und dann nur, was man vor Ort messen kann (Neigung, Kniestock
   innen, Dicke des Dachaufbaus). `ea_plan_dach_vorschau` zeigt die BGF des
