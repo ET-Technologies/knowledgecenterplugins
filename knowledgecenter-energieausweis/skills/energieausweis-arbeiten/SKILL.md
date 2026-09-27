@@ -1,6 +1,6 @@
 ---
 name: energieausweis-arbeiten
-description: Energieausweis-Projekte in Knowledge Center suchen, lesen und bearbeiten, Prüfsummen und Ecotech-XML erzeugen. Für Ausweise, Gebäudehülle, Fenster, U-Werte, Grundrisse und Plan-3D, die Begehung vom Handy samt Fotos (Typenschild ablesen); Geschosspläne mit Fenstern und Außentüren bearbeiten, Originalpläne je Ebene zuordnen und Geometrie kontrolliert in den Baukörper übernehmen. EcoBook 2.0 (Demo): Energiekennzahlen simuliert berechnen, Sanierung mit Fenstern, Fassaden- und Dachdämmung durchrechnen (Kosten, Förderung, Amortisation, Kosten des Nichtstuns), Bericht als PDF und Angebot aus der Sanierung.
+description: Energieausweis-Projekte in Knowledge Center suchen, lesen und bearbeiten, Prüfsummen und Ecotech-XML erzeugen. Für Ausweise, Gebäudehülle, Fenster, U-Werte, Grundrisse und Plan-3D, die Begehung vom Handy samt Fotos (Typenschild ablesen); Geschosspläne mit Fenstern und Außentüren bearbeiten, Originalpläne je Ebene zuordnen und Geometrie kontrolliert in den Baukörper übernehmen. EcoBook 2.0 (Demo): Energiekennzahlen simuliert berechnen, Sanierung mit Fenstern, Fassaden- und Dachdämmung durchrechnen (Gesamtkosten, Amortisation, Kosten des Nichtstuns, optional eine genannte Förderung), Produkte verschiedener Hersteller vergleichen, Bericht als PDF und Angebot aus der Sanierung.
 ---
 
 # Energieausweis in Knowledge Center
@@ -295,15 +295,26 @@ dazu und trag die Werte nie als Kennzahlen des Ausweises ein.
    schließen. `ea_berechnung_lesen` zeigt Rechenweg, Annahmen, größte
    Einzelverluste und frühere Läufe.
 2. **Produkte:** `ecobook_produkte` liefert Fenster, Fassaden- und
-   Dachdämmung mit ID, U-Wert bzw. λ, Dicken und Preis sowie die
-   Förderregeln (Beispielwerte). Produkt-IDs nur von hier.
+   Dachdämmung mit ID, Hersteller, Produktlinie, U-Wert bzw. λ, Dicken,
+   Preis und Preisstand (optional nach `hersteller` gefiltert). Produkt-IDs
+   nur von hier. Ist ein Preis älter als ein Jahr, darauf hinweisen. Das
+   Demo-Sortiment hat bewusst neutrale Hersteller (A, B, C); echte
+   Hersteller trägt das Büro im EcoBook ein – nie echte Markennamen oder
+   Preise erfinden.
+   **Vergleichen:** `ea_produkte_vergleichen` rechnet dieselbe Maßnahme mit
+   allen Produkten (oder den genannten Herstellern) nebeneinander – ideal
+   für „Welches Fenster rechnet sich am schnellsten?“.
 3. **Simulieren:** `ea_sanierung_simulieren` mit `massnahmen` (je Bereich
    `fenster`, `fassade`, `dach` höchstens eine; `produkt_id`, bei Dämmung
    `dicke_cm`, bei Fenstern optional eigener `uw`). Speichert nichts – gern
    mehrere Varianten rechnen und vergleichen, z. B. „nur Dach“ gegen
-   „Dach + Fassade“. Antworte einfach und konkret: Klasse vorher → nachher,
-   Eigenanteil, Ersparnis pro Jahr, Amortisation, Kosten des Nichtstuns und
-   die Empfehlung. Förderung immer als Beispiel ohne Zusage bezeichnen.
+   „Dach + Fassade“. Gerechnet wird mit den **Gesamtkosten**. Antworte
+   einfach und konkret: Klasse vorher → nachher, Gesamtkosten, Ersparnis
+   pro Jahr, Amortisation, Kosten des Nichtstuns und die Empfehlung.
+   **Förderung:** nur wenn der Benutzer einen Betrag nennt, als
+   `foerderung_euro` (ein Betrag für die ganze Variante). Dann zusätzlich
+   Eigenanteil und Amortisation mit Förderung nennen. Nie eine Förderung
+   annehmen, schätzen oder Förderquoten nennen.
 4. **Festhalten:** `ea_sanierung_speichern` (nur auf Wunsch) legt die
    gewählte Variante ab; sie erscheint im Web und im Bericht.
 5. **Bericht:** `ea_bericht_pdf` erzeugt das PDF (Deckblatt mit Skala,
@@ -313,8 +324,9 @@ dazu und trag die Werte nie als Kennzahlen des Ausweises ein.
    Positionen (Bezeichnung, Menge in m², Einheit, Einzelpreis netto,
    Beschreibung). Mit dem Angebots-Plugin: Kunde über `kunden_suchen`,
    Steuersatz beim Benutzer klären, dann `angebot_vorschau` und nach
-   Freigabe `angebot_anlegen`. Förderung nur als Hinweis in die Notiz,
-   nie als Rabatt. Ohne Angebots-Plugin: im Web im Reiter Sanierung
+   Freigabe `angebot_anlegen`. Hersteller und Produktlinie stehen schon
+   in der Bezeichnung. Eine genannte Förderung nur als Hinweis in die
+   Notiz, nie als Rabatt. Ohne Angebots-Plugin: im Web im Reiter Sanierung
    „Angebot erstellen“.
 
 Die Simulation rechnet mit dem **gespeicherten** Projektstand. Ungespeicherte

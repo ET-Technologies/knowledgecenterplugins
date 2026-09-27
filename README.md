@@ -211,8 +211,9 @@ MCP-Verbindung zu `https://www.knowledgecenter.at/api/mcp/energieausweis`
 | `ea_anlage_setzen`           | Typenschild, Wärmeabgabe, Kesselart, Aufstellort, Warmwasser, Lüftung, PV/Solar — nur übergebene Felder     |
 | `ea_berechnung_starten`      | Demo-Berechnung über den EcoBook 2.0 Rechendienst: HWB, PEB, CO₂, fGEE, Klassen, Verluste, Hinweise         |
 | `ea_berechnung_lesen`        | Gespeicherte Läufe: Rechenweg, Annahmen, größte Verluste, Sanierungsvarianten                               |
-| `ecobook_produkte`           | EcoBook 2.0: Fenster, Fassaden- und Dachdämmung mit U-Wert/λ, Preis, Förderung (Beispiel)                   |
-| `ea_sanierung_simulieren`    | Maßnahmen durchrechnen: Klasse, Kosten, Förderung, Amortisation, Nichtstun, Angebotspositionen              |
+| `ecobook_produkte`           | EcoBook 2.0: Fenster, Fassaden- und Dachdämmung je Hersteller mit U-Wert/λ, Preis, Preisstand               |
+| `ea_produkte_vergleichen`    | Dieselbe Maßnahme mit allen Produkten/Herstellern nebeneinander: Kosten, Ersparnis, Amortisation            |
+| `ea_sanierung_simulieren`    | Maßnahmen durchrechnen auf Gesamtkosten, optional genannte Förderung, Nichtstun, Angebotspositionen         |
 | `ea_sanierung_speichern`     | Sanierungsvariante für Web und Bericht speichern                                                            |
 | `ea_bericht_pdf`             | Bericht (Demo) als PDF mit Sanierungsvorschlag, Link 24 h gültig                                            |
 
@@ -501,6 +502,12 @@ Angebotsübersicht in der Web-App. Als erster Lesetest eignet sich:
   256 × 256 Pixel und ist kleiner als 10 KB. Keine Änderungen an `time_entries`
   oder den Verwaltungsrechten der Web-Oberfläche.
 
+- **Energieausweis 0.1.14** — EcoBook 2.0: gerechnet wird mit den
+  Gesamtkosten; eine Förderung nur, wenn der Benutzer einen Betrag nennt
+  (`foerderung_euro` statt der früheren Beispielwerte). Produkte mit
+  Hersteller, Produktlinie und Preisstand; neues Werkzeug
+  `ea_produkte_vergleichen`. Benötigt im Web-Repository
+  `sql/20260929_ecobook_hersteller.sql`.
 - **Energieausweis 0.1.13** — EcoBook 2.0 (Demo): `ea_berechnung_starten` und
   `ea_berechnung_lesen` (simulierte Energiekennzahlen mit Klassen,
   Verbrauchsabgleich und Hinweisen), `ecobook_produkte`,
