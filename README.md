@@ -211,10 +211,13 @@ MCP-Verbindung zu `https://www.knowledgecenter.at/api/mcp/energieausweis`
 | `ea_anlage_setzen`           | Typenschild, Wärmeabgabe, Kesselart, Aufstellort, Warmwasser, Lüftung, PV/Solar — nur übergebene Felder     |
 | `ea_berechnung_starten`      | Demo-Berechnung über den EcoBook 2.0 Rechendienst: HWB, PEB, CO₂, fGEE, Klassen, Verluste, Hinweise         |
 | `ea_berechnung_lesen`        | Gespeicherte Läufe: Rechenweg, Annahmen, größte Verluste, Sanierungsvarianten                               |
-| `ecobook_produkte`           | EcoBook 2.0: Fenster, Fassaden- und Dachdämmung je Hersteller mit U-Wert/λ, Preis, Preisstand               |
+| `ecobook_produkte`           | EcoBook 2.0: Fenster, Dämmung, Heizungen und PV je Hersteller mit U-Wert/λ bzw. JAZ/kWp, Preis, Preisstand  |
 | `ea_produkte_vergleichen`    | Dieselbe Maßnahme mit allen Produkten/Herstellern nebeneinander: Kosten, Ersparnis, Amortisation            |
 | `ea_sanierung_simulieren`    | Maßnahmen durchrechnen auf Gesamtkosten, optional genannte Förderung, Nichtstun, Angebotspositionen         |
 | `ea_sanierung_speichern`     | Sanierungsvariante für Web und Bericht speichern                                                            |
+| `ea_fahrplan_simulieren`     | Sanierungsfahrplan: Maßnahmen je Jahr, Budget, Klasse und Kosten je Schritt, Nichtstun/Fahrplan/sofort      |
+| `ea_fahrplan_speichern`      | Fahrplan für Web, Handy und Bericht speichern                                                               |
+| `ea_kundenlinks_lesen`       | Kundenlinks des Projekts (gültig, Aufrufe) und Anfragen der Kunden (Angebot/Rückruf)                        |
 | `ea_bericht_pdf`             | Bericht (Demo) als PDF mit Sanierungsvorschlag, Link 24 h gültig                                            |
 
 ## Sicherheit
@@ -502,6 +505,13 @@ Angebotsübersicht in der Web-App. Als erster Lesetest eignet sich:
   256 × 256 Pixel und ist kleiner als 10 KB. Keine Änderungen an `time_entries`
   oder den Verwaltungsrechten der Web-Oberfläche.
 
+- **Energieausweis 0.1.15** — EcoBook 2.0: Heizungstausch und Photovoltaik
+  im Simulator (Heizung auf die Heizlast nach der Dämmung ausgelegt, PV mit
+  `kwp`), Sanierungsfahrplan über Jahre (`ea_fahrplan_simulieren`,
+  `ea_fahrplan_speichern`, optional Budget) und `ea_kundenlinks_lesen` für
+  Kundenlinks und Kundenanfragen. Benötigt im Web-Repository
+  `sql/20260930_ecobook_heizung_pv.sql`, `sql/20261001_energy_fahrplan.sql`
+  und `sql/20261002_energy_kundenlinks.sql`.
 - **Energieausweis 0.1.14** — EcoBook 2.0: gerechnet wird mit den
   Gesamtkosten; eine Förderung nur, wenn der Benutzer einen Betrag nennt
   (`foerderung_euro` statt der früheren Beispielwerte). Produkte mit
