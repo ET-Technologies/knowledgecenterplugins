@@ -1,6 +1,6 @@
 ---
 name: energieausweis-arbeiten
-description: Energieausweis-Projekte in Knowledge Center suchen, lesen und bearbeiten, Prüfsummen und Ecotech-XML erzeugen. Für Ausweise, Gebäudehülle, Fenster, U-Werte, Grundrisse und Plan-3D, die Begehung vom Handy samt Fotos (Typenschild ablesen); Geschosspläne mit Fenstern und Außentüren bearbeiten, Originalpläne je Ebene zuordnen und Geometrie kontrolliert in den Baukörper übernehmen.
+description: Energieausweis-Projekte in Knowledge Center suchen, lesen und bearbeiten, Prüfsummen und Ecotech-XML erzeugen. Für Ausweise, Gebäudehülle, Fenster, U-Werte, Grundrisse und Plan-3D, die Begehung vom Handy samt Fotos (Typenschild ablesen); Geschosspläne mit Fenstern und Außentüren bearbeiten, Originalpläne je Ebene zuordnen und Geometrie kontrolliert in den Baukörper übernehmen. EcoBook 2.0 (Demo): Energiekennzahlen simuliert berechnen, Sanierung mit Fenstern, Fassaden- und Dachdämmung durchrechnen (Kosten, Förderung, Amortisation, Kosten des Nichtstuns), Bericht als PDF und Angebot aus der Sanierung.
 ---
 
 # Energieausweis in Knowledge Center
@@ -279,6 +279,46 @@ Ersatz zusätzlich nur mit `ersetzen_bestaetigt=true`. Danach `ea_projekt_lesen`
 (enthält Prüfsummen); fehlende Konstruktionen/U-Werte ergänzen. Geometrische
 Kennzahlen sind keine zertifizierte Energie-Berechnung. Alternativ bleibt die
 Übernahme mit anschließendem Projekt-Speichern im Web verfügbar.
+
+## Berechnen und Sanierung simulieren (EcoBook 2.0, Demo)
+
+Alles in diesem Abschnitt ist eine **Demo**: vereinfachte Berechnung mit
+Richtwerten, kein gültiger Energieausweis nach OIB-RL 6. Sag das jedes Mal
+dazu und trag die Werte nie als Kennzahlen des Ausweises ein.
+
+1. **Berechnen:** `ea_berechnung_starten` (nur auf Wunsch, speichert einen
+   Lauf) schickt den gespeicherten Stand an den EcoBook 2.0 Rechendienst.
+   Zurück kommen HWB, PEB, CO₂ und fGEE mit Klassen A++ bis G, wohin die
+   Wärme geht, Energiekosten und der Verbrauchsabgleich. Die **Hinweise**
+   zuerst vorlesen (z. B. „weder Dach noch oberste Decke“): Datenlücken
+   verfälschen alles Weitere, also erst mit den `*_setzen`-Werkzeugen
+   schließen. `ea_berechnung_lesen` zeigt Rechenweg, Annahmen, größte
+   Einzelverluste und frühere Läufe.
+2. **Produkte:** `ecobook_produkte` liefert Fenster, Fassaden- und
+   Dachdämmung mit ID, U-Wert bzw. λ, Dicken und Preis sowie die
+   Förderregeln (Beispielwerte). Produkt-IDs nur von hier.
+3. **Simulieren:** `ea_sanierung_simulieren` mit `massnahmen` (je Bereich
+   `fenster`, `fassade`, `dach` höchstens eine; `produkt_id`, bei Dämmung
+   `dicke_cm`, bei Fenstern optional eigener `uw`). Speichert nichts – gern
+   mehrere Varianten rechnen und vergleichen, z. B. „nur Dach“ gegen
+   „Dach + Fassade“. Antworte einfach und konkret: Klasse vorher → nachher,
+   Eigenanteil, Ersparnis pro Jahr, Amortisation, Kosten des Nichtstuns und
+   die Empfehlung. Förderung immer als Beispiel ohne Zusage bezeichnen.
+4. **Festhalten:** `ea_sanierung_speichern` (nur auf Wunsch) legt die
+   gewählte Variante ab; sie erscheint im Web und im Bericht.
+5. **Bericht:** `ea_bericht_pdf` erzeugt das PDF (Deckblatt mit Skala,
+   Rechenweg, Sanierungsvorschlag der zuletzt gespeicherten Variante),
+   Link 24 h gültig.
+6. **Angebot:** Die `angebot_positionen` aus der Simulation sind freie
+   Positionen (Bezeichnung, Menge in m², Einheit, Einzelpreis netto,
+   Beschreibung). Mit dem Angebots-Plugin: Kunde über `kunden_suchen`,
+   Steuersatz beim Benutzer klären, dann `angebot_vorschau` und nach
+   Freigabe `angebot_anlegen`. Förderung nur als Hinweis in die Notiz,
+   nie als Rabatt. Ohne Angebots-Plugin: im Web im Reiter Sanierung
+   „Angebot erstellen“.
+
+Die Simulation rechnet mit dem **gespeicherten** Projektstand. Ungespeicherte
+Änderungen im Web zählen nicht – im Zweifel erst speichern lassen.
 
 ## Alten Ausweis (PDF) übernehmen
 

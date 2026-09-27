@@ -15,7 +15,7 @@ sind gemeinsam — der Server und der fachliche Arbeitsablauf sind dieselben.
 | Plugin                               | Bereich                                                                          | Voraussetzung                                |
 | ------------------------------------ | -------------------------------------------------------------------------------- | -------------------------------------------- |
 | `knowledgecenter-gutachten`          | Gutachten, Aktenvermerke, Protokolle, Stellungnahmen                             | Gutachten-Modul im Abo                       |
-| `knowledgecenter-energieausweis`     | Energieausweis-Projekte: Bauteile, Fenster, Konstruktionen, Ecotech-XML          | Energieausweis-Modul im Abo                  |
+| `knowledgecenter-energieausweis`     | Energieausweis-Projekte: Bauteile, Fenster, Konstruktionen, Ecotech-XML, EcoBook | Energieausweis-Modul im Abo                  |
 | `knowledgecenter-buero-branding`     | Büroprofil, Briefpapier und Kontaktdaten                                         | Owner-Konto                                  |
 | `knowledgecenter-zeiterfassung`      | Ausschließlich eigene Arbeitszeiten starten, beenden und korrigieren             | Persönliches Owner-Konto in Version 1        |
 | `knowledgecenter-eingangsrechnungen` | Eingangsrechnungen prüfen, Fälligkeiten, Auswertungen und Zahlungsvermerke       | Owner-Konto mit Eingangsrechnungs-Modul      |
@@ -209,6 +209,12 @@ MCP-Verbindung zu `https://www.knowledgecenter.at/api/mcp/energieausweis`
 | `ea_fotos_hochladen`         | Im Chat angehängte Fotos (ChatGPT) mit Kategorie übernehmen, wiederholbar über `anfrage_id`                 |
 | `ea_foto_link`               | Link zur Kamera-Seite der Handy-App (für Claude oder zum Fotografieren vor Ort)                             |
 | `ea_anlage_setzen`           | Typenschild, Wärmeabgabe, Kesselart, Aufstellort, Warmwasser, Lüftung, PV/Solar — nur übergebene Felder     |
+| `ea_berechnung_starten`      | Demo-Berechnung über den EcoBook 2.0 Rechendienst: HWB, PEB, CO₂, fGEE, Klassen, Verluste, Hinweise         |
+| `ea_berechnung_lesen`        | Gespeicherte Läufe: Rechenweg, Annahmen, größte Verluste, Sanierungsvarianten                               |
+| `ecobook_produkte`           | EcoBook 2.0: Fenster, Fassaden- und Dachdämmung mit U-Wert/λ, Preis, Förderung (Beispiel)                   |
+| `ea_sanierung_simulieren`    | Maßnahmen durchrechnen: Klasse, Kosten, Förderung, Amortisation, Nichtstun, Angebotspositionen              |
+| `ea_sanierung_speichern`     | Sanierungsvariante für Web und Bericht speichern                                                            |
+| `ea_bericht_pdf`             | Bericht (Demo) als PDF mit Sanierungsvorschlag, Link 24 h gültig                                            |
 
 ## Sicherheit
 
@@ -495,6 +501,14 @@ Angebotsübersicht in der Web-App. Als erster Lesetest eignet sich:
   256 × 256 Pixel und ist kleiner als 10 KB. Keine Änderungen an `time_entries`
   oder den Verwaltungsrechten der Web-Oberfläche.
 
+- **Energieausweis 0.1.13** — EcoBook 2.0 (Demo): `ea_berechnung_starten` und
+  `ea_berechnung_lesen` (simulierte Energiekennzahlen mit Klassen,
+  Verbrauchsabgleich und Hinweisen), `ecobook_produkte`,
+  `ea_sanierung_simulieren` und `ea_sanierung_speichern` (Fenster, Fassaden-
+  und Dachdämmung mit Kosten, Förderung als Beispielwerte, Amortisation und
+  Kosten des Nichtstuns) sowie `ea_bericht_pdf`. Die Simulation liefert
+  Angebotspositionen für das Angebots-Plugin. Benötigt im Web-Repository
+  `sql/20260928_energy_berechnungen.sql` und `sql/20260928_ecobook_produkte.sql`.
 - **Energieausweis 0.1.12** — Dach wie im Ecotech-Schnellverfahren: Dachraum
   beheizt/unbeheizt, Höhen ab oberster Geschoßdecke (`first_hoehe_m`,
   `uebermauerung_m`, beim beheizten wahlweise `drempel_hoehe_m` mit kalten
