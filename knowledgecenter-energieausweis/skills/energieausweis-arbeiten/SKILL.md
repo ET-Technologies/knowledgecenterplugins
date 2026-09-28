@@ -344,6 +344,15 @@ dazu und trag die Werte nie als Kennzahlen des Ausweises ein.
    mit `kategorie` und `jahr` nachtragen. Nur genannte Angaben, nichts
    erfinden. Die Gebäudedaten ändern sich dadurch nicht – danach auf
    „Gebäudedaten anpassen und neu berechnen“ hinweisen.
+   **Verbrauch:** `ea_hausakte_lesen` zeigt auch den echten Verbrauch pro
+   Jahr und die Wirkung erledigter Arbeiten („Dach gedämmt – Verbrauch
+   seitdem −26 %“). `ea_verbrauch_eintragen` (nur auf Wunsch):
+   `art: abrechnung` mit `jahr`, `menge`, `einheit`, optional `kosten_euro`,
+   oder `art: zaehlerstand` mit `stand`, `einheit`, `ablesedatum`. Nur Werte,
+   die der Benutzer genannt oder bestätigt hat – nichts schätzen. Die neueste
+   Heiz-Abrechnung wird als Jahresverbrauch ins Projekt übernommen; danach
+   `ea_berechnung_starten`. Fotos von Abrechnungen liest das Web bzw. Handy
+   selbst ab.
 5. **Bericht:** `ea_bericht_pdf` erzeugt das PDF (Deckblatt mit Skala,
    Rechenweg, Sanierungsvorschlag der zuletzt gespeicherten Variante,
    Sanierungsfahrplan falls gespeichert),
