@@ -1,6 +1,6 @@
 ---
 name: energieausweis-arbeiten
-description: Energieausweis-Projekte in Knowledge Center suchen, lesen und bearbeiten, Prüfsummen und Ecotech-XML erzeugen. Für Ausweise, Gebäudehülle, Fenster, U-Werte, Grundrisse und Plan-3D, die Begehung vom Handy samt Fotos (Typenschild ablesen); Geschosspläne mit Fenstern und Außentüren bearbeiten, Originalpläne je Ebene zuordnen und Geometrie kontrolliert in den Baukörper übernehmen. EcoBook 2.0 (Demo): Energiekennzahlen simuliert berechnen, Sanierung mit Fenstern, Fassaden- und Dachdämmung, Heizungstausch und Photovoltaik durchrechnen (Gesamtkosten, Amortisation, Kosten des Nichtstuns, optional eine genannte Förderung), Produkte verschiedener Hersteller vergleichen, Sanierungsfahrplan über Jahre mit Budget, Kundenlinks und Kundenanfragen lesen, Bericht als PDF und Angebot aus der Sanierung.
+description: Energieausweis-Projekte in Knowledge Center suchen, lesen und bearbeiten, Prüfsummen und Ecotech-XML erzeugen. Für Ausweise, Gebäudehülle, Fenster, U-Werte, Grundrisse und Plan-3D, die Begehung vom Handy samt Fotos (Typenschild ablesen); Geschosspläne mit Fenstern und Außentüren bearbeiten, Originalpläne je Ebene zuordnen und Geometrie kontrolliert in den Baukörper übernehmen. EcoBook 2.0 (Demo): Energiekennzahlen simuliert berechnen, Sanierung mit Fenstern, Fassaden- und Dachdämmung, Heizungstausch und Photovoltaik durchrechnen (Gesamtkosten, Amortisation, Kosten des Nichtstuns, optional eine genannte Förderung), Produkte verschiedener Hersteller vergleichen, Sanierungsfahrplan über Jahre mit Budget, Hausakte (Geschichte des Hauses) lesen und ergänzen, Kundenlinks und Kundenanfragen lesen, Bericht als PDF und Angebot aus der Sanierung.
 ---
 
 # Energieausweis in Knowledge Center
@@ -336,6 +336,14 @@ dazu und trag die Werte nie als Kennzahlen des Ausweises ein.
    („Angebot anfordern“, „Rückruf“). Offene Anfragen dem Benutzer nennen.
    Links anlegen und widerrufen geht nur im Web (Reiter Energie → Teilen); den Link selbst gibt es
    nur beim Erstellen – nie danach fragen oder ihn erfinden.
+   **Hausakte:** `ea_hausakte_lesen` zeigt die Geschichte des Hauses
+   (erledigte und nachgetragene Arbeiten, Stand heute, Geplantes) und bis
+   zu drei Hinweise – guter Einstieg bei „Was ist beim Haus los?“.
+   `ea_hausakte_eintragen` (nur auf Wunsch): `aus_plan: true`, wenn eine
+   geplante Maßnahme erledigt ist (mit `datum`), sonst eine frühere Arbeit
+   mit `kategorie` und `jahr` nachtragen. Nur genannte Angaben, nichts
+   erfinden. Die Gebäudedaten ändern sich dadurch nicht – danach auf
+   „Gebäudedaten anpassen und neu berechnen“ hinweisen.
 5. **Bericht:** `ea_bericht_pdf` erzeugt das PDF (Deckblatt mit Skala,
    Rechenweg, Sanierungsvorschlag der zuletzt gespeicherten Variante,
    Sanierungsfahrplan falls gespeichert),

@@ -217,6 +217,8 @@ MCP-Verbindung zu `https://www.knowledgecenter.at/api/mcp/energieausweis`
 | `ea_sanierung_speichern`     | Sanierungsvariante für Web und Bericht speichern                                                            |
 | `ea_fahrplan_simulieren`     | Sanierungsfahrplan: Maßnahmen je Jahr, Budget, Klasse und Kosten je Schritt, Nichtstun/Fahrplan/sofort      |
 | `ea_fahrplan_speichern`      | Fahrplan für Web, Handy und Bericht speichern                                                               |
+| `ea_hausakte_lesen`          | Hausakte: erledigte/nachgetragene Arbeiten, Stand heute, Geplantes, Hinweise                                |
+| `ea_hausakte_eintragen`      | Erledigte geplante Maßnahme oder frühere Arbeit in die Hausakte eintragen                                   |
 | `ea_kundenlinks_lesen`       | Kundenlinks des Projekts (gültig, Aufrufe) und Anfragen der Kunden (Angebot/Rückruf)                        |
 | `ea_bericht_pdf`             | Bericht (Demo) als PDF mit Sanierungsvorschlag, Link 24 h gültig                                            |
 
@@ -505,6 +507,9 @@ Angebotsübersicht in der Web-App. Als erster Lesetest eignet sich:
   256 × 256 Pixel und ist kleiner als 10 KB. Keine Änderungen an `time_entries`
   oder den Verwaltungsrechten der Web-Oberfläche.
 
+- **Energieausweis 0.1.17** — Hausakte: neue Werkzeuge `ea_hausakte_lesen`
+  und `ea_hausakte_eintragen`; im Web ist die Hausakte der erste Reiter des
+  Projekts. Benötigt im Web-Repository `sql/20261003_energy_hausakte.sql`.
 - **Energieausweis 0.1.16** — Web vereinfacht: Berechnung, Sanierung und
   Fahrplan sind jetzt ein Reiter „Energie“ mit den Schritten Heute → Planen
   → Teilen. Die Anleitung verweist auf die neuen Namen; Werkzeuge
