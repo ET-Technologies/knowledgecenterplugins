@@ -330,11 +330,11 @@ dazu und trag die Werte nie als Kennzahlen des Ausweises ein.
    der Benutzer es nennt; dann sagen, wo Geld fehlt. Antwort: je Jahr
    Maßnahmen, Kosten, Klasse und Energiekosten danach, dazu Nichtstun /
    Fahrplan / alles sofort. `ea_fahrplan_speichern` nur auf Wunsch – er
-   erscheint im Reiter Fahrplan, am Handy und im Bericht.
+   erscheint im Reiter Energie, am Handy und im Bericht.
    **Kundenlink:** `ea_kundenlinks_lesen` zeigt die Links des Projekts
    (gültig, widerrufen, wie oft geöffnet) und die Anfragen der Kunden
    („Angebot anfordern“, „Rückruf“). Offene Anfragen dem Benutzer nennen.
-   Links anlegen und widerrufen geht nur im Web; den Link selbst gibt es
+   Links anlegen und widerrufen geht nur im Web (Reiter Energie → Teilen); den Link selbst gibt es
    nur beim Erstellen – nie danach fragen oder ihn erfinden.
 5. **Bericht:** `ea_bericht_pdf` erzeugt das PDF (Deckblatt mit Skala,
    Rechenweg, Sanierungsvorschlag der zuletzt gespeicherten Variante,
@@ -347,7 +347,7 @@ dazu und trag die Werte nie als Kennzahlen des Ausweises ein.
    Steuersatz beim Benutzer klären, dann `angebot_vorschau` und nach
    Freigabe `angebot_anlegen`. Hersteller und Produktlinie stehen schon
    in der Bezeichnung. Eine genannte Förderung nur als Hinweis in die
-   Notiz, nie als Rabatt. Ohne Angebots-Plugin: im Web im Reiter Sanierung
+   Notiz, nie als Rabatt. Ohne Angebots-Plugin: im Web im Reiter Energie unter Teilen
    „Angebot erstellen“.
 
 Die Simulation rechnet mit dem **gespeicherten** Projektstand. Ungespeicherte

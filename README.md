@@ -505,6 +505,10 @@ Angebotsübersicht in der Web-App. Als erster Lesetest eignet sich:
   256 × 256 Pixel und ist kleiner als 10 KB. Keine Änderungen an `time_entries`
   oder den Verwaltungsrechten der Web-Oberfläche.
 
+- **Energieausweis 0.1.16** — Web vereinfacht: Berechnung, Sanierung und
+  Fahrplan sind jetzt ein Reiter „Energie“ mit den Schritten Heute → Planen
+  → Teilen. Die Anleitung verweist auf die neuen Namen; Werkzeuge
+  unverändert.
 - **Energieausweis 0.1.15** — EcoBook 2.0: Heizungstausch und Photovoltaik
   im Simulator (Heizung auf die Heizlast nach der Dämmung ausgelegt, PV mit
   `kwp`), Sanierungsfahrplan über Jahre (`ea_fahrplan_simulieren`,
