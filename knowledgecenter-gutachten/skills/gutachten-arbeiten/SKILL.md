@@ -16,6 +16,9 @@ Kurzfassung:
 2. Diktat selbst verstehen und mit `gutachten_befuellen` schreiben —
    Namen und Adressen vorher mit `adressbuch_suchen` klären, bei
    Unklarheit den Benutzer fragen statt raten.
+   Fehlt ein Auftraggeber oder Empfänger im Adressbuch, auf Auftrag mit
+   `kunde_anlegen` anlegen; Kundendaten mit `kunde_aendern` ändern — nur mit
+   Angaben des Benutzers.
 3. Neue Fotos: Bietet der Client ein Werkzeug für direkt angehängte Dateien an,
    dieses verwenden. Andernfalls `foto_upload_link` erzeugen und dem Benutzer
    zeigen. Bei vielen Fotos danach `fotos_uebersicht` (Kontaktabzug) und

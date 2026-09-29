@@ -163,6 +163,8 @@ Marketplace-Dateien: `.claude-plugin/marketplace.json` (Claude Code) und
 | `gutachten_suchen`          | Gutachten finden (Titel, Nummer, Typ, Status)                                      |
 | `gutachten_lesen`           | Vollständiger Inhalt mit Feldadressen und Regeln                                   |
 | `adressbuch_suchen`         | Kunden, Lieferanten, Ansprechpartner, Mitarbeiter                                  |
+| `kunde_anlegen`             | Auftraggeber/Empfänger als Kunden anlegen, wenn das Adressbuch nichts findet       |
+| `kunde_aendern`             | Stammdaten eines Kunden ändern (partner_id aus `adressbuch_suchen`)                |
 | `foto_ansehen`              | Foto als Bild (verkleinert) — zum Ansehen und Beschriften                          |
 | `gutachten_anlegen`         | Neues Gutachten zu einem Template                                                  |
 | `gutachten_befuellen`       | Mehrere Felder in einem Aufruf — der Standardweg aus dem Diktat                    |
