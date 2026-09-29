@@ -17,7 +17,9 @@ Kurzfassung:
    Namen und Adressen vorher mit `adressbuch_suchen` klären, bei
    Unklarheit den Benutzer fragen statt raten.
    Fehlt ein Auftraggeber oder Empfänger im Adressbuch, auf Auftrag mit
-   `kunde_anlegen` anlegen; Kundendaten mit `kunde_aendern` ändern — nur mit
+   `kunde_anlegen` anlegen; Kundendaten mit `kunde_aendern` ändern.
+   Ansprechpersonen mit `ansprechpartner_anlegen` bzw.
+   `ansprechpartner_aendern` (IDs aus `adressbuch_suchen`) — alles nur mit
    Angaben des Benutzers.
 3. Neue Fotos: Bietet der Client ein Werkzeug für direkt angehängte Dateien an,
    dieses verwenden. Andernfalls `foto_upload_link` erzeugen und dem Benutzer
