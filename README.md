@@ -157,26 +157,27 @@ Marketplace-Dateien: `.claude-plugin/marketplace.json` (Claude Code) und
 
 ## Werkzeuge
 
-| Werkzeug                    | Zweck                                                                             |
-| --------------------------- | --------------------------------------------------------------------------------- |
-| `gutachten_typen_auflisten` | Templates mit Abschnitten, Feldern und Regeln                                     |
-| `gutachten_suchen`          | Gutachten finden (Titel, Nummer, Typ, Status)                                     |
-| `gutachten_lesen`           | Vollständiger Inhalt mit Feldadressen und Regeln                                  |
-| `adressbuch_suchen`         | Kunden, Lieferanten, Ansprechpartner, Mitarbeiter                                 |
-| `foto_ansehen`              | Foto als Bild (verkleinert) — zum Ansehen und Beschriften                         |
-| `gutachten_anlegen`         | Neues Gutachten zu einem Template                                                 |
-| `gutachten_befuellen`       | Mehrere Felder in einem Aufruf — der Standardweg aus dem Diktat                   |
-| `feld_setzen`               | Einzelne Korrektur                                                                |
-| `gutachten_titel_setzen`    | Titel eines bestehenden Gutachtens ändern                                         |
-| `eintrag_loeschen`          | Eintrag eines wiederholbaren Abschnitts löschen (nach Rückfrage), Rest rückt nach |
-| `eintrag_verschieben`       | Eintrag an eine neue Position setzen, Fotos wandern mit                           |
-| `foto_beschriften`          | Bildunterschrift setzen, Foto einem Abschnitt/Eintrag zuordnen                    |
-| `fotos_uebersicht`          | Kontaktabzug: bis zu 20 Fotos als nummeriertes Raster in einem Bild               |
-| `fotos_zuordnen`            | Viele Fotos in einem Aufruf zuordnen und beschriften                              |
-| `foto_upload_link`          | Kurzlebiger Link, über den der Benutzer neue Fotos hochlädt (Handy/Browser)       |
-| `foto_loeschen`             | Ein Foto endgültig löschen (nach Rückfrage)                                       |
-| `gutachten_fotos_hochladen` | Nur ChatGPT: ein im Chat angehängtes Foto direkt übernehmen, ein Aufruf je Foto   |
-| `pdf_erzeugen`              | Fertiges PDF, Link 24 h gültig                                                    |
+| Werkzeug                    | Zweck                                                                              |
+| --------------------------- | ---------------------------------------------------------------------------------- |
+| `gutachten_typen_auflisten` | Templates mit Abschnitten, Feldern und Regeln                                      |
+| `gutachten_suchen`          | Gutachten finden (Titel, Nummer, Typ, Status)                                      |
+| `gutachten_lesen`           | Vollständiger Inhalt mit Feldadressen und Regeln                                   |
+| `adressbuch_suchen`         | Kunden, Lieferanten, Ansprechpartner, Mitarbeiter                                  |
+| `foto_ansehen`              | Foto als Bild (verkleinert) — zum Ansehen und Beschriften                          |
+| `gutachten_anlegen`         | Neues Gutachten zu einem Template                                                  |
+| `gutachten_befuellen`       | Mehrere Felder in einem Aufruf — der Standardweg aus dem Diktat                    |
+| `feld_setzen`               | Einzelne Korrektur                                                                 |
+| `protokoll_fortschreiben`   | Nächstes Protokoll einer Reihe: Teilnehmer und offene Punkte mit Nummer übernehmen |
+| `gutachten_titel_setzen`    | Titel eines bestehenden Gutachtens ändern                                          |
+| `eintrag_loeschen`          | Eintrag eines wiederholbaren Abschnitts löschen (nach Rückfrage), Rest rückt nach  |
+| `eintrag_verschieben`       | Eintrag an eine neue Position setzen, Fotos wandern mit                            |
+| `foto_beschriften`          | Bildunterschrift setzen, Foto einem Abschnitt/Eintrag zuordnen                     |
+| `fotos_uebersicht`          | Kontaktabzug: bis zu 20 Fotos als nummeriertes Raster in einem Bild                |
+| `fotos_zuordnen`            | Viele Fotos in einem Aufruf zuordnen und beschriften                               |
+| `foto_upload_link`          | Kurzlebiger Link, über den der Benutzer neue Fotos hochlädt (Handy/Browser)        |
+| `foto_loeschen`             | Ein Foto endgültig löschen (nach Rückfrage)                                        |
+| `gutachten_fotos_hochladen` | Nur ChatGPT: ein im Chat angehängtes Foto direkt übernehmen, ein Aufruf je Foto    |
+| `pdf_erzeugen`              | Fertiges PDF, Link 24 h gültig                                                     |
 
 Welche Templates und Abschnitte über MCP erreichbar sind, legt der
 Administrator im Template fest (MCP-Zugriff: kein / nur lesen / lesen und
