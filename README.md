@@ -165,11 +165,14 @@ Marketplace-Dateien: `.claude-plugin/marketplace.json` (Claude Code) und
 | `adressbuch_suchen`         | Kunden, Lieferanten, Ansprechpartner, Mitarbeiter                                  |
 | `kunde_anlegen`             | Auftraggeber/Empfänger als Kunden anlegen, wenn das Adressbuch nichts findet       |
 | `kunde_aendern`             | Stammdaten eines Kunden ändern (partner_id aus `adressbuch_suchen`)                |
+| `ansprechpartner_anlegen`   | Ansprechperson bei einem Kunden oder Lieferanten anlegen                           |
+| `ansprechpartner_aendern`   | Ansprechperson ändern (ansprechpartner_id aus `adressbuch_suchen`)                 |
 | `foto_ansehen`              | Foto als Bild (verkleinert) — zum Ansehen und Beschriften                          |
 | `gutachten_anlegen`         | Neues Gutachten zu einem Template                                                  |
 | `gutachten_befuellen`       | Mehrere Felder in einem Aufruf — der Standardweg aus dem Diktat                    |
 | `feld_setzen`               | Einzelne Korrektur                                                                 |
 | `protokoll_fortschreiben`   | Nächstes Protokoll einer Reihe: Teilnehmer und offene Punkte mit Nummer übernehmen |
+| `dokument_ableiten`         | Aus einer Begehung ein Protokoll, einen Aktenvermerk o. Ä. ableiten (mit Fotos)    |
 | `gutachten_titel_setzen`    | Titel eines bestehenden Gutachtens ändern                                          |
 | `eintrag_loeschen`          | Eintrag eines wiederholbaren Abschnitts löschen (nach Rückfrage), Rest rückt nach  |
 | `eintrag_verschieben`       | Eintrag an eine neue Position setzen, Fotos wandern mit                            |
@@ -334,6 +337,8 @@ gemeinsame MCP-Verbindung, den Skill `angebote-erstellen` und das Angebotsicon
 | `kunden_lesen`                 | Kundenadresse, Ansprechpartner und Vertragsrabatt lesen        |
 | `kunde_anlegen`                | Neuen Kunden auf Auftrag anlegen                               |
 | `kunde_aendern`                | Adresse, Kontakt oder Vertragsrabatt eines Kunden ändern       |
+| `ansprechpartner_anlegen`      | Ansprechperson beim Kunden anlegen                             |
+| `ansprechpartner_aendern`      | Ansprechperson ändern (ID aus `kunden_lesen`)                  |
 | `produkte_suchen`              | Katalogartikel nach Name oder Artikelnummer finden             |
 | `produkt_lesen`                | Katalogpreis, Einheit, Steuer und Preismodus lesen             |
 | `produkt_anlegen`              | Neuen Artikel auf Auftrag in den Katalog aufnehmen             |

@@ -17,13 +17,20 @@ Kurzfassung:
    Namen und Adressen vorher mit `adressbuch_suchen` klären, bei
    Unklarheit den Benutzer fragen statt raten.
    Fehlt ein Auftraggeber oder Empfänger im Adressbuch, auf Auftrag mit
-   `kunde_anlegen` anlegen; Kundendaten mit `kunde_aendern` ändern — nur mit
+   `kunde_anlegen` anlegen; Kundendaten mit `kunde_aendern` ändern.
+   Ansprechpersonen mit `ansprechpartner_anlegen` bzw.
+   `ansprechpartner_aendern` (IDs aus `adressbuch_suchen`) — alles nur mit
    Angaben des Benutzers.
 3. Neue Fotos: Bietet der Client ein Werkzeug für direkt angehängte Dateien an,
    dieses verwenden. Andernfalls `foto_upload_link` erzeugen und dem Benutzer
    zeigen. Bei vielen Fotos danach `fotos_uebersicht` (Kontaktabzug) und
    `fotos_zuordnen` (alles in einem Aufruf) statt Foto für Foto.
-4. Vor jeder Schreibaktion: der Benutzer muss sie gewollt haben.
+4. Begehung zuerst, Dokument danach: Aus einer Begehung (oder einem anderen
+   Dokument) auf Auftrag mit `dokument_ableiten` ein Protokoll, einen
+   Aktenvermerk o. Ä. anlegen, dann mit `gutachten_befuellen` füllen und die
+   Fotos mit `fotos_zuordnen` zuordnen. Angaben des Kunden als solche
+   kennzeichnen.
+5. Vor jeder Schreibaktion: der Benutzer muss sie gewollt haben.
 
 ## Einrichtung in Claude Code (falls der Server nicht verbunden ist)
 

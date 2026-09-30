@@ -224,14 +224,21 @@ Für Fragen wie „Welche versendeten Angebote sind älter als 14 Tage?“,
   AT), E-Mail, Telefon, Kundennummer, Vertragsrabatt und Notiz nur aus
   Nutzerangaben. Meldet der Server einen gleichnamigen Kunden, dessen Daten
   zeigen und fragen, ob der bestehende gemeint ist; nur nach ausdrücklicher
-  Freigabe `gleichnamigen_kunden_anlegen: true`. Ansprechpartner und weitere
-  Stammdaten pflegt der Nutzer im Web.
+  Freigabe `gleichnamigen_kunden_anlegen: true`. Weitere Stammdaten pflegt der
+  Nutzer im Web.
 - **Kunde ändern.** Falsche Adresse, fehlende E-Mail oder ein anderer
   Vertragsrabatt: auf Auftrag `kunde_aendern` mit `kunden_id` und nur den
   genannten Feldern (`null` entfernt ein optionales Feld). Gespeicherte Angebote
   behalten ihre Adresse; ein geänderter Rabatt wirkt bei der nächsten
   Neuberechnung, etwa einer Positionsänderung. Ein neuer Name, den ein anderer
   Kunde trägt, wird gemeldet; nur nach Rückfrage `gleichnamigen_kunden_erlauben`.
+- **Ansprechpartner.** Erst `kunden_lesen`, ob die Person schon eingetragen
+  ist. Dann auf Auftrag `ansprechpartner_anlegen` mit `partner_id` (=
+  `kunden_id`): Vor- oder Nachname ist Pflicht; Anrede, Titel, Anredeform
+  (sie/du), Position, E-Mail, Telefon, Notiz und Hauptansprechpartner nur aus
+  Nutzerangaben. Ändern mit `ansprechpartner_aendern` und der
+  `ansprechpartner_id` aus `kunden_lesen`, nur die genannten Felder. Löschen
+  nur im Web.
 - **Artikel.** Erst `produkte_suchen`. Dann auf Auftrag `produkt_anlegen`:
   Artikelnummer (im Account eindeutig), Name, Einheit (Name oder Kürzel einer
   vorhandenen Einheit) und Verkaufspreis netto sind Pflicht; bei
