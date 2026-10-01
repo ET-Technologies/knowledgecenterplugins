@@ -25,12 +25,18 @@ Kurzfassung:
    dieses verwenden. Andernfalls `foto_upload_link` erzeugen und dem Benutzer
    zeigen. Bei vielen Fotos danach `fotos_uebersicht` (Kontaktabzug) und
    `fotos_zuordnen` (alles in einem Aufruf) statt Foto für Foto.
-4. Begehung zuerst, Dokument danach: Aus einer Begehung (oder einem anderen
+4. Begehung ordnen: Auf „ordne die Begehung" mit `begehung_ordnen_daten`
+   alles holen (Fotos mit Notiz, Bildinhalt und Zeit, Diktat-Teile), einen
+   Vorschlag bilden und dem Benutzer zeigen (je Beobachtung Ort, Feststellung,
+   Fotos; unsichere Fotos benennen). Erst nach seinem OK mit
+   `begehung_ordnen_uebernehmen` speichern; `begehung_ordnen_rueckgaengig`
+   macht es rückgängig.
+5. Begehung zuerst, Dokument danach: Aus einer Begehung (oder einem anderen
    Dokument) auf Auftrag mit `dokument_ableiten` ein Protokoll, einen
    Aktenvermerk o. Ä. anlegen, dann mit `gutachten_befuellen` füllen und die
    Fotos mit `fotos_zuordnen` zuordnen. Angaben des Kunden als solche
    kennzeichnen.
-5. Vor jeder Schreibaktion: der Benutzer muss sie gewollt haben.
+6. Vor jeder Schreibaktion: der Benutzer muss sie gewollt haben.
 
 ## Einrichtung in Claude Code (falls der Server nicht verbunden ist)
 
