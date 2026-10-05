@@ -353,6 +353,14 @@ dazu und trag die Werte nie als Kennzahlen des Ausweises ein.
    Heiz-Abrechnung wird als Jahresverbrauch ins Projekt übernommen; danach
    `ea_berechnung_starten`. Fotos von Abrechnungen liest das Web bzw. Handy
    selbst ab.
+   **Haus mit mehreren Ausweisen:** Hausakte und Verbrauch gehören zum
+   Haus, nicht zum einzelnen Ausweis. `ea_hausakte_lesen` nennt alle
+   Energieausweise des Hauses mit `[projekt:…]` (der geöffnete mit
+   „(dieser)“) – für „Wie war das Haus 2015?“ den älteren Ausweis mit
+   dessen Kennung lesen. Eingetragenes erscheint bei jedem Ausweis des
+   Hauses: nichts beim zweiten Ausweis noch einmal eintragen. Einen
+   Ausweis einem anderen Haus zuordnen und beim Verdoppeln „gleiches
+   Haus“ wählen geht nur im Web – darauf hinweisen, nicht nachbauen.
 5. **Bericht:** `ea_bericht_pdf` erzeugt das PDF (Deckblatt mit Skala,
    Rechenweg, Sanierungsvorschlag der zuletzt gespeicherten Variante,
    Sanierungsfahrplan falls gespeichert),
