@@ -1,6 +1,6 @@
 ---
 name: energieausweis-arbeiten
-description: Energieausweis-Projekte in Knowledge Center suchen, lesen und bearbeiten, Prüfsummen und Ecotech-XML erzeugen. Für Ausweise, Gebäudehülle, Fenster, U-Werte, Grundrisse und Plan-3D, die Begehung vom Handy samt Fotos (Typenschild ablesen); Geschosspläne mit Fenstern und Außentüren bearbeiten, Originalpläne je Ebene zuordnen und Geometrie kontrolliert in den Baukörper übernehmen. EcoBook 2.0 (Demo): Energiekennzahlen simuliert berechnen, Sanierung mit Fenstern, Fassaden- und Dachdämmung, Heizungstausch und Photovoltaik durchrechnen (Gesamtkosten, Amortisation, Kosten des Nichtstuns, optional eine genannte Förderung), Produkte verschiedener Hersteller vergleichen, Sanierungsfahrplan über Jahre mit Budget, Hausakte (Geschichte des Hauses) lesen und ergänzen, Kundenlinks und Kundenanfragen lesen, Bericht als PDF und Angebot aus der Sanierung.
+description: Energieausweis-Projekte in Knowledge Center suchen, lesen und bearbeiten, Prüfsummen und Ecotech-XML erzeugen. Für Ausweise, Gebäudehülle, Fenster, U-Werte, Grundrisse und Plan-3D, die Begehung vom Handy samt Fotos (Typenschild ablesen); Geschosspläne mit Fenstern und Außentüren bearbeiten, Originalpläne je Ebene zuordnen und Geometrie kontrolliert in den Baukörper übernehmen. EcoBook 2.0 (Demo): Energiekennzahlen simuliert berechnen, Sanierung mit Fenstern, Fassaden- und Dachdämmung, Heizungstausch und Photovoltaik durchrechnen (Gesamtkosten, Amortisation, Kosten des Nichtstuns, optional eine genannte Förderung), Produkte verschiedener Hersteller vergleichen, Sanierungsfahrplan über Jahre mit Budget, Häuser mit mehreren Energieausweisen suchen und lesen, Hausakte (Geschichte des Hauses) lesen und ergänzen, Kundenlinks und Kundenanfragen lesen, Bericht als PDF und Angebot aus der Sanierung.
 ---
 
 # Energieausweis in Knowledge Center
@@ -354,13 +354,19 @@ dazu und trag die Werte nie als Kennzahlen des Ausweises ein.
    `ea_berechnung_starten`. Fotos von Abrechnungen liest das Web bzw. Handy
    selbst ab.
    **Haus mit mehreren Ausweisen:** Hausakte und Verbrauch gehören zum
-   Haus, nicht zum einzelnen Ausweis. `ea_hausakte_lesen` nennt alle
-   Energieausweise des Hauses mit `[projekt:…]` (der geöffnete mit
-   „(dieser)“) – für „Wie war das Haus 2015?“ den älteren Ausweis mit
-   dessen Kennung lesen. Eingetragenes erscheint bei jedem Ausweis des
-   Hauses: nichts beim zweiten Ausweis noch einmal eintragen. Einen
-   Ausweis einem anderen Haus zuordnen und beim Verdoppeln „gleiches
-   Haus“ wählen geht nur im Web – darauf hinweisen, nicht nachbauen.
+   Haus, nicht zum einzelnen Ausweis. Fragt jemand nach einem Haus
+   (Adresse, GWR-Zahl) statt nach einem Ausweis: `ea_haeuser_suchen`,
+   dann `ea_haus_lesen` mit der `haus_id` – Hausdaten, alle Ausweise
+   (`[projekt:…]`, der neueste ist „aktuell“) und die Hausakte. Zum
+   Rechnen oder Bearbeiten den passenden Ausweis nehmen, meist den
+   aktuellen; für „Wie war das Haus 2015?“ den älteren. Eingetragenes
+   erscheint bei jedem Ausweis des Hauses: nichts doppelt eintragen.
+   **Im Web:** Die Hausakte steht auf der Haus-Seite (Menü „Häuser“ oder
+   „Haus: … →“ im Kopf des Ausweises), nicht mehr als Reiter im Ausweis.
+   Dort auch „Haus bearbeiten“ und „Neuer Energieausweis“ für dieses
+   Haus. Einen Ausweis einem anderen Haus zuordnen: im Ausweis „ändern“
+   neben dem Haus-Link. Beim Verdoppeln „gleiches Haus“ wählen. Das alles
+   geht nur im Web – darauf hinweisen, nicht nachbauen.
 5. **Bericht:** `ea_bericht_pdf` erzeugt das PDF (Deckblatt mit Skala,
    Rechenweg, Sanierungsvorschlag der zuletzt gespeicherten Variante,
    Sanierungsfahrplan falls gespeichert),

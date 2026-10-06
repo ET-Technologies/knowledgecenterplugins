@@ -226,6 +226,8 @@ MCP-Verbindung zu `https://www.knowledgecenter.at/api/mcp/energieausweis`
 | `ea_sanierung_speichern`     | Sanierungsvariante für Web und Bericht speichern                                                            |
 | `ea_fahrplan_simulieren`     | Sanierungsfahrplan: Maßnahmen je Jahr, Budget, Klasse und Kosten je Schritt, Nichtstun/Fahrplan/sofort      |
 | `ea_fahrplan_speichern`      | Fahrplan für Web, Handy und Bericht speichern                                                               |
+| `ea_haeuser_suchen`          | Häuser nach Name, Adresse, PLZ oder GWR-Zahl suchen, je Haus seine Energieausweise                          |
+| `ea_haus_lesen`              | Ein Haus: Hausdaten, alle Energieausweise (neuester = aktuell) und die Hausakte                             |
 | `ea_hausakte_lesen`          | Hausakte des Hauses: alle Ausweise, Arbeiten, Stand heute, Geplantes, Verbrauch mit Wirkung, Hinweise       |
 | `ea_hausakte_eintragen`      | Erledigte geplante Maßnahme oder frühere Arbeit in die Hausakte eintragen                                   |
 | `ea_verbrauch_eintragen`     | Echten Verbrauch eintragen (Jahresabrechnung oder Zählerstand); neueste Abrechnung fließt in die Berechnung |
@@ -520,9 +522,11 @@ Angebotsübersicht in der Web-App. Als erster Lesetest eignet sich:
   oder den Verwaltungsrechten der Web-Oberfläche.
 
 - **Energieausweis 0.1.19** — Ein Haus, mehrere Energieausweise: Hausakte
-  und Verbrauch gehören zum Haus; `ea_hausakte_lesen` nennt alle Ausweise
-  des Hauses. Zuordnen und „gleiches Haus“ beim Verdoppeln nur im Web.
-  Benötigt im Web-Repository `sql/20261005_buildings.sql`.
+  und Verbrauch gehören zum Haus; neue Werkzeuge `ea_haeuser_suchen` und
+  `ea_haus_lesen`; `ea_hausakte_lesen` nennt alle Ausweise des Hauses. Im
+  Web hat das Haus eine eigene Seite (Hausakte, Ausweise, Haus bearbeiten);
+  Zuordnen und „gleiches Haus“ beim Verdoppeln nur im Web. Benötigt im
+  Web-Repository `sql/20261005_buildings.sql`.
 - **Energieausweis 0.1.18** — Verbrauch in der Hausakte: neues Werkzeug
   `ea_verbrauch_eintragen`; `ea_hausakte_lesen` zeigt Verbrauch pro Jahr und
   die Wirkung erledigter Arbeiten. Benötigt im Web-Repository
