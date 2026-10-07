@@ -1,6 +1,6 @@
 ---
 name: energieausweis-arbeiten
-description: Energieausweis-Projekte in Knowledge Center suchen, lesen und bearbeiten, Prüfsummen und Ecotech-XML erzeugen. Für Ausweise, Gebäudehülle, Fenster, U-Werte, Grundrisse und Plan-3D, die Begehung vom Handy samt Fotos (Typenschild ablesen); Geschosspläne mit Fenstern und Außentüren bearbeiten, Originalpläne je Ebene zuordnen und Geometrie kontrolliert in den Baukörper übernehmen. EcoBook 2.0 (Demo): Energiekennzahlen simuliert berechnen, Sanierung mit Fenstern, Fassaden- und Dachdämmung, Heizungstausch und Photovoltaik durchrechnen (Gesamtkosten, Amortisation, Kosten des Nichtstuns, optional eine genannte Förderung), Produkte verschiedener Hersteller vergleichen, Sanierungsfahrplan über Jahre mit Budget, Häuser mit mehreren Energieausweisen suchen und lesen, Hausakte (Geschichte des Hauses) lesen und ergänzen, Kundenlinks und Kundenanfragen lesen, Bericht als PDF und Angebot aus der Sanierung.
+description: Energieausweis-Projekte in Knowledge Center suchen, lesen und bearbeiten, Prüfsummen und Ecotech-XML erzeugen. Für Ausweise, Gebäudehülle, Fenster, U-Werte, Grundrisse und Plan-3D, die Begehung vom Handy samt Fotos (Typenschild ablesen); Geschosspläne mit Fenstern und Außentüren bearbeiten, Originalpläne je Ebene zuordnen und Geometrie kontrolliert in den Baukörper übernehmen. EcoBook 2.0 (Demo): Energiekennzahlen simuliert berechnen, Sanierung mit Fenstern, Fassaden- und Dachdämmung, Heizungstausch und Photovoltaik durchrechnen (Gesamtkosten, Amortisation, Kosten des Nichtstuns, optional eine genannte Förderung), Produkte verschiedener Hersteller vergleichen, Sanierungsfahrplan über Jahre mit Budget, Häuser mit mehreren Energieausweisen suchen und lesen, Hausakte (Geschichte des Hauses) lesen und ergänzen, Kundenlinks und Kundenanfragen lesen, Sanierungsvorschlag als PDF und Angebot aus der Sanierung.
 ---
 
 # Energieausweis in Knowledge Center
@@ -323,14 +323,15 @@ dazu und trag die Werte nie als Kennzahlen des Ausweises ein.
    Eigenanteil und Amortisation mit Förderung nennen. Nie eine Förderung
    annehmen, schätzen oder Förderquoten nennen.
 4. **Festhalten:** `ea_sanierung_speichern` (nur auf Wunsch) legt die
-   gewählte Variante ab; sie erscheint im Web und im Bericht.
+   gewählte Variante ab; sie erscheint im Web (Reiter Energie → Planen) und im
+   Sanierungsvorschlag.
    **Fahrplan:** `ea_fahrplan_simulieren` verteilt die Maßnahmen auf Jahre
    (10–25 Jahre; jede Maßnahme mit `jahr`, oder `vorschlag: true` – Hülle
    zuerst, dann Heizung, zuletzt PV). Optional `budget_je_jahr`, nur wenn
    der Benutzer es nennt; dann sagen, wo Geld fehlt. Antwort: je Jahr
    Maßnahmen, Kosten, Klasse und Energiekosten danach, dazu Nichtstun /
    Fahrplan / alles sofort. `ea_fahrplan_speichern` nur auf Wunsch – er
-   erscheint im Reiter Energie, am Handy und im Bericht.
+   erscheint im Reiter Energie, am Handy und im Sanierungsvorschlag.
    **Kundenlink:** `ea_kundenlinks_lesen` zeigt die Links des Projekts
    (gültig, widerrufen, wie oft geöffnet) und die Anfragen der Kunden
    („Angebot anfordern“, „Rückruf“). Offene Anfragen dem Benutzer nennen.
@@ -367,10 +368,13 @@ dazu und trag die Werte nie als Kennzahlen des Ausweises ein.
    Haus. Einen Ausweis einem anderen Haus zuordnen: im Ausweis „ändern“
    neben dem Haus-Link. Beim Verdoppeln „gleiches Haus“ wählen. Das alles
    geht nur im Web – darauf hinweisen, nicht nachbauen.
-5. **Bericht:** `ea_bericht_pdf` erzeugt das PDF (Deckblatt mit Skala,
-   Rechenweg, Sanierungsvorschlag der zuletzt gespeicherten Variante,
-   Sanierungsfahrplan falls gespeichert),
-   Link 24 h gültig.
+5. **Sanierungsvorschlag (PDF):** `ea_bericht_pdf` erzeugt den
+   Sanierungsvorschlag für den Kunden: Deckblatt mit den Werten des
+   eingetragenen Energieausweises (fehlen sie, mit der Schätzung),
+   Rechenweg der Schätzung, die zuletzt gespeicherte Variante und der
+   Fahrplan, falls gespeichert. Ein vorheriger `ea_berechnung_starten` ist
+   nicht nötig. Link 24 h gültig. Immer „Sanierungsvorschlag“ nennen, nicht
+   „Energieausweis“ – die Wirkung der Maßnahmen ist geschätzt.
 6. **Angebot:** Die `angebot_positionen` aus der Simulation sind freie
    Positionen (Bezeichnung, Menge – Hülle in m², Heizung pauschal 1 Stk,
    PV in kWp –, Einheit, Einzelpreis netto,
@@ -383,6 +387,19 @@ dazu und trag die Werte nie als Kennzahlen des Ausweises ein.
 
 Die Simulation rechnet mit dem **gespeicherten** Projektstand. Ungespeicherte
 Änderungen im Web zählen nicht – im Zweifel erst speichern lassen.
+
+**Reiter Energie im Web** hat drei Schritte:
+- **Energieausweis:** die Kennwerte des eingetragenen Ausweises (HWB, PEB,
+  CO₂, fGEE mit Klassen), Vergleich mit einem älteren Ausweis und „PDF
+  drucken“. Keine Schätzung, keine Energiepreise – das ist die Seite „nach
+  der Berechnung“. Fehlen die Werte, kann man sie dort aus dem EA-PDF lesen
+  lassen, aus Ecotech zurückholen oder von Hand eintragen.
+- **Planen:** Varianten mit EcoBook; „heute“ sind die Werte des Ausweises,
+  „nachher“ ist die Schätzung. Die Förderung trägt man im Ergebnis ein.
+- **Teilen:** Kundenlink, Sanierungsvorschlag (PDF), Angebot erstellen.
+
+Fragt jemand nach „Heute“ oder dem „Bericht“: Das sind die alten Namen für
+„Energieausweis“ und „Sanierungsvorschlag“.
 
 ## Alten Ausweis (PDF) übernehmen
 
