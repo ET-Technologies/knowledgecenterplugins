@@ -1,0 +1,19 @@
+{
+  "name": "knowledgecenter-sales-pilot",
+  "version": "0.1.0",
+  "description": "Sales Pilot in Knowledge Center: Tagesübersicht, Kunden aus Vertriebssicht vor dem Gespräch, Gespräche festhalten, Termine planen und offene Aktivitäten mit Ergebnis und Folgeschritt abschließen. Persönlicher Owner-Zugang mit Sales-Pilot-Modul.",
+  "author": {
+    "name": "Entrich Technologies GmbH",
+    "email": "erwin@entrich-technologies.com",
+    "url": "https://www.knowledgecenter.at"
+  },
+  "homepage": "https://www.knowledgecenter.at",
+  "repository": "https://github.com/ET-Technologies/knowledgecenterplugins",
+  "keywords": [
+    "sales-pilot",
+    "vertrieb",
+    "leads",
+    "aktivitaeten",
+    "knowledge-center"
+  ]
+}

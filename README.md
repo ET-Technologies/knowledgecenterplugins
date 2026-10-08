@@ -12,15 +12,16 @@ lesen `.codex-plugin/`. Eine registrierte ChatGPT-App wird, soweit vorhanden,
 Lediglich die MCP-Verbindung (`.mcp.json`), der Skill (`skills/`) und die Assets
 sind gemeinsam — der Server und der fachliche Arbeitsablauf sind dieselben.
 
-| Plugin                               | Bereich                                                                          | Voraussetzung                                |
-| ------------------------------------ | -------------------------------------------------------------------------------- | -------------------------------------------- |
-| `knowledgecenter-gutachten`          | Gutachten, Aktenvermerke, Protokolle, Stellungnahmen                             | Gutachten-Modul im Abo                       |
-| `knowledgecenter-energieausweis`     | Energieausweis-Projekte: Bauteile, Fenster, Konstruktionen, Ecotech-XML, EcoBook | Energieausweis-Modul im Abo                  |
-| `knowledgecenter-buero-branding`     | Büroprofil, Briefpapier und Kontaktdaten                                         | Owner-Konto                                  |
-| `knowledgecenter-zeiterfassung`      | Ausschließlich eigene Arbeitszeiten starten, beenden und korrigieren             | Persönliches Owner-Konto in Version 1        |
-| `knowledgecenter-eingangsrechnungen` | Eingangsrechnungen prüfen, Fälligkeiten, Auswertungen und Zahlungsvermerke       | Owner-Konto mit Eingangsrechnungs-Modul      |
-| `knowledgecenter-baustellen`         | Baustellen zusammenfassen, Fotos, Chatnachrichten und neue Aufgaben              | Persönliches Owner-Konto mit Baustellenmodul |
-| `knowledgecenter-angebote`           | Angebote berechnen, als Karte prüfen, bearbeiten, freigeben und als PDF erzeugen | Persönliches Owner-Konto mit Angebotsmodul   |
+| Plugin                               | Bereich                                                                          | Voraussetzung                                  |
+| ------------------------------------ | -------------------------------------------------------------------------------- | ---------------------------------------------- |
+| `knowledgecenter-gutachten`          | Gutachten, Aktenvermerke, Protokolle, Stellungnahmen                             | Gutachten-Modul im Abo                         |
+| `knowledgecenter-energieausweis`     | Energieausweis-Projekte: Bauteile, Fenster, Konstruktionen, Ecotech-XML, EcoBook | Energieausweis-Modul im Abo                    |
+| `knowledgecenter-buero-branding`     | Büroprofil, Briefpapier und Kontaktdaten                                         | Owner-Konto                                    |
+| `knowledgecenter-zeiterfassung`      | Ausschließlich eigene Arbeitszeiten starten, beenden und korrigieren             | Persönliches Owner-Konto in Version 1          |
+| `knowledgecenter-eingangsrechnungen` | Eingangsrechnungen prüfen, Fälligkeiten, Auswertungen und Zahlungsvermerke       | Owner-Konto mit Eingangsrechnungs-Modul        |
+| `knowledgecenter-baustellen`         | Baustellen zusammenfassen, Fotos, Chatnachrichten und neue Aufgaben              | Persönliches Owner-Konto mit Baustellenmodul   |
+| `knowledgecenter-angebote`           | Angebote berechnen, als Karte prüfen, bearbeiten, freigeben und als PDF erzeugen | Persönliches Owner-Konto mit Angebotsmodul     |
+| `knowledgecenter-sales-pilot`        | Tagesübersicht, Gesprächsvorbereitung, Aktivitäten festhalten und abschließen    | Persönliches Owner-Konto mit Sales-Pilot-Modul |
 
 Weitere Bereiche folgen als eigene Plugins.
 
@@ -55,6 +56,7 @@ claude plugin install knowledgecenter-zeiterfassung@entrich-technologies
 claude plugin install knowledgecenter-eingangsrechnungen@entrich-technologies
 claude plugin install knowledgecenter-baustellen@entrich-technologies
 claude plugin install knowledgecenter-angebote@entrich-technologies
+claude plugin install knowledgecenter-sales-pilot@entrich-technologies
 ```
 
 Dann einfach eine Frage stellen, z. B. _„Welche Gutachten-Typen gibt es?"_.
@@ -90,6 +92,7 @@ codex plugin add knowledgecenter-zeiterfassung@entrich-technologies
 codex plugin add knowledgecenter-eingangsrechnungen@entrich-technologies
 codex plugin add knowledgecenter-baustellen@entrich-technologies
 codex plugin add knowledgecenter-angebote@entrich-technologies
+codex plugin add knowledgecenter-sales-pilot@entrich-technologies
 ```
 
 Beim ersten Aufruf meldet sich Codex bei Knowledge Center an (OAuth im
@@ -113,6 +116,7 @@ Server-Adresse des gewünschten Bereichs eintragen:
 - Eingangsrechnungen (nach Web-Bereitstellung): `https://www.knowledgecenter.at/api/mcp/eingangsrechnungen`
 - Baustellen (nach Web-Bereitstellung): `https://www.knowledgecenter.at/api/mcp/baustellen`
 - Angebote: `https://www.knowledgecenter.at/api/mcp/angebote`
+- Sales Pilot (nach Web-Bereitstellung): `https://www.knowledgecenter.at/api/mcp/sales-pilot`
 
 ChatGPT öffnet anschließend die Anmeldung bei Knowledge Center.
 
@@ -423,7 +427,41 @@ Angebotsübersicht in der Web-App. Als erster Lesetest eignet sich:
 „Welche Angebotsvorlagen stehen mir zur Verfügung?“ Für die Karte:
 „Zeig mir meine Angebote mit Fenster“ und einen Treffer antippen.
 
+## Plugin „knowledgecenter-sales-pilot"
+
+Version 0.1.0 bringt Sales Pilot in den Chat: was heute ansteht, ein Kunde aus
+Vertriebssicht vor dem Gespräch, und Gespräche festhalten, ohne das Formular zu
+öffnen.
+
+| Werkzeug                     | Zweck                                                                   |
+| ---------------------------- | ----------------------------------------------------------------------- |
+| `sales_referenzwerte`        | Heute, Verkäufer, Gesprächsarten und Ergebnisse des Kontos              |
+| `sales_cockpit`              | Tagesübersicht: offen, erledigt, überfällig, neue Leads                 |
+| `sales_kunde_lesen`          | Rating, Funnel, Verkäufer, Ansprechpartner, offene Aktivitäten, Verlauf |
+| `sales_aktivitaet_anlegen`   | Kontakt festhalten oder nächsten Schritt planen                         |
+| `sales_aktivitaet_erledigen` | Offene Aktivität mit Ergebnis abschließen, optional mit Folgeschritt    |
+
+Kunden und Ansprechpartner kommen aus den gemeinsamen Werkzeugen
+`kunden_suchen`, `kunden_lesen`, `kunde_anlegen`, `kunde_aendern`,
+`ansprechpartner_anlegen` und `ansprechpartner_aendern`.
+
+MCP-Endpunkt: `https://www.knowledgecenter.at/api/mcp/sales-pilot`. Benötigt
+ein persönliches Owner-Konto mit Sales-Pilot-Modul. Gesprächsarten und
+Ergebnisse pflegt jedes Konto selbst unter Konfiguration → Sales Pilot Listen;
+das Plugin verwendet nur diese Werte. Rating, Funnel, Verkäufer und
+Vertriebssperre ändert Version 0.1.0 nicht, gelöscht wird nichts.
+
+**Bereitstellung:** Zuerst im Web die SQL-Migration
+`sql/20261010_sales_pilot_reference_values.sql` ausführen und den Webserver
+veröffentlichen, dann das Plugin. Für ChatGPT ist noch keine eigene App
+registriert; bis dahin dort die Server-Adresse im Developer mode eintragen.
+
 ## Versionen
+
+- **Sales Pilot 0.1.0** — fünf Werkzeuge: Tagesübersicht, Kunde aus
+  Vertriebssicht, Aktivität anlegen und mit Folgeschritt abschließen, erlaubte
+  Werte. Gesprächsarten und Ergebnisse aus den Listen des Kontos. Benötigt im Web
+  `sql/20261010_sales_pilot_reference_values.sql`.
 
 - **Angebote 0.9.2** — Bezeichnung nur bei freien Positionen änderbar
   (`katalog: true` bei Katalogartikeln); Löschen und Stornieren fragen vorher nach.
