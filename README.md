@@ -223,16 +223,16 @@ MCP-Verbindung zu `https://www.knowledgecenter.at/api/mcp/energieausweis`
 | `ecobook_produkte`           | EcoBook 2.0: Fenster, Dämmung, Heizungen und PV je Hersteller mit U-Wert/λ bzw. JAZ/kWp, Preis, Preisstand  |
 | `ea_produkte_vergleichen`    | Dieselbe Maßnahme mit allen Produkten/Herstellern nebeneinander: Kosten, Ersparnis, Amortisation            |
 | `ea_sanierung_simulieren`    | Maßnahmen durchrechnen auf Gesamtkosten, optional genannte Förderung, Nichtstun, Angebotspositionen         |
-| `ea_sanierung_speichern`     | Sanierungsvariante für Web und Bericht speichern                                                            |
+| `ea_sanierung_speichern`     | Sanierungsvariante für Web und Sanierungsvorschlag speichern                                                |
 | `ea_fahrplan_simulieren`     | Sanierungsfahrplan: Maßnahmen je Jahr, Budget, Klasse und Kosten je Schritt, Nichtstun/Fahrplan/sofort      |
-| `ea_fahrplan_speichern`      | Fahrplan für Web, Handy und Bericht speichern                                                               |
+| `ea_fahrplan_speichern`      | Fahrplan für Web, Handy und Sanierungsvorschlag speichern                                                   |
 | `ea_haeuser_suchen`          | Häuser nach Name, Adresse, PLZ oder GWR-Zahl suchen, je Haus seine Energieausweise                          |
 | `ea_haus_lesen`              | Ein Haus: Hausdaten, alle Energieausweise (neuester = aktuell) und die Hausakte                             |
 | `ea_hausakte_lesen`          | Hausakte des Hauses: alle Ausweise, Arbeiten, Stand heute, Geplantes, Verbrauch mit Wirkung, Hinweise       |
 | `ea_hausakte_eintragen`      | Erledigte geplante Maßnahme oder frühere Arbeit in die Hausakte eintragen                                   |
 | `ea_verbrauch_eintragen`     | Echten Verbrauch eintragen (Jahresabrechnung oder Zählerstand); neueste Abrechnung fließt in die Berechnung |
 | `ea_kundenlinks_lesen`       | Kundenlinks des Projekts (gültig, Aufrufe) und Anfragen der Kunden (Angebot/Rückruf)                        |
-| `ea_bericht_pdf`             | Bericht (Demo) als PDF mit Sanierungsvorschlag, Link 24 h gültig                                            |
+| `ea_bericht_pdf`             | Sanierungsvorschlag als PDF (Werte des Ausweises, Variante, Fahrplan), Link 24 h gültig                     |
 
 ## Sicherheit
 
@@ -521,6 +521,11 @@ Angebotsübersicht in der Web-App. Als erster Lesetest eignet sich:
   256 × 256 Pixel und ist kleiner als 10 KB. Keine Änderungen an `time_entries`
   oder den Verwaltungsrechten der Web-Oberfläche.
 
+- **Energieausweis 0.1.20** — Neue Namen im Web: Schritt 1 im Reiter
+  Energie heißt „Energieausweis“ (Kennwerte des Ausweises, PDF drucken),
+  der Bericht heißt „Sanierungsvorschlag“. `ea_bericht_pdf` braucht keinen
+  gespeicherten Lauf mehr und zeigt auf dem Deckblatt die Werte des
+  eingetragenen Ausweises. Keine neuen Werkzeuge, keine SQL-Dateien.
 - **Energieausweis 0.1.19** — Ein Haus, mehrere Energieausweise: Hausakte
   und Verbrauch gehören zum Haus; neue Werkzeuge `ea_haeuser_suchen` und
   `ea_haus_lesen`; `ea_hausakte_lesen` nennt alle Ausweise des Hauses. Im
