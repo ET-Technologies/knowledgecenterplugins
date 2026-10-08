@@ -389,6 +389,7 @@ Die Simulation rechnet mit dem **gespeicherten** Projektstand. Ungespeicherte
 Änderungen im Web zählen nicht – im Zweifel erst speichern lassen.
 
 **Reiter Energie im Web** hat drei Schritte:
+
 - **Energieausweis:** die Kennwerte des eingetragenen Ausweises (HWB, PEB,
   CO₂, fGEE mit Klassen), Vergleich mit einem älteren Ausweis und „PDF
   drucken“. Keine Schätzung, keine Energiepreise – das ist die Seite „nach
