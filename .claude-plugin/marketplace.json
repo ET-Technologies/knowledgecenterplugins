@@ -5,7 +5,7 @@
   },
   "metadata": {
     "description": "Claude-Plugins für Knowledge Center — je Bereich ein Plugin, passend zum Abo (Gutachten, Energieausweis; weitere Bereiche folgen)",
-    "version": "1.15.2"
+    "version": "1.16.0"
   },
   "plugins": [
     {
@@ -42,6 +42,11 @@
       "name": "knowledgecenter-angebote",
       "source": "./knowledgecenter-angebote",
       "description": "Kunden, Produkte und Vorlagen finden, Angebote mit der Web-Logik berechnen und als Karte im Chat prüfen; gespeicherte Angebote und Kunden als antippbare Trefferliste suchen, Positionen ändern und umsortieren, freigeben mit Belegnummer und als PDF erzeugen. Persönlicher Owner-Zugang mit Angebotsmodul; E-Mail-Versand in der Web-App."
+    },
+    {
+      "name": "knowledgecenter-sales-pilot",
+      "source": "./knowledgecenter-sales-pilot",
+      "description": "Sales Pilot in Knowledge Center: Tagesübersicht, Kunden aus Vertriebssicht vor dem Gespräch, Gespräche festhalten, Termine planen und offene Aktivitäten mit Ergebnis und Folgeschritt abschließen. Persönlicher Owner-Zugang mit Sales-Pilot-Modul."
     }
   ]
 }

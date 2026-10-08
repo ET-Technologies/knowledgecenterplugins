@@ -1,0 +1,40 @@
+{
+  "name": "knowledgecenter-sales-pilot",
+  "version": "0.1.0",
+  "description": "Sales Pilot in Knowledge Center: Tagesübersicht, Kunden aus Vertriebssicht, Gespräche festhalten, Termine planen und Aktivitäten abschließen. Persönlicher Owner-Zugang mit Sales-Pilot-Modul.",
+  "author": {
+    "name": "Entrich Technologies GmbH",
+    "email": "erwin@entrich-technologies.com",
+    "url": "https://www.knowledgecenter.at"
+  },
+  "homepage": "https://www.knowledgecenter.at",
+  "repository": "https://github.com/ET-Technologies/knowledgecenterplugins",
+  "keywords": [
+    "sales-pilot",
+    "vertrieb",
+    "leads",
+    "aktivitaeten",
+    "knowledge-center"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Knowledge Center Sales Pilot",
+    "shortDescription": "Tagesübersicht, Gesprächsvorbereitung und Aktivitäten",
+    "longDescription": "Zeigt, was heute im Vertrieb ansteht und was überfällig ist, fasst einen Kunden vor dem Gespräch zusammen (Rating, Funnel, Ansprechpartner, Verlauf) und hält Gespräche fest. Offene Aktivitäten werden mit Ergebnis und Folgeschritt abgeschlossen. Gesprächsarten und Ergebnisse kommen aus den Listen des eigenen Kontos. Kunden und Ansprechpartner lassen sich anlegen und ändern.",
+    "developerName": "Entrich Technologies GmbH",
+    "category": "Productivity",
+    "capabilities": ["Read", "Write"],
+    "websiteURL": "https://www.knowledgecenter.at",
+    "privacyPolicyURL": "https://www.knowledgecenter.at/datenschutz",
+    "defaultPrompt": [
+      "Was steht heute im Vertrieb an?",
+      "Fass mir die Muster GmbH vor dem Anruf zusammen",
+      "Muster GmbH nicht erreicht, Rückruf Donnerstag 10 Uhr"
+    ],
+    "brandColor": "#FF6B4A",
+    "composerIcon": "./assets/icon.png",
+    "logo": "./assets/icon.png",
+    "screenshots": []
+  }
+}
