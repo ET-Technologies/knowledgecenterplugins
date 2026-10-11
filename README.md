@@ -559,6 +559,11 @@ registriert; bis dahin dort die Server-Adresse im Developer mode eintragen.
   256 × 256 Pixel und ist kleiner als 10 KB. Keine Änderungen an `time_entries`
   oder den Verwaltungsrechten der Web-Oberfläche.
 
+- **Energieausweis 0.1.21** — Schichtaufbau über MCP: `ea_projekt_lesen`
+  zeigt die Schichten, `ea_konstruktionen_setzen` nimmt `schichten` und
+  rechnet U und Dicke wie das Web; ein freier U-Wert auf einer Konstruktion
+  mit Schichten wird abgelehnt. `ea_export_xml` exportiert Schichten mit,
+  `schichten=false` nur die U-Werte. Keine neuen Werkzeuge, keine SQL-Dateien.
 - **Energieausweis 0.1.20** — Neue Namen im Web: Schritt 1 im Reiter
   Energie heißt „Energieausweis“ (Kennwerte des Ausweises, PDF drucken),
   der Bericht heißt „Sanierungsvorschlag“. `ea_bericht_pdf` braucht keinen
