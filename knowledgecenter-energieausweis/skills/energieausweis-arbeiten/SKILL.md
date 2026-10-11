@@ -60,7 +60,8 @@ in `ea_projekt_lesen` unter den Keys `anhang_geometrie`, `anhang_bauphysik`,
 `anhang_haustechnik`, `anhang_weitere_info`, `anhang_hilfsmittel`,
 `anhang_kommentare` und `anhang_massnahmen`. Gesetzt wird sie mit
 `ea_projekt_aktualisieren`; sie geht mit den Berechnungsdaten an Ecotech
-(nicht bei `anlage=false`).
+(nicht bei `anlage=false`). Im Web steht sie im Reiter „Ausweis“, zusammen
+mit einer Übersicht, dem Stand vor dem Export und dem Export selbst.
 
 - Bei der Übernahme eines alten Ausweises einen Text vorschlagen, z. B.
   „Bauphysik: Aufbauten laut Energieausweis vom … (ETU Gebäudeprofi)“, und
