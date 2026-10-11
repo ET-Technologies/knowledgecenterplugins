@@ -42,8 +42,9 @@ Kurzfassung:
   nur auf Wunsch, mit `schichten: []` auf einen reinen U-Wert zurückstellen.
 - λ nur aus Datenblatt, Ecotech oder Angabe des Nutzers — nie schätzen.
 - `ea_export_xml` schickt Schichten als Schichtaufbau an Ecotech;
-  `schichten=false` schickt nur die U-Werte. Im Web: ⋯-Menü „Ecotech-XML mit
-  Schichten“ oder „nur U-Werte“.
+  `schichten=false` schickt nur die U-Werte, `anlage=false` lässt Anlage und
+  Berechnungsdaten weg (Ecotech nimmt dann seine Standard-Anlage). Im Web:
+  ⋯-Menü „Ecotech-XML exportieren“ mit Häkchen „Schichtaufbau“ und „Anlage“.
 
 ## Begehung vom Handy und Fotos
 
