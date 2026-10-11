@@ -559,10 +559,13 @@ registriert; bis dahin dort die Server-Adresse im Developer mode eintragen.
   256 × 256 Pixel und ist kleiner als 10 KB. Keine Änderungen an `time_entries`
   oder den Verwaltungsrechten der Web-Oberfläche.
 
-- **Energieausweis 0.1.22** — `ea_export_xml` mit `anlage=false` exportiert
-  ohne Anlage und Berechnungsdaten. Im Web wählt das ⋯-Menü beim Export per
-  Häkchen „Schichtaufbau“ und „Anlage“. Keine neuen Werkzeuge, keine
-  SQL-Dateien.
+- **Energieausweis 0.1.22** — Direkter U-Wert neben den Schichten:
+  `ea_konstruktionen_setzen` mit `u_quelle` (`direkt` lässt `u_wert` gelten,
+  `schichten` hinterlegt ihn nur), `ea_projekt_lesen` zeigt beide Werte; im
+  Web zwei Karten „U aus Schichten“ und „U direkt“. Web-Migration
+  `20261011_energy_konstruktion_u_direkt.sql` (nur Demo). `ea_export_xml`
+  mit `anlage=false` exportiert ohne Anlage und Berechnungsdaten. Im Web wählt das ⋯-Menü beim Export per
+  Häkchen „Schichtaufbau“ und „Anlage“. Keine neuen Werkzeuge.
 - **Energieausweis 0.1.21** — Schichtaufbau über MCP: `ea_projekt_lesen`
   zeigt die Schichten, `ea_konstruktionen_setzen` nimmt `schichten` und
   rechnet U und Dicke wie das Web; ein freier U-Wert auf einer Konstruktion

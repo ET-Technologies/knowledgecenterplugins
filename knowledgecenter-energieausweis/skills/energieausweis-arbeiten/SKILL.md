@@ -38,8 +38,14 @@ Kurzfassung:
   außen nach innen, Boden und Decke von oben nach unten. Die Liste ersetzt den
   ganzen Aufbau; U-Wert und Dicke rechnet der Server wie das Web —
   `u_wert`/`dicke` dann weglassen.
-- Hat eine Konstruktion Schichten, nie `u_wert` setzen: Schichten ändern oder,
-  nur auf Wunsch, mit `schichten: []` auf einen reinen U-Wert zurückstellen.
+- Mit Schichten gilt wie in Ecotech entweder der gerechnete oder ein direkter
+  U-Wert (`u_quelle`); beide bleiben gespeichert, `ea_projekt_lesen` zeigt
+  beide. `u_wert` dort nur zusammen mit `u_quelle`: `direkt` lässt ihn gelten
+  (Datenblatt, alter Ausweis), `schichten` hinterlegt ihn nur. Weichen die
+  Werte deutlich ab, das dem Nutzer sagen.
+- Ältere Datenbanken ohne direkten U-Wert: nie `u_wert` setzen, sondern
+  Schichten ändern oder, nur auf Wunsch, mit `schichten: []` auf einen reinen
+  U-Wert zurückstellen.
 - λ nur aus Datenblatt, Ecotech oder Angabe des Nutzers — nie schätzen.
 - `ea_export_xml` schickt Schichten als Schichtaufbau an Ecotech;
   `schichten=false` schickt nur die U-Werte, `anlage=false` lässt Anlage und
