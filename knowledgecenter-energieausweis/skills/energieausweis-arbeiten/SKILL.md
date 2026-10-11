@@ -26,6 +26,25 @@ Kurzfassung:
    selbst füllen. Nichts erfinden, Richtungen nie raten.
 5. `ea_export_xml` nur auf Wunsch; die Meldungen des Exports wiedergeben.
 
+## Schichtaufbau einer Konstruktion
+
+`ea_projekt_lesen` zeigt bei Konstruktionen mit Schichtaufbau eine Zeile
+„Schichten: …“; ihr U-Wert ist dann „aus Schichten“ gerechnet.
+
+- Schichten setzen: `ea_konstruktionen_setzen` mit `schichten` — je Schicht
+  `baustoff`, `dicke_cm`, `lambda`, optional `zaehlt: false` (Fliesen,
+  Schichten vor der Hinterlüftung), `saniert`, `gemischt` (zweiter Baustoff
+  mit `anteil_prozent`, z. B. Sparren 10 %). Reihenfolge: Wand und Dach von
+  außen nach innen, Boden und Decke von oben nach unten. Die Liste ersetzt den
+  ganzen Aufbau; U-Wert und Dicke rechnet der Server wie das Web —
+  `u_wert`/`dicke` dann weglassen.
+- Hat eine Konstruktion Schichten, nie `u_wert` setzen: Schichten ändern oder,
+  nur auf Wunsch, mit `schichten: []` auf einen reinen U-Wert zurückstellen.
+- λ nur aus Datenblatt, Ecotech oder Angabe des Nutzers — nie schätzen.
+- `ea_export_xml` schickt Schichten als Schichtaufbau an Ecotech;
+  `schichten=false` schickt nur die U-Werte. Im Web: ⋯-Menü „Ecotech-XML mit
+  Schichten“ oder „nur U-Werte“.
+
 ## Begehung vom Handy und Fotos
 
 Die Handy-App „Energieausweis" erfasst die Begehung vor Ort direkt in die
