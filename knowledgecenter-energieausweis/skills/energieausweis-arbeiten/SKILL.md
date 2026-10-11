@@ -38,12 +38,35 @@ Kurzfassung:
   außen nach innen, Boden und Decke von oben nach unten. Die Liste ersetzt den
   ganzen Aufbau; U-Wert und Dicke rechnet der Server wie das Web —
   `u_wert`/`dicke` dann weglassen.
-- Hat eine Konstruktion Schichten, nie `u_wert` setzen: Schichten ändern oder,
-  nur auf Wunsch, mit `schichten: []` auf einen reinen U-Wert zurückstellen.
+- Mit Schichten gilt wie in Ecotech entweder der gerechnete oder ein direkter
+  U-Wert (`u_quelle`); beide bleiben gespeichert, `ea_projekt_lesen` zeigt
+  beide. `u_wert` dort nur zusammen mit `u_quelle`: `direkt` lässt ihn gelten
+  (Datenblatt, alter Ausweis), `schichten` hinterlegt ihn nur. Weichen die
+  Werte deutlich ab, das dem Nutzer sagen.
+- Ältere Datenbanken ohne direkten U-Wert: nie `u_wert` setzen, sondern
+  Schichten ändern oder, nur auf Wunsch, mit `schichten: []` auf einen reinen
+  U-Wert zurückstellen.
 - λ nur aus Datenblatt, Ecotech oder Angabe des Nutzers — nie schätzen.
 - `ea_export_xml` schickt Schichten als Schichtaufbau an Ecotech;
-  `schichten=false` schickt nur die U-Werte. Im Web: ⋯-Menü „Ecotech-XML mit
-  Schichten“ oder „nur U-Werte“.
+  `schichten=false` schickt nur die U-Werte, `anlage=false` lässt Anlage und
+  Berechnungsdaten weg (Ecotech nimmt dann seine Standard-Anlage). Im Web:
+  ⋯-Menü „Ecotech-XML exportieren“ mit Häkchen „Schichtaufbau“ und „Anlage“.
+
+## Datenherkunft und Anhang
+
+Die „Ermittlung der Eingangsdaten“ des Ausweises (Geometrie, Bauphysik,
+Haustechnik, weitere Informationen, Hilfsmittel, Kommentare, Maßnahmen) steht
+in `ea_projekt_lesen` unter den Keys `anhang_geometrie`, `anhang_bauphysik`,
+`anhang_haustechnik`, `anhang_weitere_info`, `anhang_hilfsmittel`,
+`anhang_kommentare` und `anhang_massnahmen`. Gesetzt wird sie mit
+`ea_projekt_aktualisieren`; sie geht mit den Berechnungsdaten an Ecotech
+(nicht bei `anlage=false`). Im Web steht sie im Reiter „Ausweis“, zusammen
+mit einer Übersicht, dem Stand vor dem Export und dem Export selbst.
+
+- Bei der Übernahme eines alten Ausweises einen Text vorschlagen, z. B.
+  „Bauphysik: Aufbauten laut Energieausweis vom … (ETU Gebäudeprofi)“, und
+  erst nach Rückfrage schreiben.
+- Nur Belegtes: Quelle, Datum und Programm nur, wenn sie bekannt sind.
 
 ## Begehung vom Handy und Fotos
 
