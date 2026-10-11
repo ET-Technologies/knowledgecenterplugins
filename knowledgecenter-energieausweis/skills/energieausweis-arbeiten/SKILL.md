@@ -52,6 +52,21 @@ Kurzfassung:
   Berechnungsdaten weg (Ecotech nimmt dann seine Standard-Anlage). Im Web:
   ⋯-Menü „Ecotech-XML exportieren“ mit Häkchen „Schichtaufbau“ und „Anlage“.
 
+## Datenherkunft und Anhang
+
+Die „Ermittlung der Eingangsdaten“ des Ausweises (Geometrie, Bauphysik,
+Haustechnik, weitere Informationen, Hilfsmittel, Kommentare, Maßnahmen) steht
+in `ea_projekt_lesen` unter den Keys `anhang_geometrie`, `anhang_bauphysik`,
+`anhang_haustechnik`, `anhang_weitere_info`, `anhang_hilfsmittel`,
+`anhang_kommentare` und `anhang_massnahmen`. Gesetzt wird sie mit
+`ea_projekt_aktualisieren`; sie geht mit den Berechnungsdaten an Ecotech
+(nicht bei `anlage=false`).
+
+- Bei der Übernahme eines alten Ausweises einen Text vorschlagen, z. B.
+  „Bauphysik: Aufbauten laut Energieausweis vom … (ETU Gebäudeprofi)“, und
+  erst nach Rückfrage schreiben.
+- Nur Belegtes: Quelle, Datum und Programm nur, wenn sie bekannt sind.
+
 ## Begehung vom Handy und Fotos
 
 Die Handy-App „Energieausweis" erfasst die Begehung vor Ort direkt in die
