@@ -36,7 +36,11 @@ Kurzfassung:
    Aktenvermerk o. Ä. anlegen, dann mit `gutachten_befuellen` füllen und die
    Fotos mit `fotos_zuordnen` zuordnen. Angaben des Kunden als solche
    kennzeichnen.
-6. Vor jeder Schreibaktion: der Benutzer muss sie gewollt haben.
+6. Begehung zum Energieausweis: auf Auftrag mit `begehung_verknuepfen` einem
+   Energieausweis-Projekt zuordnen; `gutachten_suchen` mit `energieausweis_id`
+   findet die Begehungen eines Ausweises. Werte in den Ausweis übernimmt das
+   Energieausweis-Plugin (`ea_begehung_uebernahme_*`) — dort mit Vorschau.
+7. Vor jeder Schreibaktion: der Benutzer muss sie gewollt haben.
 
 ## Einrichtung in Claude Code (falls der Server nicht verbunden ist)
 
