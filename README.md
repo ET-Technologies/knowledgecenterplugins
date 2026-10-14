@@ -254,16 +254,16 @@ Durchgang. Gleiches Abo wie das Energieausweis-Plugin.
 
 MCP-Verbindung zu `https://www.knowledgecenter.at/api/mcp/energie-plan`.
 
-| Werkzeug                                             | Zweck                                                                                                                                                 |
-| ---------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `ea_projekte_suchen`, `ea_plan_lesen`                | Projekt finden, Plan lesen: Geschosse, `umriss_m`, Kanten, Fenster, Dach                                                                              |
+| Werkzeug                                             | Zweck                                                                                                                                                     |
+| ---------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `ea_projekte_suchen`, `ea_plan_lesen`                | Projekt finden, Plan lesen: Geschosse, `umriss_m`, Kanten, Fenster, Dach                                                                                  |
 | `ea_plan_aendern_vorschau` / `_speichern`            | Liste von Schritten in Metern: Ecken einfügen/löschen/verschieben, Sollmaße, Wand-Nachbarn, Fenster/Türen, Geschosse anlegen/kopieren/löschen/umsortieren |
-| `ea_plan_vorschau` / `ea_plan_speichern`             | Erster Plan, wenn noch keiner gezeichnet ist                                                                                                          |
-| `ea_plan_dach_vorschau` / `_speichern`               | Satteldach über dem obersten Geschoss                                                                                                                 |
-| `ea_plan_bearbeiten_vorschau` / `_speichern`         | Boden-/Deckenbereiche und Zuordnung eines Originalplans                                                                                               |
-| `ea_plan_dokumente_lesen`, `ea_plan_datei_hochladen` | Originalpläne je Geschoss                                                                                                                             |
-| `ea_plan_bild`, `ea_plan_3d_anzeigen`                | Kontrolle als beschrifteter Plan oder interaktiv in 3D                                                                                                |
-| `ea_plan_baukoerper_vorschau` / `_speichern`         | Geometrie in den Baukörper übernehmen                                                                                                                 |
+| `ea_plan_vorschau` / `ea_plan_speichern`             | Erster Plan, wenn noch keiner gezeichnet ist                                                                                                              |
+| `ea_plan_dach_vorschau` / `_speichern`               | Satteldach über dem obersten Geschoss                                                                                                                     |
+| `ea_plan_bearbeiten_vorschau` / `_speichern`         | Boden-/Deckenbereiche und Zuordnung eines Originalplans                                                                                                   |
+| `ea_plan_dokumente_lesen`, `ea_plan_datei_hochladen` | Originalpläne je Geschoss                                                                                                                                 |
+| `ea_plan_bild`, `ea_plan_3d_anzeigen`                | Kontrolle als beschrifteter Plan oder interaktiv in 3D                                                                                                    |
+| `ea_plan_baukoerper_vorschau` / `_speichern`         | Geometrie in den Baukörper übernehmen                                                                                                                     |
 
 Voraussetzung auf der Datenbank: `sql/20261014_energy_plan_anwenden.sql` aus
 dem Web-Repository.
