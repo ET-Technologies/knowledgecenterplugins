@@ -22,7 +22,9 @@ Kurzfassung:
 3. Vorschau dem Nutzer kurz zeigen (Flächen, Kanten, Gelöschtes). Speichern
    nur auf Auftrag mit `ea_plan_aendern_speichern`, identischen `aenderungen`
    und `pruefcode`; Löschen zusätzlich `loeschen_bestaetigt=true`.
-4. Kontrolle mit `ea_plan_bild` je Geschoss oder `ea_plan_3d_anzeigen`.
+4. Kontrolle mit `ea_plan_bild` je Geschoss - mit `mit_original=true` liegt
+   der Originalplan darunter und die Kontur ist rot: liegt sie auf den
+   Außenwänden? - oder `ea_plan_3d_anzeigen`.
    Danach die Übernahme in den Baukörper vorschlagen
    (`ea_plan_baukoerper_vorschau`, speichern nur auf Auftrag).
 
