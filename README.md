@@ -16,6 +16,7 @@ sind gemeinsam — der Server und der fachliche Arbeitsablauf sind dieselben.
 | ------------------------------------ | -------------------------------------------------------------------------------- | ---------------------------------------------- |
 | `knowledgecenter-gutachten`          | Gutachten, Aktenvermerke, Protokolle, Stellungnahmen                             | Gutachten-Modul im Abo                         |
 | `knowledgecenter-energieausweis`     | Energieausweis-Projekte: Bauteile, Fenster, Konstruktionen, Ecotech-XML, EcoBook | Energieausweis-Modul im Abo                    |
+| `knowledgecenter-energie-plan`       | Geschosspläne zeichnen: Ecken, Sollmaße, Fenster, Geschosse, Dach – in Metern    | Energieausweis-Modul im Abo                    |
 | `knowledgecenter-buero-branding`     | Büroprofil, Briefpapier und Kontaktdaten                                         | Owner-Konto                                    |
 | `knowledgecenter-zeiterfassung`      | Ausschließlich eigene Arbeitszeiten starten, beenden und korrigieren             | Persönliches Owner-Konto in Version 1          |
 | `knowledgecenter-eingangsrechnungen` | Eingangsrechnungen prüfen, Fälligkeiten, Auswertungen und Zahlungsvermerke       | Owner-Konto mit Eingangsrechnungs-Modul        |
@@ -52,6 +53,7 @@ claude plugin marketplace add ET-Technologies/knowledgecenterplugins
 # 2. Plugin des Bereichs installieren
 claude plugin install knowledgecenter-gutachten@entrich-technologies
 claude plugin install knowledgecenter-energieausweis@entrich-technologies
+claude plugin install knowledgecenter-energie-plan@entrich-technologies
 claude plugin install knowledgecenter-zeiterfassung@entrich-technologies
 claude plugin install knowledgecenter-eingangsrechnungen@entrich-technologies
 claude plugin install knowledgecenter-baustellen@entrich-technologies
@@ -237,6 +239,29 @@ MCP-Verbindung zu `https://www.knowledgecenter.at/api/mcp/energieausweis`
 | `ea_verbrauch_eintragen`     | Echten Verbrauch eintragen (Jahresabrechnung oder Zählerstand); neueste Abrechnung fließt in die Berechnung |
 | `ea_kundenlinks_lesen`       | Kundenlinks des Projekts (gültig, Aufrufe) und Anfragen der Kunden (Angebot/Rückruf)                        |
 | `ea_bericht_pdf`             | Sanierungsvorschlag als PDF (Werte des Ausweises, Variante, Fahrplan), Link 24 h gültig                     |
+
+## Plugin „knowledgecenter-energie-plan"
+
+Geschosspläne der Energieausweis-Projekte zeichnen und korrigieren - der
+Plan-Reiter aus dem Web für Claude, ChatGPT und Codex. Bewusst wenige
+Werkzeuge: alle Änderungen in Metern, mehrere Schritte in einem geprüften
+Durchgang. Gleiches Abo wie das Energieausweis-Plugin.
+
+MCP-Verbindung zu `https://www.knowledgecenter.at/api/mcp/energie-plan`.
+
+| Werkzeug                                             | Zweck                                                                                                                                                 |
+| ---------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `ea_projekte_suchen`, `ea_plan_lesen`                | Projekt finden, Plan lesen: Geschosse, `umriss_m`, Kanten, Fenster, Dach                                                                              |
+| `ea_plan_aendern_vorschau` / `_speichern`            | Liste von Schritten in Metern: Ecken einfügen/löschen/verschieben, Sollmaße, Wand-Nachbarn, Fenster/Türen, Geschosse anlegen/kopieren/löschen/umsortieren |
+| `ea_plan_vorschau` / `ea_plan_speichern`             | Erster Plan, wenn noch keiner gezeichnet ist                                                                                                          |
+| `ea_plan_dach_vorschau` / `_speichern`               | Satteldach über dem obersten Geschoss                                                                                                                 |
+| `ea_plan_bearbeiten_vorschau` / `_speichern`         | Boden-/Deckenbereiche und Zuordnung eines Originalplans                                                                                               |
+| `ea_plan_dokumente_lesen`, `ea_plan_datei_hochladen` | Originalpläne je Geschoss                                                                                                                             |
+| `ea_plan_bild`, `ea_plan_3d_anzeigen`                | Kontrolle als beschrifteter Plan oder interaktiv in 3D                                                                                                |
+| `ea_plan_baukoerper_vorschau` / `_speichern`         | Geometrie in den Baukörper übernehmen                                                                                                                 |
+
+Voraussetzung auf der Datenbank: `sql/20261014_energy_plan_anwenden.sql` aus
+dem Web-Repository.
 
 ## Sicherheit
 

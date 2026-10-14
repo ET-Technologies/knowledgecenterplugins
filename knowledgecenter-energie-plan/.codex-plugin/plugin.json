@@ -1,0 +1,41 @@
+{
+  "name": "knowledgecenter-energie-plan",
+  "version": "0.1.0",
+  "description": "Plan zeichnen in Knowledge Center für ChatGPT und Codex: Geschosspläne der Energieausweis-Projekte in Metern zeichnen und korrigieren – Ecken, Sollmaße, Wand-Nachbarn, Fenster und Türen, Geschosse und Dach in einem geprüften Durchgang, Kontrolle als Bild oder interaktiv in 3D, danach Übernahme in den Baukörper. Anmeldung beim ersten Aufruf im Browser (OAuth), kein Key nötig.",
+  "author": {
+    "name": "Entrich Technologies GmbH",
+    "email": "erwin@entrich-technologies.com",
+    "url": "https://www.knowledgecenter.at"
+  },
+  "homepage": "https://www.knowledgecenter.at",
+  "repository": "https://github.com/ET-Technologies/knowledgecenterplugins",
+  "keywords": [
+    "grundriss",
+    "plan",
+    "geschoss",
+    "energieausweis",
+    "aufmass",
+    "knowledge-center"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Knowledge Center Plan zeichnen",
+    "shortDescription": "Geschosspläne für den Energieausweis zeichnen und korrigieren",
+    "longDescription": "Verbindet ChatGPT und Codex mit dem Plan-Werkzeug von Knowledge Center. Grundrisse in Metern zeichnen und korrigieren: Ecken einfügen, löschen und verschieben, Sollmaße, Wand-Nachbarn, Fenster und Türen, Geschosse anlegen, kopieren, löschen und umsortieren, Satteldach. Mehrere Änderungen werden gemeinsam geprüft und in einem Zug gespeichert. Kontrolle als beschrifteter Plan oder interaktiv in 3D, danach Übernahme in den Baukörper. Zugriff nur auf den eigenen Account. Benötigt ein Owner-Konto mit Energieausweis-Modul im Abo.",
+    "developerName": "Entrich Technologies GmbH",
+    "category": "Productivity",
+    "capabilities": ["Read", "Write"],
+    "websiteURL": "https://www.knowledgecenter.at",
+    "privacyPolicyURL": "https://www.knowledgecenter.at/datenschutz",
+    "defaultPrompt": [
+      "Lies den Plan meines zuletzt geänderten Energieausweis-Projekts und nenne offene Punkte",
+      "Kopiere das Erdgeschoss als Obergeschoss und lege einen Keller darunter an",
+      "Zeige das Gebäude interaktiv in 3D"
+    ],
+    "brandColor": "#FF6B4A",
+    "composerIcon": "./assets/icon.png",
+    "logo": "./assets/logo.png",
+    "screenshots": []
+  }
+}
