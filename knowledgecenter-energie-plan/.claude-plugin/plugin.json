@@ -1,0 +1,20 @@
+{
+  "name": "knowledgecenter-energie-plan",
+  "description": "Plan zeichnen in Knowledge Center für Claude: Geschosspläne der Energieausweis-Projekte in Metern zeichnen und korrigieren – Ecken einfügen, löschen und verschieben, Sollmaße, Wand-Nachbarn, Fenster und Türen, Geschosse anlegen, kopieren, löschen und umsortieren, Dach – mehrere Schritte in einem geprüften Durchgang, Kontrolle als Bild oder interaktiv in 3D, danach Übernahme in den Baukörper. Anmeldung beim ersten Aufruf im Browser (OAuth), kein Key nötig.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Entrich Technologies GmbH",
+    "email": "erwin@entrich-technologies.com",
+    "url": "https://www.knowledgecenter.at"
+  },
+  "homepage": "https://www.knowledgecenter.at",
+  "repository": "https://github.com/ET-Technologies/knowledgecenterplugins",
+  "keywords": [
+    "grundriss",
+    "plan",
+    "geschoss",
+    "energieausweis",
+    "aufmass",
+    "knowledge-center"
+  ]
+}

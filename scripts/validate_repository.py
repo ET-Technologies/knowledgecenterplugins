@@ -13,6 +13,7 @@ ROOT = Path(__file__).resolve().parents[1]
 PLUGIN_NAMES = (
     "knowledgecenter-gutachten",
     "knowledgecenter-energieausweis",
+    "knowledgecenter-energie-plan",
     "knowledgecenter-buero-branding",
     "knowledgecenter-zeiterfassung",
     "knowledgecenter-eingangsrechnungen",

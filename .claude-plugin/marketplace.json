@@ -5,7 +5,7 @@
   },
   "metadata": {
     "description": "Claude-Plugins für Knowledge Center — je Bereich ein Plugin, passend zum Abo (Gutachten, Energieausweis; weitere Bereiche folgen)",
-    "version": "1.16.0"
+    "version": "1.17.0"
   },
   "plugins": [
     {
@@ -47,6 +47,11 @@
       "name": "knowledgecenter-sales-pilot",
       "source": "./knowledgecenter-sales-pilot",
       "description": "Sales Pilot in Knowledge Center: Tagesübersicht, Kunden aus Vertriebssicht vor dem Gespräch, Gespräche festhalten, Termine planen und offene Aktivitäten mit Ergebnis und Folgeschritt abschließen. Persönlicher Owner-Zugang mit Sales-Pilot-Modul."
+    },
+    {
+      "name": "knowledgecenter-energie-plan",
+      "source": "./knowledgecenter-energie-plan",
+      "description": "Plan zeichnen in Knowledge Center für Claude: Geschosspläne der Energieausweis-Projekte in Metern zeichnen und korrigieren (Ecken, Sollmaße, Nachbarn, Fenster, Geschosse, Dach) in einem geprüften Durchgang, Kontrolle als Bild oder in 3D, Übernahme in den Baukörper. Anmeldung beim ersten Aufruf im Browser; benötigt ein Owner-Konto mit Energieausweis-Modul im Abo."
     }
   ]
 }
