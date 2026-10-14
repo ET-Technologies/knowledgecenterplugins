@@ -1,6 +1,6 @@
 ---
 name: energieausweis-arbeiten
-description: Energieausweis-Projekte in Knowledge Center suchen, lesen und bearbeiten, Prüfsummen und Ecotech-XML erzeugen. Für Ausweise, Gebäudehülle, Fenster, U-Werte, Grundrisse und Plan-3D, die Begehung vom Handy samt Fotos (Typenschild ablesen); Geschosspläne mit Fenstern und Außentüren bearbeiten, Originalpläne je Ebene zuordnen und Geometrie kontrolliert in den Baukörper übernehmen. EcoBook 2.0 (Demo): Energiekennzahlen simuliert berechnen, Sanierung mit Fenstern, Fassaden- und Dachdämmung, Heizungstausch und Photovoltaik durchrechnen (Gesamtkosten, Amortisation, Kosten des Nichtstuns, optional eine genannte Förderung), Produkte verschiedener Hersteller vergleichen, Sanierungsfahrplan über Jahre mit Budget, Häuser mit mehreren Energieausweisen suchen und lesen, Hausakte (Geschichte des Hauses) lesen und ergänzen, Kundenlinks und Kundenanfragen lesen, Sanierungsvorschlag als PDF und Angebot aus der Sanierung.
+description: Energieausweis-Projekte in Knowledge Center suchen, lesen und bearbeiten, Prüfsummen und Ecotech-XML erzeugen. Für Ausweise, Gebäudehülle, Fenster, U-Werte, Grundrisse und Plan-3D, Begehungen: Erfassung am Handy samt Fotos (Typenschild ablesen) und Begehungen der Begehung-App mit Vorschau in den Ausweis übernehmen; Geschosspläne mit Fenstern und Außentüren bearbeiten, Originalpläne je Ebene zuordnen und Geometrie kontrolliert in den Baukörper übernehmen. EcoBook 2.0 (Demo): Energiekennzahlen simuliert berechnen, Sanierung mit Fenstern, Fassaden- und Dachdämmung, Heizungstausch und Photovoltaik durchrechnen (Gesamtkosten, Amortisation, Kosten des Nichtstuns, optional eine genannte Förderung), Produkte verschiedener Hersteller vergleichen, Sanierungsfahrplan über Jahre mit Budget, Häuser mit mehreren Energieausweisen suchen und lesen, Hausakte (Geschichte des Hauses) lesen und ergänzen, Kundenlinks und Kundenanfragen lesen, Sanierungsvorschlag als PDF und Angebot aus der Sanierung.
 ---
 
 # Energieausweis in Knowledge Center
@@ -68,9 +68,17 @@ mit einer Übersicht, dem Stand vor dem Export und dem Export selbst.
   erst nach Rückfrage schreiben.
 - Nur Belegtes: Quelle, Datum und Programm nur, wenn sie bekannt sind.
 
+## Begehung aus der Begehung-App übernehmen
+
+Die Begehung-App legt ein **eigenes Dokument** an (Diktat, Fotos, Kopf), oft
+von jemand anderem als dem, der den Ausweis rechnet. Es bleibt unverändert,
+damit nichts verloren geht; das Büro entscheidet, was in den Ausweis kommt.
+Bevor du Werte daraus übernimmst, lies `references/begehung-uebernahme.md`
+(Ablauf mit Vorschau, Sonderfälle, Beispiel).
+
 ## Begehung vom Handy und Fotos
 
-Die Handy-App „Energieausweis" erfasst die Begehung vor Ort direkt in die
+Die Energieausweis-App am Handy erfasst die Begehung vor Ort direkt in die
 Projektfelder, die Anlagentechnik und die Fenster (Stückzahl und Bereich im
 Info-Text, z. B. „4 Stück · EG · Begehung"); PV, Solar, Bereiche und der
 Abschluss stehen in `ea_projekt_lesen` unter „Begehung ·". Kommt der Auftrag

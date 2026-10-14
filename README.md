@@ -177,6 +177,7 @@ Marketplace-Dateien: `.claude-plugin/marketplace.json` (Claude Code) und
 | `feld_setzen`               | Einzelne Korrektur                                                                 |
 | `protokoll_fortschreiben`   | Nächstes Protokoll einer Reihe: Teilnehmer und offene Punkte mit Nummer übernehmen |
 | `dokument_ableiten`         | Aus einer Begehung ein Protokoll, einen Aktenvermerk o. Ä. ableiten (mit Fotos)    |
+| `begehung_verknuepfen`      | Begehung mit einem Energieausweis-Projekt verknüpfen oder lösen                    |
 | `gutachten_titel_setzen`    | Titel eines bestehenden Gutachtens ändern                                          |
 | `eintrag_loeschen`          | Eintrag eines wiederholbaren Abschnitts löschen (nach Rückfrage), Rest rückt nach  |
 | `eintrag_verschieben`       | Eintrag an eine neue Position setzen, Fotos wandern mit                            |
@@ -203,40 +204,44 @@ Ausweis (PDF) direkt in ein Projekt übernehmen kann.
 MCP-Verbindung zu `https://www.knowledgecenter.at/api/mcp/energieausweis`
 (OAuth wie beim Gutachten-Plugin, eine Anmeldung gilt für alle Bereiche).
 
-| Werkzeug                     | Zweck                                                                                                       |
-| ---------------------------- | ----------------------------------------------------------------------------------------------------------- |
-| `ea_projekte_suchen`         | Projekte finden (Name, Straße, Ort, Status)                                                                 |
-| `ea_projekt_lesen`           | Kompletter Stand mit Adressen `[bauteil:id]`, `[fenster:id]`, `[konstruktion:id]`, Prüfsummen und Warnungen |
-| `ea_pruefsummen`             | Hülle, Fensterfläche, Stückzahl, BGF, Richtungspaare, Lücken                                                |
-| `ea_projekt_anlegen`         | Neues Projekt                                                                                               |
-| `ea_projekt_aktualisieren`   | Stammdaten, Auftraggeber/Aussteller, Anlage-Grunddaten, Status, Notizen — nur übergebene Felder             |
-| `ea_konstruktionen_setzen`   | Konstruktionen anlegen/ändern, löschen nur ausdrücklich                                                     |
-| `ea_bauteile_setzen`         | Bauteilflächen anlegen/ändern (Typ, Fläche, Richtung, Neigung, Nachbar, U-Wert, Konstruktion)               |
-| `ea_fenster_setzen`          | Fenster/Türen anlegen/ändern (Breite × Höhe, U, g, Glasanteil, Richtung)                                    |
-| `ea_zuordnungen_setzen`      | Fenster an Wände mit Stückzahl; „ersetzen" nur nach Rückfrage                                               |
-| `ea_konstruktionen_ableiten` | Zauberstab: Konstruktionen aus Flächen gruppieren, Vorschau oder anwenden                                   |
-| `ea_export_xml`              | Ecotech-XML, Link 24 h gültig, mit Mengen-Meldungen                                                         |
-| `ea_fotos_uebersicht`        | Fotos nach Kategorie mit `[foto:id]`, auch von der Begehung am Handy                                        |
-| `ea_foto_ansehen`            | Foto als Bild ansehen (verkleinert) — z. B. Typenschild ablesen, Rahmen/Verglasung erkennen                 |
-| `ea_foto_beschriften`        | Beschreibung oder Kategorie eines Fotos ändern                                                              |
-| `ea_fotos_hochladen`         | Ein im Chat angehängtes Foto (ChatGPT) mit Kategorie übernehmen, ein Aufruf je Foto                         |
-| `ea_foto_link`               | Link zur Kamera-Seite der Handy-App (für Claude oder zum Fotografieren vor Ort)                             |
-| `ea_anlage_setzen`           | Typenschild, Wärmeabgabe, Kesselart, Aufstellort, Warmwasser, Lüftung, PV/Solar — nur übergebene Felder     |
-| `ea_berechnung_starten`      | Demo-Berechnung über den EcoBook 2.0 Rechendienst: HWB, PEB, CO₂, fGEE, Klassen, Verluste, Hinweise         |
-| `ea_berechnung_lesen`        | Gespeicherte Läufe: Rechenweg, Annahmen, größte Verluste, Sanierungsvarianten                               |
-| `ecobook_produkte`           | EcoBook 2.0: Fenster, Dämmung, Heizungen und PV je Hersteller mit U-Wert/λ bzw. JAZ/kWp, Preis, Preisstand  |
-| `ea_produkte_vergleichen`    | Dieselbe Maßnahme mit allen Produkten/Herstellern nebeneinander: Kosten, Ersparnis, Amortisation            |
-| `ea_sanierung_simulieren`    | Maßnahmen durchrechnen auf Gesamtkosten, optional genannte Förderung, Nichtstun, Angebotspositionen         |
-| `ea_sanierung_speichern`     | Sanierungsvariante für Web und Sanierungsvorschlag speichern                                                |
-| `ea_fahrplan_simulieren`     | Sanierungsfahrplan: Maßnahmen je Jahr, Budget, Klasse und Kosten je Schritt, Nichtstun/Fahrplan/sofort      |
-| `ea_fahrplan_speichern`      | Fahrplan für Web, Handy und Sanierungsvorschlag speichern                                                   |
-| `ea_haeuser_suchen`          | Häuser nach Name, Adresse, PLZ oder GWR-Zahl suchen, je Haus seine Energieausweise                          |
-| `ea_haus_lesen`              | Ein Haus: Hausdaten, alle Energieausweise (neuester = aktuell) und die Hausakte                             |
-| `ea_hausakte_lesen`          | Hausakte des Hauses: alle Ausweise, Arbeiten, Stand heute, Geplantes, Verbrauch mit Wirkung, Hinweise       |
-| `ea_hausakte_eintragen`      | Erledigte geplante Maßnahme oder frühere Arbeit in die Hausakte eintragen                                   |
-| `ea_verbrauch_eintragen`     | Echten Verbrauch eintragen (Jahresabrechnung oder Zählerstand); neueste Abrechnung fließt in die Berechnung |
-| `ea_kundenlinks_lesen`       | Kundenlinks des Projekts (gültig, Aufrufe) und Anfragen der Kunden (Angebot/Rückruf)                        |
-| `ea_bericht_pdf`             | Sanierungsvorschlag als PDF (Werte des Ausweises, Variante, Fahrplan), Link 24 h gültig                     |
+| Werkzeug                           | Zweck                                                                                                       |
+| ---------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| `ea_projekte_suchen`               | Projekte finden (Name, Straße, Ort, Status)                                                                 |
+| `ea_projekt_lesen`                 | Kompletter Stand mit Adressen `[bauteil:id]`, `[fenster:id]`, `[konstruktion:id]`, Prüfsummen und Warnungen |
+| `ea_pruefsummen`                   | Hülle, Fensterfläche, Stückzahl, BGF, Richtungspaare, Lücken                                                |
+| `ea_projekt_anlegen`               | Neues Projekt                                                                                               |
+| `ea_projekt_aktualisieren`         | Stammdaten, Auftraggeber/Aussteller, Anlage-Grunddaten, Status, Notizen — nur übergebene Felder             |
+| `ea_konstruktionen_setzen`         | Konstruktionen anlegen/ändern, löschen nur ausdrücklich                                                     |
+| `ea_bauteile_setzen`               | Bauteilflächen anlegen/ändern (Typ, Fläche, Richtung, Neigung, Nachbar, U-Wert, Konstruktion)               |
+| `ea_fenster_setzen`                | Fenster/Türen anlegen/ändern (Breite × Höhe, U, g, Glasanteil, Richtung)                                    |
+| `ea_zuordnungen_setzen`            | Fenster an Wände mit Stückzahl; „ersetzen" nur nach Rückfrage                                               |
+| `ea_konstruktionen_ableiten`       | Zauberstab: Konstruktionen aus Flächen gruppieren, Vorschau oder anwenden                                   |
+| `ea_export_xml`                    | Ecotech-XML, Link 24 h gültig, mit Mengen-Meldungen                                                         |
+| `ea_fotos_uebersicht`              | Fotos nach Kategorie mit `[foto:id]`, auch von der Begehung am Handy                                        |
+| `ea_foto_ansehen`                  | Foto als Bild ansehen (verkleinert) — z. B. Typenschild ablesen, Rahmen/Verglasung erkennen                 |
+| `ea_foto_beschriften`              | Beschreibung oder Kategorie eines Fotos ändern                                                              |
+| `ea_fotos_hochladen`               | Ein im Chat angehängtes Foto (ChatGPT) mit Kategorie übernehmen, ein Aufruf je Foto                         |
+| `ea_foto_link`                     | Link zur Kamera-Seite der Handy-App (für Claude oder zum Fotografieren vor Ort)                             |
+| `ea_anlage_setzen`                 | Typenschild, Wärmeabgabe, Kesselart, Aufstellort, Warmwasser, Lüftung, PV/Solar — nur übergebene Felder     |
+| `ea_berechnung_starten`            | Demo-Berechnung über den EcoBook 2.0 Rechendienst: HWB, PEB, CO₂, fGEE, Klassen, Verluste, Hinweise         |
+| `ea_berechnung_lesen`              | Gespeicherte Läufe: Rechenweg, Annahmen, größte Verluste, Sanierungsvarianten                               |
+| `ecobook_produkte`                 | EcoBook 2.0: Fenster, Dämmung, Heizungen und PV je Hersteller mit U-Wert/λ bzw. JAZ/kWp, Preis, Preisstand  |
+| `ea_produkte_vergleichen`          | Dieselbe Maßnahme mit allen Produkten/Herstellern nebeneinander: Kosten, Ersparnis, Amortisation            |
+| `ea_sanierung_simulieren`          | Maßnahmen durchrechnen auf Gesamtkosten, optional genannte Förderung, Nichtstun, Angebotspositionen         |
+| `ea_sanierung_speichern`           | Sanierungsvariante für Web und Sanierungsvorschlag speichern                                                |
+| `ea_fahrplan_simulieren`           | Sanierungsfahrplan: Maßnahmen je Jahr, Budget, Klasse und Kosten je Schritt, Nichtstun/Fahrplan/sofort      |
+| `ea_fahrplan_speichern`            | Fahrplan für Web, Handy und Sanierungsvorschlag speichern                                                   |
+| `ea_haeuser_suchen`                | Häuser nach Name, Adresse, PLZ oder GWR-Zahl suchen, je Haus seine Energieausweise                          |
+| `ea_haus_lesen`                    | Ein Haus: Hausdaten, alle Energieausweise (neuester = aktuell) und die Hausakte                             |
+| `ea_hausakte_lesen`                | Hausakte des Hauses: alle Ausweise, Arbeiten, Stand heute, Geplantes, Verbrauch mit Wirkung, Hinweise       |
+| `ea_hausakte_eintragen`            | Erledigte geplante Maßnahme oder frühere Arbeit in die Hausakte eintragen                                   |
+| `ea_verbrauch_eintragen`           | Echten Verbrauch eintragen (Jahresabrechnung oder Zählerstand); neueste Abrechnung fließt in die Berechnung |
+| `ea_kundenlinks_lesen`             | Kundenlinks des Projekts (gültig, Aufrufe) und Anfragen der Kunden (Angebot/Rückruf)                        |
+| `ea_bericht_pdf`                   | Sanierungsvorschlag als PDF (Werte des Ausweises, Variante, Fahrplan), Link 24 h gültig                     |
+| `ea_begehung_lesen`                | Begehung aus der Begehung-App lesen: Kopf, Abschnitte, Fotonotizen, Diktat, frühere Übernahmen              |
+| `ea_begehung_uebernahme_vorschau`  | Werte aus der Begehung neben dem Ausweis zeigen (jetzt · neu · Quelle), Prüfcode — schreibt nichts          |
+| `ea_begehung_uebernahme_speichern` | Gewählte Werte übernehmen; Überschreiben nur bestätigt; Herkunft im Änderungsprotokoll                      |
+| `begehung_verknuepfen`             | Begehung mit einem Energieausweis verknüpfen oder lösen (auch im Gutachten-Plugin)                          |
 
 ## Sicherheit
 
@@ -559,6 +564,17 @@ registriert; bis dahin dort die Server-Adresse im Developer mode eintragen.
   256 × 256 Pixel und ist kleiner als 10 KB. Keine Änderungen an `time_entries`
   oder den Verwaltungsrechten der Web-Oberfläche.
 
+- **Energieausweis 0.1.23 / Gutachten 0.7.2** — Begehung aus der
+  Begehung-App in den Ausweis übernehmen: `ea_projekt_lesen` listet die
+  verknüpften Begehungen, `ea_begehung_lesen` liest sie über den
+  Energieausweis-Zugang, `ea_begehung_uebernahme_vorschau` zeigt die Werte mit
+  Quelle neben dem aktuellen Stand (mit Prüfcode), `ea_begehung_uebernahme_speichern`
+  übernimmt die gewählten — Überschreiben nur nach Bestätigung, Herkunft im
+  Änderungsprotokoll, die Begehung bleibt unverändert. `begehung_verknuepfen`
+  in beiden Plugins, `gutachten_suchen` mit `energieausweis_id`. Der Skill
+  trennt die Erfassung in der Energieausweis-App von der Begehung-App
+  (`references/begehung-uebernahme.md`). Braucht im Web die Migration
+  `20261021_appraisals_verknuepfung.sql` (Demo).
 - **Energieausweis 0.1.22** — Datenherkunft und Anhang des Ausweises:
   `anhang_*`-Felder in `ea_projekt_aktualisieren` und `ea_projekt_lesen`,
   gehen an Ecotech. Direkter U-Wert neben den Schichten:
