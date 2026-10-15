@@ -11,17 +11,17 @@ Clients gleich. Halte dich daran.
 
 Kurzfassung:
 
-1. `ea_projekte_suchen` → `ea_plan_lesen`. Geschosse heißen über ihre `id`
-   oder ihren Namen (z. B. „EG“). Ohne Plan: erster Entwurf mit
-   `ea_plan_vorschau`/`ea_plan_speichern`.
-2. Alle gewünschten Änderungen als `schritte` in **einem** Aufruf von
-   `ea_plan_aendern_vorschau` - alles in Metern, wie `umriss_m`. Die Schritte
-   laufen der Reihe nach; Kanten- und Eckennummern gelten für den Stand nach
-   den vorherigen Schritten. Ein im selben Aufruf angelegtes Geschoss lässt
-   sich über seinen Namen gleich weiterbearbeiten.
-3. Vorschau dem Nutzer kurz zeigen (Flächen, Kanten, Gelöschtes). Speichern
-   nur auf Auftrag mit `ea_plan_aendern_speichern`, identischen `aenderungen`
-   und `pruefcode`; Löschen zusätzlich `loeschen_bestaetigt=true`.
+1. `ea_projekte_suchen` → `plan_lesen`: Plan in Metern mit **festen IDs**
+   für Geschosse, Ecken, Wände und Öffnungen, Himmelsrichtung je Wand.
+   Ohne Plan: erster Entwurf mit `ea_plan_vorschau`/`ea_plan_speichern`.
+2. Alle gewünschten Änderungen als `befehle` in **einem** Aufruf von
+   `plan_befehle_vorschau`. Befehle nennen IDs, keine Nummern: Ecke einfügen
+   teilt eine Wand, alle übrigen IDs bleiben. Neue Geschosse, Ecken und
+   Öffnungen bekommen eine neue UUID von dir. Das Web nutzt dieselben Befehle.
+3. Vorschau dem Nutzer kurz zeigen (Flächen, Wände, Gelöschtes). Speichern
+   nur auf Auftrag mit `plan_befehle_speichern`, identischen `befehle` und
+   `pruefcode`; Löschen zusätzlich `loeschen_bestaetigt=true`.
+   Älterer Weg mit Kantennummern: `ea_plan_aendern_vorschau`/`_speichern`.
 4. Kontrolle mit `ea_plan_bild` je Geschoss - mit `mit_original=true` liegt
    der Originalplan darunter und die Kontur ist rot: liegt sie auf den
    Außenwänden? - oder `ea_plan_3d_anzeigen`.
@@ -30,8 +30,11 @@ Kurzfassung:
 
 Begriffe:
 
-- Kante k läuft von Ecke k zu Ecke k+1, die letzte zurück zu Ecke 0.
-- `abstand_m` bei Fenstern: Kantenanfang bis Öffnungskante, nicht Mitte.
+- Plan-Bezug: Meter, x nach rechts, y nach oben, für alle Geschosse gleich.
+  Wand-ID = ID ihrer Anfangsecke; die Wand läuft zur nächsten Ecke.
+- `mitteM` bei Öffnungen: Wandanfang bis Mitte der Öffnung. (Nur bei
+  `ea_plan_aendern`: `abstand_m` bis zur Öffnungskante, Kante k von Ecke k zu
+  Ecke k+1.)
 - `hoehe_m` eines Geschosses: Fußboden bis Fußboden mit Decke - nicht die
   lichte Raumhöhe.
 - Vektor-PDF (CAD-Export): `einrasten: true` zieht Punkte von
