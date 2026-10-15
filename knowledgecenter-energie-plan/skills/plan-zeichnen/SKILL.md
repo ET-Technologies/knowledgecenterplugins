@@ -34,6 +34,12 @@ Begriffe:
 - `abstand_m` bei Fenstern: Kantenanfang bis Öffnungskante, nicht Mitte.
 - `hoehe_m` eines Geschosses: Fußboden bis Fußboden mit Decke - nicht die
   lichte Raumhöhe.
+- Vektor-PDF (CAD-Export): `einrasten: true` zieht Punkte von
+  `ecke_verschieben` und `geschoss_anlegen` bis 15 cm auf die nächste
+  Wandecke; die Vorschau nennt unter `eingerastet`, was verschoben wurde.
+  `ea_plan_dokumente_lesen` meldet unter `massstab_im_plan` gefundene
+  Maßstäbe mit `pixel_pro_meter` - nur bei Originalgröße gültig, an einer
+  Bemaßung gegenprüfen.
 - Dach: `ea_plan_dach_vorschau`/`_speichern`. Boden-/Deckenbereiche und die
   Zuordnung eines Originalplans: `ea_plan_bearbeiten_vorschau`/`_speichern`.
 
