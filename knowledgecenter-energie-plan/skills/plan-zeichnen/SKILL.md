@@ -26,7 +26,9 @@ Kurzfassung:
    der Originalplan darunter und die Kontur ist rot: liegt sie auf den
    Außenwänden? - oder `ea_plan_3d_anzeigen`.
    Danach die Übernahme in den Baukörper vorschlagen
-   (`ea_plan_baukoerper_vorschau`, speichern nur auf Auftrag).
+   (`ea_plan_baukoerper_vorschau`, bei vorhandenem Baukörper
+   `modus: abgleichen` – U-Werte und Konstruktionen bleiben; speichern nur
+   auf Auftrag).
 
 Begriffe:
 
@@ -43,7 +45,8 @@ Begriffe:
   `ea_plan_dokumente_lesen` meldet unter `massstab_im_plan` gefundene
   Maßstäbe mit `pixel_pro_meter` - nur bei Originalgröße gültig, an einer
   Bemaßung gegenprüfen.
-- Dach: `ea_plan_dach_vorschau`/`_speichern`. Boden-/Deckenbereiche und die
+- Dach: `ea_plan_dach_vorschau`/`_speichern` – Satteldach, Pultdach oder
+  Walmdach (Walm nur bei konvexem Grundriss). Boden-/Deckenbereiche und die
   Zuordnung eines Originalplans: `ea_plan_bearbeiten_vorschau`/`_speichern`.
 
 Regeln: Maße, Höhen, Nordrichtung und Nachbarn nur aus Plan, Bemaßung oder

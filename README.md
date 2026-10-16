@@ -259,11 +259,11 @@ MCP-Verbindung zu `https://www.knowledgecenter.at/api/mcp/energie-plan`.
 | `ea_projekte_suchen`, `ea_plan_lesen`                | Projekt finden, Plan lesen: Geschosse, `umriss_m`, Kanten, Fenster, Dach                                                                                  |
 | `ea_plan_aendern_vorschau` / `_speichern`            | Liste von Schritten in Metern: Ecken einfügen/löschen/verschieben, Sollmaße, Wand-Nachbarn, Fenster/Türen, Geschosse anlegen/kopieren/löschen/umsortieren |
 | `ea_plan_vorschau` / `ea_plan_speichern`             | Erster Plan, wenn noch keiner gezeichnet ist                                                                                                              |
-| `ea_plan_dach_vorschau` / `_speichern`               | Satteldach über dem obersten Geschoss                                                                                                                     |
+| `ea_plan_dach_vorschau` / `_speichern`               | Sattel-, Pult- oder Walmdach über dem obersten Geschoss                                                                                                   |
 | `ea_plan_bearbeiten_vorschau` / `_speichern`         | Boden-/Deckenbereiche und Zuordnung eines Originalplans                                                                                                   |
 | `ea_plan_dokumente_lesen`, `ea_plan_datei_hochladen` | Originalpläne je Geschoss                                                                                                                                 |
 | `ea_plan_bild`, `ea_plan_3d_anzeigen`                | Kontrolle als beschrifteter Plan oder interaktiv in 3D                                                                                                    |
-| `ea_plan_baukoerper_vorschau` / `_speichern`         | Geometrie in den Baukörper übernehmen                                                                                                                     |
+| `ea_plan_baukoerper_vorschau` / `_speichern`         | Geometrie in den Baukörper übernehmen oder abgleichen (U-Werte bleiben)                                                                                   |
 
 Voraussetzung auf der Datenbank: `sql/20261014_energy_plan_anwenden.sql` aus
 dem Web-Repository.
@@ -294,13 +294,13 @@ nötig; der aktualisierte Webserver muss einschließlich UI-Datei veröffentlich
 
 Version 0.1.5 ergänzt folgende Aktionen:
 
-| Werkzeug                                                       | Zweck                                                                                                                                      |
-| -------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| `ea_plan_bearbeiten_vorschau` / `ea_plan_bearbeiten_speichern` | Fenster/Türen verschieben, ändern, löschen; Wandpunkte, Höhe, Maßstab, Norden und Nachbarn ändern; Dokument mit geprüfter Passung zuordnen |
-| `ea_plan_bild`                                                 | Beschriftetes 2D-Planbild mit Wand-, Punkt- und Öffnungsreferenzen; auch für einen ungespeicherten Entwurf                                 |
-| `ea_plan_datei_hochladen`                                      | PDF/PNG/JPEG/WebP aus ChatGPT als Projektdokument hochladen, maximal 20 MB                                                                 |
-| `ea_plan_dokumente_lesen`                                      | Dokumente und Ebenenzuordnungen lesen; Originaldatei, Seite und Rendermaße abrufen                                                         |
-| `ea_plan_baukoerper_vorschau` / `ea_plan_baukoerper_speichern` | Geometrie ohne Duplikate in einen leeren Baukörper übernehmen oder einen reinen Plugin-Planbestand ausdrücklich ersetzen                   |
+| Werkzeug                                                       | Zweck                                                                                                                                                                       |
+| -------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `ea_plan_bearbeiten_vorschau` / `ea_plan_bearbeiten_speichern` | Fenster/Türen verschieben, ändern, löschen; Wandpunkte, Höhe, Maßstab, Norden und Nachbarn ändern; Dokument mit geprüfter Passung zuordnen                                  |
+| `ea_plan_bild`                                                 | Beschriftetes 2D-Planbild mit Wand-, Punkt- und Öffnungsreferenzen; auch für einen ungespeicherten Entwurf                                                                  |
+| `ea_plan_datei_hochladen`                                      | PDF/PNG/JPEG/WebP aus ChatGPT als Projektdokument hochladen, maximal 20 MB                                                                                                  |
+| `ea_plan_dokumente_lesen`                                      | Dokumente und Ebenenzuordnungen lesen; Originaldatei, Seite und Rendermaße abrufen                                                                                          |
+| `ea_plan_baukoerper_vorschau` / `ea_plan_baukoerper_speichern` | Geometrie ohne Duplikate übernehmen, mit vorhandenem Baukörper abgleichen (U-Werte, Konstruktionen, IDs bleiben) oder einen reinen Plugin-Planbestand ausdrücklich ersetzen |
 
 Version 0.1.8 ergänzt weitere Geschosse:
 

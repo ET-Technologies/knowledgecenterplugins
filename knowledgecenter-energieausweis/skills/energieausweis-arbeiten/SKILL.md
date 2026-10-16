@@ -213,10 +213,11 @@ Geschosse bleiben unverändert.
    zur Kontrolle; fehlende Fenster/Türen mit `ea_plan_oeffnungen_*`, Abweichungen
    mit `ea_plan_bearbeiten_*` ergänzen.
 5. Die Energie-Bauteile ändern sich nicht automatisch. Dem Nutzer die
-   Baukörper-Übernahme vorschlagen (`ea_plan_baukoerper_vorschau`, speichern
-   nur auf Auftrag). Thermische Bauteile nie ungefragt überschreiben.
+   Baukörper-Übernahme vorschlagen (`ea_plan_baukoerper_vorschau`, bei
+   vorhandenem Baukörper `modus: abgleichen`; speichern nur auf Auftrag).
+   Thermische Bauteile nie ungefragt überschreiben.
 
-## Satteldach einstellen
+## Dach einstellen
 
 Das Dach gilt fürs ganze Haus und sitzt auf dem obersten Geschoss. Ohne
 Angabe endet das Gebäude mit einer Decke bzw. einem Flachdach. Abgefragt wird
@@ -224,28 +225,34 @@ wie im Ecotech-Schnellverfahren, mit denselben Begriffen, und nur das Nötigste.
 Alle Höhen gelten **relativ ab oberster Geschoßdecke**, außen gemessen.
 
 1. Zuerst fragen: **Dachraum?** beheizter Dachraum, unbeheizter Dachraum
-   oder Flachdach. Unklar → nachfragen.
+   oder Flachdach. Bei geneigtem Dach die **Form**: Satteldach, Pultdach
+   oder Walmdach. Unklar → nachfragen.
 2. `ea_plan_lesen`: `dach` zeigt den aktuellen Stand, `kanten` des obersten
    Geschosses die Wände mit `kante_index` und Länge; `dach_aus_begehung`
    zeigt am Handy erfasste Werte.
 3. `ea_plan_dach_vorschau` mit `projekt_id` und `dach`:
-   - `form`: `satteldach` oder `flachdach` (Satteldach entfernen).
+   - `form`: `satteldach`, `pultdach` (eine Fläche, hohe Seite an
+     `first_kante_index`), `walmdach` (jede Wand trägt eine Dachfläche; nur
+     bei konvexem Grundriss, nicht bei L/T/U) oder `flachdach` (geneigtes
+     Dach entfernen).
    - `beheizt`: `true` = beheizter, `false` = unbeheizter Dachraum.
-   - `first_hoehe_m` = **First Höhe**. Beim beheizten Dachraum Pflicht, beim
+   - `first_hoehe_m` = **First Höhe** (Pultdach: an der hohen Seite;
+     Walmdach: höchster Punkt). Beim beheizten Dachraum Pflicht, beim
      unbeheizten freiwillig (nur fürs 3D). Aus Schnitt oder Nutzerangabe – nie
      raten.
    - `uebermauerung_m` = **Übermauerungs Höhe** (Außenwand über der Decke bis
      zum Dachansatz); 0, wenn das Dach direkt aufliegt.
-   - Nur beheizt und nur wenn vorhanden: `drempel_hoehe_m` = **Drempel Höhe**
+   - Nur Satteldach, beheizt und nur wenn vorhanden: `drempel_hoehe_m` = **Drempel Höhe**
      (innere Wand, dahinter kalte Abseiten) und `zangendecke_hoehe_m` =
      **Zangendecke Höhe** (darüber kalter Spitzboden). Nicht von sich aus
      danach bohren – einmal fragen, ob es Drempel oder Zangendecke gibt.
    - Die **Neigung** rechnet das Werkzeug aus First, Übermauerung und
      Hausbreite. `neigung_grad` nur, wenn die First-Höhe unbekannt ist.
-   - `first_kante_index`: Wand, zu der der First parallel läuft; weglassen =
-     längste Wand.
+   - `first_kante_index`: Satteldach – Wand, zu der der First parallel
+     läuft; Pultdach – Wand an der hohen Seite; Walmdach ohne Wirkung.
+     Weglassen = längste Wand.
    - Nur beheizt: `dachfenster` mit `seite` (a oder b, aus
-     `dachflaechen[].seite` der Vorschau), `breite_m`, `hoehe_m`, `anzahl`,
+     `dachflaechen[].seite` der Vorschau; Walmflächen `w` tragen keine), `breite_m`, `hoehe_m`, `anzahl`,
      optional `u_wert` und `g_wert`. Wie ein Fenster, nur statt der Wand die
      Dachfläche. Maße vom Typenschild, nie raten.
    - `quelle`.
@@ -263,7 +270,7 @@ Alle Höhen gelten **relativ ab oberster Geschoßdecke**, außen gemessen.
    Decke darunter wird Zwischendecke ohne Wärmestrom mit der BGF des
    Dachgeschosses. Unbeheizt: die oberste Decke bleibt die Hüllfläche
    (Nachbar unbeheizter Dachraum). L- und T-Grundrisse werden vereinfacht als
-   ein Satteldach ohne Kehlen gerechnet.
+   ein Satteldach ohne Kehlen gerechnet; ein Walmdach lehnt das Werkzeug dort ab.
 
 ## Boden- und Deckenbereiche mit eigenem Nachbarn
 
@@ -318,11 +325,17 @@ Durchfahrt, Terrasse. Dieselben Bereiche wie das Werkzeug „Boden/Decke“ im W
 Gebäude mit den Web-Geometriefunktionen ab. Boden-/Deckennachbar müssen gesetzt
 sein. Flächen, Höhen, Fenster, Zuordnungen und Hinweise prüfen.
 
+- `abgleichen` (Standard bei vorhandenem Baukörper, wie im Web): Flächen,
+  Richtungen und Höhen nachführen; U-Werte, Konstruktionen, Fensterdaten und
+  IDs bleiben. Neue Bauteile übernehmen die Werte des passenden alten gleicher
+  Art und Richtung (z. B. die zweite Hälfte einer geteilten Wand) – die Vorschau
+  nennt sie unter `werteUebernommen`; dem Nutzer zum Prüfen zeigen. Entfallenes
+  wird nur mit `entfallen_bestaetigt=true` gelöscht.
 - `erstimport`: nur bei leeren Bauteil- und Fenstertabellen.
 - `planbestand_ersetzen`: nur bei reinem, zuvor von diesem Werkzeug erzeugtem
   Planbestand. Die Vorschau zeigt den bisherigen Bestand und die neue Ableitung.
   Ersatz entfernt auch nachträgliche U-Werte, Konstruktionen und Zuordnungen
-  dieses Bestands. Bei gemischtem oder anderem Bestand im Web abgleichen.
+  dieses Bestands. Im Zweifel `abgleichen`.
 
 Auf Nutzerauftrag `ea_plan_baukoerper_speichern` mit `modus` und `pruefcode`.
 Ersatz zusätzlich nur mit `ersetzen_bestaetigt=true`. Danach `ea_projekt_lesen`
