@@ -254,19 +254,23 @@ Durchgang. Gleiches Abo wie das Energieausweis-Plugin.
 
 MCP-Verbindung zu `https://www.knowledgecenter.at/api/mcp/energie-plan`.
 
-| Werkzeug                                             | Zweck                                                                                                                                                     |
-| ---------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `ea_projekte_suchen`, `ea_plan_lesen`                | Projekt finden, Plan lesen: Geschosse, `umriss_m`, Kanten, Fenster, Dach                                                                                  |
-| `ea_plan_aendern_vorschau` / `_speichern`            | Liste von Schritten in Metern: Ecken einfügen/löschen/verschieben, Sollmaße, Wand-Nachbarn, Fenster/Türen, Geschosse anlegen/kopieren/löschen/umsortieren |
-| `ea_plan_vorschau` / `ea_plan_speichern`             | Erster Plan, wenn noch keiner gezeichnet ist                                                                                                              |
-| `ea_plan_dach_vorschau` / `_speichern`               | Sattel-, Pult- oder Walmdach über dem obersten Geschoss                                                                                                   |
-| `ea_plan_bearbeiten_vorschau` / `_speichern`         | Boden-/Deckenbereiche und Zuordnung eines Originalplans                                                                                                   |
-| `ea_plan_dokumente_lesen`, `ea_plan_datei_hochladen` | Originalpläne je Geschoss                                                                                                                                 |
-| `ea_plan_bild`, `ea_plan_3d_anzeigen`                | Kontrolle als beschrifteter Plan oder interaktiv in 3D                                                                                                    |
-| `ea_plan_baukoerper_vorschau` / `_speichern`         | Geometrie in den Baukörper übernehmen oder abgleichen (U-Werte bleiben)                                                                                   |
+| Werkzeug                                             | Zweck                                                                                                                                                                 |
+| ---------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `ea_projekte_suchen`, `plan_lesen`                   | Projekt finden, Plan lesen: Meter, feste IDs für Geschosse, Ecken, Wände, Öffnungen; Unterlage, Dach                                                                  |
+| `plan_befehle_vorschau` / `_speichern`               | Befehle mit IDs (dieselben wie im Web), u. a. Maßkette, Ecken, Wände, Öffnungen, Bereiche, Geschosse; Prüfung mit Kennzahlen vorher/nachher; Einrasten auf Vektor-PDF |
+| `plan_bild`                                          | Beschrifteter Plan mit Kurzzeichen E/W/F/B, auch als Entwurf und über dem Originalplan                                                                                |
+| `plan_linien_lesen`                                  | Wandlinien eines Vektor-PDFs in Plan-Metern                                                                                                                           |
+| `ea_plan_dach_vorschau` / `_speichern`               | Sattel-, Pult- oder Walmdach über dem obersten Geschoss                                                                                                               |
+| `ea_plan_dokumente_lesen`, `ea_plan_datei_hochladen` | Originalpläne je Geschoss                                                                                                                                             |
+| `ea_plan_3d_anzeigen`                                | Kontrolle interaktiv in 3D                                                                                                                                            |
+| `ea_plan_baukoerper_vorschau` / `_speichern`         | Geometrie in den Baukörper übernehmen oder abgleichen (U-Werte bleiben)                                                                                               |
 
-Voraussetzung auf der Datenbank: `sql/20261014_energy_plan_anwenden.sql` aus
-dem Web-Repository.
+Voraussetzung auf der Datenbank: `sql/20261014_energy_plan_anwenden.sql` und
+für die `plan_*`-Werkzeuge `sql/20261024_plan_dokumente.sql` aus dem
+Web-Repository. Die älteren Werkzeuge mit Kantennummern (`ea_plan_lesen`,
+`ea_plan_aendern_*`, `ea_plan_bearbeiten_*`, `ea_plan_bild`) bleiben im
+Energieausweis-Plugin; im Plan-Plugin gibt es nur noch den Weg über
+`plan_befehle_*`.
 
 ## Sicherheit
 
