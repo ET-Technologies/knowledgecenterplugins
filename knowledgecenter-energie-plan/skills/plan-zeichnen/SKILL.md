@@ -52,7 +52,8 @@ Begriffe:
   meldet unter `massstab_im_plan` gefundene Maßstäbe mit `pixel_pro_meter` -
   nur bei Originalgröße gültig, an einer Bemaßung gegenprüfen.
 - Dach: `ea_plan_dach_vorschau`/`_speichern` – Satteldach, Pultdach oder
-  Walmdach (Walm nur bei konvexem Grundriss). Boden-/Deckenbereiche
+  Walmdach; bei L/T/U Grate und Kehlen je Flügel, beim Satteldach Giebel an
+  den Flügelenden. Boden-/Deckenbereiche
   (unterkellerter Teil, Boden über Garage, Terrasse): `bereich_setzen` /
   `bereich_loeschen`.
 - Web und KI am selben Plan: Ein offener Plan-Reiter übernimmt gespeicherte

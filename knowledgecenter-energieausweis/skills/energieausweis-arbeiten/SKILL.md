@@ -232,9 +232,10 @@ Alle Höhen gelten **relativ ab oberster Geschoßdecke**, außen gemessen.
    zeigt am Handy erfasste Werte.
 3. `ea_plan_dach_vorschau` mit `projekt_id` und `dach`:
    - `form`: `satteldach`, `pultdach` (eine Fläche, hohe Seite an
-     `first_kante_index`), `walmdach` (jede Wand trägt eine Dachfläche; nur
-     bei konvexem Grundriss, nicht bei L/T/U) oder `flachdach` (geneigtes
-     Dach entfernen).
+     `first_kante_index`), `walmdach` (jede Wand trägt eine Dachfläche) oder
+     `flachdach` (geneigtes Dach entfernen). Bei L/T/U-Grundriss rechnen
+     Sattel- und Walmdach Grate und Kehlen je Flügel; das Satteldach hat
+     dort Giebel an den Flügelenden, `first_kante_index` wirkt nicht.
    - `beheizt`: `true` = beheizter, `false` = unbeheizter Dachraum.
    - `first_hoehe_m` = **First Höhe** (Pultdach: an der hohen Seite;
      Walmdach: höchster Punkt). Beim beheizten Dachraum Pflicht, beim
@@ -269,8 +270,9 @@ Alle Höhen gelten **relativ ab oberster Geschoßdecke**, außen gemessen.
    gegen den unbeheizten Dachraum, mit Zangendecke die Zangendecke; die
    Decke darunter wird Zwischendecke ohne Wärmestrom mit der BGF des
    Dachgeschosses. Unbeheizt: die oberste Decke bleibt die Hüllfläche
-   (Nachbar unbeheizter Dachraum). L- und T-Grundrisse werden vereinfacht als
-   ein Satteldach ohne Kehlen gerechnet; ein Walmdach lehnt das Werkzeug dort ab.
+   (Nachbar unbeheizter Dachraum). Bei L-, T- und U-Grundrissen hat jeder
+   Flügel sein eigenes Dach mit Kehlen und Graten; gleich ausgerichtete
+   Dachflächen werden ein Bauteil.
 
 ## Boden- und Deckenbereiche mit eigenem Nachbarn
 
