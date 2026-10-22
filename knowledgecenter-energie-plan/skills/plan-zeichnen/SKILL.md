@@ -65,8 +65,14 @@ Begriffe:
   `oeffnung_setzen` auf der Giebelwand des obersten Geschosses, Typ mit
   `bruestungM` ab Fußboden dieses Geschosses (also ≥ Geschosshöhe). Sie
   zählen einmal, in der Himmelsrichtung der Wand, und müssen unter die
-  Dachlinie passen. `dachfenster` nur für Fenster in der Dachfläche und
-  Gaupen. Boden-/Deckenbereiche
+  Dachlinie passen. `dachfenster` nur für Fenster in der Dachfläche.
+  Gaupen (ausgebautes Satteldach ohne einspringende Ecken): in `dach_setzen`
+  unter `dach.gaupen` an der Traufwand des obersten Geschosses - `mitteM` ab
+  Wandanfang, `abstandM` waagrecht von der Fassade bis zur Front, `hoeheM`
+  Oberkante Front ab oberster Decke, Schleppgaupe mit `neigungGrad`,
+  Satteldachgaupe mit `firstHoeheM`, Fenster in `fenster`. Front, Wangen,
+  Gaupendach und Volumen werden gerechnet. Wände ab 15 cm sind zeichenbar
+  (Vor- und Rücksprünge). Boden-/Deckenbereiche
   (unterkellerter Teil, Boden über Garage, Terrasse): `bereich_setzen` /
   `bereich_loeschen`.
 - Web und KI am selben Plan: Ein offener Plan-Reiter übernimmt gespeicherte
