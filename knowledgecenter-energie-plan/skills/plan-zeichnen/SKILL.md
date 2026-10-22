@@ -60,7 +60,13 @@ Begriffe:
   nur bei Originalgröße gültig, an einer Bemaßung gegenprüfen.
 - Dach: `ea_plan_dach_vorschau`/`_speichern` – Satteldach, Pultdach oder
   Walmdach; bei L/T/U Grate und Kehlen je Flügel, beim Satteldach Giebel an
-  den Flügelenden. Boden-/Deckenbereiche
+  den Flügelenden. Fenster im Giebel eines ausgebauten Dachs (Ansicht zeigt
+  sie in der Giebelwand über der obersten Decke) sind keine Dachfenster:
+  `oeffnung_setzen` auf der Giebelwand des obersten Geschosses, Typ mit
+  `bruestungM` ab Fußboden dieses Geschosses (also ≥ Geschosshöhe). Sie
+  zählen einmal, in der Himmelsrichtung der Wand, und müssen unter die
+  Dachlinie passen. `dachfenster` nur für Fenster in der Dachfläche und
+  Gaupen. Boden-/Deckenbereiche
   (unterkellerter Teil, Boden über Garage, Terrasse): `bereich_setzen` /
   `bereich_loeschen`.
 - Web und KI am selben Plan: Ein offener Plan-Reiter übernimmt gespeicherte
