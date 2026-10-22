@@ -1,6 +1,6 @@
 ---
 name: plan-zeichnen
-description: Geschosspläne der Energieausweis-Projekte in Knowledge Center zeichnen und korrigieren - Umriss, Ecken, Sollmaße, Wand-Nachbarn, Fenster und Außentüren, Geschosse (anlegen, kopieren, löschen, umsortieren, Keller darunter), Dach (Sattel, Pult, Walm), Boden-/Deckenbereiche, Originalpläne je Geschoss mit Einrasten auf Vektor-PDFs, Aufmaß als Maßkette; Prüfung mit Kennzahlen vorher/nachher, Kontrolle als Bild oder in 3D und anschließend die Übernahme in den Baukörper.
+description: Geschosspläne der Energieausweis-Projekte in Knowledge Center zeichnen und korrigieren - Umriss, Ecken, Sollmaße, Wand-Nachbarn, Fenster und Außentüren, Geschosse (anlegen, kopieren, löschen, umsortieren, Keller darunter), Dach (Sattel, Pult, Walm), Boden-/Deckenbereiche, Originalpläne je Geschoss mit Einrasten auf Vektor-PDFs und Lupe mit Meterraster für Scans, Aufmaß als Maßkette; Prüfung mit Kennzahlen vorher/nachher, Kontrolle als Bild oder in 3D und anschließend die Übernahme in den Baukörper.
 ---
 
 # Plan zeichnen in Knowledge Center
@@ -16,6 +16,12 @@ Kurzfassung:
    Unterlage (Originalplan, Maßstab). Originalplan: `ea_plan_dokumente_lesen`;
    bei Vektor-PDF liefert `plan_linien_lesen` die Wandlinien in denselben
    Metern.
+   Bei Scans und großen Blättern sind die Maßzahlen im Gesamtbild
+   unlesbar: dann die Lupe `plan_ausschnitt`. Erst die ganze Seite mit
+   `dokument_id` (Blattpixel) - Seite wählen, Maßstab an einer Bemaßung
+   messen, `geschoss_anlegen` mit `unterlage`. Danach mit `geschoss` und
+   `wand` oder `bereich` Wand für Wand hineinzoomen: Raster in Plan-Metern,
+   Maßketten lesen, Ecken am Raster ablesen. Bemaßung geht vor Raster.
 2. Alle gewünschten Änderungen als `befehle` in **einem** Aufruf von
    `plan_befehle_vorschau`. Befehle nennen IDs, keine Nummern: Ecke einfügen
    teilt eine Wand, alle übrigen IDs bleiben. Neue Geschosse, Ecken und
@@ -30,7 +36,8 @@ Kurzfassung:
 4. Kontrolle mit `plan_bild` je Geschoss: Kurzzeichen E/W/F/B mit Zuordnung
    zu den IDs, mit `befehle` auch als Entwurf vor dem Speichern; mit
    `mit_original=true` liegt der Originalplan darunter und die Kontur ist
-   rot - liegt sie auf den Außenwänden? Oder `ea_plan_3d_anzeigen`.
+   rot - liegt sie auf den Außenwänden? Im Detail `plan_ausschnitt` mit
+   `mit_umriss=true` je Wand. Oder `ea_plan_3d_anzeigen`.
    Danach die Übernahme in den Baukörper vorschlagen
    (`ea_plan_baukoerper_vorschau`, bei vorhandenem Baukörper
    `modus: abgleichen` – U-Werte und Konstruktionen bleiben; speichern nur
