@@ -74,7 +74,7 @@ Begriffe:
   Gaupendach und Volumen werden gerechnet. Dach nur über einem Teil
   (Anbau mit Flachdach, in der Ansicht ein Gesims unter dem durchgehenden
   Giebel): im obersten Geschoss `bereich_setzen` mit `art: decke`, `nachbar:
-  AUSSEN` über den Anbau. Das Satteldach steht dann über dem Rest, die Wand
+AUSSEN` über den Anbau. Das Satteldach steht dann über dem Rest, die Wand
   über dem Flachdach wird Außenwand mit Giebel; Giebelfenster dort auf die
   Anbauwand setzen, sie wandern auf die Wand dahinter. Wände ab 15 cm sind zeichenbar
   (Vor- und Rücksprünge). Boden-/Deckenbereiche
