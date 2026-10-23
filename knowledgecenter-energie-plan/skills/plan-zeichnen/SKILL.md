@@ -80,6 +80,16 @@ AUSSEN` über den Anbau. Das Satteldach steht dann über dem Rest, die Wand
   (Vor- und Rücksprünge). Boden-/Deckenbereiche
   (unterkellerter Teil, Boden über Garage, Terrasse): `bereich_setzen` /
   `bereich_loeschen`.
+- Anlage (Haustechnik) gehört zum Plan, nicht zum EA: `anlage_setzen` mit
+  `symbol{id,typ,ebene,x,y}` legt Kessel (`gas`, `oel`, `pellets`),
+  `waermepumpe`, `fernwaerme`, `ofen`, `speicher`, `durchlauferhitzer`,
+  `eboiler`, `heizkoerper` oder `fussbodenheizung` dorthin, wo es steht;
+  `anlage_loeschen{id}` entfernt es. `ebene` ist eine Geschoss-ID oder
+  `keller`/`dachraum` für den unbeheizten, nicht gezeichneten Raum. Der Ort
+  zählt: im Umriss beheizt, in Keller/Dachraum unbeheizt, außerhalb des
+  Umrisses nur die Wärmepumpe (= Außenluft); Heizkörper, Fußbodenheizung und
+  Ofen nur beheizt. In den Energieausweis kommt die Anlage erst mit
+  „Übernehmen“ im Web - der EA bleibt eine Momentaufnahme.
 - Web und KI am selben Plan: Ein offener Plan-Reiter übernimmt gespeicherte
   Änderungen von selbst, als rückgängig machbaren Schritt „KI: …“. Speichert
   das Web gleichzeitig, werden Änderungen an verschiedenen Ecken
