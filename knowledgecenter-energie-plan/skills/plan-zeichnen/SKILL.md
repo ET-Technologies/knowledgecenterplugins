@@ -90,6 +90,16 @@ AUSSEN` über den Anbau. Das Satteldach steht dann über dem Rest, die Wand
   Umrisses nur die Wärmepumpe (= Außenluft); Heizkörper, Fußbodenheizung und
   Ofen nur beheizt. In den Energieausweis kommt die Anlage erst mit
   „Übernehmen“ im Web - der EA bleibt eine Momentaufnahme.
+- Eigenständige Pläne (Bereich „Pläne“, ohne Energieausweis): statt
+  `projekt_id` die `plan_id` angeben. Dort gibt es zusätzlich Rechendaten:
+  `rechnung_setzen{rechnung}` ersetzt sie ganz (vorher aus `plan_lesen`
+  übernehmen und nur ändern, was sich ändert). Inhalt: `adresse`, `plz`,
+  `ort`, `baujahr`, `gebaeudeart` (EFH, MFH, RH, DH, GEB), `klimaregion`
+  (W, NF, N, ZA, SB, S/SO, N/SO), `seehoeheM` und `uWerte` je Gruppe
+  (`aussenwand`, `dachflaeche`, `obersteDecke`, `kellerdecke`, `boden`) mit
+  `daemmCm` (Dämmung auf die Bauepoche) oder `u` (eigener Wert). Ohne Eintrag
+  gilt der U-Wert der Bauepoche aus dem Baujahr. Originalplan (`mit_original`)
+  und `einrasten` gibt es bei eigenständigen Plänen noch nicht.
 - Web und KI am selben Plan: Ein offener Plan-Reiter übernimmt gespeicherte
   Änderungen von selbst, als rückgängig machbaren Schritt „KI: …“. Speichert
   das Web gleichzeitig, werden Änderungen an verschiedenen Ecken
