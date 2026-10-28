@@ -20,9 +20,9 @@ Daraus folgt alles Weitere: Werte zeigen statt schreiben, Herkunft nennen,
 
 ## Nicht verwechseln
 
-- **Erfassung in der Energieausweis-App** (alter Weg): schreibt direkt in die
-  Felder des Ausweises. Dafür gilt der Abschnitt „Begehung vom Handy und
-  Fotos" im Skill.
+- **Energie-App am Handy**: ist der Energieausweis selbst, keine Begehung —
+  schreibt direkt in die Felder des Ausweises. Dafür gilt der Abschnitt
+  „Energie-App am Handy und Fotos" im Skill.
 - **Begehung-App** (dieser Ablauf): eigenes Dokument, in `ea_projekt_lesen`
   unter „Begehungen" mit `[begehung:id]`.
 
