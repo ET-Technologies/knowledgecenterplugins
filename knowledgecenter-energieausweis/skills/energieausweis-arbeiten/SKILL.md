@@ -1,6 +1,6 @@
 ---
 name: energieausweis-arbeiten
-description: Energieausweis-Projekte in Knowledge Center suchen, lesen und bearbeiten, Prüfsummen und Ecotech-XML erzeugen. Für Ausweise, Gebäudehülle, Fenster, U-Werte, Grundrisse und Plan-3D, Begehungen: Erfassung am Handy samt Fotos (Typenschild ablesen) und Begehungen der Begehung-App mit Vorschau in den Ausweis übernehmen; Geschosspläne mit Fenstern und Außentüren bearbeiten, Originalpläne je Ebene zuordnen und Geometrie kontrolliert in den Baukörper übernehmen. EcoBook 2.0 (Demo): Energiekennzahlen simuliert berechnen, Sanierung mit Fenstern, Fassaden- und Dachdämmung, Heizungstausch und Photovoltaik durchrechnen (Gesamtkosten, Amortisation, Kosten des Nichtstuns, optional eine genannte Förderung), Produkte verschiedener Hersteller vergleichen, Sanierungsfahrplan über Jahre mit Budget, Häuser mit mehreren Energieausweisen suchen und lesen, Hausakte (Geschichte des Hauses) lesen und ergänzen, Kundenlinks und Kundenanfragen lesen, Sanierungsvorschlag als PDF und Angebot aus der Sanierung.
+description: Energieausweis-Projekte in Knowledge Center suchen, lesen und bearbeiten, Prüfsummen und Ecotech-XML erzeugen. Für Ausweise, Gebäudehülle, Fenster, U-Werte, Grundrisse und Plan-3D, Eingaben aus der Energie-App am Handy samt Fotos (Typenschild ablesen), Begehungen der Begehung-App mit Vorschau in den Ausweis übernehmen; Geschosspläne mit Fenstern und Außentüren bearbeiten, Originalpläne je Ebene zuordnen und Geometrie kontrolliert in den Baukörper übernehmen. EcoBook 2.0 (Demo): Energiekennzahlen simuliert berechnen, Sanierung mit Fenstern, Fassaden- und Dachdämmung, Heizungstausch und Photovoltaik durchrechnen (Gesamtkosten, Amortisation, Kosten des Nichtstuns, optional eine genannte Förderung), Produkte verschiedener Hersteller vergleichen, Sanierungsfahrplan über Jahre mit Budget, Häuser mit mehreren Energieausweisen suchen und lesen, Hausakte (Geschichte des Hauses) lesen und ergänzen, Kundenlinks und Kundenanfragen lesen, Sanierungsvorschlag als PDF und Angebot aus der Sanierung.
 ---
 
 # Energieausweis in Knowledge Center
@@ -76,13 +76,14 @@ damit nichts verloren geht; das Büro entscheidet, was in den Ausweis kommt.
 Bevor du Werte daraus übernimmst, lies `references/begehung-uebernahme.md`
 (Ablauf mit Vorschau, Sonderfälle, Beispiel).
 
-## Begehung vom Handy und Fotos
+## Energie-App am Handy und Fotos
 
-Die Energieausweis-App am Handy erfasst die Begehung vor Ort direkt in die
-Projektfelder, die Anlagentechnik und die Fenster (Stückzahl und Bereich im
-Info-Text, z. B. „4 Stück · EG · Begehung"); PV, Solar, Bereiche und der
-Abschluss stehen in `ea_projekt_lesen` unter „Begehung ·". Kommt der Auftrag
-von dort („mach damit weiter"):
+Die Energie-App am Handy ist der Energieausweis selbst, **keine Begehung**
+(Begehungen gibt es nur als eigenes Dokument im Gutachten-Modul, siehe oben).
+Sie schreibt direkt in die Projektfelder, die Anlagentechnik und die Fenster
+(Stückzahl und Bereich im Info-Text, z. B. „4 Stück · EG · Handy"); PV, Solar
+und Bereiche stehen in `ea_projekt_lesen` unter „Zusatz ·". Einen Abschluss
+gibt es dort nicht. Kommt der Auftrag von dort („mach damit weiter"):
 
 1. `ea_projekt_lesen`, dann `ea_fotos_uebersicht` (Fotos nach Kategorie mit
    `[foto:id]`).
@@ -228,7 +229,7 @@ Alle Höhen gelten **relativ ab oberster Geschoßdecke**, außen gemessen.
    oder Flachdach. Bei geneigtem Dach die **Form**: Satteldach, Pultdach
    oder Walmdach. Unklar → nachfragen.
 2. `ea_plan_lesen`: `dach` zeigt den aktuellen Stand, `kanten` des obersten
-   Geschosses die Wände mit `kante_index` und Länge; `dach_aus_begehung`
+   Geschosses die Wände mit `kante_index` und Länge; `dach_vom_handy`
    zeigt am Handy erfasste Werte.
 3. `ea_plan_dach_vorschau` mit `projekt_id` und `dach`:
    - `form`: `satteldach`, `pultdach` (eine Fläche, hohe Seite an

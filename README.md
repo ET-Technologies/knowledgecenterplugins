@@ -219,7 +219,7 @@ MCP-Verbindung zu `https://www.knowledgecenter.at/api/mcp/energieausweis`
 | `ea_zuordnungen_setzen`            | Fenster an Wände mit Stückzahl; „ersetzen" nur nach Rückfrage                                               |
 | `ea_konstruktionen_ableiten`       | Zauberstab: Konstruktionen aus Flächen gruppieren, Vorschau oder anwenden                                   |
 | `ea_export_xml`                    | Ecotech-XML, Link 24 h gültig, mit Mengen-Meldungen                                                         |
-| `ea_fotos_uebersicht`              | Fotos nach Kategorie mit `[foto:id]`, auch von der Begehung am Handy                                        |
+| `ea_fotos_uebersicht`              | Fotos nach Kategorie mit `[foto:id]`, auch aus der Energie-App am Handy                                      |
 | `ea_foto_ansehen`                  | Foto als Bild ansehen (verkleinert) — z. B. Typenschild ablesen, Rahmen/Verglasung erkennen                 |
 | `ea_foto_beschriften`              | Beschreibung oder Kategorie eines Fotos ändern                                                              |
 | `ea_fotos_hochladen`               | Ein im Chat angehängtes Foto (ChatGPT) mit Kategorie übernehmen, ein Aufruf je Foto                         |
