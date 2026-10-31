@@ -5,7 +5,7 @@
   },
   "metadata": {
     "description": "Claude-Plugins für Knowledge Center — je Bereich ein Plugin, passend zum Abo (Gutachten, Energieausweis; weitere Bereiche folgen)",
-    "version": "1.17.0"
+    "version": "1.18.0"
   },
   "plugins": [
     {
@@ -52,6 +52,11 @@
       "name": "knowledgecenter-energie-plan",
       "source": "./knowledgecenter-energie-plan",
       "description": "Plan zeichnen in Knowledge Center für Claude: Geschosspläne der Energieausweis-Projekte in Metern zeichnen und korrigieren (Ecken, Sollmaße, Nachbarn, Fenster, Geschosse, Dach) in einem geprüften Durchgang, Kontrolle als Bild oder in 3D, Übernahme in den Baukörper. Anmeldung beim ersten Aufruf im Browser; benötigt ein Owner-Konto mit Energieausweis-Modul im Abo."
+    },
+    {
+      "name": "knowledgecenter-aufgaben",
+      "source": "./knowledgecenter-aufgaben",
+      "description": "Aufgaben in Knowledge Center suchen, anlegen, ändern, erledigen und löschen: persönliche Aufgaben (nur für dich und den Verantwortlichen sichtbar), allgemeine Aufgaben des Kontos und Baustellen-Aufgaben. Dieselbe Aufgabenliste wie im Web. Anmeldung beim ersten Aufruf im Browser; benötigt den freigeschalteten Menüpunkt Aufgaben."
     }
   ]
 }

@@ -23,6 +23,7 @@ sind gemeinsam — der Server und der fachliche Arbeitsablauf sind dieselben.
 | `knowledgecenter-baustellen`         | Baustellen zusammenfassen, Fotos, Chatnachrichten und neue Aufgaben              | Persönliches Owner-Konto mit Baustellenmodul   |
 | `knowledgecenter-angebote`           | Angebote berechnen, als Karte prüfen, bearbeiten, freigeben und als PDF erzeugen | Persönliches Owner-Konto mit Angebotsmodul     |
 | `knowledgecenter-sales-pilot`        | Tagesübersicht, Gesprächsvorbereitung, Aktivitäten festhalten und abschließen    | Persönliches Owner-Konto mit Sales-Pilot-Modul |
+| `knowledgecenter-aufgaben`           | Persönliche, allgemeine und Baustellen-Aufgaben suchen, anlegen, ändern, erledigen | Persönliches Konto mit Menüpunkt Aufgaben     |
 
 Weitere Bereiche folgen als eigene Plugins.
 
@@ -59,6 +60,7 @@ claude plugin install knowledgecenter-eingangsrechnungen@entrich-technologies
 claude plugin install knowledgecenter-baustellen@entrich-technologies
 claude plugin install knowledgecenter-angebote@entrich-technologies
 claude plugin install knowledgecenter-sales-pilot@entrich-technologies
+claude plugin install knowledgecenter-aufgaben@entrich-technologies
 ```
 
 Dann einfach eine Frage stellen, z. B. _„Welche Gutachten-Typen gibt es?"_.
@@ -95,6 +97,7 @@ codex plugin add knowledgecenter-eingangsrechnungen@entrich-technologies
 codex plugin add knowledgecenter-baustellen@entrich-technologies
 codex plugin add knowledgecenter-angebote@entrich-technologies
 codex plugin add knowledgecenter-sales-pilot@entrich-technologies
+codex plugin add knowledgecenter-aufgaben@entrich-technologies
 ```
 
 Beim ersten Aufruf meldet sich Codex bei Knowledge Center an (OAuth im
@@ -119,6 +122,7 @@ Server-Adresse des gewünschten Bereichs eintragen:
 - Baustellen (nach Web-Bereitstellung): `https://www.knowledgecenter.at/api/mcp/baustellen`
 - Angebote: `https://www.knowledgecenter.at/api/mcp/angebote`
 - Sales Pilot (nach Web-Bereitstellung): `https://www.knowledgecenter.at/api/mcp/sales-pilot`
+- Aufgaben (nach Web-Bereitstellung): `https://www.knowledgecenter.at/api/mcp/aufgaben`
 
 ChatGPT öffnet anschließend die Anmeldung bei Knowledge Center.
 
@@ -517,6 +521,19 @@ registriert; bis dahin dort die Server-Adresse im Developer mode eintragen.
   Wurde das Angebot inzwischen geändert, etwa in der Web-App umsortiert,
   speichert der Server nichts, statt eine Positionsnummer auf eine andere
   Position anzuwenden; der Skill beschreibt, wie dann neu gelesen wird.
+
+- **Aufgaben 0.1.0** — sieben Werkzeuge für die bestehende Web-Aufgabenliste:
+  `aufgaben_suchen`, `aufgabe_lesen`, `aufgaben_personen_suchen`,
+  `aufgabe_anlegen`, `aufgabe_aendern`, `aufgabe_erledigen`, `aufgabe_loeschen`.
+  Neu ist die Art `persoenlich`: solche Aufgaben sehen nur die anlegende Person
+  und der Verantwortliche, im Web wie über MCP. Allgemeine und Baustellen-
+  Aufgaben bleiben wie bisher; Baustellen-Aufgaben nur mit Baustellen-Zugriff.
+  Anlegen mit stabiler ID aus der Anfrage-ID, Ändern und Löschen mit
+  Konfliktschutz über `geaendert_am`, Löschen nur nach Rückfrage. Freischaltung
+  wie der Menüpunkt Aufgaben (Feature-Flag `tasks`, Rolle ab Benutzer). Vor der
+  Bereitstellung die Web-Migration `20261031_tasks_personal_module.sql`
+  ausführen. Noch keine registrierte ChatGPT-App, daher keine `.app.json`.
+  Icon: 256 × 256 Pixel, unter 10 KB.
 
 - **Angebote 0.7.0** — Die Angebotskarte zeigt je Position den Steuersatz, dazu
   Gültigkeit und Notiz, und ändert Kopfdaten (Titel, Datum, Gültigkeit, Notiz)

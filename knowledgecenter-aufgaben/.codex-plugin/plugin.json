@@ -1,0 +1,40 @@
+{
+  "name": "knowledgecenter-aufgaben",
+  "version": "0.1.0",
+  "description": "Aufgaben in Knowledge Center suchen, anlegen, ändern, erledigen und löschen: persönliche Aufgaben (nur für dich und den Verantwortlichen sichtbar), allgemeine Aufgaben des Kontos und Baustellen-Aufgaben. Dieselbe Aufgabenliste wie im Web. Anmeldung beim ersten Aufruf im Browser; benötigt den freigeschalteten Menüpunkt Aufgaben.",
+  "author": {
+    "name": "Entrich Technologies GmbH",
+    "email": "erwin@entrich-technologies.com",
+    "url": "https://www.knowledgecenter.at"
+  },
+  "homepage": "https://www.knowledgecenter.at",
+  "repository": "https://github.com/ET-Technologies/knowledgecenterplugins",
+  "keywords": [
+    "aufgaben",
+    "todo",
+    "persoenliche-aufgaben",
+    "tasks",
+    "knowledge-center"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Knowledge Center Aufgaben",
+    "shortDescription": "Persönliche und gemeinsame Aufgaben verwalten",
+    "longDescription": "Aufgaben in Knowledge Center suchen, anlegen, ändern, erledigen und löschen. Persönliche Aufgaben sehen nur du und die verantwortliche Person; allgemeine Aufgaben sieht das ganze Konto, Baustellen-Aufgaben alle mit Baustellen-Zugriff. Fälligkeit, Beginn, Erinnerung, Priorität, Aufwand und Verantwortliche wie in der Web-Aufgabenliste. Änderungen nur mit Konfliktschutz, Löschen nur nach Rückfrage.",
+    "developerName": "Entrich Technologies GmbH",
+    "category": "Productivity",
+    "capabilities": ["Read", "Write"],
+    "websiteURL": "https://www.knowledgecenter.at",
+    "privacyPolicyURL": "https://www.knowledgecenter.at/datenschutz",
+    "defaultPrompt": [
+      "Was steht heute bei mir an?",
+      "Lege eine persönliche Aufgabe an: Steuerberater anrufen, fällig Freitag",
+      "Erledige die Aufgabe Reifen wechseln"
+    ],
+    "brandColor": "#FF6B4A",
+    "composerIcon": "./assets/icon.png",
+    "logo": "./assets/icon.png",
+    "screenshots": []
+  }
+}
