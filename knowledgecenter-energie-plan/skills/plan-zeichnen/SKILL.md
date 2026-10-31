@@ -98,8 +98,14 @@ AUSSEN` über den Anbau. Das Satteldach steht dann über dem Rest, die Wand
   (W, NF, N, ZA, SB, S/SO, N/SO), `seehoeheM` und `uWerte` je Gruppe
   (`aussenwand`, `dachflaeche`, `obersteDecke`, `kellerdecke`, `boden`) mit
   `daemmCm` (Dämmung auf die Bauepoche) oder `u` (eigener Wert). Ohne Eintrag
-  gilt der U-Wert der Bauepoche aus dem Baujahr. Originalplan (`mit_original`)
-  und `einrasten` gibt es bei eigenständigen Plänen noch nicht.
+  gilt der U-Wert der Bauepoche aus dem Baujahr. Ist eine Wand oder ein
+  Boden-/Deckenteil anders gebaut als der Rest („Außenwand 2“): in
+  `rechnung.aufbauten` einen Aufbau `{id, gruppe, u}` anlegen und im selben
+  Aufruf mit `wand_setzen{…, aufbau}` bzw. `bereich.aufbau` zuordnen (`null` =
+  wie der Rest). Der Name kommt aus der Reihenfolge je Gruppe; der U gilt nur,
+  wenn die Gruppe zur Fläche passt. `plan_lesen` zeigt `aufbau` und
+  `aufbau_name` an Wand und Bereich. Originalplan (`mit_original`) und
+  `einrasten` gibt es bei eigenständigen Plänen noch nicht.
 - Web und KI am selben Plan: Ein offener Plan-Reiter übernimmt gespeicherte
   Änderungen von selbst, als rückgängig machbaren Schritt „KI: …“. Speichert
   das Web gleichzeitig, werden Änderungen an verschiedenen Ecken
