@@ -179,7 +179,7 @@ Marketplace-Dateien: `.claude-plugin/marketplace.json` (Claude Code) und
 | `feld_setzen`               | Einzelne Korrektur                                                                 |
 | `protokoll_fortschreiben`   | Nächstes Protokoll einer Reihe: Teilnehmer und offene Punkte mit Nummer übernehmen |
 | `dokument_ableiten`         | Aus einer Begehung ein Protokoll, einen Aktenvermerk o. Ä. ableiten (mit Fotos)    |
-| `begehung_verknuepfen`      | Begehung mit einem Energieausweis-Projekt verknüpfen oder lösen                    |
+| `begehung_verknuepfen`      | Begehung mit einem Energieausweis-Projekt oder einem Plan verknüpfen oder lösen    |
 | `gutachten_titel_setzen`    | Titel eines bestehenden Gutachtens ändern                                          |
 | `eintrag_loeschen`          | Eintrag eines wiederholbaren Abschnitts löschen (nach Rückfrage), Rest rückt nach  |
 | `eintrag_verschieben`       | Eintrag an eine neue Position setzen, Fotos wandern mit                            |

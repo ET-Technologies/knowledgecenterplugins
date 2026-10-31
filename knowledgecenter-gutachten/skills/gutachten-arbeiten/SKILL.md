@@ -40,6 +40,10 @@ Kurzfassung:
    Energieausweis-Projekt zuordnen; `gutachten_suchen` mit `energieausweis_id`
    findet die Begehungen eines Ausweises. Werte in den Ausweis übernimmt das
    Energieausweis-Plugin (`ea_begehung_uebernahme_*`) — dort mit Vorschau.
+   Mit `plan_id` statt `energieausweis_id` verknüpft dasselbe Werkzeug die
+   Begehung mit einem eigenständigen Plan (Bereich Pläne): ihre Fotos
+   erscheinen dann im Plan. Eine Begehung hat höchstens einen Plan — eine
+   bestehende Verknüpfung wird ersetzt, darum vorher nachfragen.
 7. Vor jeder Schreibaktion: der Benutzer muss sie gewollt haben.
 
 ## Einrichtung in Claude Code (falls der Server nicht verbunden ist)
